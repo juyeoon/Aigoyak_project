@@ -77,8 +77,6 @@ Medication Managing System Based on Open Data
 
 ## :pill: 사용한 공공데이터
 
-출처: 공공데이터포털(https://www.data.go.kr/)
-
 - 일반의약품 데이터
 
   - [의약품 낱알식별정보(DB) 서비스](https://www.data.go.kr/data/15057639/openapi.do)
