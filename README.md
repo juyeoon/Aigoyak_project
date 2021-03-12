@@ -11,21 +11,31 @@ Medication Managing System Based on Public Medicine Data
 
 🍀 **개발자**
 
-- 박주연, 박수아
+- 박주연
+  - [github](https://github.com/juyeoon)
+
+- 박수아
+  - [github](https://github.com/SuAAng)
 
 🍀 **개발 환경**
 
-(추가 예정)
+- (추가 예정)
 
 ---
 
-## 💊 목차
+## :pill: 목차
 
+👉 [서비스 개요](#pill-서비스-개요)
 
+👉 [개발 동기](#pill-개발-동기)
+
+👉 [제공 기능](#pill-제공-기능)
+
+👉 [사용한 공공데이터](#pill-사용한-공공데이터)
 
 ---
 
-## 💊 서비스 개요
+## :pill: 서비스 개요
 
 <img src="https://github.com/juyeoon/Aigoyak_project/blob/main/image/logo4.png" width="130%" height="130%">
 
@@ -35,7 +45,7 @@ Medication Managing System Based on Public Medicine Data
 
 ---
 
-## 💊 개발동기
+## :pill: 개발 동기
 
 - 상비약으로 일반의약품을 구매했을때, 한 번에 다 복용하지 못하고 복용한 나머지를 보관한다. 
 
@@ -47,7 +57,7 @@ Medication Managing System Based on Public Medicine Data
 
 ---
 
-## 💊 제공 기능
+## :pill: 제공 기능
 
 - 일반의약품 상세 정보 검색
 
@@ -61,7 +71,7 @@ Medication Managing System Based on Public Medicine Data
 
 ---
 
-## 💊 사용한 공공데이터
+## :pill: 사용한 공공데이터
 
 - 의약품 낱알식별정보(DB)
 
