@@ -33,7 +33,9 @@ Medication Managing System Based on Public Medicine Data
 
 👉 [사용한 공공데이터](#pill-사용한-공공데이터)
 
+
 ---
+
 
 ## :pill: 서비스 개요
 
@@ -47,13 +49,13 @@ Medication Managing System Based on Public Medicine Data
 
 ## :pill: 개발 동기
 
-- 상비약으로 일반의약품을 구매했을때, 한 번에 다 복용하지 못하고 복용한 나머지를 보관한다. 
+- 상비용으로 일반의약품을 구매했을 때, 복용하고 남은 약은 보관하게 된다. 
 
-- 보관을 할 때, 포장지는 버리고 알약만 보관하거나, 용도와 복용시 주의사항에 맞게 구분하여 보관하지 않는 경우가 많다.
+- 보관 시 포장지는 버리고 알약만 보관하거나, 용도 및 복용 시 주의사항에 맞게 구분하여 보관하지 않는 경우가 많다.
 
-- 주기적으로 복용하여야 하는 약물들의 복용 여부와 종류들은 잊어버리기 쉽다.  
+- 주기적으로 복용하여야 하는 약물의 복용 여부와 종류를 잊어버리기 쉽다. 
 
-- 제조약은 병용 금기, 연령 주의 약물을 사전에 제외하여 처방하므로 주의를 기울이지 않아도 되지만, 일반의약품은 구매자가 스스로 약물들의 성분을 파악하여 복용하여야 하기 때문에 관련 정보를 쉽게 접근하면 좋다. 
+- 제조약은 병용금기 및 연령대별 주의 약물을 사전에 배제하여 처방하므로 주의를 기울이지 않아도 되지만, 일반의약품은 구매자 스스로가 약물의 성분을 파악하여 적절히 복용하여야 하므로 관련 정보의 접근성을 높일 필요가 있다. 
 
 ---
 
@@ -73,20 +75,30 @@ Medication Managing System Based on Public Medicine Data
 
 ## :pill: 사용한 공공데이터
 
-- 의약품 낱알식별정보(DB)
+출처: 공공데이터포털(https://www.data.go.kr/)
 
-- 한국의약품안전관리원_DUR정보_의약품금기정보
+- 일반의약품 데이터
 
-- 한국의약품안전관리원_DUR정보_임부주의약물
+  - [의약품 낱알식별정보(DB) 서비스](https://www.data.go.kr/data/15057639/openapi.do)
 
-- 한국의약품안전관리원_DUR정보_임부연령금기정보
+- DUR 데이터
 
-- 한국의약품안전관리원_DUR정보_용량주의
+  - [한국의약품안전관리원_DUR정보_의약품금기정보](https://www.data.go.kr/data/15039484/fileData.do)
 
-- 한국의약품안전관리원_DUR정보_어린이주의약물
+  - [한국의약품안전관리원_DUR정보_약물금기정보](https://www.data.go.kr/data/15039485/fileData.do)
 
-- 한국의약품안전관리원_DUR정보_약물금기정보
+  - [한국의약품안전관리원_DUR정보_병용주의약물정보](https://www.data.go.kr/data/15039472/fileData.do)
 
-- 한국의약품안전관리원_DUR정보_병용금기약물정보
+  - [한국의약품안전관리원_DUR정보_병용금기약물정보](https://www.data.go.kr/data/15039486/fileData.do)
 
-- 한국의약품안전관리원_DUR정보_노인주의약물
+  - [한국의약품안전관리원_DUR정보_용량주의](https://www.data.go.kr/data/15039480/fileData.do)
+
+  - [한국의약품안전관리원_DUR정보_임부주의약물](https://www.data.go.kr/data/15039479/fileData.do)
+
+  - [한국의약품안전관리원_DUR정보_임부연령금기정보](https://www.data.go.kr/data/15039483/fileData.do)
+
+  - [한국의약품안전관리원_DUR정보_어린이주의약물](https://www.data.go.kr/data/15039470/fileData.do)
+
+  - [한국의약품안전관리원_DUR정보_노인주의약물](https://www.data.go.kr/data/15039478/fileData.do)
+
+출처: 공공데이터포털(https://www.data.go.kr/)
