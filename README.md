@@ -2,9 +2,9 @@
 
 **공공데이터를 활용한 의약품 정보 기반 복약 관리 서비스**
 
-Medication Managing System Based on Public Medicine Data
+Medication Managing System Based on Open Data
 
-창원대학교 컴퓨터공학과 2021졸업작품
+창원대학교 컴퓨터공학과 2021 졸업 작품
 
 ---
 
