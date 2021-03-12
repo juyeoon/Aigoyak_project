@@ -41,7 +41,7 @@ Medication Managing System Based on Open Data
 
 ## :pill: 서비스 개요
 
-<img src="https://github.com/juyeoon/Aigoyak_project/blob/main/image/logo4.png" width="130%" height="130%">
+<img src="https://github.com/juyeoon/Aigoyak_project/blob/main/image/logo_up.png" width="130%" height="130%">
 
 - 공공데이터를 활용한 일반의약품 정보, DUR 정보 제공
 
