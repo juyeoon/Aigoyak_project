@@ -8,8 +8,7 @@ Medication Managing System Based on Open Data
 
 창원대학교 컴퓨터공학과 2021 졸업 작품
 
----
-
+</br>
 
 🍀 **개발자**
 
