@@ -51,7 +51,7 @@
         android:layout_height="45dp"
         android:fontFamily="@font/kukde_bdb"
         android:gravity="center_vertical|right"
-        android:text="뫄뫄뫄"
+        android:text="나나나"
         android:textColor="@color/gray"
         android:textSize="45dp"
         app:layout_constraintBottom_toBottomOf="parent"
