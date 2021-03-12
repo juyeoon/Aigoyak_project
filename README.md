@@ -4,6 +4,12 @@
 
 Medication Managing System Based on Public Medicine Data
 
+창원대학교 컴퓨터공학과 2021졸업작품
+
+
+개발자
+- 박주연
+- 박수아
 
 개발동기
 - 일반의약품의 오남용을 방지
