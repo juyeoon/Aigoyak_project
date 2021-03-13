@@ -17,45 +17,19 @@ android:orientation="vertical">
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/title_design" />
 
-    <TextView
-        android:id="@+id/아이고"
+    <ImageView
+        android:id="@+id/header_logo"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginStart="131dp"
-        android:layout_marginLeft="131dp"
-        android:layout_marginTop="22dp"
-        android:layout_marginEnd="138dp"
-        android:layout_marginRight="138dp"
-        android:fontFamily="@font/kukde_bdb"
-        android:text="아이고약!"
-        android:textColor="@color/white"
-        android:textSize="35dp"
+        android:layout_height="37dp"
+        android:layout_marginHorizontal="120dp"
+        android:layout_marginVertical="24dp"
+        app:layout_constraintBottom_toBottomOf="@+id/recyclerView"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/약"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="140dp"
-        android:layout_marginRight="140dp"
-        android:fontFamily="@font/kukde_bdb"
-        android:text="약!"
-        android:textColor="@color/pink"
-        android:textSize="35dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.631"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/header_logo" />
 
     <LinearLayout
     android:id="@+id/linear"
