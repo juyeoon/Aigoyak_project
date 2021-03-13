@@ -18,14 +18,21 @@
         android:orientation="horizontal"
         android:visibility="visible">
 
+        <CheckBox
+            android:id="@+id/checkBox"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"/>
+
         <RelativeLayout
-            android:layout_width="321dp"
+            android:id="@+id/layout2"
+            android:layout_width="287dp"
             android:layout_height="wrap_content"
-            android:padding="5dp">
+            android:padding="5dp"
+            >
 
             <TextView
                 android:id="@+id/name"
-                android:layout_width="333dp"
+                android:layout_width="262dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10sp"
                 android:layout_marginLeft="10sp"
@@ -39,7 +46,7 @@
 
             <TextView
                 android:id="@+id/clock"
-                android:layout_width="331dp"
+                android:layout_width="263dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10sp"
                 android:layout_marginTop="50sp"
@@ -48,6 +55,8 @@
                 android:fontFamily="@font/kukde_alt"
                 android:text="복용시각"
                 android:textSize="27sp" />
+
+
         </RelativeLayout>
 
         <ImageView
