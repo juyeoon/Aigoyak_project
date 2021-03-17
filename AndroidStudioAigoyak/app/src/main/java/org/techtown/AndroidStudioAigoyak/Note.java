@@ -13,7 +13,6 @@ public class Note {
         this.clock = clock;
         this.locationX = locationX;
         this.locationY = locationY;
-        this.warning = warning;
     }
 
     public int get_id(){
@@ -49,11 +48,5 @@ public class Note {
     public void setLocationY(String locationY) {
         this.locationY = locationY;
     }
-    public String getWarning() {
-        return warning;
-    }
 
-    public void setWarning(String warning) {
-        this.warning = warning;
-    }
 }

@@ -1,7 +1,9 @@
 package org.techtown.AndroidStudioAigoyak;
 
+import android.content.Context;
 import android.content.Intent;
 import android.provider.ContactsContract;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,8 +19,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
 public class B_MedicationList extends RecyclerView.Adapter<B_MedicationList.ViewHolder>{
+    private static final String TAG = "hi";
     ArrayList<Note> items = new ArrayList<Note>();
-
+    OnNoteItemClickListener listener;
+    Context context;
+    Note item;
+    int _id = -1;
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int viewType){
@@ -31,6 +37,8 @@ public class B_MedicationList extends RecyclerView.Adapter<B_MedicationList.View
             public void onClick(View v) {
                 deleteNote(); //아직 안 만듦 (추가해야함)
             }
+
+
         });
 
 
@@ -57,6 +65,21 @@ public class B_MedicationList extends RecyclerView.Adapter<B_MedicationList.View
         this.items = items;
     }
 
+    public Note getItem(int position){
+        return items.get(position);
+    }
+    public void setOnItemClickListener(OnNoteItemClickListener listener){
+        this.listener = listener;
+    }
+
+    private void deleteNote(){
+
+        String sql = "delete from" + NoteDatabase.TABLE_NOTE + "where" + "_id = " + item._id;
+
+        Log.d(TAG, "sql : " + sql);
+        NoteDatabase database = NoteDatabase.getInstance(context);
+        database.execSQL(sql);
+    }
 
     static class ViewHolder extends RecyclerView.ViewHolder{
         LinearLayout layout1;

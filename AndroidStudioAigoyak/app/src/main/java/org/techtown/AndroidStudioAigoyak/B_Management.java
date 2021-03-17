@@ -21,12 +21,13 @@ import java.util.ArrayList;
 
 
 public class B_Management extends Fragment{
+    private static final String TAG= "Fragment1";
     MainActivity activity;
     RecyclerView recyclerView;
     B_MedicationList adapter;
 
     Context context;
-
+    OnTabItemSelectedListener listener;
 
     @Override
     public void onAttach(@NonNull Context context) {
@@ -58,6 +59,8 @@ public class B_Management extends Fragment{
             }
         });
         initUI(rootView);
+
+        loadNoteListData();
         return rootView;
 
     }
@@ -87,7 +90,7 @@ public class B_Management extends Fragment{
 
     public int loadNoteListData(){
         AppConstants.println("데이터를 불러오겠습니다");
-        String sql = "select _id, name, clock, location_x, location_y," +NoteDatabase.TABLE_NOTE + "order by CREATE_DATE desc";
+        String sql = "select _id, name, clock, location_x, location_y from" +NoteDatabase.TABLE_NOTE + "order by CREATE_DATE desc";
 
         int recordCount = -1;
         NoteDatabase database = NoteDatabase.getInstance(context);
