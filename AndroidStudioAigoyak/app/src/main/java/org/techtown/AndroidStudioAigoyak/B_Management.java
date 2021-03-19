@@ -23,7 +23,6 @@ import static android.content.Context.MODE_PRIVATE;
 
 public class B_Management extends Fragment{
     private static final String TAG= "Fragment1";
-    public static NoteDatabase noteDatabase = null;
     MainActivity activity;
     RecyclerView recyclerView;
     B_MedicationList adapter;

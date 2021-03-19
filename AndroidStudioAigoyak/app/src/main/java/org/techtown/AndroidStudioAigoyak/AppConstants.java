@@ -3,7 +3,6 @@ package org.techtown.AndroidStudioAigoyak;
 import android.os.Handler;
 import android.util.Log;
 
-import java.text.SimpleDateFormat;
 
 public class AppConstants {
 
