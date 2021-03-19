@@ -18,29 +18,19 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-public class B_MedicationList extends RecyclerView.Adapter<B_MedicationList.ViewHolder>{
-    private static final String TAG = "hi";
+public class B_MedicationList extends RecyclerView.Adapter<B_MedicationList.ViewHolder>{//일단 완료
+    private static final String TAG = "NoteAdapter";
+    //아이템이 들어갈 배열
     ArrayList<Note> items = new ArrayList<Note>();
+
+
     OnNoteItemClickListener listener;
-    Context context;
-    Note item;
-    int _id = -1;
+
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int viewType){
         LayoutInflater inflater = LayoutInflater.from(viewGroup.getContext());
         View itemView = inflater.inflate(R.layout.fragment_medication_list, viewGroup, false);
-
-        ImageView trashcan = itemView.findViewById(R.id.trashcan);
-        trashcan.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                deleteNote(); //아직 안 만듦 (추가해야함)
-            }
-
-
-        });
-
 
 
         return new ViewHolder(itemView);
@@ -48,62 +38,89 @@ public class B_MedicationList extends RecyclerView.Adapter<B_MedicationList.View
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int position){
-        Note item = items.get(position);
-        viewHolder.setItem(item);
+        viewHolder.setItem(items.get(position));
+        //Note item = items.get(position); //위랑 같은 코드
+        //viewHolder.setItem(item);
+        viewHolder.setLayout();
     }
 
     @Override
     public int getItemCount(){
         return items.size();
-    }
+    }//RecyclerView의 총 개수
 
     public void addItem(Note item){
         items.add(item);
-    }
+    }//외부에서 item을 추가시킬 함수
+
+    public Note getItem(int position){
+        return items.get(position);
+    } //x
 
     public void setItems(ArrayList<Note> items){
         this.items = items;
     }
 
-    public Note getItem(int position){
-        return items.get(position);
-    }
-    public void setOnItemClickListener(OnNoteItemClickListener listener){
+    public void setOnItemClickListener(OnNoteItemClickListener listener){//x
         this.listener = listener;
     }
 
-    private void deleteNote(){
 
-        String sql = "delete from" + NoteDatabase.TABLE_NOTE + "where" + "_id = " + item._id;
 
-        Log.d(TAG, "sql : " + sql);
-        NoteDatabase database = NoteDatabase.getInstance(context);
-        database.execSQL(sql);
-    }
 
-    static class ViewHolder extends RecyclerView.ViewHolder{
-        LinearLayout layout1;
-        RelativeLayout layout2;
+    class ViewHolder extends RecyclerView.ViewHolder{
+        LinearLayout layout;
         TextView name;
         TextView clock;
         ImageView warning;
         ImageView trashcan;
 
+
         public ViewHolder(View itemView){
             super(itemView);
-
+            String delete_name = "노란약";
+            layout = itemView.findViewById(R.id.layout1);
             name = itemView.findViewById(R.id.name);
             clock = itemView.findViewById(R.id.clock);
             warning = itemView.findViewById(R.id.warning);
             trashcan = itemView.findViewById(R.id.trashcan);
 
-        }
-        public void setItem(Note item) {
-            //warning 조건 걸어서 보이게 하기 (아직 안 함)
-            warning.setVisibility(View.VISIBLE);
+            //버튼 클릭 시 SQLite에서 데이터 삭제
+            trashcan.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    deleteNote(); //아직 안 만듦 (추가해야함)
+                    
 
+                   // adapter.notifyDataSetChanged();//새로고침?? 이거 제대로 작동 안 함.
+                }
+
+                Context context;
+
+                private void deleteNote(){
+
+                    String sql = "delete from " + NoteDatabase.TABLE_NOTE + " where " + "NAME = '" + delete_name +"'";//어떻게 할까
+                    Log.d(TAG, "sql : " + sql);
+                    NoteDatabase database = NoteDatabase.getInstance(context);
+                    database.execSQL(sql);
+
+
+                }
+
+
+            });
+
+
+        }
+
+        public void setItem(Note item) {//내가 적은 텍스트를 불러와 저장하는 것
+            warning.setVisibility(View.INVISIBLE); //warning 조건 걸어서 보이게 하기 (아직 안 함)
             name.setText(item.getName());
             clock.setText(item.getClock());
         }
+        public void setLayout(){
+            layout.setVisibility(View.VISIBLE);
+        }
     }
+
 }

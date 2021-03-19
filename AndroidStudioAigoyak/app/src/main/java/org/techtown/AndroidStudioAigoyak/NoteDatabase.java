@@ -6,9 +6,10 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
+import static org.techtown.AndroidStudioAigoyak.AppConstants.DATABASE_NAME;
+
 public class NoteDatabase {
     private static final String TAG = "NoteDatabase";
-
     private static NoteDatabase database;
     public static String TABLE_NOTE ="NOTE";
     public static int DATABASE_VERSION = 1;
@@ -28,19 +29,25 @@ public class NoteDatabase {
         return database;
     }
     public boolean open() {
-        println("opening database [" + AppConstants.DATABASE_NAME + "].");
-
+        println("opening database [" + DATABASE_NAME + "].");
         dbHelper = new DatabaseHelper(context);
         db = dbHelper.getWritableDatabase();
 
         return true;
     }
     public void close() {
-        println("closing database [" + AppConstants.DATABASE_NAME + "].");
         db.close();
-
         database = null;
     }
+
+    /**
+     * execute raw query using the input SQL
+     * close the cursor after fetching any result
+     *
+     * @param SQL
+     * @return
+     */
+
     public Cursor rawQuery(String SQL) {
         println("\nexecuteQuery called.\n");
 
@@ -54,6 +61,7 @@ public class NoteDatabase {
 
         return c1;
     }
+
 
     public boolean execSQL(String SQL) {
         println("\nexecute called.\n");
@@ -71,15 +79,11 @@ public class NoteDatabase {
     private class DatabaseHelper extends SQLiteOpenHelper {
 
         public DatabaseHelper(Context context) {
-            super(context, AppConstants.DATABASE_NAME, null, DATABASE_VERSION);
+            super(context, DATABASE_NAME, null, DATABASE_VERSION);
         }
 
         public void onCreate(SQLiteDatabase db) {
-            println("creating database [" + AppConstants.DATABASE_NAME + "].");
-
-            // TABLE_NOTE
-            println("creating table [" + TABLE_NOTE + "].");
-
+            println("creating database [" + DATABASE_NAME + "].");
             // drop existing table
             String DROP_SQL = "drop table if exists " + TABLE_NOTE;
             try {
@@ -92,9 +96,7 @@ public class NoteDatabase {
             String CREATE_SQL = "create table " + TABLE_NOTE + "("
                     + "  _id INTEGER  NOT NULL PRIMARY KEY AUTOINCREMENT, "
                     + "  NAME TEXT DEFAULT '', "
-                    + "  CLOCK TEXT DEFAULT '', "
-                    + "  LOCATION_X TEXT DEFAULT '', "
-                    + "  LOCATION_Y TEXT DEFAULT ''"
+                    + "  CLOCK TEXT DEFAULT''"
                     + ")";
             try {
                 db.execSQL(CREATE_SQL);
@@ -104,7 +106,7 @@ public class NoteDatabase {
 
             // create index
             String CREATE_INDEX_SQL = "create index " + TABLE_NOTE + "_IDX ON " + TABLE_NOTE + "("
-                    + "CREATE_DATE"
+                    + "_id"
                     + ")";
             try {
                 db.execSQL(CREATE_INDEX_SQL);
@@ -112,9 +114,8 @@ public class NoteDatabase {
                 Log.e(TAG, "Exception in CREATE_INDEX_SQL", ex);
             }
         }
-
         public void onOpen(SQLiteDatabase db) {
-            println("opened database [" + AppConstants.DATABASE_NAME + "].");
+            println("opened database [" + DATABASE_NAME + "].");
         }
 
         public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
@@ -125,6 +126,5 @@ public class NoteDatabase {
     private void println(String msg) {
         Log.d(TAG, msg);
     }
-
 
 }

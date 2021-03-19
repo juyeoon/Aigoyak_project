@@ -33,24 +33,21 @@ public class B_AddMedicine extends AppCompatActivity {
 
             @Override
             public void onClick(View v){
+                saveNote();
                 Intent intent = new Intent(B_AddMedicine.this, MainActivity.class);
-                    saveNote();
-
                 startActivity(intent);
             }
         });
     }
 
     private void saveNote(){
-        String name = "노란약";
+        String name = "노란약";//임의로 지정
         String clock ="9:00";
 
         String sql = "insert into " +NoteDatabase.TABLE_NOTE +
-                "(name, clock, location_x, location_y) values (" +
-                "'"+ name + "'," +
-                "'"+ clock + "'," +
-                "'"+ "" + "'," +
-                "'"+ "" + "'," + "')";
+                "(NAME, CLOCK) values (" +
+                "'"+ name + "', " +
+                "'"+ clock + "')";
 
         Log.d(TAG, "sql : " + sql);
         NoteDatabase database = NoteDatabase.getInstance(context);
