@@ -96,8 +96,9 @@ public class NoteDatabase {
             String CREATE_SQL = "create table " + TABLE_NOTE + "("
                     + "  _id INTEGER  NOT NULL PRIMARY KEY AUTOINCREMENT, "
                     + "  NAME TEXT DEFAULT '', "
-                    + "  CLOCK TEXT DEFAULT''"
-                    + ")";
+                    + "  CLOCK TEXT DEFAULT '', "
+                    + "  DATE INTEGER , "
+                    + "  DATE2 INTEGER);";
             try {
                 db.execSQL(CREATE_SQL);
             } catch(Exception ex) {

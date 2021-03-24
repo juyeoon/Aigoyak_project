@@ -117,6 +117,7 @@ public class B_MedicationList extends RecyclerView.Adapter<B_MedicationList.View
             warning.setVisibility(View.INVISIBLE); //warning 조건 걸어서 보이게 하기 (아직 안 함)
             name.setText(item.getName());
             clock.setText(item.getClock());
+
         }
         public void setLayout(){
             layout.setVisibility(View.VISIBLE);

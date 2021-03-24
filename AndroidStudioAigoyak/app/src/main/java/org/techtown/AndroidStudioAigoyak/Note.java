@@ -4,12 +4,15 @@ public class Note {
     int _id;
     String name;
     String clock;
+    int date;
+    int date2;
 
-
-    public Note(int _id, String name, String clock) {
+    public Note(int _id, String name, String clock, int date, int date2) {
         this._id = _id;
         this.name = name;
         this.clock = clock;
+        this.date = date;
+        this.date2 = date2;
 
     }
 
@@ -33,5 +36,20 @@ public class Note {
     public void setClock(String clock){
         this.clock = clock;
     }
+
+    public int getDate() {
+        return date;
+    }
+    public void setDate(int date){
+        this.date = date;
+    }
+
+    public int getDate2() {
+        return date2;
+    }
+    public void setDate2(int date2){
+        this.date2 = date2;
+    }
+
 
 }

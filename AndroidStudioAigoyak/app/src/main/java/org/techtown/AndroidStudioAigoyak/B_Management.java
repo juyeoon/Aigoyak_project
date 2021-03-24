@@ -77,7 +77,7 @@ public class B_Management extends Fragment{
         //어댑터 연결
         adapter = new B_MedicationList();
 
-        adapter.addItem(new Note(0, "아스피린", "7:00"));//임의로 데이터 넣음
+        adapter.addItem(new Note(0, "아스피린", "7:00", 0, 0));//임의로 데이터 넣음
         recyclerView.setAdapter(adapter); // 용도 알아보기
 
         //이건 나중에 할거임 무슨 역할 하는지 잘 모르겠음 ^^ 나중에 연구
@@ -99,7 +99,7 @@ public class B_Management extends Fragment{
 
     //이거는 db연결해서 데이터를 리스트에 저장시키는거
     public int loadNoteListData(){
-        String sql = "select _id, NAME, CLOCK from " + NoteDatabase.TABLE_NOTE + " order by _id desc";
+        String sql = "select _id, NAME, CLOCK, DATE, DATE2 from " + NoteDatabase.TABLE_NOTE + " order by _id desc";
 
         int recordCount=-1;
         NoteDatabase database = NoteDatabase.getInstance(context);
@@ -119,8 +119,10 @@ public class B_Management extends Fragment{
                 int _id = outCursor.getInt(0);
                 String name = outCursor.getString(1);
                 String clock = outCursor.getString(2);
+                int date = outCursor.getInt(3);
+                int date2 = outCursor.getInt(4);
 
-                items.add(new Note(_id, name, clock));
+                items.add(new Note(_id, name, clock, date, date2));
             }
             outCursor.close();
 
