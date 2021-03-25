@@ -16,6 +16,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import android.content.Intent;
 import android.database.Cursor;
 import android.util.Log;
+import android.widget.CalendarView;
+
 import java.util.ArrayList;
 
 import static android.content.Context.MODE_PRIVATE;
@@ -26,10 +28,11 @@ public class B_Management extends Fragment{
     MainActivity activity;
     RecyclerView recyclerView;
     B_MedicationList adapter;
-
+    CalendarView calendarView;
     Context context;
     OnTabItemSelectedListener listener;
-
+    int y = 0, m = 0, d = 0;
+    int select_date = 20210325;
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
@@ -58,9 +61,27 @@ public class B_Management extends Fragment{
                 startActivity(intent);
             }
         });
+
+
+
+        calendarView = (CalendarView) rootView.findViewById(R.id.calendarView);
+        calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
+            @Override
+            public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
+               y=year;
+               m=month+1;
+               d=dayOfMonth;
+               select_date = y*10000 + m*100 + d;
+               System.out.println(select_date);
+               loadNoteListData();
+            }
+        });
+
+
         initUI(rootView);
 
-        loadNoteListData();
+
+
 
         return rootView;
 
@@ -77,7 +98,6 @@ public class B_Management extends Fragment{
         //어댑터 연결
         adapter = new B_MedicationList();
 
-        adapter.addItem(new Note(0, "아스피린", "7:00", 0, 0));//임의로 데이터 넣음
         recyclerView.setAdapter(adapter); // 용도 알아보기
 
         //이건 나중에 할거임 무슨 역할 하는지 잘 모르겠음 ^^ 나중에 연구
@@ -99,8 +119,8 @@ public class B_Management extends Fragment{
 
     //이거는 db연결해서 데이터를 리스트에 저장시키는거
     public int loadNoteListData(){
-        String sql = "select _id, NAME, CLOCK, DATE, DATE2 from " + NoteDatabase.TABLE_NOTE + " order by _id desc";
-
+        String sql = "select _id, NAME, CLOCK, DATE, DATE2 from " + NoteDatabase.TABLE_NOTE + " where DATE <= " + select_date + " AND " + "DATE2 >= " + select_date + " order by _id desc";
+        System.out.println(sql);
         int recordCount=-1;
         NoteDatabase database = NoteDatabase.getInstance(context);
 
