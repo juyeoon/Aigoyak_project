@@ -83,7 +83,7 @@
         app:layout_constraintVertical_bias="0.446" />
 
     <Button
-        android:id="@+id/search"
+        android:id="@+id/search_button"
         android:layout_width="275dp"
         android:layout_height="44dp"
         android:layout_weight="1"
@@ -226,11 +226,11 @@
         android:layout_width="20dp"
         android:layout_height="20dp"
         android:layout_marginTop="10dp"
-        app:layout_constraintBottom_toBottomOf="@+id/search"
-        app:layout_constraintEnd_toEndOf="@+id/search"
+        app:layout_constraintBottom_toBottomOf="@+id/search_button"
+        app:layout_constraintEnd_toEndOf="@+id/search_button"
         app:layout_constraintHorizontal_bias="0.971"
-        app:layout_constraintStart_toStartOf="@+id/search"
-        app:layout_constraintTop_toTopOf="@+id/search"
+        app:layout_constraintStart_toStartOf="@+id/search_button"
+        app:layout_constraintTop_toTopOf="@+id/search_button"
         app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/magnifying_glass_lg" />
 </androidx.constraintlayout.widget.ConstraintLayout>
