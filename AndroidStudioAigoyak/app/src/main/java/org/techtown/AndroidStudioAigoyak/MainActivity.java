@@ -65,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    public void openDatabase() {//ㅇㅣ건 어디다 넣냐냐
+    public void openDatabase() {
 
         if (noteDatabase != null) {
             noteDatabase.close();

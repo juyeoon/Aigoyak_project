@@ -15,15 +15,31 @@ package org.techtown.AndroidStudioAigoyak;
         import android.widget.TimePicker;
         import android.widget.Toast;
 
+        import java.util.Calendar;
+
 public class B_AddMedicine extends AppCompatActivity {
     private static final String TAG = "hi";
-    int y=0, m=0, d=0, y2=0, m2=0, d2=0,h=12, mi=11;
-    int date = 0, date2 = 0;
+
+    Calendar cal = Calendar.getInstance();
+
+    int y = cal.get(Calendar.YEAR);
+    int m = cal.get(Calendar.MONTH);
+    int d = cal.get(Calendar.DAY_OF_MONTH);
+    int y2 = cal.get(Calendar.YEAR);
+    int m2 = cal.get(Calendar.MONTH);
+    int d2 = cal.get(Calendar.DAY_OF_MONTH);
+    int h = cal.get(Calendar.HOUR_OF_DAY);
+    int mi = cal.get(Calendar.MINUTE);
+
+    int date = y*10000 + m*100 + d;
+    int date2 = y2*10000 + m2*100 + d2;
+
     Button date_start_button;
     Button date_end_button;
     Button clock_button;
     Button button_finish;
     Context context;
+
     int a=0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -132,9 +148,9 @@ public class B_AddMedicine extends AppCompatActivity {
                 }
 
             }
-        },2021, 2, 23);
+        },cal.get(Calendar.YEAR), cal.get(Calendar.MONTH), cal.get(Calendar.DAY_OF_MONTH));
 
-        datePickerDialog.setMessage("메시지");
+        //datePickerDialog.setMessage("메시지");
         datePickerDialog.show();
 
     }
@@ -149,9 +165,9 @@ public class B_AddMedicine extends AppCompatActivity {
                 clock_button.setText(String.valueOf(h + ":" + mi));
             }
 
-        }, 8, 12, true);
+        }, h, mi, true);
 
-        timePickerDialog.setMessage("메시지");
+        //timePickerDialog.setMessage("메시지");
         timePickerDialog.show();
     }
 }

@@ -30,7 +30,7 @@ public class NoteDatabase {
     }
     public boolean open() {
         println("opening database [" + DATABASE_NAME + "].");
-        dbHelper = new DatabaseHelper(context);
+        dbHelper = new DatabaseHelper(context);//dbHelper
         db = dbHelper.getWritableDatabase();
 
         return true;

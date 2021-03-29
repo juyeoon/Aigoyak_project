@@ -19,6 +19,9 @@ import android.util.Log;
 import android.widget.CalendarView;
 
 import java.util.ArrayList;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 
 import static android.content.Context.MODE_PRIVATE;
 
@@ -31,8 +34,24 @@ public class B_Management extends Fragment{
     CalendarView calendarView;
     Context context;
     OnTabItemSelectedListener listener;
-    int y = 0, m = 0, d = 0;
-    int select_date = 20210325;
+
+    Calendar cal = Calendar.getInstance();
+    int y = cal.get(Calendar.YEAR);
+    int m = cal.get(Calendar.MONTH)+1;
+    int d = cal.get(Calendar.DAY_OF_MONTH);
+    int now_date =  y*10000 + m*100 + d;
+    int select_date = now_date;
+
+
+
+
+    int sec = cal.get(Calendar.SECOND);
+
+
+
+
+
+
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
@@ -53,8 +72,8 @@ public class B_Management extends Fragment{
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.fragment_management, container, false);
-        Button btn_change = rootView.findViewById(R.id.plus_button);
-        btn_change.setOnClickListener(new View.OnClickListener() {
+        Button btn_plus = rootView.findViewById(R.id.plus_button);
+        btn_plus.setOnClickListener(new View.OnClickListener() {//plus_button 누르면 복약 추가 페이지로 이동
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), B_AddMedicine.class);
@@ -63,23 +82,21 @@ public class B_Management extends Fragment{
         });
 
 
-
         calendarView = (CalendarView) rootView.findViewById(R.id.calendarView);
-        calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
-            @Override
-            public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
-               y=year;
-               m=month+1;
-               d=dayOfMonth;
-               select_date = y*10000 + m*100 + d;
-               System.out.println(select_date);
-               loadNoteListData();
-            }
-        });
-
+            calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
+                @Override
+                public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
+                    y = year;
+                    m = month + 1;
+                    d = dayOfMonth;
+                    select_date = y * 10000 + m * 100 + d;
+                    System.out.println(select_date + "," + now_date);
+                    loadNoteListData();
+                }
+            });
 
         initUI(rootView);
-
+        loadNoteListData(); //성공 ^^^^^^^^^^^^^
 
 
 
@@ -99,7 +116,6 @@ public class B_Management extends Fragment{
         adapter = new B_MedicationList();
 
         recyclerView.setAdapter(adapter); // 용도 알아보기
-
         //이건 나중에 할거임 무슨 역할 하는지 잘 모르겠음 ^^ 나중에 연구
         /*
         adapter.setOnItemClickListener(new OnNoteItemClickListener() {
