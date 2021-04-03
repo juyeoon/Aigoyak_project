@@ -68,9 +68,11 @@ Medication Managing System Based on Open Data
 
 - 복약 시각 알림
 
-- 의약품에 대한 후기 작성
+- 의약품 후기 작성
 
 - 의약품 즐겨찾기
+
+- 의약품 DUR 정보 
 
 ---
 
