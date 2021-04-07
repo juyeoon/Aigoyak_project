@@ -47,6 +47,7 @@ public class B_MedicationList extends RecyclerView.Adapter<B_MedicationList.View
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int position){
+
         viewHolder.setItem(items.get(position));
         //viewHolder.setItem(getItem(position));//위랑 같은 코드인지 확인
         //Note item = items.get(position); //위랑 같은 코드
@@ -100,10 +101,8 @@ public class B_MedicationList extends RecyclerView.Adapter<B_MedicationList.View
         ImageView warning;
         ImageView trashcan;
 
-
         public ViewHolder(View itemView){
             super(itemView);
-            String delete_name = "노란약";
             layout = itemView.findViewById(R.id.layout1);
             name = itemView.findViewById(R.id.name);
             clock = itemView.findViewById(R.id.clock);

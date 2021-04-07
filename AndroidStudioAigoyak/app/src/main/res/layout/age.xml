@@ -57,7 +57,7 @@
         android:layout_width="108dp"
         android:layout_height="48dp"
         android:layout_weight="1"
-        android:background="@drawable/editbox_change"
+        android:background="@drawable/editbox_change_white"
         android:ems="10"
         android:inputType="textPersonName"
         android:padding="10dp"

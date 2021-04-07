@@ -11,7 +11,11 @@ import static org.techtown.AndroidStudioAigoyak.AppConstants.DATABASE_NAME;
 public class NoteDatabase {
     private static final String TAG = "NoteDatabase";
     private static NoteDatabase database;
+
+    //table name
     public static String TABLE_NOTE ="NOTE";
+    public static String TABLE_BOOKMARK = "BOOKMARK";
+
     public static int DATABASE_VERSION = 1;
 
     private DatabaseHelper dbHelper;
@@ -85,32 +89,59 @@ public class NoteDatabase {
         public void onCreate(SQLiteDatabase db) {
             println("creating database [" + DATABASE_NAME + "].");
             // drop existing table
-            String DROP_SQL = "drop table if exists " + TABLE_NOTE;
+            String DROP_SQL_NOTE = "drop table if exists " + TABLE_NOTE;
+            String DROP_SQL_BOOKMARK =  "drop table if exists " + TABLE_BOOKMARK;
+
+
+
+
+
             try {
-                db.execSQL(DROP_SQL);
+                db.execSQL(DROP_SQL_NOTE);
+                db.execSQL(DROP_SQL_BOOKMARK);
             } catch(Exception ex) {
                 Log.e(TAG, "Exception in DROP_SQL", ex);
             }
 
             // create table
-            String CREATE_SQL = "create table " + TABLE_NOTE + "("
+            String CREATE_SQL_NOTE = "create table " + TABLE_NOTE + "("
                     + "  _id INTEGER  NOT NULL PRIMARY KEY AUTOINCREMENT, "
                     + "  NAME TEXT DEFAULT '', "
                     + "  CLOCK TEXT DEFAULT '', "
                     + "  DATE INTEGER , "
                     + "  DATE2 INTEGER);";
+            String CREATE_SQL_BOOKMARK = "create table " + TABLE_BOOKMARK + "("
+                    + " _id INTEGER  NOT NULL PRIMARY KEY AUTOINCREMENT, "
+                    + "  NAME TEXT DEFAULT '',"
+                    + "  CORP TEXT DEFAULT '');";
+
+
+
+
+
+
             try {
-                db.execSQL(CREATE_SQL);
+                db.execSQL(CREATE_SQL_NOTE);
+                db.execSQL(CREATE_SQL_BOOKMARK);
             } catch(Exception ex) {
                 Log.e(TAG, "Exception in CREATE_SQL", ex);
             }
 
             // create index
-            String CREATE_INDEX_SQL = "create index " + TABLE_NOTE + "_IDX ON " + TABLE_NOTE + "("
+            String CREATE_INDEX_SQL_NOTE = "create index " + TABLE_NOTE + "_IDX ON " + TABLE_NOTE + "("
                     + "_id"
                     + ")";
+            String CREATE_INDEX_SQL_BOOKMARK = "create index " + TABLE_BOOKMARK + "_IDX ON " + TABLE_BOOKMARK + "("
+                    + "_id"
+                    + ")";
+
+
+
+
+
             try {
-                db.execSQL(CREATE_INDEX_SQL);
+                db.execSQL(CREATE_INDEX_SQL_NOTE);
+                db.execSQL(CREATE_INDEX_SQL_BOOKMARK);
             } catch(Exception ex) {
                 Log.e(TAG, "Exception in CREATE_INDEX_SQL", ex);
             }

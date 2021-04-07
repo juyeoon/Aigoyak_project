@@ -6,7 +6,7 @@ import android.content.Intent;
 import android.view.View;
 import android.widget.ImageButton;
 
-public class A_Nickname extends AppCompatActivity {
+public class A_Nickname extends AppCompatActivity {//사용 안 함
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

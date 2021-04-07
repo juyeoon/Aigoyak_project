@@ -25,8 +25,21 @@ public class SplashScreen extends AppCompatActivity {
 
             @Override
             public void onAnimationEnd(Animation animation) {
-                startActivity(new Intent(org.techtown.AndroidStudioAigoyak.SplashScreen.this,MainActivity.class));
+                startActivity(new Intent(org.techtown.AndroidStudioAigoyak.SplashScreen.this, A_Age.class)); //실험을 위해 이거먼저 실시
+                //startActivity(new Intent(org.techtown.AndroidStudioAigoyak.SplashScreen.this, MainActivity.class));
                 // HomeActivity.class is the activity to go after showing the splash screen.
+
+
+                /*   //이거 나중에 닉네임 저장할 수 있는 디비 만들어지면 추가하기!
+                if(name == 0){
+                    startActivity(new Intent(org.techtown.AndroidStudioAigoyak.SplashScreen.this, A_Nickname.class));
+                }
+                else{
+                    startActivity(new Intent(org.techtown.AndroidStudioAigoyak.SplashScreen.this, MainActivity.class));
+                }
+
+
+                 */
             }
 
             @Override

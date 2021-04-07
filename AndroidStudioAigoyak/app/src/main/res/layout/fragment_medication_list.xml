@@ -18,16 +18,22 @@
         android:orientation="horizontal"
         android:visibility="visible">
 
-        <CheckBox
-            android:id="@+id/checkBox"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"/>
+
+        <Button
+            android:id="@+id/완료"
+            android:layout_width="31dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="5sp"
+            android:layout_marginTop="3sp"
+            android:layout_marginBottom="3sp"
+            android:background="@drawable/ok_button_selector"
+            android:text="미\n완\n료" />
 
         <RelativeLayout
             android:id="@+id/layout2"
-            android:layout_width="293dp"
+            android:layout_width="290dp"
             android:layout_height="90dp"
-            android:padding="5dp">
+            android:padding="2dp">
 
             <TextView
                 android:id="@+id/name"
@@ -35,7 +41,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10sp"
                 android:layout_marginLeft="10sp"
-                android:layout_marginTop="2sp"
+                android:layout_marginTop="5sp"
                 android:layout_marginEnd="10sp"
                 android:layout_marginRight="10sp"
                 android:layout_marginBottom="10sp"
@@ -48,7 +54,7 @@
                 android:layout_width="122dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10sp"
-                android:layout_marginTop="38sp"
+                android:layout_marginTop="40sp"
                 android:layout_marginRight="10sp"
                 android:layout_marginBottom="10sp"
                 android:fontFamily="@font/kukde_alt"
@@ -60,15 +66,14 @@
                 android:layout_width="122dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10sp"
-                android:layout_marginTop="68sp"
+                android:layout_marginTop="70sp"
                 android:layout_marginRight="10sp"
                 android:layout_marginBottom="0sp"
                 android:fontFamily="@font/kukde_alt"
                 android:text="복용날짜"
                 android:textSize="10sp" />
+
         </RelativeLayout>
-
-
 
         <ImageView
             android:id="@+id/warning"

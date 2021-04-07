@@ -120,10 +120,17 @@ public class B_AddMedicine extends AppCompatActivity {
                 date + ", " +
                 date2 + ")";
 
+        /* 실험으로 해봄 된다 ^^^^^^^^^^
+        String sql2 = "insert into " +NoteDatabase.TABLE_BOOKMARK +//이거 바꾸다 말았음 이건 했는데 나중에 다른거 고치기
+                "(NAME, CORP) values (" +
+                "'"+ name + "', " +
+                "'"+ "안녕" + "')";
+    */
 
         Log.d(TAG, "sql : " + sql);
         NoteDatabase database = NoteDatabase.getInstance(context);
         database.execSQL(sql);
+        //database.execSQL(sql2);
 
     }
 
