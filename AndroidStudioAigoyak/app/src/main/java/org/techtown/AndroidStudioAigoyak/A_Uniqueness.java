@@ -7,6 +7,7 @@ package org.techtown.AndroidStudioAigoyak;
         import android.util.Log;
         import android.view.View;
         import android.widget.ImageButton;
+        import android.widget.Button;
 
 public class A_Uniqueness extends AppCompatActivity {
     private static final String TAG = "A_uniqueness";
@@ -17,22 +18,75 @@ public class A_Uniqueness extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.uniqueness);
 
-        ImageButton button = (ImageButton) findViewById(R.id.button_finish);
-        button.setOnClickListener(new View.OnClickListener(){
-
+        ImageButton button_finish = (ImageButton) findViewById(R.id.button_finish);
+        button_finish.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                saveNote();//실험중
+
                 Intent intent = new Intent(A_Uniqueness.this, MainActivity.class);
                 startActivity(intent);
             }
         });
 
+        Button button1 = (Button) findViewById(R.id.임산부);
+        String text1 = button1.getText().toString();
+
+        button1.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){//실험중
+                if(button1.isSelected()){
+                    button1.setSelected(false);
+                    deleteNote(text1);
+                }
+                else{
+                    button1.setSelected(true);
+                    saveNote(text1);
+                }
+            }
+        });
+
+        Button button2 = (Button) findViewById(R.id.고혈압);
+        String text2 = button2.getText().toString();
+
+        button2.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){//실험중
+                if(button2.isSelected()){
+                    button2.setSelected(false);
+                    deleteNote(text2);
+                }
+                else{
+                    button2.setSelected(true);
+                    saveNote(text2);
+                }
+            }
+        });
+        Button button3 = (Button) findViewById(R.id.당뇨);
+        String text3 = button3.getText().toString();
+
+        button3.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){//실험중
+                if(button3.isSelected()){
+                    button3.setSelected(false);
+                    deleteNote(text3);
+                }
+                else{
+                    button3.setSelected(true);
+                    saveNote(text3);
+                }
+            }
+        });
+
+        //버튼 개수마다 추가될 예정
+
+
+
     }
 
     //되는지 안 되는지 모름.
-    private void saveNote(){
-        String feature = "피곤함";//임의로 지정
+    private void saveNote(String name){
+        String feature = name;//임의로 지정
 
         String sql = "insert into " +NoteDatabase.TABLE_USER +//이거 바꾸다 말았음 이건 했는데 나중에 다른거 고치기
                 "(FEATURE) values (" +
@@ -44,6 +98,21 @@ public class A_Uniqueness extends AppCompatActivity {
         NoteDatabase database = NoteDatabase.getInstance(context);
         database.execSQL(sql);
 
+    }
+
+    private void deleteNote(String name){
+        String feature = name;//임의로 지정
+
+        String sql = "delete from "+NoteDatabase.TABLE_USER+ " where feature = '" + feature + "'";
+        Log.d(TAG, "sql : " + sql);
+        NoteDatabase database = NoteDatabase.getInstance(context);
+        database.execSQL(sql);
+
+    }
+
+    @Override
+    public void onBackPressed() {
+        //super.onBackPressed();
     }
 }
 

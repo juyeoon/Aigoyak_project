@@ -29,14 +29,15 @@ public class A_Age extends AppCompatActivity {
             public void onClick(View v){
 
                 age =  age_text.getText().toString();
-                saveNote();//실험중
+                saveNote();
                 Intent intent = new Intent(A_Age.this, A_Uniqueness.class);
                 startActivity(intent);
             }
         });
 
     }
-    //되는지 안 되는지 모름.
+
+    //나이 db에 저장
     private void saveNote(){
         String sql = "UPDATE "+NoteDatabase.TABLE_USER+ " SET FEATURE = '" +age+"'";
 
@@ -46,4 +47,9 @@ public class A_Age extends AppCompatActivity {
 
     }
 
+    //뒤로가기 막기
+    @Override
+    public void onBackPressed() {
+        //super.onBackPressed();
+    }
 }

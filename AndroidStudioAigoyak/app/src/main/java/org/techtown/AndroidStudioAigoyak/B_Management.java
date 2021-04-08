@@ -135,7 +135,7 @@ public class B_Management extends Fragment{
 
     //이거는 db연결해서 데이터를 리스트에 저장시키는거
     public int loadNoteListData(){
-        String sql = "select _id, NAME, CLOCK, DATE, DATE2 from " + NoteDatabase.TABLE_NOTE + " where DATE <= " + select_date + " AND " + "DATE2 >= " + select_date + " order by _id desc";
+        String sql = "select _id, NAME, CLOCK, DATE, DATE2 from " + NoteDatabase.TABLE_NOTE + " where DATE = " + select_date + " order by _id desc";
         System.out.println(sql);
         int recordCount=-1;
         NoteDatabase database = NoteDatabase.getInstance(context);

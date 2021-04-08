@@ -1,10 +1,10 @@
 package org.techtown.AndroidStudioAigoyak;
 
-        import android.app.DatePickerDialog;
+import android.app.DatePickerDialog;
         import android.app.Dialog;
         import android.app.TimePickerDialog;
         import android.content.Context;
-        import android.os.Bundle;
+import android.os.Bundle;
         import androidx.appcompat.app.AppCompatActivity;
         import android.content.Intent;
         import android.util.Log;
@@ -14,11 +14,29 @@ package org.techtown.AndroidStudioAigoyak;
         import android.widget.Button;
         import android.widget.TimePicker;
         import android.widget.Toast;
+        import android.app.AlarmManager;
+        import android.app.PendingIntent;
+        import androidx.core.app.NotificationCompat;
+        import android.app.Notification;
+        import android.app.NotificationChannel;
+        import android.app.NotificationManager;
+        import java.text.ParseException;
+        import java.text.SimpleDateFormat;
 
+        import java.util.GregorianCalendar;
         import java.util.Calendar;
+        import java.util.Date;
+        import java.util.Locale;
 
 public class B_AddMedicine extends AppCompatActivity {
     private static final String TAG = "B_AddMedicine";
+    private AlarmManager alarmManager;
+    private GregorianCalendar mCalendar;
+
+    private NotificationManager notificationManager;
+    NotificationCompat.Builder builder;
+
+    //////////////
 
     Calendar cal = Calendar.getInstance();
 
@@ -44,6 +62,16 @@ public class B_AddMedicine extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        notificationManager = (NotificationManager)getSystemService(NOTIFICATION_SERVICE);
+
+        alarmManager = (AlarmManager)getSystemService(Context.ALARM_SERVICE);
+        mCalendar = new GregorianCalendar();
+        Log.v("Alarm~", mCalendar.getTime().toString());
+
+
+
+
         setContentView(R.layout.add_medicine);
         //뒤로가기 버튼 누름
         ImageButton button_back = (ImageButton) findViewById(R.id.button_back);
@@ -64,11 +92,59 @@ public class B_AddMedicine extends AppCompatActivity {
                 if(date-date2  > 0 || date == 0){//종료 날짜가 더 앞에 있으면 버튼 숨기기
                     System.out.println("날짜를 다시 설정해주세요");//이거 나중에 토스트메시지로 변경
                 }
+                else if(y2-y != 0){//년도 달라지는 입력은 막아둠...
+                    System.out.println("너무 많은 날의 입력은 권장하지 않습니다. 같은 년도로 선택해주세요");// 토스트 메시지로 변경
+                }
                 else{
+                    /////////////////////////////////////////////////아래코드 실험중
+                        int ny =y; //now year
+                        int nm =m; //now month
+                        int nd =d; //now day
+                        int ndate; //now date
+
+                    if(m-m2 !=0) {//종료 달이 시작달과 다를 때
+                        //시작하는 달의 시작 일자부터 31일까지 저장.
+
+                        for (int j = d; j < 32; j++) {// 시작달의 d일부터 31일까지 저장.
+                            ndate = ny * 10000 + nm * 100 + nd;
+                            saveNote(ndate);
+                            nd++;
+                        }
+                        nd = 1;//1일부터
+                        nm = m+1;//시작하는 달의 다음달
+                        for (int i = m+1; i < m2; i++) {//ex) 시작하는 달의 다음달의 1일부터 끝나는 달 전까지의 31일까지 저장.
+
+                            for (int j = 1; j < 32; j++) {// 시작달의 1일부터 31일까지 저장.
+                                ndate = ny * 10000 + nm * 100 + nd;
+                                saveNote(ndate);
+                                nd++;
+                            }
+
+                            nm++; //자신의 달보다 낮은 달의 날짜 31일까지 다 채움.
+
+                        }
+                        nm = m2;//끝나는 달
+                        nd = 1;//1일부터
+                        for (int k = 1; k <= d2; k++) {// 끝나는 달의 1일부터 d2일까지 저장.
+                            ndate = ny * 10000 + nm * 100 + nd;
+                            saveNote(ndate);
+                            nd++;
+                        }
+                    }
+                    else{//종료 달과 시작 달이 같을 때
+                        for(int i=d; i<=d2; i++){//d일부터 d2일까지 저장.
+                            ndate = ny*10000+nm*100+nd;
+                            saveNote(ndate);
+                            nd++;
+                        }
+                    }
+
+//////////////////////////////////////////////////////////////위 코드 실험중
                     button_finish.setVisibility(View.VISIBLE);
-                    saveNote();
                     Intent intent = new Intent(B_AddMedicine.this, MainActivity.class);
                     startActivity(intent);
+                    setAlarm(); // 알람 적용하는 코드----------------------------------------------------------------------------------------
+                    System.out.println("알림 설정됐을걸..?");
                 }
 
             }
@@ -105,10 +181,30 @@ public class B_AddMedicine extends AppCompatActivity {
         });
     }
 
+    public void setAlarm(){
+        Intent receiverIntent = new Intent(this, Alarm.class);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 0, receiverIntent, 0);
+
+        String from = ""+y+"-"+m+"-"+d+" "+h+":"+mi+":00";
+        System.out.println(from);
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        Date datetime =null;
+        try{
+            datetime = dateFormat.parse(from);
+        }
+        catch(ParseException e){
+            e.printStackTrace();
+        }
+
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(datetime);
+
+        alarmManager.set(AlarmManager.RTC, calendar.getTimeInMillis(), pendingIntent);
+    }
 
 
 
-    private void saveNote(){
+    private void saveNote(int ndate){
         String name = "노란약";//임의로 지정
         String clock = clock_button.getText().toString();
 
@@ -116,8 +212,8 @@ public class B_AddMedicine extends AppCompatActivity {
                 "(NAME, CLOCK, DATE, DATE2) values (" +
                 "'"+ name + "', " +
                 "'"+ clock + "', " +
-                date + ", " +
-                date2 + ")";
+                ndate + ", " +
+                0 + ")";
 
         /* 실험으로 해봄 된다 ^^^^^^^^^^
         String sql2 = "insert into " +NoteDatabase.TABLE_BOOKMARK +//이거 바꾸다 말았음 이건 했는데 나중에 다른거 고치기

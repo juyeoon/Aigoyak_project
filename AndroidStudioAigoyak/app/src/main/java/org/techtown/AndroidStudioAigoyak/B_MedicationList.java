@@ -2,6 +2,7 @@ package org.techtown.AndroidStudioAigoyak;
 
 import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
 import android.provider.ContactsContract;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -67,10 +68,59 @@ public class B_MedicationList extends RecyclerView.Adapter<B_MedicationList.View
             }
         });
 
+
+
+        ////
+        int id = items.get(position).get_id();
+        String sql = "select date2 from " + NoteDatabase.TABLE_NOTE + " where " + "_id = " + id;
+        Log.d(TAG, "sql : " + sql);
+        NoteDatabase database = NoteDatabase.getInstance(context);
+        Cursor cursor = database.rawQuery(sql);
+        int recordCount = cursor.getCount();
+
+
+        cursor.moveToNext();
+        int state = cursor.getInt(0);
+
+        System.out.println(state);
+
+        if(state == 0 ){//선택이 안 된 상태
+            viewHolder.completeButton.setSelected(false);
+            viewHolder.completeButton.setText("미\n완\n료");
+            System.out.println("state는 0");
+        }
+        else if(state == 1){//선택된 상태
+            viewHolder.completeButton.setSelected(true);
+            viewHolder.completeButton.setText("완\n료");
+
+        }
+
+        viewHolder.completeButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+                if(viewHolder.completeButton.isSelected()){//선택된 상태에서 선택 안 된 상태로 바꿈
+                    updateNote(0, id);
+                    viewHolder.completeButton.setSelected(false);
+                    viewHolder.completeButton.setText("미\n완\n료");
+
+                }
+                else{//선택 안 된 상태에서 선택된 상태로 바꿈
+                    updateNote(1, id);
+                    viewHolder.completeButton.setSelected(true);
+                    viewHolder.completeButton.setText("완\n료");
+                }
+            }
+        });
+
+
+
+        /////
+        /* 이게 이전것
         viewHolder.completeButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
          if(viewHolder.completeButton.isSelected()){
+
              viewHolder.completeButton.setSelected(false);
              viewHolder.completeButton.setText("미\n완\n료");
          }
@@ -78,12 +128,9 @@ public class B_MedicationList extends RecyclerView.Adapter<B_MedicationList.View
              viewHolder.completeButton.setSelected(true);
              viewHolder.completeButton.setText("완\n료");
          }
-
-
-
             }
         });
-
+        */
     }
 
     @Override
@@ -142,5 +189,12 @@ public class B_MedicationList extends RecyclerView.Adapter<B_MedicationList.View
             layout.setVisibility(View.VISIBLE);
         }
     }
+    private void updateNote(int i, int id){
+        String sql = "UPDATE "+NoteDatabase.TABLE_NOTE+ " SET DATE2 = " + i + " where " + "_id = " + id;
 
+        Log.d(TAG, "sql : " + sql);
+        NoteDatabase database = NoteDatabase.getInstance(context);
+        database.execSQL(sql);
+
+    }
 }
