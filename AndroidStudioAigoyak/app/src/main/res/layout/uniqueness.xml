@@ -38,58 +38,6 @@
         app:layout_constraintVertical_bias="0.0" />
 
 
-    <RadioButton
-        android:id="@+id/임산부"
-        android:layout_width="91dp"
-        android:layout_height="38dp"
-        android:layout_marginStart="36dp"
-        android:layout_marginLeft="36dp"
-        android:layout_marginTop="19dp"
-        android:layout_marginEnd="5dp"
-        android:layout_marginRight="5dp"
-        android:fontFamily="@font/kukde_alt"
-        android:text="임산부"
-        android:textColor="@color/gray"
-        android:textSize="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/고혈압"
-        app:layout_constraintHorizontal_bias="0.702"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/아이고"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <RadioButton
-        android:id="@+id/고혈압"
-        android:layout_width="91dp"
-        android:layout_height="38dp"
-        android:layout_marginTop="19dp"
-        android:fontFamily="@font/kukde_alt"
-        android:text="고혈압"
-        android:textColor="@color/gray"
-        android:textSize="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.528"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/아이고"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <RadioButton
-        android:id="@+id/당뇨"
-        android:layout_width="91dp"
-        android:layout_height="38dp"
-        android:layout_marginTop="19dp"
-        android:fontFamily="@font/kukde_alt"
-        android:text="당뇨"
-        android:textColor="@color/gray"
-        android:textSize="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.856"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/아이고"
-        app:layout_constraintVertical_bias="0.0" />
-
     <ImageButton
         android:id="@+id/button_finish"
         android:layout_width="84dp"
@@ -103,4 +51,45 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.944" />
+
+    <Button
+        android:id="@+id/당뇨버튼"
+        android:layout_width="85dp"
+        android:layout_height="47dp"
+        android:background="@drawable/ok_button_selector"
+        android:fontFamily="@font/kukde_alt"
+        android:text="당뇨"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.806"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/고혈압버튼"
+        android:layout_width="85dp"
+        android:layout_height="47dp"
+        android:background="@drawable/ok_button_selector"
+        android:fontFamily="@font/kukde_alt"
+        android:text="고혈압"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/임산부버튼"
+        android:layout_width="85dp"
+        android:layout_height="47dp"
+        android:background="@drawable/ok_button_selector"
+        android:fontFamily="@font/kukde_alt"
+        android:text="임산부"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.19"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

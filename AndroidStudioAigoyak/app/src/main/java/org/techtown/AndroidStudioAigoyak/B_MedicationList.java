@@ -47,7 +47,7 @@ public class B_MedicationList extends RecyclerView.Adapter<B_MedicationList.View
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int position){
-
+        int i= 0;
         viewHolder.setItem(items.get(position));
         //viewHolder.setItem(getItem(position));//위랑 같은 코드인지 확인
         //Note item = items.get(position); //위랑 같은 코드
@@ -63,6 +63,23 @@ public class B_MedicationList extends RecyclerView.Adapter<B_MedicationList.View
                 Log.d(TAG, "sql : " + sql);
                 NoteDatabase database = NoteDatabase.getInstance(context);
                 database.execSQL(sql);
+
+            }
+        });
+
+        viewHolder.completeButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+         if(viewHolder.completeButton.isSelected()){
+             viewHolder.completeButton.setSelected(false);
+             viewHolder.completeButton.setText("미\n완\n료");
+         }
+         else{
+             viewHolder.completeButton.setSelected(true);
+             viewHolder.completeButton.setText("완\n료");
+         }
+
+
 
             }
         });
@@ -100,7 +117,7 @@ public class B_MedicationList extends RecyclerView.Adapter<B_MedicationList.View
         TextView date;
         ImageView warning;
         ImageView trashcan;
-
+        Button completeButton;
         public ViewHolder(View itemView){
             super(itemView);
             layout = itemView.findViewById(R.id.layout1);
@@ -109,7 +126,7 @@ public class B_MedicationList extends RecyclerView.Adapter<B_MedicationList.View
             date = itemView.findViewById(R.id.date);
             warning = itemView.findViewById(R.id.warning);
             trashcan = itemView.findViewById(R.id.trashcan);
-
+            completeButton = itemView.findViewById(R.id.완료);
         }
         public void setItem(Note item) {//내가 적은 텍스트를 불러와 저장하는 것
             warning.setVisibility(View.INVISIBLE); //warning 조건 걸어서 보이게 하기 (아직 안 함)

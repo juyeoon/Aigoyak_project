@@ -24,18 +24,17 @@
         android:id="@+id/아이고"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="296dp"
         android:layout_marginBottom="14dp"
         android:fontFamily="@font/kukde_alt"
         android:text="나이를 입력하세요"
         android:textColor="@color/gray"
         android:textSize="30dp"
-        app:layout_constraintBottom_toTopOf="@+id/search_box"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.427" />
 
     <TextView
         android:id="@+id/세"
@@ -48,12 +47,12 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.061"
-        app:layout_constraintStart_toEndOf="@+id/search_box"
+        app:layout_constraintStart_toEndOf="@+id/age"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.499" />
 
     <EditText
-        android:id="@+id/search_box"
+        android:id="@+id/age"
         android:layout_width="108dp"
         android:layout_height="48dp"
         android:layout_weight="1"

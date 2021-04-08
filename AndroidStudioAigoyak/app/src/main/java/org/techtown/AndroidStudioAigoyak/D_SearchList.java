@@ -37,8 +37,7 @@ public class D_SearchList extends AppCompatActivity {
 
             @Override
             public void onClick(View v){
-                Intent intent = new Intent(D_SearchList.this, MainActivity.class);
-                startActivity(intent);
+                onBackPressed();
             }
         });
 

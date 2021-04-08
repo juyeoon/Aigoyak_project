@@ -37,8 +37,7 @@ public class F_Bookmark extends AppCompatActivity {
 
             @Override
             public void onClick(View v){
-                Intent intent = new Intent(F_Bookmark.this, MainActivity.class);//이거 나중에 고쳐야함.
-                startActivity(intent);
+                onBackPressed();
             }
         });
 

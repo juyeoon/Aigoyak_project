@@ -18,7 +18,7 @@ package org.techtown.AndroidStudioAigoyak;
         import java.util.Calendar;
 
 public class B_AddMedicine extends AppCompatActivity {
-    private static final String TAG = "hi";
+    private static final String TAG = "B_AddMedicine";
 
     Calendar cal = Calendar.getInstance();
 
@@ -51,8 +51,7 @@ public class B_AddMedicine extends AppCompatActivity {
 
             @Override
             public void onClick(View v){
-                Intent intent = new Intent(B_AddMedicine.this, MainActivity.class);
-                startActivity(intent);
+                onBackPressed();
             }
         });
 

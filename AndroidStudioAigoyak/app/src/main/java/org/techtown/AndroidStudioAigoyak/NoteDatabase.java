@@ -15,6 +15,7 @@ public class NoteDatabase {
     //table name
     public static String TABLE_NOTE ="NOTE";
     public static String TABLE_BOOKMARK = "BOOKMARK";
+    public static String TABLE_USER = "USER";
 
     public static int DATABASE_VERSION = 1;
 
@@ -91,7 +92,7 @@ public class NoteDatabase {
             // drop existing table
             String DROP_SQL_NOTE = "drop table if exists " + TABLE_NOTE;
             String DROP_SQL_BOOKMARK =  "drop table if exists " + TABLE_BOOKMARK;
-
+            String DROP_SQL_USER = "drop table if exists " + TABLE_USER;
 
 
 
@@ -99,6 +100,7 @@ public class NoteDatabase {
             try {
                 db.execSQL(DROP_SQL_NOTE);
                 db.execSQL(DROP_SQL_BOOKMARK);
+                db.execSQL(DROP_SQL_USER);
             } catch(Exception ex) {
                 Log.e(TAG, "Exception in DROP_SQL", ex);
             }
@@ -115,6 +117,9 @@ public class NoteDatabase {
                     + "  NAME TEXT DEFAULT '',"
                     + "  CORP TEXT DEFAULT '');";
 
+            String CREATE_SQL_USER = "create table " + TABLE_USER + "(" //10개 만듦
+                    + " _id INTEGER  NOT NULL PRIMARY KEY AUTOINCREMENT, "
+                    + "  FEATURE TEXT DEFAULT '');";
 
 
 
@@ -123,6 +128,8 @@ public class NoteDatabase {
             try {
                 db.execSQL(CREATE_SQL_NOTE);
                 db.execSQL(CREATE_SQL_BOOKMARK);
+                db.execSQL(CREATE_SQL_USER);
+
             } catch(Exception ex) {
                 Log.e(TAG, "Exception in CREATE_SQL", ex);
             }
@@ -135,6 +142,10 @@ public class NoteDatabase {
                     + "_id"
                     + ")";
 
+            String CREATE_INDEX_SQL_USER = "create index " + TABLE_USER + "_IDX ON " + TABLE_USER + "("
+                    + "_id"
+                    + ")";
+
 
 
 
@@ -142,6 +153,8 @@ public class NoteDatabase {
             try {
                 db.execSQL(CREATE_INDEX_SQL_NOTE);
                 db.execSQL(CREATE_INDEX_SQL_BOOKMARK);
+                db.execSQL(CREATE_INDEX_SQL_USER);
+
             } catch(Exception ex) {
                 Log.e(TAG, "Exception in CREATE_INDEX_SQL", ex);
             }

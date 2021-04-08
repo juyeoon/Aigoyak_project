@@ -44,49 +44,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/닉네임"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="176dp"
-        android:fontFamily="@font/kukde_alt"
-        android:text="닉네임"
-        android:textColor="@color/gray_soft"
-        android:textSize="35dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.14"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/나이"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
-        android:fontFamily="@font/kukde_alt"
-        android:text="나이"
-        android:textColor="@color/gray_soft"
-        android:textSize="35dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.173"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/닉네임" />
-
-    <TextView
-        android:id="@+id/특이사항"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="64dp"
-        android:fontFamily="@font/kukde_alt"
-        android:text="특이사항"
-        android:textColor="@color/gray_soft"
-        android:textSize="35dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.103"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/나이" />
     <ImageButton
-        android:id="@+id/button2"
+        android:id="@+id/button_back"
         android:layout_width="70dp"
         android:layout_height="48dp"
         android:background="#00ff0000"
@@ -98,20 +57,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.023" />
-    <TextView
-        android:id="@+id/nickname"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="176dp"
-        android:fontFamily="@font/kukde_bdb"
-        android:gravity="center_vertical|right"
-        android:text="뫄뫄뫄"
-        android:textColor="@color/gray"
-        android:textSize="35dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.323"
-        app:layout_constraintStart_toEndOf="@+id/닉네임"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/숫자"
@@ -119,44 +64,80 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="72dp"
         android:layout_marginLeft="72dp"
-        android:layout_marginTop="272dp"
         android:fontFamily="@font/kukde_bdb"
-        android:gravity="center_vertical|right"
-        android:text="00"
+        android:gravity="center_vertical|left"
+        android:text="000"
         android:textColor="@color/gray"
         android:textSize="35dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/나이"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintHorizontal_bias="0.456"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.265" />
+
+    <TextView
+        android:id="@+id/나이"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/kukde_alt"
+        android:text="나이"
+        android:textColor="@color/gray_soft"
+        android:textSize="35dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.173"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.265" />
+
+
 
     <TextView
         android:id="@+id/세"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="272dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
         android:fontFamily="@font/kukde_bdb"
         android:gravity="center_vertical|right"
         android:text="세"
         android:textColor="@color/gray"
         android:textSize="35dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/건강하세요"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/숫자"
-        app:layout_constraintTop_toTopOf="parent" />
-
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.265" />
     <TextView
-        android:id="@+id/질병"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="372dp"
+        android:id="@+id/특이사항"
+        android:text="특이사항"
+        android:layout_width="214dp"
+        android:layout_height="451dp"
+        android:layout_marginTop="280dp"
+        android:fontFamily="@font/kukde_alt"
+        android:textColor="@color/gray_soft"
+        android:textSize="35dp"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.113"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+    <TextView
+        android:id="@+id/feature"
+        android:layout_width="214dp"
+        android:layout_height="451dp"
+        android:layout_marginTop="280dp"
         android:fontFamily="@font/kukde_bdb"
-        android:gravity="center_vertical|right"
-        android:text="당뇨"
+        android:text="없음"
         android:textColor="@color/gray"
         android:textSize="35dp"
+
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.203"
-        app:layout_constraintStart_toEndOf="@+id/특이사항"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
