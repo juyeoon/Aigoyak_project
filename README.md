@@ -80,7 +80,7 @@ Medication Managing System Based on Open Data
 
 - 안드로이드 스튜디오에서의 사용법
   - 안드로이드 스튜디오를 실행한다.
-  - 상단탭에서 디바이스 아이콘을 클릭하여 AVD를 실행한다.  <img src="image/avd 사진.PNG" width="130%" height="130%"> 
+  - 상단탭에서 디바이스 아이콘을 클릭하여 AVD를 실행한다.  <img src="image/avd 사진.PNG"> 
   - 다운로드 받은 apk파일을 virtual Device화면에 드래그하여 설치한다.
 
 - 스마트폰에서의 사용법
