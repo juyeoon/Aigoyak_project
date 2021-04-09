@@ -22,7 +22,6 @@
         </activity>
         <activity android:name="org.techtown.AndroidStudioAigoyak.MainActivity"/>
         <activity android:name="org.techtown.AndroidStudioAigoyak.A_Intro"/>
-        <activity android:name="org.techtown.AndroidStudioAigoyak.A_Nickname"/>
         <activity android:name="org.techtown.AndroidStudioAigoyak.A_Age"/>
         <activity android:name="org.techtown.AndroidStudioAigoyak.A_Uniqueness"/>
         <activity android:name="org.techtown.AndroidStudioAigoyak.B_AddMedicine"/>

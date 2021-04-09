@@ -28,36 +28,21 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/header_logo" />
 
+
     <TextView
         android:id="@+id/건강하세요"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="34dp"
         android:fontFamily="@font/kukde_alt"
-        android:text="님 건강하세요!"
-        android:textColor="@color/gray_soft"
+        android:text="오늘도 건강하세요!"
+        android:textColor="@color/gray"
         android:textSize="35dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.858"
+        app:layout_constraintHorizontal_bias="0.413"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.253" />
-
-    <TextView
-        android:id="@+id/nickname"
-        android:layout_width="163dp"
-        android:layout_height="45dp"
-        android:fontFamily="@font/kukde_bdb"
-        android:gravity="center_vertical|right"
-        android:text="나나나"
-        android:textColor="@color/gray"
-        android:textSize="45dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/건강하세요"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.244" />
+        app:layout_constraintVertical_bias="0.245" />
 
     <ImageView
         android:id="@+id/line1"

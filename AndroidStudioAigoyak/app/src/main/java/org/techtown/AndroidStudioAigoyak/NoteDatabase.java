@@ -94,9 +94,6 @@ public class NoteDatabase {
             String DROP_SQL_BOOKMARK =  "drop table if exists " + TABLE_BOOKMARK;
             String DROP_SQL_USER = "drop table if exists " + TABLE_USER;
 
-
-
-
             try {
                 db.execSQL(DROP_SQL_NOTE);
                 db.execSQL(DROP_SQL_BOOKMARK);
@@ -121,10 +118,6 @@ public class NoteDatabase {
                     + " _id INTEGER  NOT NULL PRIMARY KEY AUTOINCREMENT, "
                     + "  FEATURE TEXT DEFAULT '');";
 
-
-
-
-
             try {
                 db.execSQL(CREATE_SQL_NOTE);
                 db.execSQL(CREATE_SQL_BOOKMARK);
@@ -145,10 +138,6 @@ public class NoteDatabase {
             String CREATE_INDEX_SQL_USER = "create index " + TABLE_USER + "_IDX ON " + TABLE_USER + "("
                     + "_id"
                     + ")";
-
-
-
-
 
             try {
                 db.execSQL(CREATE_INDEX_SQL_NOTE);
@@ -171,5 +160,4 @@ public class NoteDatabase {
     private void println(String msg) {
         Log.d(TAG, msg);
     }
-
 }

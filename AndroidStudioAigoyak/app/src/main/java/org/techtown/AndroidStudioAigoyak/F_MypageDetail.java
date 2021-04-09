@@ -25,7 +25,6 @@ public class F_MypageDetail extends AppCompatActivity {
     public int getPosition(){
         return position;
     }
-
     public void setPosition(int position){
         this.position = position;
     }
@@ -37,7 +36,6 @@ public class F_MypageDetail extends AppCompatActivity {
         //뒤로가기 버튼 누름
         ImageButton button_back = (ImageButton) findViewById(R.id.button_back);
         button_back.setOnClickListener(new View.OnClickListener(){
-
             @Override
             public void onClick(View v){
                 onBackPressed();
@@ -47,33 +45,16 @@ public class F_MypageDetail extends AppCompatActivity {
         //수정 버튼 누름
         ImageButton button_change = (ImageButton) findViewById(R.id.change_button);
         button_change.setOnClickListener(new View.OnClickListener(){
-
             @Override
             public void onClick(View v){
                 Intent intent = new Intent(F_MypageDetail.this, F_MypageChange.class);
-
                 startActivity(intent);
             }
         });
 
-
-
-
-
         TextView number = (TextView) findViewById(R.id.숫자);
 
-
-
-
-
-
-
-        //number.setText(A_Age.age);
-
-
-        //
         String sql = "select FEATURE from " + NoteDatabase.TABLE_USER;//이거 바꾸다 말았음 이건 했는데 나중에 다른거 고치기
-
 
 
         String text= "";
@@ -89,28 +70,12 @@ public class F_MypageDetail extends AppCompatActivity {
                 number.setText(text);
                 text = "";
             }
-            else if(i==1){
-                text = cursor.getString(0);
-            }
-            else{
-                text = text + "\n" + cursor.getString(0);
-            }
-            System.out.println(text);
+            else if(i==1){ text = cursor.getString(0); }
+            else{ text = text + "\n" + cursor.getString(0); }
+
         }
 
-
-
-
-        //
-
-
-
         TextView feature = (TextView) findViewById(R.id.feature);
-
         feature.setText(text);
-
-
-
     }
-
 }

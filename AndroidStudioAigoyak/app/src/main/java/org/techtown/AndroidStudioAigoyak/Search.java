@@ -1,16 +1,16 @@
 package org.techtown.AndroidStudioAigoyak;
 
+import java.io.Serializable;
+
 public class Search {
     int _id;
     String name;
     String corp;
 
-
     public Search(int _id, String name, String corp) {
         this._id = _id;
         this.name = name;
         this.corp = corp;
-
     }
 
     public int get_id(){

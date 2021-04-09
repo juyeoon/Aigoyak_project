@@ -32,7 +32,7 @@ public class Alarm extends BroadcastReceiver{
         int id = intent.getIntExtra("id",0);
         builder = null;
 
-        ////
+
         AlarmManager am = (AlarmManager)context.getSystemService(Context.ALARM_SERVICE);
 
         manager = (NotificationManager)context.getSystemService(Context.NOTIFICATION_SERVICE);
@@ -49,21 +49,20 @@ public class Alarm extends BroadcastReceiver{
         Intent intent2 = new Intent(context, MainActivity.class);
         PendingIntent pendingIntent = PendingIntent.getActivity(context,101,intent2, PendingIntent.FLAG_UPDATE_CURRENT);
 
-        //알림창 제목
+
         builder.setSmallIcon(R.drawable.logo);
+        //알림창 제목
         builder.setContentTitle("복약 알림");
+        //알림창 내용
         builder.setContentText("약 먹을 시간이에요~");
         //알림창 아이콘
-        builder.setSmallIcon(R.drawable.ic_launcher_background);
+        builder.setSmallIcon(R.drawable.aigoyak_launcher);
         //알림창 터치시 자동 삭제
         builder.setAutoCancel(true);
 
         builder.setContentIntent(pendingIntent);
 
         Notification notification = builder.build();
-        manager.notify(1,notification);//id를 계속 다르게 주면 됨.
-
+        manager.notify(1,notification);//id를 계속 다르게 주면 됨 알림 여러개 가능.
     }
-
-
 }

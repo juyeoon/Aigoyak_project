@@ -24,30 +24,26 @@ import java.util.ArrayList;
 
 public class B_MedicationList extends RecyclerView.Adapter<B_MedicationList.ViewHolder>{//일단 완료
     private static final String TAG = "NoteAdapter";
-    //아이템이 들어갈 배열
-    ArrayList<Note> items = new ArrayList<Note>();
+
+    ArrayList<Note> items = new ArrayList<Note>();//아이템이 들어갈 배열
     private int position;
     Context context;
     OnNoteItemClickListener listener;
-    /////////
     private OnItemClickListener mListener = null;
-    public interface OnItemClickListener{
-        void onItemClick(View v, int position);
-    }
-    public void setOnItemClickListener(OnItemClickListener listener) {
-        this.mListener = listener ;
-    }
 
     public B_MedicationList(Context context){
         this.context =context;
     }
-/////////////////
 
+
+    public interface OnItemClickListener{ void onItemClick(View v, int position);}
+    public void setOnItemClickListener(OnItemClickListener listener) {
+        this.mListener = listener ;
+    }
 
     public int getPosition(){
         return position;
     }
-
     public void setPosition(int position){
         this.position = position;
     }
@@ -58,7 +54,6 @@ public class B_MedicationList extends RecyclerView.Adapter<B_MedicationList.View
         LayoutInflater inflater = LayoutInflater.from(viewGroup.getContext());
         View itemView = inflater.inflate(R.layout.fragment_medication_list, viewGroup, false);
 
-
         return new ViewHolder(itemView);
     }
 
@@ -66,16 +61,16 @@ public class B_MedicationList extends RecyclerView.Adapter<B_MedicationList.View
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int position){
         int i= 0;
         viewHolder.setItem(items.get(position));
-        //viewHolder.setItem(getItem(position));//위랑 같은 코드인지 확인
-        //Note item = items.get(position); //위랑 같은 코드
-        //viewHolder.setItem(item);
+
         viewHolder.setLayout();
-        //삭제 구현 완료!!!!!! 넘 기쁘다
+
+        // 리스트& db 데이터 삭제
         viewHolder.trashcan.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
                 int id = items.get(position).get_id();
-
+                items.remove(position);
+                notifyItemRemoved(position);
                 String sql = "delete from " + NoteDatabase.TABLE_NOTE + " where " + "_id = " + id;
                 Log.d(TAG, "sql : " + sql);
                 NoteDatabase database = NoteDatabase.getInstance(context);
@@ -86,30 +81,22 @@ public class B_MedicationList extends RecyclerView.Adapter<B_MedicationList.View
         });
 
 
-
-        ////
         int id = items.get(position).get_id();
         String sql = "select date2 from " + NoteDatabase.TABLE_NOTE + " where " + "_id = " + id;
         Log.d(TAG, "sql : " + sql);
         NoteDatabase database = NoteDatabase.getInstance(context);
         Cursor cursor = database.rawQuery(sql);
-        int recordCount = cursor.getCount();
-
-
         cursor.moveToNext();
         int state = cursor.getInt(0);
 
-        System.out.println(state);
 
-        if(state == 0 ){//선택이 안 된 상태
+        if(state == 0){//선택이 안 된 상태
             viewHolder.completeButton.setSelected(false);
             viewHolder.completeButton.setText("미\n완\n료");
-            System.out.println("state는 0");
         }
         else if(state == 1){//선택된 상태
             viewHolder.completeButton.setSelected(true);
             viewHolder.completeButton.setText("완\n료");
-
         }
 
         viewHolder.completeButton.setOnClickListener(new View.OnClickListener(){
@@ -128,26 +115,6 @@ public class B_MedicationList extends RecyclerView.Adapter<B_MedicationList.View
                 }
             }
         });
-
-
-
-        /////
-        /* 이게 이전것
-        viewHolder.completeButton.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View view){
-         if(viewHolder.completeButton.isSelected()){
-
-             viewHolder.completeButton.setSelected(false);
-             viewHolder.completeButton.setText("미\n완\n료");
-         }
-         else{
-             viewHolder.completeButton.setSelected(true);
-             viewHolder.completeButton.setText("완\n료");
-         }
-            }
-        });
-        */
     }
 
     @Override
@@ -178,20 +145,20 @@ public class B_MedicationList extends RecyclerView.Adapter<B_MedicationList.View
         LinearLayout layout;
         TextView name;
         TextView clock;
-        TextView date;
         ImageView warning;
         ImageView trashcan;
         Button completeButton;
+
         public ViewHolder(@NonNull View itemView){
             super(itemView);
             layout = itemView.findViewById(R.id.layout1);
             name = itemView.findViewById(R.id.name);
             clock = itemView.findViewById(R.id.clock);
-            date = itemView.findViewById(R.id.date);
             warning = itemView.findViewById(R.id.warning);
             trashcan = itemView.findViewById(R.id.trashcan);
             completeButton = itemView.findViewById(R.id.완료);
 
+            //리스트 선택 시 의약품 상세페이지로 이동
             itemView.setClickable(true);
             itemView.setOnClickListener(new View.OnClickListener(){
                 @Override
@@ -207,20 +174,18 @@ public class B_MedicationList extends RecyclerView.Adapter<B_MedicationList.View
             });
 
         }
-        public void setItem(Note item) {//내가 적은 텍스트를 불러와 저장하는 것
-            warning.setVisibility(View.INVISIBLE); //warning 조건 걸어서 보이게 하기 (아직 안 함)
+        public void setItem(Note item) {
+            warning.setVisibility(View.INVISIBLE); //warning 조건 걸어서 보이게 하기 (아직 안 함)----------------------------------------------------
             name.setText(item.getName());
             clock.setText(item.getClock());
-
-            int start_date = item.getDate();
-            int end_date = item.getDate2();
-            date.setText(start_date + " ~ " + end_date);
 
         }
         public void setLayout(){
             layout.setVisibility(View.VISIBLE);
         }
     }
+
+    //복약 완료 상태 변경
     private void updateNote(int i, int id){
         String sql = "UPDATE "+NoteDatabase.TABLE_NOTE+ " SET DATE2 = " + i + " where " + "_id = " + id;
 

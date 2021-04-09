@@ -33,7 +33,6 @@ public class B_Management extends Fragment{
     B_MedicationList adapter;
     CalendarView calendarView;
     Context context;
-    OnTabItemSelectedListener listener;
 
     Calendar cal = Calendar.getInstance();
     int y = cal.get(Calendar.YEAR);
@@ -44,34 +43,23 @@ public class B_Management extends Fragment{
 
 
 
-
-    int sec = cal.get(Calendar.SECOND);
-
-
-
-
-
-
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
-
         activity = (MainActivity) getActivity();
     }
-
     @Override
     public void onDetach() {
         super.onDetach();
-
         activity = null;
     }
-
 
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.fragment_management, container, false);
+
         Button btn_plus = rootView.findViewById(R.id.plus_button);
         btn_plus.setOnClickListener(new View.OnClickListener() {//plus_button 누르면 복약 추가 페이지로 이동
             @Override
@@ -96,22 +84,7 @@ public class B_Management extends Fragment{
             });
 
         initUI(rootView);
-        loadNoteListData(); //성공 ^^^^^^^^^^^^^
-        /*
-        adapter.setOnItemClickListener(new OnNoteItemClickListener() {
-            @Override
-            public void onItemClick(B_MedicationList.ViewHolder holder, View view, int position) {
-                Note item = adapter.getItem(position);
-                System.out.println("왜 안돼");
-                Log.d(TAG, "아이템 선택됨 : " + item.get_id());
-
-                if (listener != null) {
-                    listener.showFragment2(item);
-                }
-            }
-        });
-
-         */
+        loadNoteListData();
 
 
         return rootView;
@@ -128,12 +101,11 @@ public class B_Management extends Fragment{
 
         //어댑터 연결
         adapter = new B_MedicationList(getContext());
-
-        recyclerView.setAdapter(adapter); // 용도 알아보기
+        recyclerView.setAdapter(adapter);
 
     }
 
-    //이거는 db연결해서 데이터를 리스트에 저장시키는거
+    //db연결해서 데이터를 리스트에 저장
     public int loadNoteListData(){
         String sql = "select _id, NAME, CLOCK, DATE, DATE2 from " + NoteDatabase.TABLE_NOTE + " where DATE = " + select_date + " order by _id desc";
         System.out.println(sql);

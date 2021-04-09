@@ -19,6 +19,7 @@ public class A_Uniqueness extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.uniqueness);
 
+
         ImageButton button_finish = (ImageButton) findViewById(R.id.button_finish);
         button_finish.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -32,10 +33,9 @@ public class A_Uniqueness extends AppCompatActivity {
 
         Button button1 = (Button) findViewById(R.id.임산부);
         String text1 = button1.getText().toString();
-
         button1.setOnClickListener(new View.OnClickListener(){
             @Override
-            public void onClick(View v){//실험중
+            public void onClick(View v){
                 if(button1.isSelected()){
                     button1.setSelected(false);
                     deleteNote(text1);
@@ -52,7 +52,7 @@ public class A_Uniqueness extends AppCompatActivity {
 
         button2.setOnClickListener(new View.OnClickListener(){
             @Override
-            public void onClick(View v){//실험중
+            public void onClick(View v){
                 if(button2.isSelected()){
                     button2.setSelected(false);
                     deleteNote(text2);
@@ -68,7 +68,7 @@ public class A_Uniqueness extends AppCompatActivity {
 
         button3.setOnClickListener(new View.OnClickListener(){
             @Override
-            public void onClick(View v){//실험중
+            public void onClick(View v){
                 if(button3.isSelected()){
                     button3.setSelected(false);
                     deleteNote(text3);
@@ -80,21 +80,17 @@ public class A_Uniqueness extends AppCompatActivity {
             }
         });
 
-        //버튼 개수마다 추가될 예정
+        //버튼 개수마다 추가될 예정=====================================================================================================================
 
 
 
     }
 
-    //되는지 안 되는지 모름.
-    private void saveNote(String name){
-        String feature = name;//임의로 지정
 
-        String sql = "insert into " +NoteDatabase.TABLE_USER +//이거 바꾸다 말았음 이건 했는데 나중에 다른거 고치기
-                "(FEATURE) values (" +
-                "'"+ feature + "')";
+    private void saveNote(String name){//db에 저장
+        String feature = name;
 
-
+        String sql = "insert into " +NoteDatabase.TABLE_USER + "(FEATURE) values (" + "'"+ feature + "')";
 
         Log.d(TAG, "sql : " + sql);
         NoteDatabase database = NoteDatabase.getInstance(context);
@@ -102,14 +98,13 @@ public class A_Uniqueness extends AppCompatActivity {
 
     }
 
-    private void deleteNote(String name){
+    private void deleteNote(String name){//db에서 삭제
         String feature = name;//임의로 지정
 
         String sql = "delete from "+NoteDatabase.TABLE_USER+ " where feature = '" + feature + "'";
         Log.d(TAG, "sql : " + sql);
         NoteDatabase database = NoteDatabase.getInstance(context);
         database.execSQL(sql);
-
     }
 
     @Override

@@ -1,6 +1,6 @@
 package org.techtown.AndroidStudioAigoyak;
 
-        import android.content.Context;
+import android.content.Context;
         import android.content.Intent;
         import android.provider.ContactsContract;
         import android.util.Log;
@@ -22,13 +22,13 @@ public class D_SearchAdapter extends RecyclerView.Adapter<D_SearchAdapter.ViewHo
     private static final String TAG = "SearchAdapter";
 
     ArrayList<Search> items = new ArrayList<Search>();
-    Context context;
     OnNoteItemClickListener listener;
+    Context context;
+
 
     public D_SearchAdapter(Context context){
         this.context = context;
     }
-
 
     @NonNull
     @Override
@@ -36,17 +36,23 @@ public class D_SearchAdapter extends RecyclerView.Adapter<D_SearchAdapter.ViewHo
         LayoutInflater inflater = LayoutInflater.from(viewGroup.getContext());
         View itemView = inflater.inflate(R.layout.fragment_search_list, viewGroup, false);
 
-
         return new ViewHolder(itemView);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int position){
         viewHolder.setItem(items.get(position));
-        //Note item = items.get(position); //위랑 같은 코드
-        //viewHolder.setItem(item);
         viewHolder.setLayout();
     }
+
+    //삭제하는건데 이거 연구해야할 것 같음.
+    /*
+    private void removeItemView(int position) {
+        items.remove(position);
+        notifyItemRemoved(position);
+        notifyItemRangeChanged(position, items.size()); // 지워진 만큼 다시 채워넣기.
+    }
+     */
 
     @Override
     public int getItemCount(){
@@ -69,9 +75,6 @@ public class D_SearchAdapter extends RecyclerView.Adapter<D_SearchAdapter.ViewHo
         this.listener = listener;
     }
 
-
-
-
     public class ViewHolder extends RecyclerView.ViewHolder{
         LinearLayout layout;
         TextView name;
@@ -86,7 +89,6 @@ public class D_SearchAdapter extends RecyclerView.Adapter<D_SearchAdapter.ViewHo
             corp = itemView.findViewById(R.id.corp);
             heart = itemView.findViewById(R.id.heart1);
 
-
             itemView.setClickable(true);
             itemView.setOnClickListener(new View.OnClickListener(){
                 @Override
@@ -99,11 +101,22 @@ public class D_SearchAdapter extends RecyclerView.Adapter<D_SearchAdapter.ViewHo
                 }
             });
 
+            //// 되나 몰것네
+            /*
+            itemView.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View view) {
+                    removeItemView(getAdapterPosition());
+                    return false;
+                }
+            });
+            ////
+            */
 
         }
 
-        public void setItem(Search item) {//내가 적은 텍스트를 불러와 저장하는 것
-            heart.setVisibility(View.VISIBLE); //warning 조건 걸어서 보이게 하기 (아직 안 함)
+        public void setItem(Search item) {
+            heart.setVisibility(View.VISIBLE); //heart 조건 걸어서 보이게 하기 (아직 안 함)
             name.setText(item.getName());
             corp.setText(item.getCorp());
         }
@@ -111,5 +124,7 @@ public class D_SearchAdapter extends RecyclerView.Adapter<D_SearchAdapter.ViewHo
             layout.setVisibility(View.VISIBLE);
         }
     }
+
+
 
 }

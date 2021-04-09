@@ -25,23 +25,23 @@ public class A_Age extends AppCompatActivity {
         ImageButton button = (ImageButton) findViewById(R.id.button_next);
         EditText age_text = (EditText) findViewById(R.id.age);
 
+        //버튼 클릭 시 나이 저장 후 특이사항 설정 화면으로 넘어감.
         button.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
 
                 age =  age_text.getText().toString();
+
                 if(!age.equals("")) {
-                    saveNote();
+                    saveNote();//db 저장
                     Intent intent = new Intent(A_Age.this, A_Uniqueness.class);
                     startActivity(intent);
                 }
                 else{
                     Toast.makeText(getApplicationContext(),"나이를 입력하세요!", Toast.LENGTH_LONG).show();
-                    System.out.println("나이를 입력하세요!");
                 }
             }
         });
-
     }
 
     //나이 db에 저장
@@ -51,7 +51,6 @@ public class A_Age extends AppCompatActivity {
         Log.d(TAG, "sql : " + sql);
         NoteDatabase database = NoteDatabase.getInstance(context);
         database.execSQL(sql);
-
     }
 
     //뒤로가기 막기

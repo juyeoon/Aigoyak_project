@@ -19,19 +19,14 @@ public class C_MedicineSearch extends Fragment {
 
     ViewPager vp;
     LinearLayout linear;
-    int i = 0;
     private C_ProductNameSearch fragment1;
     private C_ComponentNameSearch fragment2;
     private C_ShapeSearch fragment3;
-
-    public C_MedicineSearch() {
-
-    }
+    int i = 0;
+    public C_MedicineSearch() {    }
 
     @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
+    public void onCreate(@Nullable Bundle savedInstanceState) { super.onCreate(savedInstanceState);    }
 
     @Nullable
     @Override
@@ -65,9 +60,7 @@ public class C_MedicineSearch extends Fragment {
 
         vp.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
-            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-
-            }
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {}
 
             @Override
             public void onPageSelected(int position) {
@@ -83,11 +76,8 @@ public class C_MedicineSearch extends Fragment {
             }
 
             @Override
-            public void onPageScrollStateChanged(int state) {
-
-            }
+            public void onPageScrollStateChanged(int state) {}
         });
-
         return fv;
     }
 
@@ -95,38 +85,27 @@ public class C_MedicineSearch extends Fragment {
     public void onStart() {
         super.onStart();
     }
-
     @Override
     public void onStop() {
         super.onStop();
     }
-
     @Override
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
     }
-
     @Override
     public void onResume() {
         super.onResume();
     }
-
     @Override
     public void onPause() {
         super.onPause();
     }
+    @Override
+    public void onLowMemory() { super.onLowMemory();}
 
     @Override
-    public void onLowMemory() {
-        super.onLowMemory();
-
-    }
-
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-
-    }
+    public void onDestroy() { super.onDestroy();}
 
     private class PagerAdapter extends FragmentPagerAdapter {
         public PagerAdapter(FragmentManager fm) {
@@ -143,11 +122,9 @@ public class C_MedicineSearch extends Fragment {
                 return fragment3;
             }
         }
-
         public int getCount() {
             return 3;
         }
-
     }
 
 
@@ -156,7 +133,6 @@ public class C_MedicineSearch extends Fragment {
         @Override
         public void onClick(View v) {
             int tag = (int) v.getTag();
-
             int i = 0;
             while (i < 3) {
                 if (tag == i) {
@@ -169,5 +145,4 @@ public class C_MedicineSearch extends Fragment {
             vp.setCurrentItem(tag);
         }
     };
-
 }

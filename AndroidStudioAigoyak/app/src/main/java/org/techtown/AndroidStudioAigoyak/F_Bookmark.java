@@ -34,14 +34,11 @@ public class F_Bookmark extends AppCompatActivity {
         //뒤로가기 버튼 누름
         ImageButton button_back = (ImageButton) findViewById(R.id.back_button);
         button_back.setOnClickListener(new View.OnClickListener(){
-
             @Override
             public void onClick(View v){
                 onBackPressed();
             }
         });
-
-
 
         initUI();
         loadNoteListData();
@@ -54,8 +51,6 @@ public class F_Bookmark extends AppCompatActivity {
         recyclerView.setLayoutManager(layoutManager);
 
         adapter = new F_BookmarkAdapter();
-        //adapter.addItem(new Search(0,"아스피린","수아주식회사"));// 나중에 db연결해서 코드 다시 짜야함.
-        //adapter.addItem(new Search(1, "항생제", "주연주식회사"));
         recyclerView.setAdapter(adapter);
     }
 
@@ -72,7 +67,6 @@ public class F_Bookmark extends AppCompatActivity {
 
         if (database != null){
             Cursor outCursor = database.rawQuery(sql);
-
             recordCount = outCursor.getCount();
 
             //_id, name, clock가 담겨질 배열 생성
@@ -85,8 +79,6 @@ public class F_Bookmark extends AppCompatActivity {
                 int _id = outCursor.getInt(0);
                 String name = outCursor.getString(1);
                 String corp = outCursor.getString(2);
-
-
                 items.add(new Search(_id, name, corp));
             }
             outCursor.close();

@@ -21,14 +21,11 @@ public class F_MypageChange extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.mypage_change);
-
         EditText age = (EditText) findViewById(R.id.age);
 
 
-///////////
         String sql = "select FEATURE from " + NoteDatabase.TABLE_USER;//이거 바꾸다 말았음 이건 했는데 나중에 다른거 고치기
 
-        //String text= "";
         Log.d(TAG, "sql : " + sql);
         NoteDatabase database = NoteDatabase.getInstance(context);
         Cursor cursor = database.rawQuery(sql);
@@ -38,20 +35,10 @@ public class F_MypageChange extends AppCompatActivity {
         for(int i=0; i< recordCount; i++){
             cursor.moveToNext();
             text[i] = cursor.getString(0);
-            /*
-            if(i!=0){
-                text[i] = cursor.getString(0);
-            }
 
-             */
             System.out.println(text);
         }
 
-
-
-
-
-/////////////
         Button button1 = (Button) findViewById(R.id.임산부);
         String text1 = button1.getText().toString();
         for(int i=0; i< recordCount; i++){
@@ -61,7 +48,7 @@ public class F_MypageChange extends AppCompatActivity {
         }
         button1.setOnClickListener(new View.OnClickListener(){
             @Override
-            public void onClick(View v){//실험중
+            public void onClick(View v){
                 if(button1.isSelected()){
                     button1.setSelected(false);
                     deleteNote(text1);
@@ -82,7 +69,7 @@ public class F_MypageChange extends AppCompatActivity {
         }
         button2.setOnClickListener(new View.OnClickListener(){
             @Override
-            public void onClick(View v){//실험중
+            public void onClick(View v){
                 if(button2.isSelected()){
                     button2.setSelected(false);
                     deleteNote(text2);
@@ -102,7 +89,7 @@ public class F_MypageChange extends AppCompatActivity {
         }
         button3.setOnClickListener(new View.OnClickListener(){
             @Override
-            public void onClick(View v){//실험중
+            public void onClick(View v){
                 if(button3.isSelected()){
                     button3.setSelected(false);
                     deleteNote(text3);
@@ -114,12 +101,11 @@ public class F_MypageChange extends AppCompatActivity {
             }
         });
 
-        //버튼 개수마다 추가될 예정
-///////////
+        //버튼 개수마다 추가될 예정--------------------------------------------------------------------------------------
+
         //뒤로가기 버튼 누름
         ImageButton button_back = (ImageButton) findViewById(R.id.back_button);
         button_back.setOnClickListener(new View.OnClickListener(){
-
             @Override
             public void onClick(View v){
                 onBackPressed();
@@ -129,7 +115,6 @@ public class F_MypageChange extends AppCompatActivity {
         //확인 버튼 누름
         Button button_finish = (Button) findViewById(R.id.ok_button);
         button_finish.setOnClickListener(new View.OnClickListener(){
-
             @Override
             public void onClick(View v){
                 if(!age.getText().toString().equals("")){
@@ -139,24 +124,11 @@ public class F_MypageChange extends AppCompatActivity {
                 }
                 else{
                     Toast.makeText(getApplicationContext(),"나이를 입력하세요!", Toast.LENGTH_LONG).show();
-                    System.out.println("나이를 입력하세요!");
                 }
-
             }
         });
-
-
-
-
-
-
-
-
-
-
-
-
     }
+
     //나이 db에 저장
     private void saveNote(String age, String text){
         String sql = "UPDATE "+NoteDatabase.TABLE_USER+ " SET FEATURE = '" + age +"' where feature = '"+text+"'";
@@ -164,31 +136,26 @@ public class F_MypageChange extends AppCompatActivity {
         Log.d(TAG, "sql : " + sql);
         NoteDatabase database = NoteDatabase.getInstance(context);
         database.execSQL(sql);
-
     }
 
+    //특이사항 db저장
     private void changeNote(String name){
-        String feature = name;//임의로 지정
+        String feature = name;
 
-        String sql = "insert into " +NoteDatabase.TABLE_USER +//이거 바꾸다 말았음 이건 했는데 나중에 다른거 고치기
-                "(FEATURE) values (" +
-                "'"+ feature + "')";
-
-
+        String sql = "insert into " +NoteDatabase.TABLE_USER + "(FEATURE) values (" + "'"+ feature + "')";
 
         Log.d(TAG, "sql : " + sql);
         NoteDatabase database = NoteDatabase.getInstance(context);
         database.execSQL(sql);
-
     }
 
+    //특이사항 db삭제
     private void deleteNote(String name){
-        String feature = name;//임의로 지정
+        String feature = name;
 
         String sql = "delete from "+NoteDatabase.TABLE_USER+ " where feature = '" + feature + "'";
         Log.d(TAG, "sql : " + sql);
         NoteDatabase database = NoteDatabase.getInstance(context);
         database.execSQL(sql);
-
     }
 }

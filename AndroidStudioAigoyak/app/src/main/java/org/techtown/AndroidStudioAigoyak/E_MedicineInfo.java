@@ -12,11 +12,9 @@ public class E_MedicineInfo  extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.medicine_info);
 
-
         //뒤로가기 버튼 누름
         ImageButton button_back = (ImageButton) findViewById(R.id.back_button);
         button_back.setOnClickListener(new View.OnClickListener(){
-
             @Override
             public void onClick(View v){
                 onBackPressed();

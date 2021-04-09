@@ -41,37 +41,26 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10sp"
                 android:layout_marginLeft="10sp"
-                android:layout_marginTop="5sp"
+                android:layout_marginTop="15sp"
                 android:layout_marginEnd="10sp"
                 android:layout_marginRight="10sp"
                 android:layout_marginBottom="10sp"
                 android:fontFamily="@font/kukde_bdb"
+                android:maxLength="11"
                 android:text="의약품명"
-                android:textSize="33sp" />
+                android:textSize="22sp" />
 
             <TextView
                 android:id="@+id/clock"
                 android:layout_width="122dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10sp"
-                android:layout_marginTop="40sp"
+                android:layout_marginTop="53sp"
                 android:layout_marginRight="10sp"
                 android:layout_marginBottom="10sp"
                 android:fontFamily="@font/kukde_alt"
                 android:text="복용시각"
-                android:textSize="25sp" />
-
-            <TextView
-                android:id="@+id/date"
-                android:layout_width="122dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10sp"
-                android:layout_marginTop="70sp"
-                android:layout_marginRight="10sp"
-                android:layout_marginBottom="0sp"
-                android:fontFamily="@font/kukde_alt"
-                android:text="복용날짜"
-                android:textSize="10sp" />
+                android:textSize="18sp" />
 
         </RelativeLayout>
 

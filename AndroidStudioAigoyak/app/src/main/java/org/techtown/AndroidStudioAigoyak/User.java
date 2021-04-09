@@ -4,7 +4,6 @@ public class User {
     int _id;
     String feature;
 
-
     public User(int _id, String feature) {
         this._id = _id;
         this.feature = feature;

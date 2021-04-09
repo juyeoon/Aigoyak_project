@@ -9,13 +9,13 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-public class E_MedicineReview extends Fragment {
+public class E_MedicineDur extends Fragment {
     ViewGroup viewGroup;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        viewGroup = (ViewGroup) inflater.inflate(R.layout.fragment_medicine_review, container, false);
+        viewGroup = (ViewGroup) inflater.inflate(R.layout.fragment_medicine_dur, container, false);
         return viewGroup;
     }
 }

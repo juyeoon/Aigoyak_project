@@ -18,21 +18,14 @@
         android:orientation="horizontal"
         android:visibility="visible">
 
-        <ImageView
-            android:id="@+id/imageView4"
-            android:layout_width="75dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            app:srcCompat="@drawable/logo" />
-
         <RelativeLayout
-            android:layout_width="237dp"
+            android:layout_width="355dp"
             android:layout_height="wrap_content"
             android:padding="5dp">
 
             <TextView
                 android:id="@+id/name"
-                android:layout_width="242dp"
+                android:layout_width="340dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10sp"
                 android:layout_marginLeft="10sp"
@@ -40,12 +33,13 @@
                 android:layout_marginEnd="10sp"
                 android:layout_marginBottom="10sp"
                 android:fontFamily="@font/kukde_bdb"
+                android:maxLength="15"
                 android:text="의약품명"
-                android:textSize="33sp" />
+                android:textSize="22sp" />
 
             <TextView
                 android:id="@+id/corp"
-                android:layout_width="212dp"
+                android:layout_width="325dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10sp"
                 android:layout_marginTop="50sp"
@@ -53,7 +47,8 @@
                 android:layout_marginBottom="10sp"
                 android:fontFamily="@font/kukde_alt"
                 android:text="회사명 | 효과효능"
-                android:textSize="27sp" />
+                android:maxLength="15"
+                android:textSize="18sp" />
 
 
         </RelativeLayout>

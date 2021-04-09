@@ -32,25 +32,23 @@ public class B_AddMedicine extends AppCompatActivity {
     private static final String TAG = "B_AddMedicine";
     private AlarmManager alarmManager;
     private GregorianCalendar mCalendar;
-
     private NotificationManager notificationManager;
     NotificationCompat.Builder builder;
 
-    //////////////
 
     Calendar cal = Calendar.getInstance();
-
-    int y = cal.get(Calendar.YEAR);
-    int m = cal.get(Calendar.MONTH);
-    int d = cal.get(Calendar.DAY_OF_MONTH);
-    int y2 = cal.get(Calendar.YEAR);
-    int m2 = cal.get(Calendar.MONTH);
-    int d2 = cal.get(Calendar.DAY_OF_MONTH);
-    int h = cal.get(Calendar.HOUR_OF_DAY);
-    int mi = cal.get(Calendar.MINUTE);
+    int y = cal.get(Calendar.YEAR);//년
+    int m = cal.get(Calendar.MONTH);//월
+    int d = cal.get(Calendar.DAY_OF_MONTH);//일
+    int y2 = cal.get(Calendar.YEAR);//년2
+    int m2 = cal.get(Calendar.MONTH);//월2
+    int d2 = cal.get(Calendar.DAY_OF_MONTH);//일
+    int h = cal.get(Calendar.HOUR_OF_DAY);//시
+    int mi = cal.get(Calendar.MINUTE);//분
 
     int date = y*10000 + m*100 + d;
     int date2 = y2*10000 + m2*100 + d2;
+    int a=0;
 
     Button date_start_button;
     Button date_end_button;
@@ -58,103 +56,28 @@ public class B_AddMedicine extends AppCompatActivity {
     Button button_finish;
     Context context;
 
-    int a=0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         notificationManager = (NotificationManager)getSystemService(NOTIFICATION_SERVICE);
-
         alarmManager = (AlarmManager)getSystemService(Context.ALARM_SERVICE);
         mCalendar = new GregorianCalendar();
-        Log.v("Alarm~", mCalendar.getTime().toString());
 
-
+        Log.v("Alarm: ", mCalendar.getTime().toString());
 
 
         setContentView(R.layout.add_medicine);
+
         //뒤로가기 버튼 누름
         ImageButton button_back = (ImageButton) findViewById(R.id.button_back);
         button_back.setOnClickListener(new View.OnClickListener(){
-
             @Override
             public void onClick(View v){
                 onBackPressed();
             }
         });
-
-        //확인 버튼 누름
-        button_finish = (Button) findViewById(R.id.button_finish);
-        button_finish.setOnClickListener(new View.OnClickListener(){
-
-            @Override
-            public void onClick(View v){
-                if(date-date2  > 0 || date == 0){//종료 날짜가 더 앞에 있으면 버튼 숨기기
-                    System.out.println("날짜를 다시 설정해주세요");//이거 나중에 토스트메시지로 변경
-                    Toast.makeText(getApplicationContext(),"날짜를 다시 설정해주세요", Toast.LENGTH_LONG).show();
-                }
-                else if(y2-y != 0){//년도 달라지는 입력은 막아둠...
-                    Toast.makeText(getApplicationContext(),"너무 많은 날의 입력은 권장하지 않습니다. 같은 년도로 선택해주세요", Toast.LENGTH_LONG).show();
-                    System.out.println("너무 많은 날의 입력은 권장하지 않습니다. 같은 년도로 선택해주세요");// 토스트 메시지로 변경
-                }
-                else{
-                    /////////////////////////////////////////////////아래코드 실험중
-                        int ny =y; //now year
-                        int nm =m; //now month
-                        int nd =d; //now day
-                        int ndate; //now date
-
-                    if(m-m2 !=0) {//종료 달이 시작달과 다를 때
-                        //시작하는 달의 시작 일자부터 31일까지 저장.
-
-                        for (int j = d; j < 32; j++) {// 시작달의 d일부터 31일까지 저장.
-                            ndate = ny * 10000 + nm * 100 + nd;
-                            saveNote(ndate);
-                            nd++;
-                        }
-                        nd = 1;//1일부터
-                        nm = m+1;//시작하는 달의 다음달
-                        for (int i = m+1; i < m2; i++) {//ex) 시작하는 달의 다음달의 1일부터 끝나는 달 전까지의 31일까지 저장.
-
-                            for (int j = 1; j < 32; j++) {// 시작달의 1일부터 31일까지 저장.
-                                ndate = ny * 10000 + nm * 100 + nd;
-                                saveNote(ndate);
-                                nd++;
-                            }
-
-                            nm++; //자신의 달보다 낮은 달의 날짜 31일까지 다 채움.
-
-                        }
-                        nm = m2;//끝나는 달
-                        nd = 1;//1일부터
-                        for (int k = 1; k <= d2; k++) {// 끝나는 달의 1일부터 d2일까지 저장.
-                            ndate = ny * 10000 + nm * 100 + nd;
-                            saveNote(ndate);
-                            nd++;
-                        }
-                    }
-                    else{//종료 달과 시작 달이 같을 때
-                        for(int i=d; i<=d2; i++){//d일부터 d2일까지 저장.
-                            ndate = ny*10000+nm*100+nd;
-                            saveNote(ndate);
-                            nd++;
-                        }
-                    }
-
-//////////////////////////////////////////////////////////////위 코드 실험중
-                    button_finish.setVisibility(View.VISIBLE);
-                    Intent intent = new Intent(B_AddMedicine.this, MainActivity.class);
-                    startActivity(intent);
-                    setAlarm(); // 알람 적용하는 코드----------------------------------------------------------------------------------------
-                    Toast.makeText(getApplicationContext(),"등록완료", Toast.LENGTH_LONG).show();
-
-                }
-
-            }
-        });
-
-        Button search_button = (Button) findViewById((R.id.search_button)); // 아직 안 함.
-
 
         //복약 시작 날짜 정하는 버튼
         date_start_button = (Button) findViewById((R.id.date_start_button));
@@ -166,6 +89,7 @@ public class B_AddMedicine extends AppCompatActivity {
 
             }
         });
+
         //복약 종료 날짜 정하는 버튼
         date_end_button = (Button) findViewById((R.id.date_end_button));
         date_end_button.setOnClickListener(new View.OnClickListener() {
@@ -182,12 +106,87 @@ public class B_AddMedicine extends AppCompatActivity {
                 showTime();
             }
         });
+
+
+        //확인 버튼 누름
+        button_finish = (Button) findViewById(R.id.button_finish);
+        button_finish.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                if(date-date2  > 0 || date == 0){//종료 날짜가 더 앞에 있으면 토스트메시지 띄우기
+                    Toast.makeText(getApplicationContext(),"날짜를 다시 설정해주세요", Toast.LENGTH_LONG).show();
+                }
+                else if(y2-y != 0){//년도 달라지면 토스트메시지 띄우기
+                    Toast.makeText(getApplicationContext(),"너무 많은 날의 입력은 권장하지 않습니다. 같은 년도로 선택해주세요", Toast.LENGTH_LONG).show();
+                }
+                else{
+
+                        int ny =y; //now year
+                        int nm =m; //now month
+                        int nd =d; //now day
+                        int ndate; //now date
+
+                    if(m-m2 !=0) {//종료 달이 시작달과 다를 때
+                        //시작하는 달의 시작 일자부터 31일까지 저장.
+
+                        for (int j = d; j < 32; j++) {// 시작달의 d일부터 31일까지 저장.
+                            ndate = ny * 10000 + nm * 100 + nd;
+                            saveNote(ndate);
+                            nd++;
+                        }
+
+                        nd = 1;//1일부터
+                        nm = m+1;//시작하는 달의 다음달
+                        for (int i = m+1; i < m2; i++) {//ex) 시작하는 달의 다음달의 1일부터 끝나는 달 전까지의 31일까지 저장.
+
+                            for (int j = 1; j < 32; j++) {// 시작달의 1일부터 31일까지 저장.
+                                ndate = ny * 10000 + nm * 100 + nd;
+                                saveNote(ndate);
+                                nd++;
+                            }
+
+                            nm++; //자신의 달보다 낮은 달의 날짜 31일까지 다 채움.
+
+                        }
+
+                        nm = m2;//끝나는 달
+                        nd = 1;//1일부터
+                        for (int k = 1; k <= d2; k++) {// 끝나는 달의 1일부터 d2일까지 저장.
+                            ndate = ny * 10000 + nm * 100 + nd;
+                            saveNote(ndate);
+                            nd++;
+                        }
+                    }
+                    else{//종료 달과 시작 달이 같을 때
+                        for(int i=d; i<=d2; i++){//d일부터 d2일까지 저장.
+                            ndate = ny*10000+nm*100+nd;
+                            saveNote(ndate);
+                            nd++;
+                        }
+                    }
+
+
+                    Intent intent = new Intent(B_AddMedicine.this, MainActivity.class);
+                    startActivity(intent);
+                    setAlarm(); // 알람 적용하는 코드----------------------------------------------------------------------------------------
+                    Toast.makeText(getApplicationContext(),"등록완료", Toast.LENGTH_LONG).show();
+
+                }
+
+            }
+        });
+
+        Button search_button = (Button) findViewById((R.id.search_button)); // 아직 안 함.
+
+
+
     }
 
+    //알람 설정
     public void setAlarm(){
         int time = h*100+mi;
         Intent receiverIntent = new Intent(this, Alarm.class);
-        //receiverIntent.putExtra("text","연습");
+        //receiverIntent.putExtra("text","연습");------------------------------------------------------------------------------이거 살려야함.
         //receiverIntent.putExtra("id", time);
 
 
@@ -211,7 +210,7 @@ public class B_AddMedicine extends AppCompatActivity {
     }
 
 
-
+    //데이터 저장
     private void saveNote(int ndate){
         String name = "노란약";//임의로 지정
         String clock = clock_button.getText().toString();
@@ -260,9 +259,7 @@ public class B_AddMedicine extends AppCompatActivity {
             }
         },cal.get(Calendar.YEAR), cal.get(Calendar.MONTH), cal.get(Calendar.DAY_OF_MONTH));
 
-        //datePickerDialog.setMessage("메시지");
         datePickerDialog.show();
-
     }
 
 
@@ -272,12 +269,12 @@ public class B_AddMedicine extends AppCompatActivity {
             public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
                 h = hourOfDay;
                 mi = minute;
-                clock_button.setText(String.valueOf(h + ":" + mi));
+                clock_button.setText(String.valueOf(h + "시 " + mi + "분"));
             }
 
         }, h, mi, true);
 
-        //timePickerDialog.setMessage("메시지");
+
         timePickerDialog.show();
     }
 }

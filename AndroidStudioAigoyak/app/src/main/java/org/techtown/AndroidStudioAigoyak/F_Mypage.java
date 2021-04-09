@@ -1,6 +1,6 @@
 package org.techtown.AndroidStudioAigoyak;
 
-        import android.os.Bundle;
+import android.os.Bundle;
         import android.view.LayoutInflater;
         import android.view.View;
         import android.view.ViewGroup;
@@ -13,26 +13,19 @@ package org.techtown.AndroidStudioAigoyak;
 
         import android.content.Intent;
 
-
-
 public class F_Mypage extends Fragment{
     MainActivity activity;
 
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
-
         activity = (MainActivity) getActivity();
     }
-
     @Override
     public void onDetach() {
         super.onDetach();
-
         activity = null;
     }
-
-
 
     @Nullable
     @Override
@@ -59,14 +52,6 @@ public class F_Mypage extends Fragment{
             }
         });
 
-
-
-
-
         return rootView;
-
     }
-
-
-
 }

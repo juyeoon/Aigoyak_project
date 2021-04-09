@@ -2,41 +2,46 @@ package org.techtown.AndroidStudioAigoyak;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.content.Context;
-import android.widget.Button;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.LinearLayoutManager;
-
-import android.content.Intent;
-import android.database.Cursor;
-import android.util.Log;
 import android.widget.ImageButton;
 
 import org.xmlpull.v1.XmlPullParser;
+import org.xmlpull.v1.XmlPullParserException;
 import org.xmlpull.v1.XmlPullParserFactory;
 
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.util.ArrayList;
 
+
+
 public class D_SearchList extends AppCompatActivity {
     private static final String TAG = "SearchList";
+    ArrayList<Search> items = new ArrayList<Search>();
     RecyclerView recyclerView;
     D_SearchAdapter adapter;
-    Context context;
+    Context context = this;
+
+    //API 추가
+    String key2 = "COqqRqdIM6Kkz9qfzXGH5geAKxrfy90RL6AhqU4%2BaUT19SMd4Oy0YM7lpTZP8%2BY%2FgegeDNplMu%2FA%2B8HdJfGhKQ%3D%3D";
+    XmlPullParser xpp;
+
 
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.search_list);
+
+        String search_word = (String)getIntent().getSerializableExtra("search");//C_ProduchNameSearch에서 검색어 들고옴
+
+        initUI();
 
         //뒤로가기 버튼 누름
         ImageButton button_change = (ImageButton) findViewById(R.id.back_button);
@@ -48,23 +53,93 @@ public class D_SearchList extends AppCompatActivity {
             }
         });
 
-        initUI();// 맞는진 모름
-        insertDatatoList();
 
-        /* 실행 안됨(오류)
-        if( !C_ProductNameSearch.items.isEmpty() ) {
-            //확인 코드
-            System.out.println("배열 내용 search");
-            System.out.println(C_ProductNameSearch.items.get(0)._id);
-            System.out.println(C_ProductNameSearch.items.get(0).name);
-            System.out.println(C_ProductNameSearch.items.get(0).corp);
-        }
-        else{
-            System.out.println("배열 비어있음");
-        }
-        */
+        new Thread(){
+            @Override
+            public void run() {
+                //API 추가
+                int id = 0;
+                items.clear();
+
+                String location = URLEncoder.encode(search_word);//한글의 경우 인식이 안되기에 utf-8 방식으로 encoding..
+
+                //요청 URL
+                String queryUrl="http://apis.data.go.kr/1471000/DrbEasyDrugInfoService/getDrbEasyDrugList"
+                        +"?serviceKey="+ key2
+                        +"&itemName=" + location;
+
+                //파싱 코드
+                try {
+                    //URL객체생성
+                    URL url= new URL(queryUrl);
+
+                    //Stream 열기                                     //is는 바이트 스트림이라 문자열로 받기위해 isr이 필요하고 isr을 pullparser에게 줘야하는데
+                    InputStream is= url.openStream(); //바이트스트림
+                    //문자스트림으로 변환
+                    InputStreamReader isr=new InputStreamReader(is);
+
+                    //읽어들인 XML문서를 분석(parse)해주는 객체 생성    //pullparser를 만들려면 Factory가 필요해서 팩토리 만들고 pullparser를 만들었다. 결론, 그리고 pullparser에게 isr연결
+                    XmlPullParserFactory factory= XmlPullParserFactory.newInstance();
+                    XmlPullParser xpp=factory.newPullParser();
+                    xpp.setInput(isr);
+
+                    //xpp를 이용해서 xml문서를 분석
+
+                    //xpp.next();   //XmlPullParser는 시작부터 문서의 시작점에 있으므로 next해주면 START_DOCUMENT를 못만난다.
+                    int eventType= xpp.getEventType();
+
+                    String tagName;
+                    StringBuffer buffer=null;
+
+                    while(eventType!=XmlPullParser.END_DOCUMENT){
 
 
+                        switch (eventType){
+                            case XmlPullParser.START_DOCUMENT:
+                                break;
+
+                            case XmlPullParser.START_TAG:
+                                tagName=xpp.getName();
+                                if(tagName.equals("item")){
+                                    buffer=new StringBuffer();
+
+                                }else if(tagName.equals("entpName")){//회사명
+                                    xpp.next();
+                                    buffer.append(xpp.getText()+"\n");
+
+
+                                }else if(tagName.equals("itemName")){//제품명
+                                    xpp.next();
+                                    buffer.append(xpp.getText()+"\n");
+                                }
+                                break;
+
+                            case XmlPullParser.TEXT:
+                                break;
+
+                            case XmlPullParser.END_TAG:
+                                tagName = xpp.getName();
+                                if(tagName.equals("item")){
+                                    String[] splitd = buffer.toString().split("\\n");
+                                    items.add(new Search(id, splitd[1], splitd[0]));
+
+                                    runOnUiThread(new Runnable(){
+                                        @Override
+                                        public void run(){
+                                            adapter.setItems(items);
+                                            adapter.notifyDataSetChanged();
+                                        }
+                                    });
+                                    id++;//idex
+                                }
+                                break;
+                        }
+                        eventType=xpp.next();
+                    }//while
+                }
+                catch (MalformedURLException e) { e.printStackTrace();} catch (IOException e) {e.printStackTrace();} catch (XmlPullParserException e) {e.printStackTrace();}
+            }
+        }.start();
     }
 
     private void initUI(){
@@ -76,11 +151,4 @@ public class D_SearchList extends AppCompatActivity {
         adapter = new D_SearchAdapter(this);
         recyclerView.setAdapter(adapter);
     }
-
-    public void insertDatatoList(){
-        adapter.setItems(C_ProductNameSearch.items);
-
-        adapter.notifyDataSetChanged();
-    }
-
 }

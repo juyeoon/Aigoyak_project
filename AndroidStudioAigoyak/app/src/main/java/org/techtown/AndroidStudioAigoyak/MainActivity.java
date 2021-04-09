@@ -16,9 +16,6 @@ public class MainActivity extends AppCompatActivity {
     private C_MedicineSearch fragment2;
     private F_Mypage fragment3;
 
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,18 +26,13 @@ public class MainActivity extends AppCompatActivity {
         fragment2 = new C_MedicineSearch();
         fragment3 = new F_Mypage();
 
-
-
         getSupportFragmentManager().beginTransaction().replace(R.id.main_layout, fragment1).commitAllowingStateLoss();
 
-
-
-    //bottomnavigationview의 아이콘을 선택 했을때 원하는 프래그먼트가 띄워질 수 있도록 리스너를 추가합니다.
     bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
         @Override
         public boolean onNavigationItemSelected (@NonNull MenuItem menuItem){
         switch (menuItem.getItemId()) {
-            //menu_bottom.xml에서 지정해줬던 아이디 값을 받아와서 각 아이디값마다 다른 이벤트를 발생시킵니다.
+
             case R.id.복약관리: {
                 getSupportFragmentManager().beginTransaction()
                         .replace(R.id.main_layout, fragment1).commitAllowingStateLoss();
@@ -67,6 +59,4 @@ public class MainActivity extends AppCompatActivity {
     public void onBackPressed() {
         //super.onBackPressed();
         }
-
-
 }

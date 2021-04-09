@@ -34,7 +34,7 @@
                 android:layout_marginRight="10sp"
                 android:layout_marginBottom="10sp"
                 android:fontFamily="@font/kukde_alt"
-                android:text="박주연"
+                android:text="이름"
                 android:textSize="19sp" />
             <TextView
                 android:id="@+id/nickname"
@@ -59,7 +59,7 @@
                 android:layout_marginRight="10sp"
                 android:layout_marginBottom="10sp"
                 android:fontFamily="@font/kukde_alt"
-                android:text="이 약 추천함. 근데 나는 다른 약이 좀 더 낫더라 내가 추천하는거는 아스피린인데 근데 사실 이것도 별로임. 사실 내가 찐으로 추천하는거는 아스파라거스임. 약 먹지 말고 채소 먹으셈 그리고 이 앱 삭제해^^ 추신- 나 개발자임 ㅋㅋ 데이터서버 부족함"
+                android:text="내용"
                 android:textSize="15sp">
             </TextView>
 
