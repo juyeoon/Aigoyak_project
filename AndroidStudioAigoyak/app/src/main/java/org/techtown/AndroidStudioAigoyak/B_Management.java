@@ -97,7 +97,21 @@ public class B_Management extends Fragment{
 
         initUI(rootView);
         loadNoteListData(); //성공 ^^^^^^^^^^^^^
+        /*
+        adapter.setOnItemClickListener(new OnNoteItemClickListener() {
+            @Override
+            public void onItemClick(B_MedicationList.ViewHolder holder, View view, int position) {
+                Note item = adapter.getItem(position);
+                System.out.println("왜 안돼");
+                Log.d(TAG, "아이템 선택됨 : " + item.get_id());
 
+                if (listener != null) {
+                    listener.showFragment2(item);
+                }
+            }
+        });
+
+         */
 
 
         return rootView;
@@ -113,24 +127,10 @@ public class B_Management extends Fragment{
         recyclerView.setLayoutManager(layoutManager);
 
         //어댑터 연결
-        adapter = new B_MedicationList();
+        adapter = new B_MedicationList(getContext());
 
         recyclerView.setAdapter(adapter); // 용도 알아보기
-        //이건 나중에 할거임 무슨 역할 하는지 잘 모르겠음 ^^ 나중에 연구
-        /*
-        adapter.setOnItemClickListener(new OnNoteItemClickListener() {
-            @Override
-            public void onItemClick(B_MedicationList.ViewHolder holder, View view, int position) {
-                Note item = adapter.getItem(position);
 
-                Log.d(TAG, "아이템 선택됨 : " + item.get_id());
-
-                if (listener != null) {
-                    listener.showFragment2(item);
-                }
-            }
-        });
-        */
     }
 
     //이거는 db연결해서 데이터를 리스트에 저장시키는거

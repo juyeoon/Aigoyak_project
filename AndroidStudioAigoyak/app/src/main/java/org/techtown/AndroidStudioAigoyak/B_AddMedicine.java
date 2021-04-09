@@ -91,8 +91,10 @@ public class B_AddMedicine extends AppCompatActivity {
             public void onClick(View v){
                 if(date-date2  > 0 || date == 0){//종료 날짜가 더 앞에 있으면 버튼 숨기기
                     System.out.println("날짜를 다시 설정해주세요");//이거 나중에 토스트메시지로 변경
+                    Toast.makeText(getApplicationContext(),"날짜를 다시 설정해주세요", Toast.LENGTH_LONG).show();
                 }
                 else if(y2-y != 0){//년도 달라지는 입력은 막아둠...
+                    Toast.makeText(getApplicationContext(),"너무 많은 날의 입력은 권장하지 않습니다. 같은 년도로 선택해주세요", Toast.LENGTH_LONG).show();
                     System.out.println("너무 많은 날의 입력은 권장하지 않습니다. 같은 년도로 선택해주세요");// 토스트 메시지로 변경
                 }
                 else{
@@ -144,7 +146,8 @@ public class B_AddMedicine extends AppCompatActivity {
                     Intent intent = new Intent(B_AddMedicine.this, MainActivity.class);
                     startActivity(intent);
                     setAlarm(); // 알람 적용하는 코드----------------------------------------------------------------------------------------
-                    System.out.println("알림 설정됐을걸..?");
+                    Toast.makeText(getApplicationContext(),"등록완료", Toast.LENGTH_LONG).show();
+
                 }
 
             }
@@ -182,7 +185,12 @@ public class B_AddMedicine extends AppCompatActivity {
     }
 
     public void setAlarm(){
+        int time = h*100+mi;
         Intent receiverIntent = new Intent(this, Alarm.class);
+        //receiverIntent.putExtra("text","연습");
+        //receiverIntent.putExtra("id", time);
+
+
         PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 0, receiverIntent, 0);
 
         String from = ""+y+"-"+m+"-"+d+" "+h+":"+mi+":00";

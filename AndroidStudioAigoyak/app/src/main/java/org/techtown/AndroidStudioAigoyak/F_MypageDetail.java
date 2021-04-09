@@ -43,6 +43,23 @@ public class F_MypageDetail extends AppCompatActivity {
                 onBackPressed();
             }
         });
+
+        //수정 버튼 누름
+        ImageButton button_change = (ImageButton) findViewById(R.id.change_button);
+        button_change.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View v){
+                Intent intent = new Intent(F_MypageDetail.this, F_MypageChange.class);
+
+                startActivity(intent);
+            }
+        });
+
+
+
+
+
         TextView number = (TextView) findViewById(R.id.숫자);
 
 

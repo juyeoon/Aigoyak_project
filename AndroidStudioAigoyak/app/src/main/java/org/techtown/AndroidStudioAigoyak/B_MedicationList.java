@@ -8,12 +8,15 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageView;
 
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -26,6 +29,19 @@ public class B_MedicationList extends RecyclerView.Adapter<B_MedicationList.View
     private int position;
     Context context;
     OnNoteItemClickListener listener;
+    /////////
+    private OnItemClickListener mListener = null;
+    public interface OnItemClickListener{
+        void onItemClick(View v, int position);
+    }
+    public void setOnItemClickListener(OnItemClickListener listener) {
+        this.mListener = listener ;
+    }
+
+    public B_MedicationList(Context context){
+        this.context =context;
+    }
+/////////////////
 
 
     public int getPosition(){
@@ -64,6 +80,7 @@ public class B_MedicationList extends RecyclerView.Adapter<B_MedicationList.View
                 Log.d(TAG, "sql : " + sql);
                 NoteDatabase database = NoteDatabase.getInstance(context);
                 database.execSQL(sql);
+                //Toast.makeText(getContext(),"삭제완료", Toast.LENGTH_LONG).show(); //안됨..
 
             }
         });
@@ -157,7 +174,7 @@ public class B_MedicationList extends RecyclerView.Adapter<B_MedicationList.View
 
 
 
-    class ViewHolder extends RecyclerView.ViewHolder{
+    public class ViewHolder extends RecyclerView.ViewHolder{
         LinearLayout layout;
         TextView name;
         TextView clock;
@@ -165,7 +182,7 @@ public class B_MedicationList extends RecyclerView.Adapter<B_MedicationList.View
         ImageView warning;
         ImageView trashcan;
         Button completeButton;
-        public ViewHolder(View itemView){
+        public ViewHolder(@NonNull View itemView){
             super(itemView);
             layout = itemView.findViewById(R.id.layout1);
             name = itemView.findViewById(R.id.name);
@@ -174,6 +191,21 @@ public class B_MedicationList extends RecyclerView.Adapter<B_MedicationList.View
             warning = itemView.findViewById(R.id.warning);
             trashcan = itemView.findViewById(R.id.trashcan);
             completeButton = itemView.findViewById(R.id.완료);
+
+            itemView.setClickable(true);
+            itemView.setOnClickListener(new View.OnClickListener(){
+                @Override
+                public void onClick(View v){
+                    int position = getAdapterPosition();
+                    String position_clock = items.get(position).getClock();
+                    System.out.println(position_clock);
+                    if(position !=RecyclerView.NO_POSITION){
+                        Intent intent  = new Intent(context, E_MedicineInfo.class).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                        context.startActivity(intent);
+                    }
+                }
+            });
+
         }
         public void setItem(Note item) {//내가 적은 텍스트를 불러와 저장하는 것
             warning.setVisibility(View.INVISIBLE); //warning 조건 걸어서 보이게 하기 (아직 안 함)

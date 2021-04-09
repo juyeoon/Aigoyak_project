@@ -52,9 +52,9 @@ public class D_SearchList extends AppCompatActivity {
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
 
-        adapter = new D_SearchAdapter();
-        adapter.addItem(new Search(0,"아스피린","수아주식회사"));
-        adapter.addItem(new Search(1, "항생제", "주연주식회사"));
+        adapter = new D_SearchAdapter(this);
+        adapter.addItem(new Search(0,"아스피린","회사명1"));
+        adapter.addItem(new Search(1, "항생제", "회사명2"));
         recyclerView.setAdapter(adapter);
     }
 

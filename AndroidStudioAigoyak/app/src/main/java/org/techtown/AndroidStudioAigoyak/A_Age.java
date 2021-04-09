@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class A_Age extends AppCompatActivity {
     private static final String TAG = "A_Age";
@@ -29,9 +30,15 @@ public class A_Age extends AppCompatActivity {
             public void onClick(View v){
 
                 age =  age_text.getText().toString();
-                saveNote();
-                Intent intent = new Intent(A_Age.this, A_Uniqueness.class);
-                startActivity(intent);
+                if(!age.equals("")) {
+                    saveNote();
+                    Intent intent = new Intent(A_Age.this, A_Uniqueness.class);
+                    startActivity(intent);
+                }
+                else{
+                    Toast.makeText(getApplicationContext(),"나이를 입력하세요!", Toast.LENGTH_LONG).show();
+                    System.out.println("나이를 입력하세요!");
+                }
             }
         });
 

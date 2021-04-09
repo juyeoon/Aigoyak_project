@@ -8,6 +8,7 @@ package org.techtown.AndroidStudioAigoyak;
         import android.view.View;
         import android.widget.ImageButton;
         import android.widget.Button;
+        import android.widget.Toast;
 
 public class A_Uniqueness extends AppCompatActivity {
     private static final String TAG = "A_uniqueness";
@@ -22,9 +23,10 @@ public class A_Uniqueness extends AppCompatActivity {
         button_finish.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-
+                Toast.makeText(getApplicationContext(),"환영합니다!", Toast.LENGTH_LONG).show();
                 Intent intent = new Intent(A_Uniqueness.this, MainActivity.class);
                 startActivity(intent);
+
             }
         });
 

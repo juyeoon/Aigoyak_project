@@ -30,34 +30,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/닉네임"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="176dp"
-        android:fontFamily="@font/kukde_alt"
-        android:text="닉네임"
-        android:textColor="@color/gray_soft"
-        android:textSize="35dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.14"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/나이"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
-        android:fontFamily="@font/kukde_alt"
-        android:text="나이"
-        android:textColor="@color/gray_soft"
-        android:textSize="35dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.173"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/닉네임" />
-
 
     <TextView
         android:id="@+id/특이사항"
@@ -73,38 +45,23 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/나이" />
 
-    <TextView
-        android:id="@+id/nickname"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="176dp"
-        android:fontFamily="@font/kukde_bdb"
-        android:gravity="center_vertical|right"
-        android:text="뫄뫄뫄"
-        android:textColor="@color/gray"
-        android:textSize="35dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.323"
-        app:layout_constraintStart_toEndOf="@+id/닉네임"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <EditText
-        android:id="@+id/search_box"
+        android:id="@+id/age"
         android:layout_width="101dp"
         android:layout_height="43dp"
         android:layout_weight="1"
         android:background="@drawable/editbox_change"
         android:ems="10"
         android:fontFamily="@font/kukde_alt"
-        android:hint="00"
-        android:inputType="textPersonName"
+        android:hint="0"
+        android:inputType="number"
         android:padding="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.367"
+        app:layout_constraintHorizontal_bias="0.361"
         app:layout_constraintStart_toEndOf="@+id/나이"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.396" />
+        app:layout_constraintVertical_bias="0.206" />
 
     <TextView
         android:id="@+id/세"
@@ -120,58 +77,24 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/search_box"
+        app:layout_constraintStart_toEndOf="@+id/age"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.393" />
+        app:layout_constraintVertical_bias="0.204" />
 
-    <RadioButton
-        android:id="@+id/임산부"
-        android:layout_width="91dp"
-        android:layout_height="38dp"
-        android:layout_marginStart="36dp"
-        android:layout_marginLeft="36dp"
-        android:layout_marginEnd="5dp"
-        android:layout_marginRight="5dp"
+    <TextView
+        android:id="@+id/나이"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:fontFamily="@font/kukde_alt"
-        android:text="임산부"
-        android:textColor="@color/gray"
-        android:textSize="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/고혈압"
-        app:layout_constraintHorizontal_bias="0.648"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.63" />
-
-    <RadioButton
-        android:id="@+id/고혈압"
-        android:layout_width="91dp"
-        android:layout_height="38dp"
-        android:fontFamily="@font/kukde_alt"
-        android:text="고혈압"
-        android:textColor="@color/gray"
-        android:textSize="20dp"
+        android:text="나이"
+        android:textColor="@color/gray_soft"
+        android:textSize="35dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.528"
+        app:layout_constraintHorizontal_bias="0.17"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.63" />
-
-    <RadioButton
-        android:id="@+id/당뇨"
-        android:layout_width="91dp"
-        android:layout_height="38dp"
-        android:layout_marginEnd="36dp"
-        android:layout_marginRight="36dp"
-        android:fontFamily="@font/kukde_alt"
-        android:text="당뇨"
-        android:textColor="@color/gray"
-        android:textSize="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.63" />
+        app:layout_constraintVertical_bias="0.204" />
 
     <ImageButton
         android:id="@+id/back_button"
@@ -201,4 +124,50 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.49"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/당뇨"
+        android:layout_width="85dp"
+        android:layout_height="47dp"
+        android:background="@drawable/ok_button_selector"
+        android:fontFamily="@font/kukde_alt"
+        android:text="당뇨"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.828"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.442" />
+
+    <Button
+        android:id="@+id/임산부"
+        android:layout_width="85dp"
+        android:layout_height="47dp"
+        android:background="@drawable/ok_button_selector"
+        android:fontFamily="@font/kukde_alt"
+        android:text="임산부"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.211"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.442" />
+
+    <Button
+        android:id="@+id/고혈압"
+        android:layout_width="85dp"
+        android:layout_height="47dp"
+        android:background="@drawable/ok_button_selector"
+        android:fontFamily="@font/kukde_alt"
+        android:text="고혈압"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.521"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.442" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

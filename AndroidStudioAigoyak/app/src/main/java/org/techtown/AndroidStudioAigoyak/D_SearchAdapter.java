@@ -22,8 +22,13 @@ public class D_SearchAdapter extends RecyclerView.Adapter<D_SearchAdapter.ViewHo
     private static final String TAG = "SearchAdapter";
 
     ArrayList<Search> items = new ArrayList<Search>();
-
+    Context context;
     OnNoteItemClickListener listener;
+
+    public D_SearchAdapter(Context context){
+        this.context = context;
+    }
+
 
     @NonNull
     @Override
@@ -67,19 +72,32 @@ public class D_SearchAdapter extends RecyclerView.Adapter<D_SearchAdapter.ViewHo
 
 
 
-    class ViewHolder extends RecyclerView.ViewHolder{
+    public class ViewHolder extends RecyclerView.ViewHolder{
         LinearLayout layout;
         TextView name;
         TextView corp;
         ImageView heart;
 
 
-        public ViewHolder(View itemView){
+        public ViewHolder(@NonNull View itemView){
             super(itemView);
             layout = itemView.findViewById(R.id.layout1);
             name = itemView.findViewById(R.id.name);
             corp = itemView.findViewById(R.id.corp);
             heart = itemView.findViewById(R.id.heart1);
+
+
+            itemView.setClickable(true);
+            itemView.setOnClickListener(new View.OnClickListener(){
+                @Override
+                        public void onClick(View v){
+                    int position = getAdapterPosition();
+                    if(position != RecyclerView.NO_POSITION){
+                        Intent intent =new Intent(context,E_MedicineInfo.class).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                        context.startActivity(intent);
+                    }
+                }
+            });
 
 
         }
