@@ -19,6 +19,7 @@ Medication Managing System Based on Open Data
   - 박수아 ([github](https://github.com/SuAAng))
   - 박주연 ([github](https://github.com/juyeoon))
 
+</br>
 
 🍀 **개발 환경**
 
