@@ -19,6 +19,13 @@ import android.database.Cursor;
 import android.util.Log;
 import android.widget.ImageButton;
 
+import org.xmlpull.v1.XmlPullParser;
+import org.xmlpull.v1.XmlPullParserFactory;
+
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.URL;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 
 public class D_SearchList extends AppCompatActivity {
@@ -41,9 +48,23 @@ public class D_SearchList extends AppCompatActivity {
             }
         });
 
-
-
         initUI();// 맞는진 모름
+        insertDatatoList();
+
+        /* 실행 안됨(오류)
+        if( !C_ProductNameSearch.items.isEmpty() ) {
+            //확인 코드
+            System.out.println("배열 내용 search");
+            System.out.println(C_ProductNameSearch.items.get(0)._id);
+            System.out.println(C_ProductNameSearch.items.get(0).name);
+            System.out.println(C_ProductNameSearch.items.get(0).corp);
+        }
+        else{
+            System.out.println("배열 비어있음");
+        }
+        */
+
+
     }
 
     private void initUI(){
@@ -53,10 +74,13 @@ public class D_SearchList extends AppCompatActivity {
         recyclerView.setLayoutManager(layoutManager);
 
         adapter = new D_SearchAdapter(this);
-        adapter.addItem(new Search(0,"아스피린","회사명1"));
-        adapter.addItem(new Search(1, "항생제", "회사명2"));
         recyclerView.setAdapter(adapter);
     }
 
+    public void insertDatatoList(){
+        adapter.setItems(C_ProductNameSearch.items);
+
+        adapter.notifyDataSetChanged();
+    }
 
 }
