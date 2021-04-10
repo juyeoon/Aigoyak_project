@@ -7,6 +7,7 @@ import android.content.Context;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import android.widget.ImageButton;
+import android.widget.TextView;
 
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
@@ -42,6 +43,9 @@ public class D_SearchList extends AppCompatActivity {
         String search_word = (String)getIntent().getSerializableExtra("search");//C_ProduchNameSearch에서 검색어 들고옴
 
         initUI();
+
+        TextView count = (TextView)findViewById((R.id.count));
+
 
         //뒤로가기 버튼 누름
         ImageButton button_change = (ImageButton) findViewById(R.id.back_button);
@@ -128,6 +132,7 @@ public class D_SearchList extends AppCompatActivity {
                                         public void run(){
                                             adapter.setItems(items);
                                             adapter.notifyDataSetChanged();
+                                            count.setText("검색결과 " + adapter.getItemCount() + "건");
                                         }
                                     });
                                     id++;//idex
@@ -140,6 +145,8 @@ public class D_SearchList extends AppCompatActivity {
                 catch (MalformedURLException e) { e.printStackTrace();} catch (IOException e) {e.printStackTrace();} catch (XmlPullParserException e) {e.printStackTrace();}
             }
         }.start();
+
+
     }
 
     private void initUI(){

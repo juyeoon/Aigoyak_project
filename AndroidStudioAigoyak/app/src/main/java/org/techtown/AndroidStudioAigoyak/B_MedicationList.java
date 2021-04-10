@@ -69,14 +69,14 @@ public class B_MedicationList extends RecyclerView.Adapter<B_MedicationList.View
             @Override
             public void onClick(View view){
                 int id = items.get(position).get_id();
+                String sql = "delete from " + NoteDatabase.TABLE_NOTE + " where " + "_id = " + id;
                 items.remove(position);
                 notifyItemRemoved(position);
-                String sql = "delete from " + NoteDatabase.TABLE_NOTE + " where " + "_id = " + id;
+                notifyDataSetChanged();
                 Log.d(TAG, "sql : " + sql);
                 NoteDatabase database = NoteDatabase.getInstance(context);
                 database.execSQL(sql);
                 //Toast.makeText(getContext(),"삭제완료", Toast.LENGTH_LONG).show(); //안됨..
-
             }
         });
 

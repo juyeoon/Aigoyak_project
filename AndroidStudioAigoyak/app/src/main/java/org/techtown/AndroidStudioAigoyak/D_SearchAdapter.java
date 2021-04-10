@@ -138,5 +138,4 @@ public class D_SearchAdapter extends RecyclerView.Adapter<D_SearchAdapter.ViewHo
     }
 
 
-
 }
