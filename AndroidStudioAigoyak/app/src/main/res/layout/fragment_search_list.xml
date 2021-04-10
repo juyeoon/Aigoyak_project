@@ -52,13 +52,16 @@
 
 
         </RelativeLayout>
-        <ImageView
-            android:id="@+id/heart1"
+
+
+        <ImageButton
+            android:id="@+id/heart_button"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_margin="10dp"
-            android:text="Button"
-            app:srcCompat="@drawable/empty_heart_lg"/>
+            android:background="#00ff0000"
+            android:scaleType="fitCenter"
+            android:src="@drawable/heart_button_selector" />
 
     </LinearLayout>
 

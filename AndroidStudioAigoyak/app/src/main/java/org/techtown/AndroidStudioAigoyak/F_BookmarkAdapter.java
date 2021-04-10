@@ -66,7 +66,20 @@ public class F_BookmarkAdapter extends RecyclerView.Adapter<F_BookmarkAdapter.Vi
             layout = itemView.findViewById(R.id.layout1);
             name = itemView.findViewById(R.id.name);
             corp = itemView.findViewById(R.id.corp);
-            heart = itemView.findViewById(R.id.heart1);
+            heart = itemView.findViewById(R.id.heart_button);
+
+            heart.setOnClickListener(new View.OnClickListener(){
+                @Override
+                public void onClick(View v){
+                    if(heart.isSelected()){
+                        heart.setSelected(false);
+                    }
+                    else{
+                        heart.setSelected(true);
+                    }
+                }
+            });
+
         }
 
         public void setItem(Search item) {//내가 적은 텍스트를 불러와 저장하는 것

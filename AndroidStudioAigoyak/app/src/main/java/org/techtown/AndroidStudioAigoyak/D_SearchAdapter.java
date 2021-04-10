@@ -8,7 +8,8 @@ import android.content.Context;
         import android.view.View;
         import android.view.ViewGroup;
         import android.widget.Button;
-        import android.widget.ImageView;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 
         import android.widget.LinearLayout;
         import android.widget.RelativeLayout;
@@ -79,7 +80,7 @@ public class D_SearchAdapter extends RecyclerView.Adapter<D_SearchAdapter.ViewHo
         LinearLayout layout;
         TextView name;
         TextView corp;
-        ImageView heart;
+        ImageButton heart;
 
 
         public ViewHolder(@NonNull View itemView){
@@ -87,7 +88,7 @@ public class D_SearchAdapter extends RecyclerView.Adapter<D_SearchAdapter.ViewHo
             layout = itemView.findViewById(R.id.layout1);
             name = itemView.findViewById(R.id.name);
             corp = itemView.findViewById(R.id.corp);
-            heart = itemView.findViewById(R.id.heart1);
+            heart = itemView.findViewById(R.id.heart_button);
 
             itemView.setClickable(true);
             itemView.setOnClickListener(new View.OnClickListener(){
@@ -97,6 +98,18 @@ public class D_SearchAdapter extends RecyclerView.Adapter<D_SearchAdapter.ViewHo
                     if(position != RecyclerView.NO_POSITION){
                         Intent intent =new Intent(context,E_MedicineInfo.class).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                         context.startActivity(intent);
+                    }
+                }
+            });
+
+            heart.setOnClickListener(new View.OnClickListener(){
+                @Override
+                public void onClick(View v){
+                    if(heart.isSelected()){
+                        heart.setSelected(false);
+                    }
+                    else{
+                        heart.setSelected(true);
                     }
                 }
             });
@@ -116,7 +129,6 @@ public class D_SearchAdapter extends RecyclerView.Adapter<D_SearchAdapter.ViewHo
         }
 
         public void setItem(Search item) {
-            heart.setVisibility(View.VISIBLE); //heart 조건 걸어서 보이게 하기 (아직 안 함)
             name.setText(item.getName());
             corp.setText(item.getCorp());
         }
