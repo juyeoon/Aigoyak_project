@@ -18,6 +18,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
@@ -60,6 +61,8 @@ public class B_MedicationList extends RecyclerView.Adapter<B_MedicationList.View
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int position){
         int i= 0;
+        int color_white = ContextCompat.getColor(context.getApplicationContext(), R.color.white);
+        int color_gray = ContextCompat.getColor(context.getApplicationContext(), R.color.gray);
         viewHolder.setItem(items.get(position));
 
         viewHolder.setLayout();
@@ -93,9 +96,11 @@ public class B_MedicationList extends RecyclerView.Adapter<B_MedicationList.View
         if(state == 0){//선택이 안 된 상태
             viewHolder.completeButton.setSelected(false);
             viewHolder.completeButton.setText("미\n완\n료");
+            viewHolder.completeButton.setTextColor(color_gray);
         }
         else if(state == 1){//선택된 상태
             viewHolder.completeButton.setSelected(true);
+            viewHolder.completeButton.setTextColor(color_white);
             viewHolder.completeButton.setText("완\n료");
         }
 
@@ -106,12 +111,14 @@ public class B_MedicationList extends RecyclerView.Adapter<B_MedicationList.View
                     updateNote(0, id);
                     viewHolder.completeButton.setSelected(false);
                     viewHolder.completeButton.setText("미\n완\n료");
+                    viewHolder.completeButton.setTextColor(color_gray);
 
                 }
                 else{//선택 안 된 상태에서 선택된 상태로 바꿈
                     updateNote(1, id);
                     viewHolder.completeButton.setSelected(true);
                     viewHolder.completeButton.setText("완\n료");
+                    viewHolder.completeButton.setTextColor(color_white);
                 }
             }
         });

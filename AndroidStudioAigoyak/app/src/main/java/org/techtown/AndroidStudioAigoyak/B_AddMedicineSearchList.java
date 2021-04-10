@@ -1,33 +1,33 @@
 package org.techtown.AndroidStudioAigoyak;
 
-import androidx.appcompat.app.AppCompatActivity;
-import android.os.Bundle;
-import android.view.View;
-import android.content.Context;
-import androidx.recyclerview.widget.RecyclerView;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import android.widget.ImageButton;
-import android.widget.TextView;
+        import androidx.appcompat.app.AppCompatActivity;
+        import android.os.Bundle;
+        import android.view.View;
+        import android.content.Context;
+        import androidx.recyclerview.widget.RecyclerView;
+        import androidx.recyclerview.widget.LinearLayoutManager;
+        import android.widget.ImageButton;
+        import android.widget.TextView;
 
-import org.xmlpull.v1.XmlPullParser;
-import org.xmlpull.v1.XmlPullParserException;
-import org.xmlpull.v1.XmlPullParserFactory;
+        import org.xmlpull.v1.XmlPullParser;
+        import org.xmlpull.v1.XmlPullParserException;
+        import org.xmlpull.v1.XmlPullParserFactory;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.net.URLEncoder;
-import java.util.ArrayList;
+        import java.io.IOException;
+        import java.io.InputStream;
+        import java.io.InputStreamReader;
+        import java.net.MalformedURLException;
+        import java.net.URL;
+        import java.net.URLEncoder;
+        import java.util.ArrayList;
 
+////////////////////////////////////////////////이거 고치는 중
 
-
-public class D_SearchList extends AppCompatActivity {
-    private static final String TAG = "SearchList";
+public class B_AddMedicineSearchList extends AppCompatActivity {
+    private static final String TAG = "B_AddMedicineSearchList";
     ArrayList<Search> items = new ArrayList<Search>();
     RecyclerView recyclerView;
-    D_SearchAdapter adapter;
+    B_AddSearchAdapter adapter;
     Context context = this;
 
     //API 추가
@@ -39,8 +39,7 @@ public class D_SearchList extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.search_list);
-
-        String search_word = (String)getIntent().getSerializableExtra("search");//C_ProduchNameSearch에서 검색어 들고옴
+        String search_word = (String)getIntent().getSerializableExtra("search");//B_AddMedicine에서 검색어 들고옴
 
         initUI();
 
@@ -155,7 +154,7 @@ public class D_SearchList extends AppCompatActivity {
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
 
-        adapter = new D_SearchAdapter(this);
+        adapter = new B_AddSearchAdapter(this);
         recyclerView.setAdapter(adapter);
     }
 }

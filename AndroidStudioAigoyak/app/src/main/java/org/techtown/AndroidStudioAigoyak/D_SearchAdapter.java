@@ -2,7 +2,8 @@ package org.techtown.AndroidStudioAigoyak;
 
 import android.content.Context;
         import android.content.Intent;
-        import android.provider.ContactsContract;
+import android.database.Cursor;
+import android.provider.ContactsContract;
         import android.util.Log;
         import android.view.LayoutInflater;
         import android.view.View;
@@ -44,6 +45,38 @@ public class D_SearchAdapter extends RecyclerView.Adapter<D_SearchAdapter.ViewHo
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int position){
         viewHolder.setItem(items.get(position));
         viewHolder.setLayout();
+
+
+        NoteDatabase database = NoteDatabase.getInstance(context);
+        String sql = "select name from " + NoteDatabase.TABLE_BOOKMARK;
+        Log.d(TAG, "sql : " + sql);
+        String name = items.get(position).getName();
+        int recordCount=-1;
+        if (database != null){
+            Cursor outCursor = database.rawQuery(sql);
+            recordCount = outCursor.getCount();
+
+            for(int i=0; i<recordCount; i++){
+                outCursor.moveToNext();
+                String nname = outCursor.getString(0);
+                System.out.println("D_SearchAdapter(nname): "+nname + "i값: " +i + " name: " + name);
+                if(name.equals(nname)){//Bookmark에 저장되어 있으면 버튼 선택된 상태
+                    viewHolder.heart.setSelected(true);
+                    break;
+                }
+                else{
+                    viewHolder.heart.setSelected(false);
+                }
+            }
+            outCursor.close();
+        }
+
+
+
+
+
+
+
     }
 
     //삭제하는건데 이거 연구해야할 것 같음.
@@ -107,9 +140,11 @@ public class D_SearchAdapter extends RecyclerView.Adapter<D_SearchAdapter.ViewHo
                 public void onClick(View v){
                     if(heart.isSelected()){
                         heart.setSelected(false);
+                        deleteNote(name.getText().toString());
                     }
                     else{
                         heart.setSelected(true);
+                        saveNote(name.getText().toString(), corp.getText().toString());
                     }
                 }
             });
@@ -137,5 +172,23 @@ public class D_SearchAdapter extends RecyclerView.Adapter<D_SearchAdapter.ViewHo
         }
     }
 
+    //db에 데이터 저장
+    private void saveNote(String name, String corp){
 
+        String sql = "insert into " +NoteDatabase.TABLE_BOOKMARK +//이거 바꾸다 말았음 이건 했는데 나중에 다른거 고치기
+                "(NAME, CORP) values (" +
+                "'"+ name + "', " +
+                "'"+ corp + "')";
+        Log.d(TAG, "sql : " + sql);
+        NoteDatabase database = NoteDatabase.getInstance(context);
+        database.execSQL(sql);
+
+    }
+    //db에서 삭제
+    private void deleteNote(String name){
+        String sql = "delete from " + NoteDatabase.TABLE_BOOKMARK + " where " + "name = '" + name +"'";
+        Log.d(TAG, "sql : " + sql);
+        NoteDatabase database = NoteDatabase.getInstance(context);
+        database.execSQL(sql);
+    }
 }

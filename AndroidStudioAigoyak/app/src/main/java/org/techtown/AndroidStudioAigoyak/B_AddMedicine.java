@@ -1,8 +1,7 @@
 package org.techtown.AndroidStudioAigoyak;
 
 import android.app.DatePickerDialog;
-        import android.app.Dialog;
-        import android.app.TimePickerDialog;
+import android.app.TimePickerDialog;
         import android.content.Context;
 import android.os.Bundle;
         import androidx.appcompat.app.AppCompatActivity;
@@ -10,23 +9,24 @@ import android.os.Bundle;
         import android.util.Log;
         import android.view.View;
         import android.widget.DatePicker;
-        import android.widget.ImageButton;
+import android.widget.EditText;
+import android.widget.ImageButton;
         import android.widget.Button;
-        import android.widget.TimePicker;
+import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.TimePicker;
         import android.widget.Toast;
         import android.app.AlarmManager;
         import android.app.PendingIntent;
         import androidx.core.app.NotificationCompat;
-        import android.app.Notification;
-        import android.app.NotificationChannel;
-        import android.app.NotificationManager;
+
+import android.app.NotificationManager;
         import java.text.ParseException;
         import java.text.SimpleDateFormat;
 
         import java.util.GregorianCalendar;
         import java.util.Calendar;
         import java.util.Date;
-        import java.util.Locale;
 
 public class B_AddMedicine extends AppCompatActivity {
     private static final String TAG = "B_AddMedicine";
@@ -54,8 +54,9 @@ public class B_AddMedicine extends AppCompatActivity {
     Button date_end_button;
     Button clock_button;
     Button button_finish;
+    EditText search_box;
     Context context;
-
+    TextView medicine_name;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,8 +68,11 @@ public class B_AddMedicine extends AppCompatActivity {
 
         Log.v("Alarm: ", mCalendar.getTime().toString());
 
-
         setContentView(R.layout.add_medicine);
+
+        String get_name = (String)getIntent().getSerializableExtra("productName");//B_AddSearchAdapter에서 의약품명 들고옴
+        medicine_name = (TextView) findViewById(R.id.의약품선택);
+        medicine_name.setText(get_name);//가져온 의약품 이름 적용
 
         //뒤로가기 버튼 누름
         ImageButton button_back = (ImageButton) findViewById(R.id.button_back);
@@ -78,6 +82,20 @@ public class B_AddMedicine extends AppCompatActivity {
                 onBackPressed();
             }
         });
+
+        //검색 버튼 누름. 검색하는 화면 띄움
+        ImageView search_button = (ImageView) findViewById((R.id.search_button));
+        search_button.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+                search_box = (EditText) findViewById((R.id.search_box));
+                String search_word = search_box.getText().toString();//검색어 얻어오기
+                Intent intent = new Intent(B_AddMedicine.this, B_AddMedicineSearchList.class);
+                intent.putExtra("search", search_word);//검색어 B_AddMedicineSearchList로 보냄.
+                startActivity(intent);
+            }
+        });
+
+
 
         //복약 시작 날짜 정하는 버튼
         date_start_button = (Button) findViewById((R.id.date_start_button));
@@ -176,7 +194,7 @@ public class B_AddMedicine extends AppCompatActivity {
             }
         });
 
-        Button search_button = (Button) findViewById((R.id.search_button)); // 아직 안 함.
+
 
 
 
@@ -213,7 +231,7 @@ public class B_AddMedicine extends AppCompatActivity {
 
     //데이터 저장
     private void saveNote(int ndate){
-        String name = "노란약";//임의로 지정
+        String name = medicine_name.getText().toString();//임의로 지정
         String clock = clock_button.getText().toString();
 
         String sql = "insert into " +NoteDatabase.TABLE_NOTE +//이거 바꾸다 말았음 이건 했는데 나중에 다른거 고치기

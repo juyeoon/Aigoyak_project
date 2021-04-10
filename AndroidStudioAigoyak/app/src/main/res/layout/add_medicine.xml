@@ -47,78 +47,58 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.215" />
 
-    <TextView
-        android:id="@+id/복용기간"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/kukde_bdb"
-        android:text="복용 기간"
 
-        android:textColor="@color/gray"
-        android:textSize="25dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.225"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.382" />
-
-    <Button
-        android:id="@+id/date_start_button"
-        android:layout_width="275dp"
-        android:layout_height="44dp"
-        android:background="@drawable/editbox_change"
-        android:fontFamily="@font/kukde_alt"
-        android:gravity="center_vertical"
-        android:paddingLeft="20dp"
-        android:shadowRadius="5"
-        android:text="복용 시작 날짜를 선택해 주세요"
-        android:textColor="@color/gray_soft"
-        android:textSize="15sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.514"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.446" />
-
-    <Button
-        android:id="@+id/search_button"
+    <EditText
+        android:id="@+id/search_box"
         android:layout_width="275dp"
         android:layout_height="44dp"
         android:layout_weight="1"
         android:background="@drawable/editbox_change"
+        android:ems="10"
         android:fontFamily="@font/kukde_alt"
         android:gravity="center_vertical"
-        android:paddingLeft="20dp"
-        android:shadowRadius="5"
-        android:text="제품명/성분명/약모양"
+        android:inputType="textPersonName"
+        android:padding="10dp"
+        android:hint="   제품명을 입력해주세요"
         android:textColor="@color/gray_soft"
         android:textSize="15sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.275" />
 
-    <Button
-        android:id="@+id/date_end_button"
-        android:layout_width="275dp"
-        android:layout_height="44dp"
-        android:background="@drawable/editbox_change"
-        android:fontFamily="@font/kukde_alt"
-        android:gravity="center_vertical"
-        android:paddingLeft="20dp"
-        android:shadowRadius="5"
-        android:text="복용 종료 날짜를 선택해 주세요"
-        android:textColor="@color/gray_soft"
-        android:textSize="15sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.514"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/imageView2"
-        app:layout_constraintVertical_bias="0.529" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.273" />
+
+    <TextView
+        android:id="@+id/plus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/kukde_bdb"
+        android:text="+"
+        android:textColor="@color/gray"
+        android:textSize="30dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.195"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.36" />
+
+    <TextView
+        android:id="@+id/의약품선택"
+        android:layout_width="235dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/kukde_bdb"
+        android:text="의약품을 선택해주세요"
+        android:textColor="@color/gray"
+        android:textSize="17dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.12"
+        app:layout_constraintStart_toEndOf="@+id/plus"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.363" />
 
     <Button
         android:id="@+id/clock_button"
@@ -137,7 +117,81 @@
         app:layout_constraintHorizontal_bias="0.514"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/imageView2"
-        app:layout_constraintVertical_bias="0.691" />
+        app:layout_constraintVertical_bias="0.771" />
+
+    <Button
+        android:id="@+id/date_start_button"
+        android:layout_width="275dp"
+        android:layout_height="44dp"
+        android:background="@drawable/editbox_change"
+        android:fontFamily="@font/kukde_alt"
+        android:gravity="center_vertical"
+        android:paddingLeft="20dp"
+        android:shadowRadius="5"
+        android:text="복용 시작 날짜를 선택해 주세요"
+        android:textColor="@color/gray_soft"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.514"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.526" />
+
+    <Button
+        android:id="@+id/date_end_button"
+        android:layout_width="275dp"
+        android:layout_height="44dp"
+        android:background="@drawable/editbox_change"
+        android:fontFamily="@font/kukde_alt"
+        android:gravity="center_vertical"
+        android:paddingLeft="20dp"
+        android:shadowRadius="5"
+        android:text="복용 종료 날짜를 선택해 주세요"
+        android:textColor="@color/gray_soft"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.514"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imageView2"
+        app:layout_constraintVertical_bias="0.608" />
+
+    <ImageView
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintBottom_toBottomOf="@+id/date_start_button"
+        app:layout_constraintEnd_toEndOf="@+id/date_start_button"
+        app:layout_constraintHorizontal_bias="0.96"
+        app:layout_constraintStart_toStartOf="@+id/date_start_button"
+        app:layout_constraintTop_toTopOf="@+id/date_start_button"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/calendar_lg" />
+
+    <ImageView
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintBottom_toBottomOf="@+id/date_end_button"
+        app:layout_constraintEnd_toEndOf="@+id/date_end_button"
+        app:layout_constraintHorizontal_bias="0.96"
+        app:layout_constraintStart_toStartOf="@+id/date_end_button"
+        app:layout_constraintTop_toTopOf="@+id/date_end_button"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/calendar_lg" />
+
+    <ImageView
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintBottom_toBottomOf="@+id/clock_button"
+        app:layout_constraintEnd_toEndOf="@+id/clock_button"
+        app:layout_constraintHorizontal_bias="0.96"
+        app:layout_constraintStart_toStartOf="@+id/clock_button"
+        app:layout_constraintTop_toTopOf="@+id/clock_button"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/clock_lg" />
 
     <TextView
         android:id="@+id/복용시각"
@@ -152,7 +206,23 @@
         app:layout_constraintHorizontal_bias="0.215"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.626" />
+        app:layout_constraintVertical_bias="0.704" />
+
+    <TextView
+        android:id="@+id/복용기간"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/kukde_bdb"
+        android:text="복용 기간"
+
+        android:textColor="@color/gray"
+        android:textSize="25dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.225"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.46" />
 
     <Button
         android:id="@+id/button_finish"
@@ -187,50 +257,15 @@
         app:layout_constraintVertical_bias="0.023" />
 
     <ImageView
+        android:id="@+id/search_button"
         android:layout_width="20dp"
         android:layout_height="20dp"
         android:layout_marginTop="10dp"
-        app:layout_constraintBottom_toBottomOf="@+id/date_start_button"
-        app:layout_constraintEnd_toEndOf="@+id/date_start_button"
-        app:layout_constraintHorizontal_bias="0.959"
-        app:layout_constraintStart_toStartOf="@+id/date_start_button"
-        app:layout_constraintTop_toTopOf="@+id/date_start_button"
-        app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/calendar_lg" />
-
-    <ImageView
-        android:layout_width="20dp"
-        android:layout_height="20dp"
-        android:layout_marginTop="10dp"
-        app:layout_constraintBottom_toBottomOf="@+id/date_end_button"
-        app:layout_constraintEnd_toEndOf="@+id/date_end_button"
-        app:layout_constraintHorizontal_bias="0.959"
-        app:layout_constraintStart_toStartOf="@+id/date_end_button"
-        app:layout_constraintTop_toTopOf="@+id/date_end_button"
-        app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/calendar_lg" />
-
-    <ImageView
-        android:layout_width="20dp"
-        android:layout_height="20dp"
-        android:layout_marginTop="10dp"
-        app:layout_constraintBottom_toBottomOf="@+id/clock_button"
-        app:layout_constraintEnd_toEndOf="@+id/clock_button"
-        app:layout_constraintHorizontal_bias="0.959"
-        app:layout_constraintStart_toStartOf="@+id/clock_button"
-        app:layout_constraintTop_toTopOf="@+id/clock_button"
-        app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/clock_lg" />
-
-    <ImageView
-        android:layout_width="20dp"
-        android:layout_height="20dp"
-        android:layout_marginTop="10dp"
-        app:layout_constraintBottom_toBottomOf="@+id/search_button"
-        app:layout_constraintEnd_toEndOf="@+id/search_button"
+        app:layout_constraintBottom_toBottomOf="@+id/search_box"
+        app:layout_constraintEnd_toEndOf="@+id/search_box"
         app:layout_constraintHorizontal_bias="0.971"
-        app:layout_constraintStart_toStartOf="@+id/search_button"
-        app:layout_constraintTop_toTopOf="@+id/search_button"
+        app:layout_constraintStart_toStartOf="@+id/search_box"
+        app:layout_constraintTop_toTopOf="@+id/search_box"
         app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/magnifying_glass_lg" />
 </androidx.constraintlayout.widget.ConstraintLayout>
