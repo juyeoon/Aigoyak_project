@@ -38,7 +38,7 @@ public class B_AddMedicine extends AppCompatActivity {
 
     Calendar cal = Calendar.getInstance();
     int y = cal.get(Calendar.YEAR);//년
-    int m = cal.get(Calendar.MONTH);//월
+    int m = cal.get(Calendar.MONTH)+1;//월
     int d = cal.get(Calendar.DAY_OF_MONTH);//일
     int y2 = cal.get(Calendar.YEAR);//년2
     int m2 = cal.get(Calendar.MONTH);//월2
@@ -49,7 +49,7 @@ public class B_AddMedicine extends AppCompatActivity {
     int date = y*10000 + m*100 + d;
     int date2 = y2*10000 + m2*100 + d2;
     int a=0;
-
+    int time;
     Button date_start_button;
     Button date_end_button;
     Button clock_button;
@@ -184,13 +184,14 @@ public class B_AddMedicine extends AppCompatActivity {
 
     //알람 설정
     public void setAlarm(){
-        int time = h*100+mi;
+        time = (y%100)*1000000+(m*31+d)*1439+(h*60+mi);
+        System.out.println(time);
         Intent receiverIntent = new Intent(this, Alarm.class);
-        //receiverIntent.putExtra("text","연습");------------------------------------------------------------------------------이거 살려야함.
-        //receiverIntent.putExtra("id", time);
+        receiverIntent.putExtra("channel_id","channel_id"+time);
+        receiverIntent.putExtra("id", time);
 
 
-        PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 0, receiverIntent, 0);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(this, time, receiverIntent, PendingIntent.FLAG_UPDATE_CURRENT);
 
         String from = ""+y+"-"+m+"-"+d+" "+h+":"+mi+":00";
         System.out.println(from);

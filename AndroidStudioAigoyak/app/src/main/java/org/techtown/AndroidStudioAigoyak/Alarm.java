@@ -23,13 +23,13 @@ public class Alarm extends BroadcastReceiver{
     NotificationManager manager;
     NotificationCompat.Builder builder;
 
-    private static String CHANNEL_ID = "channel1";
-    private static String CHANNEL_NAME = "Channel1";
 
+    int id;
     @Override
     public void onReceive(Context context, Intent intent) {
-        String text =intent.getStringExtra("text");
-        int id = intent.getIntExtra("id",0);
+        id = intent.getIntExtra("id",0);
+        String CHANNEL_ID = intent.getStringExtra("channel_id");
+        String CHANNEL_NAME = intent.getStringExtra("channel_id");
         builder = null;
 
 
@@ -47,7 +47,7 @@ public class Alarm extends BroadcastReceiver{
         System.out.println("잘될걸" + id);
         //알림창 클릭 시 activity 화면 부름
         Intent intent2 = new Intent(context, MainActivity.class);
-        PendingIntent pendingIntent = PendingIntent.getActivity(context,101,intent2, PendingIntent.FLAG_UPDATE_CURRENT);
+        PendingIntent pendingIntent = PendingIntent.getActivity(context,id,intent2, PendingIntent.FLAG_UPDATE_CURRENT);
 
 
         builder.setSmallIcon(R.drawable.logo);
@@ -63,6 +63,6 @@ public class Alarm extends BroadcastReceiver{
         builder.setContentIntent(pendingIntent);
 
         Notification notification = builder.build();
-        manager.notify(1,notification);//id를 계속 다르게 주면 됨 알림 여러개 가능.
+        manager.notify(id,notification);//id를 계속 다르게 주면 됨 알림 여러개 가능.
     }
 }
