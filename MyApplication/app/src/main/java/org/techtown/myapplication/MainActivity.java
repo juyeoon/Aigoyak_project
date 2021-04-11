@@ -29,10 +29,12 @@ public class MainActivity extends AppCompatActivity {
 
     //데이터 받아 온 것 여기 저장
     //String sampleName = "타이레놀8시간이알서방정"; //사용할지 안 할지 모르겠음
-    String sampleCode = "199603003"; //예시 데이터
+    //String sampleCode = "199603003";//예시 데이터
+    String sampleCode = "199200813";
+
 
 //************************************************ apiKey 넣어야함 8888888888888888888888888888888888888888888888888888
-    String apiKey; //="서비스키";
+    String apiKey="COqqRqdIM6Kkz9qfzXGH5geAKxrfy90RL6AhqU4%2BaUT19SMd4Oy0YM7lpTZP8%2BY%2FgegeDNplMu%2FA%2B8HdJfGhKQ%3D%3D";
     String imageURL; //이미지 URL 저장
 
     ListView listView;
@@ -134,11 +136,20 @@ public class MainActivity extends AppCompatActivity {
                                 else if(tagName.equals("efcyQesitm")){
                                     buffer.append("▼ 효과 및 효능");
                                     xpp.next();
-                                    //p태그가 나오는 것을 막기 위한 코드
+                                    //다른 태그가 나오는 것을 막기 위한 코드
                                     String str = xpp.getText();
-                                    String strc = str.replaceAll("<p>", "");
-                                    strc = strc.replaceAll("</p>", "");
-                                    buffer.append("\n"+strc+"\n\n");
+                                    if(str!=null){
+                                        String strc = str.replaceAll("<p>", "");
+                                        strc = strc.replaceAll("</p>", "");
+                                        strc = strc.replaceAll("<sup>", "");
+                                        strc = strc.replaceAll("</sup>", "");
+                                        strc = strc.replaceAll("<sub>", "");
+                                        strc = strc.replaceAll("</sup>", "");
+                                        buffer.append("\n"+strc+"\n\n");
+                                    }
+                                    else{
+                                        buffer.append("\n(없음)\n\n");
+                                    }
                                 }
                                 //사용법
                                 else if(tagName.equals("useMethodQesitm")){
@@ -146,19 +157,26 @@ public class MainActivity extends AppCompatActivity {
                                     xpp.next();
                                     //p태그가 나오는 것을 막기 위한 코드
                                     String str = xpp.getText();
-                                    String strc = str.replaceAll("<p>", "");
-                                    strc = strc.replaceAll("</p>", "");
-                                    buffer.append("\n"+strc+"\n\n");
+                                    if(str!=null){
+                                        String strc = str.replaceAll("<p>", "");
+                                        strc = strc.replaceAll("</p>", "");
+                                        buffer.append("\n"+strc+"\n\n");
+                                    }
+                                    else{
+                                        buffer.append("\n(없음)\n\n");
+                                    }
                                 }
-                                //주의사항 경고
+                                //주의사항 경고//새 버전
                                 else if(tagName.equals("atpnWarnQesitm")){
-                                    buffer.append("▼ 사용 전 반드시 알아야 할 사항");
                                     xpp.next();
                                     //p태그가 나오는 것을 막기 위한 코드
                                     String str = xpp.getText();
-                                    String strc = str.replaceAll("<p>", "");
-                                    strc = strc.replaceAll("</p>", "");
-                                    buffer.append("\n"+strc+"\n\n");
+                                    if(str!=null){
+                                        String strc = str.replaceAll("<p>", "");
+                                        strc = strc.replaceAll("</p>", "");
+                                        buffer.append("▼ 사용 전 반드시 알아야 할 사항");
+                                        buffer.append("\n"+strc+"\n\n");
+                                    }
                                 }
                                 //주의사항
                                 else if(tagName.equals("atpnQesitm")){
@@ -166,9 +184,14 @@ public class MainActivity extends AppCompatActivity {
                                     xpp.next();
                                     //p태그가 나오는 것을 막기 위한 코드
                                     String str = xpp.getText();
-                                    String strc = str.replaceAll("<p>", "");
-                                    strc = strc.replaceAll("</p>", "");
-                                    buffer.append("\n"+strc+"\n\n");
+                                    if(str!=null){
+                                        String strc = str.replaceAll("<p>", "");
+                                        strc = strc.replaceAll("</p>", "");
+                                        buffer.append("\n"+strc+"\n\n");
+                                    }
+                                    else{
+                                        buffer.append("\n(없음)\n\n");
+                                    };
                                 }
                                 //상호작용
                                 else if(tagName.equals("intrcQesitm")){
@@ -176,9 +199,14 @@ public class MainActivity extends AppCompatActivity {
                                     xpp.next();
                                     //p태그가 나오는 것을 막기 위한 코드
                                     String str = xpp.getText();
-                                    String strc = str.replaceAll("<p>", "");
-                                    strc = strc.replaceAll("</p>", "");
-                                    buffer.append("\n"+strc+"\n\n");
+                                    if(str!=null){
+                                        String strc = str.replaceAll("<p>", "");
+                                        strc = strc.replaceAll("</p>", "");
+                                        buffer.append("\n"+strc+"\n\n");
+                                    }
+                                    else{
+                                        buffer.append("\n(없음)\n\n");
+                                    };
                                 }
                                 //부작용
                                 else if(tagName.equals("seQesitm")){
@@ -186,9 +214,14 @@ public class MainActivity extends AppCompatActivity {
                                     xpp.next();
                                     //p태그가 나오는 것을 막기 위한 코드
                                     String str = xpp.getText();
-                                    String strc = str.replaceAll("<p>", "");
-                                    strc = strc.replaceAll("</p>", "");
-                                    buffer.append("\n"+strc+"\n\n");
+                                    if(str!=null){
+                                        String strc = str.replaceAll("<p>", "");
+                                        strc = strc.replaceAll("</p>", "");
+                                        buffer.append("\n"+strc+"\n\n");
+                                    }
+                                    else{
+                                        buffer.append("\n(없음)\n\n");
+                                    };
                                 }
                                 //보관법
                                 else if(tagName.equals("depositMethodQesitm")){
@@ -196,9 +229,14 @@ public class MainActivity extends AppCompatActivity {
                                     xpp.next();
                                     //p태그가 나오는 것을 막기 위한 코드
                                     String str = xpp.getText();
-                                    String strc = str.replaceAll("<p>", "");
-                                    strc = strc.replaceAll("</p>", "");
-                                    buffer.append("\n"+strc+"\n\n");
+                                    if(str!=null){
+                                        String strc = str.replaceAll("<p>", "");
+                                        strc = strc.replaceAll("</p>", "");
+                                        buffer.append("\n"+strc+"\n\n");
+                                    }
+                                    else{
+                                        buffer.append("\n(없음)\n\n");
+                                    };
                                 }
                                 break;
 
@@ -216,6 +254,7 @@ public class MainActivity extends AppCompatActivity {
                         }
                         eventType=xpp.next();
                     }
+
 
                     //API3 parsing
                     while(eventType2!=XmlPullParser.END_DOCUMENT){
@@ -293,7 +332,7 @@ public class MainActivity extends AppCompatActivity {
                                 }
 
                                 //세트 "LENG_LONG" & "LENG_SHORT" & "THICK"(크기)
-                               else if(tagName2.equals("LENG_LONG")){
+                                else if(tagName2.equals("LENG_LONG")){
                                     buffer.append("▼크기(mm)\n");
                                     xpp2.next();
                                     //null -> 없음
@@ -375,6 +414,7 @@ public class MainActivity extends AppCompatActivity {
                         }
                         eventType2=xpp2.next();
                     }//while ..
+
 
                     //toast message
                     runOnUiThread(new Runnable() {
