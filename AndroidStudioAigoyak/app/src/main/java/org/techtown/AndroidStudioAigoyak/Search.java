@@ -39,7 +39,7 @@ public class Search {
     public String getCode() {
         return code;
     }
-    public void setCode(String corp){
+    public void setCode(String code){
         this.code = code;
     }
 

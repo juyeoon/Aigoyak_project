@@ -71,6 +71,9 @@ public class B_AddMedicine extends AppCompatActivity {
         setContentView(R.layout.add_medicine);
 
         String get_name = (String)getIntent().getSerializableExtra("productName");//B_AddSearchAdapter에서 의약품명 들고옴
+        String get_code = (String)getIntent().getSerializableExtra("productCode");//B_AddSearchAdapter에서 품번 들고옴
+        System.out.println("get_name = " + get_name);
+        System.out.println("get_code = " + get_code);
         medicine_name = (TextView) findViewById(R.id.의약품선택);
         medicine_name.setText(get_name);//가져온 의약품 이름 적용
 
@@ -149,7 +152,7 @@ public class B_AddMedicine extends AppCompatActivity {
 
                         for (int j = d; j < 32; j++) {// 시작달의 d일부터 31일까지 저장.
                             ndate = ny * 10000 + nm * 100 + nd;
-                            saveNote(ndate);
+                            saveNote(get_code, ndate);
                             nd++;
                         }
 
@@ -159,7 +162,7 @@ public class B_AddMedicine extends AppCompatActivity {
 
                             for (int j = 1; j < 32; j++) {// 시작달의 1일부터 31일까지 저장.
                                 ndate = ny * 10000 + nm * 100 + nd;
-                                saveNote(ndate);
+                                saveNote(get_code, ndate);
                                 nd++;
                             }
 
@@ -171,18 +174,17 @@ public class B_AddMedicine extends AppCompatActivity {
                         nd = 1;//1일부터
                         for (int k = 1; k <= d2; k++) {// 끝나는 달의 1일부터 d2일까지 저장.
                             ndate = ny * 10000 + nm * 100 + nd;
-                            saveNote(ndate);
+                            saveNote(get_code, ndate);
                             nd++;
                         }
                     }
                     else{//종료 달과 시작 달이 같을 때
                         for(int i=d; i<=d2; i++){//d일부터 d2일까지 저장.
                             ndate = ny*10000+nm*100+nd;
-                            saveNote(ndate);
+                            saveNote(get_code, ndate);
                             nd++;
                         }
                     }
-
 
                     Intent intent = new Intent(B_AddMedicine.this, MainActivity.class);
                     startActivity(intent);
@@ -205,7 +207,7 @@ public class B_AddMedicine extends AppCompatActivity {
         time = (y%100)*1000000+(m*31+d)*1439+(h*60+mi);
         System.out.println(time);
         Intent receiverIntent = new Intent(this, Alarm.class);
-        receiverIntent.putExtra("channel_id","channel_id"+time);
+        receiverIntent.putExtra("channel_id","channel_id" + time);
         receiverIntent.putExtra("id", time);
 
 
@@ -230,12 +232,13 @@ public class B_AddMedicine extends AppCompatActivity {
 
 
     //데이터 저장
-    private void saveNote(int ndate){
+    private void saveNote(String code,int ndate){
         String name = medicine_name.getText().toString();//임의로 지정
         String clock = clock_button.getText().toString();
 
         String sql = "insert into " +NoteDatabase.TABLE_NOTE +//이거 바꾸다 말았음 이건 했는데 나중에 다른거 고치기
-                "(NAME, CLOCK, DATE, DATE2) values (" +
+                "(CODE, NAME, CLOCK, DATE, DATE2) values (" +
+                "'"+ code + "', " +
                 "'"+ name + "', " +
                 "'"+ clock + "', " +
                 ndate + ", " +

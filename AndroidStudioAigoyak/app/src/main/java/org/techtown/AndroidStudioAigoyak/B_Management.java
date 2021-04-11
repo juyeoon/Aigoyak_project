@@ -107,7 +107,7 @@ public class B_Management extends Fragment{
 
     //db연결해서 데이터를 리스트에 저장
     public int loadNoteListData(){
-        String sql = "select _id, NAME, CLOCK, DATE, DATE2 from " + NoteDatabase.TABLE_NOTE + " where DATE = " + select_date + " order by _id desc";
+        String sql = "select _id, CODE, NAME, CLOCK, DATE, DATE2 from " + NoteDatabase.TABLE_NOTE + " where DATE = " + select_date + " order by _id desc";
         System.out.println(sql);
         int recordCount=-1;
         NoteDatabase database = NoteDatabase.getInstance(context);
@@ -125,12 +125,13 @@ public class B_Management extends Fragment{
                 outCursor.moveToNext();
 
                 int _id = outCursor.getInt(0);
-                String name = outCursor.getString(1);
-                String clock = outCursor.getString(2);
-                int date = outCursor.getInt(3);
-                int date2 = outCursor.getInt(4);
+                String code = outCursor.getString(1);
+                String name = outCursor.getString(2);
+                String clock = outCursor.getString(3);
+                int date = outCursor.getInt(4);
+                int date2 = outCursor.getInt(5);
 
-                items.add(new Note(_id, name, clock, date, date2));
+                items.add(new Note(_id, code, name, clock, date, date2));
             }
             outCursor.close();
 

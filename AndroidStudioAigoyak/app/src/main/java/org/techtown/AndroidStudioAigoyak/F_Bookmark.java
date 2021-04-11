@@ -1,6 +1,6 @@
 package org.techtown.AndroidStudioAigoyak;
 
-        import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
         import android.os.Bundle;
         import android.view.LayoutInflater;
         import android.view.View;
@@ -60,7 +60,7 @@ public class F_Bookmark extends AppCompatActivity {
         //String medicine_name = "아스피린";
         //String sql = "select _id, NAME, CORP from " + NoteDatabase.TABLE_MEDICINE; //bookmark테이블에 저장된 이름 불러오기
 
-        String sql = "select _id, NAME, CORP from " + NoteDatabase.TABLE_BOOKMARK; //임의로 설정함. 나중에 바꾸기
+        String sql = "select _id, CODE, NAME, CORP from " + NoteDatabase.TABLE_BOOKMARK; //임의로 설정함. 나중에 바꾸기
         System.out.println(sql);
         int recordCount=-1;
         NoteDatabase database = NoteDatabase.getInstance(context);
@@ -77,9 +77,10 @@ public class F_Bookmark extends AppCompatActivity {
                 outCursor.moveToNext();
 
                 int _id = outCursor.getInt(0);
-                String name = outCursor.getString(1);
-                String corp = outCursor.getString(2);
-                items.add(new Search(_id, name, corp,"0"));
+                String code = outCursor.getString(1);
+                String name = outCursor.getString(2);
+                String corp = outCursor.getString(3);
+                items.add(new Search(_id, name, corp, code));
             }
             outCursor.close();
 

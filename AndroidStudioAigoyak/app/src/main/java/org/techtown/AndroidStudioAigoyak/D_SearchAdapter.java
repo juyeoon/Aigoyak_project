@@ -28,8 +28,9 @@ public class D_SearchAdapter extends RecyclerView.Adapter<D_SearchAdapter.ViewHo
     OnNoteItemClickListener listener;
     Context context;
     String code;
+    String name;
+    String corp;
 
-    E_MedicineInfoDetail fragment = new E_MedicineInfoDetail();
 
     public D_SearchAdapter(Context context){
         this.context = context;
@@ -48,14 +49,14 @@ public class D_SearchAdapter extends RecyclerView.Adapter<D_SearchAdapter.ViewHo
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int position){
         viewHolder.setItem(items.get(position));
         viewHolder.setLayout();
+        code = items.get(position).getCode();
 
-        System.out.println("이거봐라: " + items.get(position).getName());
-        System.out.println("이거봐라2: code: "+code);
 
         NoteDatabase database = NoteDatabase.getInstance(context);
-        String sql = "select name from " + NoteDatabase.TABLE_BOOKMARK;
+        String sql = "select code from " + NoteDatabase.TABLE_BOOKMARK;
         Log.d(TAG, "sql : " + sql);
-        String name = items.get(position).getName();
+
+        System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@code" + code);
         int recordCount=-1;
         if (database != null){
             Cursor outCursor = database.rawQuery(sql);
@@ -63,9 +64,9 @@ public class D_SearchAdapter extends RecyclerView.Adapter<D_SearchAdapter.ViewHo
 
             for(int i=0; i<recordCount; i++){
                 outCursor.moveToNext();
-                String nname = outCursor.getString(0);
-                System.out.println("D_SearchAdapter(nname): "+nname + "i값: " +i + " name: " + name);
-                if(name.equals(nname)){//Bookmark에 저장되어 있으면 버튼 선택된 상태
+                String ncode = outCursor.getString(0);
+                System.out.println("D_SearchAdapter(nname): "+ncode + "i값: " +i + " code: " + code);
+                if(code.equals(ncode)){//Bookmark에 저장되어 있으면 버튼 선택된 상태
                     viewHolder.heart.setSelected(true);
                     break;
                 }
@@ -81,12 +82,32 @@ public class D_SearchAdapter extends RecyclerView.Adapter<D_SearchAdapter.ViewHo
             @Override
             public void onClick(View v){
                 if(position != RecyclerView.NO_POSITION){
-                    Intent intent =new Intent(context,E_MedicineInfo.class).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     code = items.get(position).getCode();
+                    name = items.get(position).getName();
+                    corp = items.get(position).getCorp();
+
+                    Intent intent =new Intent(context,E_MedicineInfo.class).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     intent.putExtra("code", code);//품목기준코드 E_MedicineInfo -> E_MedicineInfoDetail로 보냄.---------------------------------------------------------
-                    System.out.println("position: "+position);
-                    System.out.println("code: "+code);
+                    System.out.println("position: " + position);
+                    System.out.println("code: " + code);
                     context.startActivity(intent);
+                }
+            }
+        });
+
+        viewHolder.heart.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                code = items.get(position).getCode();
+                name = items.get(position).getName();
+                corp = items.get(position).getCorp();
+                if(viewHolder.heart.isSelected()){
+                    viewHolder.heart.setSelected(false);
+                    deleteNote(code);
+                }
+                else{
+                    viewHolder.heart.setSelected(true);
+                    saveNote(code, name, corp);
                 }
             }
         });
@@ -143,20 +164,6 @@ public class D_SearchAdapter extends RecyclerView.Adapter<D_SearchAdapter.ViewHo
 
 
 
-            heart.setOnClickListener(new View.OnClickListener(){
-                @Override
-                public void onClick(View v){
-                    if(heart.isSelected()){
-                        heart.setSelected(false);
-                        deleteNote(name.getText().toString());
-                    }
-                    else{
-                        heart.setSelected(true);
-                        saveNote(name.getText().toString(), corp.getText().toString());
-                    }
-                }
-            });
-
             //// 되나 몰것네
             /*
             itemView.setOnLongClickListener(new View.OnLongClickListener() {
@@ -181,10 +188,11 @@ public class D_SearchAdapter extends RecyclerView.Adapter<D_SearchAdapter.ViewHo
     }
 
     //db에 데이터 저장
-    private void saveNote(String name, String corp){
+    private void saveNote(String code, String name, String corp){
 
         String sql = "insert into " +NoteDatabase.TABLE_BOOKMARK +//이거 바꾸다 말았음 이건 했는데 나중에 다른거 고치기
-                "(NAME, CORP) values (" +
+                "(CODE, NAME, CORP) values (" +
+                "'"+ code + "', " +
                 "'"+ name + "', " +
                 "'"+ corp + "')";
         Log.d(TAG, "sql : " + sql);
@@ -193,8 +201,8 @@ public class D_SearchAdapter extends RecyclerView.Adapter<D_SearchAdapter.ViewHo
 
     }
     //db에서 삭제
-    private void deleteNote(String name){
-        String sql = "delete from " + NoteDatabase.TABLE_BOOKMARK + " where " + "name = '" + name +"'";
+    private void deleteNote(String code){
+        String sql = "delete from " + NoteDatabase.TABLE_BOOKMARK + " where " + "code = '" + code +"'";
         Log.d(TAG, "sql : " + sql);
         NoteDatabase database = NoteDatabase.getInstance(context);
         database.execSQL(sql);

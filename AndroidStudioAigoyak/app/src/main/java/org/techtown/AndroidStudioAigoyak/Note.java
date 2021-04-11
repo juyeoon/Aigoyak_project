@@ -2,13 +2,15 @@ package org.techtown.AndroidStudioAigoyak;
 
 public class Note {
     int _id;
+    String code;
     String name;
     String clock;
     int date;
     int date2;
 
-    public Note(int _id, String name, String clock, int date, int date2) {
+    public Note(int _id, String code, String name, String clock, int date, int date2) {
         this._id = _id;
+        this.code = code;
         this.name = name;
         this.clock = clock;
         this.date = date;
@@ -21,6 +23,13 @@ public class Note {
     }
     public void set_id(int _id){
         this._id = _id;
+    }
+
+    public String getCode(){
+        return code;
+    }
+    public void setCode(String code){
+        this.code = code;
     }
 
     public String getName(){

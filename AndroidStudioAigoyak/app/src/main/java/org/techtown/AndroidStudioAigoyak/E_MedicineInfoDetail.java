@@ -34,7 +34,7 @@ public class E_MedicineInfoDetail extends Fragment {
     //String sampleCode = "199603003"; //예시 데이터
 
     //************************************************ apiKey 넣어야함 8888888888888888888888888888888888888888888888888888
-    String apiKey; // ="서비스키" ;
+    String apiKey="COqqRqdIM6Kkz9qfzXGH5geAKxrfy90RL6AhqU4%2BaUT19SMd4Oy0YM7lpTZP8%2BY%2FgegeDNplMu%2FA%2B8HdJfGhKQ%3D%3D";
     String imageURL; //이미지 URL 저장
 
     TextView text;
@@ -47,17 +47,10 @@ public class E_MedicineInfoDetail extends Fragment {
         text = viewGroup.findViewById(R.id.textView);
 
         Bundle bundle =getArguments();
-        sampleCode = bundle.getString("code");
-
-        //Bundle bundle = getArguments();
-
-        //String sampleCode = (String)bundle.getString("code");//D_SearchAdapter에서 품목기준코드 들고옴
+        sampleCode = bundle.getString("code");//D_SearchAdapter에서 품목기준코드 들고옴
 
 
 
-        System.out.println("sample code: "+ sampleCode);
-
-        //
         new Thread(){
             @Override
             public void run() {
@@ -398,7 +391,6 @@ public class E_MedicineInfoDetail extends Fragment {
             }// run() ..
         }.start();
 
-        //
 
         return viewGroup;
     }

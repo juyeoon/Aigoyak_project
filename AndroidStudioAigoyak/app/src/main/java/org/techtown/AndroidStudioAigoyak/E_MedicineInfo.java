@@ -3,28 +3,20 @@ package org.techtown.AndroidStudioAigoyak;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 
 
 public class E_MedicineInfo  extends AppCompatActivity {
-    private E_MedicineInfoMain fragment;
-
-    private FragmentTransaction transaction;
+    private E_MedicineInfoMain fragment = new E_MedicineInfoMain();
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.medicine_info);
+        Intent intent = getIntent();
 
-        fragment = new E_MedicineInfoMain();
         getSupportFragmentManager().beginTransaction().replace(R.id.sub_layout, fragment).commitAllowingStateLoss();
-
-        Intent intent =getIntent();
         String code = intent.getStringExtra("code");
 
         Bundle bundle = new Bundle();
@@ -44,28 +36,19 @@ public class E_MedicineInfo  extends AppCompatActivity {
             }
         });
 
-        ImageButton button1 = (ImageButton) findViewById(R.id.heart_button);
-        button1.setOnClickListener(new View.OnClickListener(){
+        //즐겨찾기 추가 버튼 누름
+        ImageButton button_heart = (ImageButton) findViewById(R.id.heart_button);
+        button_heart.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                if(button1.isSelected()){
-                    button1.setSelected(false);
+                if(button_heart.isSelected()){
+                    button_heart.setSelected(false);
                 }
                 else{
-                    button1.setSelected(true);
+                    button_heart.setSelected(true);
                 }
             }
         });
 
-
-
-
-
     }
-/*
-    public void Fragment(View view){
-
-    }
-
- */
 }

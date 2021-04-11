@@ -54,7 +54,7 @@ public class F_MypageDetail extends AppCompatActivity {
 
         TextView number = (TextView) findViewById(R.id.숫자);
 
-        String sql = "select FEATURE from " + NoteDatabase.TABLE_USER;//이거 바꾸다 말았음 이건 했는데 나중에 다른거 고치기
+        String sql = "select FEATURE from " + NoteDatabase.TABLE_USER;
 
 
         String text= "";
