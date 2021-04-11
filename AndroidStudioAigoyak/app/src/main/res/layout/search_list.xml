@@ -50,7 +50,7 @@
         android:layout_marginTop="100dp"
         android:fontFamily="@font/kukde_alt"
         android:gravity="center_horizontal"
-        android:text="검색결과 0건"
+        android:text="loading..."
         android:textColor="#636363"
 
         android:textSize="20dp"

@@ -34,15 +34,11 @@ public class E_MedicineInfoDetail extends Fragment {
     //String sampleCode = "199603003"; //예시 데이터
 
     //************************************************ apiKey 넣어야함 8888888888888888888888888888888888888888888888888888
-    String apiKey = "COqqRqdIM6Kkz9qfzXGH5geAKxrfy90RL6AhqU4%2BaUT19SMd4Oy0YM7lpTZP8%2BY%2FgegeDNplMu%2FA%2B8HdJfGhKQ%3D%3D";
+    String apiKey; // ="서비스키" ;
     String imageURL; //이미지 URL 저장
-
 
     TextView text;
     String sampleCode;
-
-
-
 
     @Nullable
     @Override
@@ -120,7 +116,7 @@ public class E_MedicineInfoDetail extends Fragment {
                                         buffer=new StringBuffer();
                                     }
 ////////////////////////////****순서대로 나오는 것이 아님. xml문서의 태그 순서와 같음///////////////////////////////
-                                    //이미지
+                                    //이미지(null 존재)
                                     else if(tagName.equals("itemImage")){
                                         xpp.next();
                                         imageURL=xpp.getText();
@@ -137,27 +133,20 @@ public class E_MedicineInfoDetail extends Fragment {
                                         xpp.next();
                                         buffer.append("\n"+xpp.getText()+"\n\n");
                                     }
-//////////////////////////////////null이 있는 경우 코드 추가 필요
                                     //효능
                                     else if(tagName.equals("efcyQesitm")){
-                                        buffer.append("▼ 효과 및 효능");
                                         xpp.next();
-                                        //p태그가 나오는 것을 막기 위한 코드
                                         String str = xpp.getText();
                                         if(str != null){
-                                            String strc = str.replaceAll("<p>", "");
+                                            String strc = str.replaceAll("<p>", ""); //p태그가 나오는 것을 막기 위한 코드
                                             strc = strc.replaceAll("</p>", "");
+                                            buffer.append("▼ 효과 및 효능");
                                             buffer.append("\n"+strc+"\n\n");
-                                        }
-                                        else{
-                                            buffer.append("\n(없음)\n\n");
                                         }
                                     }
                                     //사용법
                                     else if(tagName.equals("useMethodQesitm")){
-                                        buffer.append("▼ 사용법");
                                         xpp.next();
-                                        //p태그가 나오는 것을 막기 위한 코드
                                         String str = xpp.getText();
                                         if(str != null){
                                             String strc = str.replaceAll("<p>", "");
@@ -166,85 +155,63 @@ public class E_MedicineInfoDetail extends Fragment {
                                             strc = strc.replaceAll("</sup>", "");
                                             strc = strc.replaceAll("<sub>", "");
                                             strc = strc.replaceAll("</sub>", "");
+                                            buffer.append("▼ 사용법");
                                             buffer.append("\n"+strc+"\n\n");
-                                        }
-                                        else{
-                                            buffer.append("\n(없음)\n\n");
                                         }
                                     }
                                     //주의사항 경고
                                     else if(tagName.equals("atpnWarnQesitm")){
-                                        buffer.append("▼ 사용 전 반드시 알아야 할 사항");
                                         xpp.next();
-                                        //p태그가 나오는 것을 막기 위한 코드
                                         String str = xpp.getText();
                                         if(str != null){
                                             String strc = str.replaceAll("<p>", "");
                                             strc = strc.replaceAll("</p>", "");
+                                            buffer.append("▼ 사용 전 반드시 알아야 할 사항");
                                             buffer.append("\n"+strc+"\n\n");
-                                        }
-                                        else{
-                                            buffer.append("\n(없음)\n\n");
                                         }
                                     }
                                     //주의사항
                                     else if(tagName.equals("atpnQesitm")){
-                                        buffer.append("▼ 사용상 주의사항");
                                         xpp.next();
-                                        //p태그가 나오는 것을 막기 위한 코드
                                         String str = xpp.getText();
                                         if(str != null){
                                             String strc = str.replaceAll("<p>", "");
                                             strc = strc.replaceAll("</p>", "");
+                                            buffer.append("▼ 사용상 주의사항");
                                             buffer.append("\n"+strc+"\n\n");
-                                        }
-                                        else{
-                                            buffer.append("\n(없음)\n\n");
                                         }
                                     }
                                     //상호작용
                                     else if(tagName.equals("intrcQesitm")){
-                                        buffer.append("▼ 사용하는 동안 주의해야할 사항");
                                         xpp.next();
-                                        //p태그가 나오는 것을 막기 위한 코드
                                         String str = xpp.getText();
                                         if(str != null){
                                             String strc = str.replaceAll("<p>", "");
                                             strc = strc.replaceAll("</p>", "");
+                                            buffer.append("▼ 사용하는 동안 주의해야할 사항");
                                             buffer.append("\n"+strc+"\n\n");
-                                        }
-                                        else{
-                                            buffer.append("\n(없음)\n\n");
                                         }
                                     }
                                     //부작용
                                     else if(tagName.equals("seQesitm")){
-                                        buffer.append("▼ 부작용");
                                         xpp.next();
-                                        //p태그가 나오는 것을 막기 위한 코드
                                         String str = xpp.getText();
                                         if(str != null){
                                             String strc = str.replaceAll("<p>", "");
                                             strc = strc.replaceAll("</p>", "");
+                                            buffer.append("▼ 부작용");
                                             buffer.append("\n"+strc+"\n\n");
-                                        }
-                                        else{
-                                            buffer.append("\n(없음)\n\n");
                                         }
                                     }
                                     //보관법
                                     else if(tagName.equals("depositMethodQesitm")){
-                                        buffer.append("▼ 보관법");
                                         xpp.next();
-                                        //p태그가 나오는 것을 막기 위한 코드
                                         String str = xpp.getText();
                                         if(str != null){
                                             String strc = str.replaceAll("<p>", "");
                                             strc = strc.replaceAll("</p>", "");
+                                            buffer.append("▼ 보관법");
                                             buffer.append("\n"+strc+"\n\n");
-                                        }
-                                        else{
-                                            buffer.append("\n(없음)\n\n");
                                         }
                                     }
                                     break;
@@ -255,7 +222,7 @@ public class E_MedicineInfoDetail extends Fragment {
                                 case XmlPullParser.END_TAG:
                                     tagName = xpp.getName();
                                     if(tagName.equals("item")){
-////////////////////////////////////확인용(성분 넣을 곳 확보하는 코드)
+////////////////////////////////////확인용(성분 넣을 곳 확보하는 코드)/////////////////////////////////////////
                                         buffer.append("▼ 주성분");
                                         buffer.append("\n(아직 NULL)\n\n");
                                     }
@@ -275,50 +242,60 @@ public class E_MedicineInfoDetail extends Fragment {
                                     tagName2=xpp2.getName();
                                     //시작
                                     if(tagName2.equals("item")){
-                                        //buffer=new StringBuffer();
                                     }
                                     //전문의약품 or 일반의약품
                                     else if(tagName2.equals("ETC_OTC_NAME")){
-                                        buffer.append("▼ 의약품 구분");
                                         xpp2.next();
-                                        buffer.append("\n"+xpp2.getText()+"\n\n");
+                                        String str = xpp2.getText();
+                                        if(str != null){
+                                            buffer.append("▼ 의약품 구분");
+                                            buffer.append("\n"+str+"\n\n");
+                                        }
                                     }
                                     //의약품 종류
                                     else if(tagName2.equals("CLASS_NAME")){
-                                        buffer.append("▼ 의약품 분류");
                                         xpp2.next();
-                                        buffer.append("\n"+xpp2.getText()+"\n\n");
+                                        String str = xpp2.getText();
+                                        if(str != null){
+                                            buffer.append("▼ 의약품 분류");
+                                            buffer.append("\n"+str+"\n\n");
+                                        }
                                     }
                                     //성상
                                     else if(tagName2.equals("CHART")){
-
-                                        buffer.append("▼ 색상 및 형태");
-                                        System.out.println("드가나---------------------------------------");
                                         xpp2.next();
-                                        buffer.append("\n"+xpp2.getText()+"\n\n");
+                                        String str = xpp2.getText();
+                                        if(str != null){
+                                            buffer.append("▼ 색상 및 형태");
+                                            buffer.append("\n"+str+"\n\n");
+                                        }
                                     }
-
                                     //제형
                                     else if(tagName2.equals("FORM_CODE_NAME")){
-                                        buffer.append("▼ 제형");
                                         xpp2.next();
-                                        buffer.append("\n"+xpp2.getText()+"\n\n");
+                                        String str = xpp2.getText();
+                                        if(str != null){
+                                            buffer.append("▼ 제형");
+                                            buffer.append("\n"+str+"\n\n");
+                                        }
                                     }
                                     //모양(식별)
                                     else if(tagName2.equals("DRUG_SHAPE")){
-                                        buffer.append("▼ 모양");
                                         xpp2.next();
-                                        buffer.append("\n"+xpp2.getText()+"\n\n");
+                                        String str = xpp2.getText();
+                                        if(str != null){
+                                            buffer.append("▼ 모양");
+                                            buffer.append("\n"+str+"\n\n");
+                                        }
                                     }
 
                                     //세트 "COLOR_CLASS1" & "COLOR_CLASS2"(색깔)
                                     else if(tagName2.equals("COLOR_CLASS1")){
-                                        buffer.append("▼색깔\n");
+                                        buffer.append("▼ 색깔");
                                         xpp2.next();
-                                        //null -> 없음
                                         String str = xpp2.getText();
-                                        if(str!=null){
-                                            buffer.append("(앞)"+str+"\n");
+                                        if(str != null){
+                                            buffer.append("\n"+"(앞)"+str+"\n");
                                         }
                                         else{
                                             buffer.append("(앞)없음"+"\n");
