@@ -27,6 +27,9 @@ public class F_Bookmark extends AppCompatActivity {
     F_BookmarkAdapter adapter;
     Context context;
 
+    //_id, name, clock가 담겨질 배열 생성
+    ArrayList<Search> items = new ArrayList<Search>();
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.bookmark);
@@ -50,7 +53,7 @@ public class F_Bookmark extends AppCompatActivity {
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
 
-        adapter = new F_BookmarkAdapter();
+        adapter = new F_BookmarkAdapter(this);
         recyclerView.setAdapter(adapter);
     }
 
@@ -69,8 +72,7 @@ public class F_Bookmark extends AppCompatActivity {
             Cursor outCursor = database.rawQuery(sql);
             recordCount = outCursor.getCount();
 
-            //_id, name, clock가 담겨질 배열 생성
-            ArrayList<Search> items = new ArrayList<Search>();
+
 
             //하나하나 추가
             for(int i=0; i<recordCount; i++){

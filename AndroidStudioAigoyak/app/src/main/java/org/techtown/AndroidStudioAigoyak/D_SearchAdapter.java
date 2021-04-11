@@ -1,25 +1,25 @@
 package org.techtown.AndroidStudioAigoyak;
 
 import android.content.Context;
-        import android.content.Intent;
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.provider.ContactsContract;
-        import android.util.Log;
-        import android.view.LayoutInflater;
-        import android.view.View;
-        import android.view.ViewGroup;
-        import android.widget.Button;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 
-        import android.widget.LinearLayout;
-        import android.widget.RelativeLayout;
-        import android.widget.TextView;
-        import androidx.annotation.NonNull;
-        import androidx.recyclerview.widget.RecyclerView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
 
-        import java.util.ArrayList;
+import java.util.ArrayList;
 
 public class D_SearchAdapter extends RecyclerView.Adapter<D_SearchAdapter.ViewHolder> {//일단 완료
     private static final String TAG = "SearchAdapter";
@@ -56,7 +56,6 @@ public class D_SearchAdapter extends RecyclerView.Adapter<D_SearchAdapter.ViewHo
         String sql = "select code from " + NoteDatabase.TABLE_BOOKMARK;
         Log.d(TAG, "sql : " + sql);
 
-        System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@code" + code);
         int recordCount=-1;
         if (database != null){
             Cursor outCursor = database.rawQuery(sql);
@@ -87,7 +86,9 @@ public class D_SearchAdapter extends RecyclerView.Adapter<D_SearchAdapter.ViewHo
                     corp = items.get(position).getCorp();
 
                     Intent intent =new Intent(context,E_MedicineInfo.class).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                    intent.putExtra("code", code);//품목기준코드 E_MedicineInfo -> E_MedicineInfoDetail로 보냄.---------------------------------------------------------
+                    intent.putExtra("code", code);//품목기준코드 E_MedicineInfo -> E_MedicineInfoDetail로 보냄.
+                    intent.putExtra("name", name);//의약품명
+                    intent.putExtra("corp", corp);//회사명
                     System.out.println("position: " + position);
                     System.out.println("code: " + code);
                     context.startActivity(intent);

@@ -1,5 +1,7 @@
 package org.techtown.AndroidStudioAigoyak;
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
@@ -21,15 +23,24 @@ import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+
+import static org.techtown.AndroidStudioAigoyak.B_AddMedicine.alarmManager;
+import static org.techtown.AndroidStudioAigoyak.B_AddMedicine.pendingIntent;
 
 public class B_MedicationList extends RecyclerView.Adapter<B_MedicationList.ViewHolder>{//일단 완료
     private static final String TAG = "NoteAdapter";
-
     ArrayList<Note> items = new ArrayList<Note>();//아이템이 들어갈 배열
     private int position;
     Context context;
     OnNoteItemClickListener listener;
+    String code;
+    String name;
+    String corp;
     private OnItemClickListener mListener = null;
 
     public B_MedicationList(Context context){
@@ -72,6 +83,8 @@ public class B_MedicationList extends RecyclerView.Adapter<B_MedicationList.View
             @Override
             public void onClick(View view){
                 int id = items.get(position).get_id();
+                int alarmNumber = items.get(position).getAlarm();
+
                 String sql = "delete from " + NoteDatabase.TABLE_NOTE + " where " + "_id = " + id;
                 items.remove(position);
                 notifyItemRemoved(position);
@@ -79,9 +92,49 @@ public class B_MedicationList extends RecyclerView.Adapter<B_MedicationList.View
                 Log.d(TAG, "sql : " + sql);
                 NoteDatabase database = NoteDatabase.getInstance(context);
                 database.execSQL(sql);
-                //Toast.makeText(getContext(),"삭제완료", Toast.LENGTH_LONG).show(); //안됨..
+
+
+                //알람 삭제
+                Intent receiverIntent = new Intent(context, Alarm.class);
+                alarmManager = (AlarmManager)context.getApplicationContext().getSystemService(Context.ALARM_SERVICE);
+                pendingIntent = PendingIntent.getBroadcast(context.getApplicationContext(), alarmNumber, receiverIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+                alarmManager.cancel(pendingIntent);
+                pendingIntent.cancel();
+                System.out.println("B_MedicationList-alarmNumber: " + alarmNumber);
+                Toast.makeText(context,"삭제완료", Toast.LENGTH_LONG).show(); //안됨..
             }
         });
+
+
+
+        //리스트 선택 시 의약품 상세페이지로 이동
+        viewHolder.itemView.setClickable(true);
+        viewHolder.itemView.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                String position_clock = items.get(position).getClock();
+                System.out.println(position_clock);
+                code = items.get(position).getCode();
+                name = items.get(position).getName();
+                corp = items.get(position).getCorp();
+                if(position !=RecyclerView.NO_POSITION){
+                    Intent intent  = new Intent(context, E_MedicineInfo.class).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    intent.putExtra("code", code);//품목기준코드 E_MedicineInfo -> E_MedicineInfoDetail로 보냄.
+                    intent.putExtra("name", name);//의약품명
+                    intent.putExtra("corp", corp);//회사명
+                    System.out.println("B_MedicationList: position: " + position);
+                    System.out.println("B_MedicationList: code: " + code);
+                    context.startActivity(intent);
+                }
+            }
+        });
+
+
+
+
+
+
+
 
 
         int id = items.get(position).get_id();
@@ -165,20 +218,6 @@ public class B_MedicationList extends RecyclerView.Adapter<B_MedicationList.View
             trashcan = itemView.findViewById(R.id.trashcan);
             completeButton = itemView.findViewById(R.id.완료);
 
-            //리스트 선택 시 의약품 상세페이지로 이동
-            itemView.setClickable(true);
-            itemView.setOnClickListener(new View.OnClickListener(){
-                @Override
-                public void onClick(View v){
-                    int position = getAdapterPosition();
-                    String position_clock = items.get(position).getClock();
-                    System.out.println(position_clock);
-                    if(position !=RecyclerView.NO_POSITION){
-                        Intent intent  = new Intent(context, E_MedicineInfo.class).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                        context.startActivity(intent);
-                    }
-                }
-            });
 
         }
         public void setItem(Note item) {
@@ -201,4 +240,5 @@ public class B_MedicationList extends RecyclerView.Adapter<B_MedicationList.View
         database.execSQL(sql);
 
     }
+
 }

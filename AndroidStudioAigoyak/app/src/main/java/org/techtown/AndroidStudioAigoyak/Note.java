@@ -4,16 +4,20 @@ public class Note {
     int _id;
     String code;
     String name;
+    String corp;
     String clock;
     int date;
+    int alarm;
     int date2;
 
-    public Note(int _id, String code, String name, String clock, int date, int date2) {
+    public Note(int _id, String code, String name, String corp, String clock, int date, int alarm, int date2) {
         this._id = _id;
         this.code = code;
         this.name = name;
+        this.corp = corp;
         this.clock = clock;
         this.date = date;
+        this.alarm = alarm;
         this.date2 = date2;
 
     }
@@ -39,6 +43,13 @@ public class Note {
         this.name = name;
     }
 
+    public String getCorp(){
+        return corp;
+    }
+    public void setCorp(String corp){
+        this.corp = corp;
+    }
+
     public String getClock() {
         return clock;
     }
@@ -51,6 +62,11 @@ public class Note {
     }
     public void setDate(int date){
         this.date = date;
+    }
+
+    public int getAlarm() { return alarm; }
+    public void setAlarm(int alarm){
+        this.alarm = alarm;
     }
 
     public int getDate2() {

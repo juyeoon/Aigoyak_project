@@ -107,8 +107,10 @@ public class NoteDatabase {
                     + "  _id INTEGER  NOT NULL PRIMARY KEY AUTOINCREMENT, "
                     + "  CODE TEXT DEFAULT '', "
                     + "  NAME TEXT DEFAULT '', "
+                    + "  CORP TEXT DEFAULT '', "
                     + "  CLOCK TEXT DEFAULT '', "
                     + "  DATE INTEGER , "
+                    + "  ALARM INTEGER , "
                     + "  DATE2 INTEGER);";
             String CREATE_SQL_BOOKMARK = "create table " + TABLE_BOOKMARK + "("
                     + " _id INTEGER  NOT NULL PRIMARY KEY AUTOINCREMENT, "

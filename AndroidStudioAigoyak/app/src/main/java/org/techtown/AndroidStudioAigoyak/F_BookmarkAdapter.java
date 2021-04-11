@@ -1,30 +1,33 @@
 package org.techtown.AndroidStudioAigoyak;
 
 import android.content.Context;
-        import android.content.Intent;
-        import android.database.Cursor;
-        import android.provider.ContactsContract;
-        import android.util.Log;
-        import android.view.LayoutInflater;
-        import android.view.View;
-        import android.view.ViewGroup;
-        import android.widget.Button;
-        import android.widget.ImageView;
+import android.content.Intent;
+import android.database.Cursor;
+import android.provider.ContactsContract;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
 
-        import android.widget.LinearLayout;
-        import android.widget.RelativeLayout;
-        import android.widget.TextView;
-        import androidx.annotation.NonNull;
-        import androidx.recyclerview.widget.RecyclerView;
-
-        import java.util.ArrayList;
+import java.util.ArrayList;
 
 public class F_BookmarkAdapter extends RecyclerView.Adapter<F_BookmarkAdapter.ViewHolder> {//일단 완료
     private static final String TAG = "BookmarkAdapter";
-
+    private Context context;
     ArrayList<Search> items = new ArrayList<Search>();
     OnNoteItemClickListener listener;
-    Context context;
+    String code;
+    String name;
+    String corp;
+
+    public F_BookmarkAdapter(Context context){ this.context = context; }
 
     @NonNull
     @Override
@@ -39,12 +42,12 @@ public class F_BookmarkAdapter extends RecyclerView.Adapter<F_BookmarkAdapter.Vi
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int position){
         viewHolder.setItem(items.get(position));
         viewHolder.setLayout();
-
+        code = items.get(position).getCode();
 
         NoteDatabase database = NoteDatabase.getInstance(context);
         String sql = "select code from " + NoteDatabase.TABLE_BOOKMARK;
         Log.d(TAG, "sql : " + sql);
-        String code = items.get(position).getCode();
+
         int recordCount=-1;
         if (database != null){
             Cursor outCursor = database.rawQuery(sql);
@@ -62,6 +65,29 @@ public class F_BookmarkAdapter extends RecyclerView.Adapter<F_BookmarkAdapter.Vi
             outCursor.close();
         }
 
+
+        //리스트 누르면 상세페이지로 이동
+        viewHolder.itemView.setClickable(true);
+        viewHolder.itemView.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                if(position != RecyclerView.NO_POSITION){
+                    code = items.get(position).getCode();
+                    name = items.get(position).getCode();
+                    corp = items.get(position).getCode();
+
+                    Intent intent =new Intent(context,E_MedicineInfo.class).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    intent.putExtra("code", code);//품목기준코드 E_MedicineInfo -> E_MedicineInfoDetail로 보냄.
+                    intent.putExtra("name", name);//의약품명
+                    intent.putExtra("corp", corp);//회사명
+                    System.out.println("position: " + position);
+                    System.out.println("code: " + code);
+
+                    context.startActivity(intent);
+                }
+            }
+        });
+
         viewHolder.heart.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
@@ -71,7 +97,7 @@ public class F_BookmarkAdapter extends RecyclerView.Adapter<F_BookmarkAdapter.Vi
                 }
                 else{
                     viewHolder.heart.setSelected(true);
-                    saveNote(items.get(position).getName(),items.get(position).getCorp(),items.get(position).getCode());
+                    saveNote(items.get(position).getCode(), items.get(position).getName(),items.get(position).getCorp());
                 }
             }
         });
@@ -93,6 +119,7 @@ public class F_BookmarkAdapter extends RecyclerView.Adapter<F_BookmarkAdapter.Vi
     public void setItems(ArrayList<Search> items){
         this.items = items;
     }
+    public interface OnItemClickListener{ void onItemClick(View v, int position);}
     public void setOnItemClickListener(OnNoteItemClickListener listener){this.listener = listener;}
 
     class ViewHolder extends RecyclerView.ViewHolder{
@@ -113,7 +140,7 @@ public class F_BookmarkAdapter extends RecyclerView.Adapter<F_BookmarkAdapter.Vi
         }
 
         public void setItem(Search item) {//내가 적은 텍스트를 불러와 저장하는 것
-            heart.setVisibility(View.VISIBLE); //heart 조건 걸어서 보이게 하기 (아직 안 함)
+            //heart.setVisibility(View.VISIBLE); //heart 조건 걸어서 보이게 하기
             name.setText(item.getName());
             corp.setText(item.getCorp());
         }
@@ -123,13 +150,13 @@ public class F_BookmarkAdapter extends RecyclerView.Adapter<F_BookmarkAdapter.Vi
     }
 
     //db에 데이터 저장
-    private void saveNote(String name, String corp, String code){
+    private void saveNote(String code, String name, String corp){
 
         String sql = "insert into " +NoteDatabase.TABLE_BOOKMARK +//이거 바꾸다 말았음 이건 했는데 나중에 다른거 고치기
-                "(NAME, CORP, CODE) values (" +
+                "(CODE, NAME, CORP) values (" +
+                "'"+ code + "', " +
                 "'"+ name + "', " +
-                "'"+ corp + "', " +
-                "'"+ code + "')";
+                "'"+ corp + "')";
         Log.d(TAG, "sql : " + sql);
         NoteDatabase database = NoteDatabase.getInstance(context);
         database.execSQL(sql);
