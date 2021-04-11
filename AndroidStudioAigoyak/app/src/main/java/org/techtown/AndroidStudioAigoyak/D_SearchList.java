@@ -28,11 +28,9 @@ public class D_SearchList extends AppCompatActivity {
     ArrayList<Search> items = new ArrayList<Search>();
     RecyclerView recyclerView;
     D_SearchAdapter adapter;
-    Context context = this;
 
     //API 추가
     String key2 = "COqqRqdIM6Kkz9qfzXGH5geAKxrfy90RL6AhqU4%2BaUT19SMd4Oy0YM7lpTZP8%2BY%2FgegeDNplMu%2FA%2B8HdJfGhKQ%3D%3D";
-    XmlPullParser xpp;
 
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,6 +68,7 @@ public class D_SearchList extends AppCompatActivity {
                 //요청 URL
                 String queryUrl="http://apis.data.go.kr/1471000/DrbEasyDrugInfoService/getDrbEasyDrugList"
                         +"?serviceKey="+ key2
+                        //+"&itemSeq="+location; //품목기준코드로 확인할 때 쓰는 코드
                         +"&itemName=" + location;
 
                 //파싱 코드
@@ -116,6 +115,11 @@ public class D_SearchList extends AppCompatActivity {
                                     xpp.next();
                                     buffer.append(xpp.getText()+"\n");
                                 }
+                                else if(tagName.equals("itemSeq")){//품목기준코드
+                                    xpp.next();
+                                    buffer.append(xpp.getText()+"\n");
+                                    System.out.println("--------------------------tagName: " + xpp.getText());
+                                }
                                 break;
 
                             case XmlPullParser.TEXT:
@@ -125,8 +129,8 @@ public class D_SearchList extends AppCompatActivity {
                                 tagName = xpp.getName();
                                 if(tagName.equals("item")){
                                     String[] splitd = buffer.toString().split("\\n");
-                                    items.add(new Search(id, splitd[1], splitd[0]));
-
+                                    items.add(new Search(id, splitd[1], splitd[0], splitd[2]));
+                                    System.out.println("name: "+ splitd[1] + ", 품번: " +splitd[2] );
                                     runOnUiThread(new Runnable(){
                                         @Override
                                         public void run(){

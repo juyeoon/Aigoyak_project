@@ -3,6 +3,7 @@ package org.techtown.AndroidStudioAigoyak;
 import android.content.Context;
         import android.content.Intent;
 import android.database.Cursor;
+import android.os.Bundle;
 import android.provider.ContactsContract;
         import android.util.Log;
         import android.view.LayoutInflater;
@@ -26,7 +27,9 @@ public class D_SearchAdapter extends RecyclerView.Adapter<D_SearchAdapter.ViewHo
     ArrayList<Search> items = new ArrayList<Search>();
     OnNoteItemClickListener listener;
     Context context;
+    String code;
 
+    E_MedicineInfoDetail fragment = new E_MedicineInfoDetail();
 
     public D_SearchAdapter(Context context){
         this.context = context;
@@ -46,6 +49,8 @@ public class D_SearchAdapter extends RecyclerView.Adapter<D_SearchAdapter.ViewHo
         viewHolder.setItem(items.get(position));
         viewHolder.setLayout();
 
+        System.out.println("이거봐라: " + items.get(position).getName());
+        System.out.println("이거봐라2: code: "+code);
 
         NoteDatabase database = NoteDatabase.getInstance(context);
         String sql = "select name from " + NoteDatabase.TABLE_BOOKMARK;
@@ -71,7 +76,20 @@ public class D_SearchAdapter extends RecyclerView.Adapter<D_SearchAdapter.ViewHo
             outCursor.close();
         }
 
-
+        viewHolder.itemView.setClickable(true);
+        viewHolder.itemView.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                if(position != RecyclerView.NO_POSITION){
+                    Intent intent =new Intent(context,E_MedicineInfo.class).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    code = items.get(position).getCode();
+                    intent.putExtra("code", code);//품목기준코드 E_MedicineInfo -> E_MedicineInfoDetail로 보냄.---------------------------------------------------------
+                    System.out.println("position: "+position);
+                    System.out.println("code: "+code);
+                    context.startActivity(intent);
+                }
+            }
+        });
 
 
 
@@ -123,17 +141,7 @@ public class D_SearchAdapter extends RecyclerView.Adapter<D_SearchAdapter.ViewHo
             corp = itemView.findViewById(R.id.corp);
             heart = itemView.findViewById(R.id.heart_button);
 
-            itemView.setClickable(true);
-            itemView.setOnClickListener(new View.OnClickListener(){
-                @Override
-                        public void onClick(View v){
-                    int position = getAdapterPosition();
-                    if(position != RecyclerView.NO_POSITION){
-                        Intent intent =new Intent(context,E_MedicineInfo.class).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                        context.startActivity(intent);
-                    }
-                }
-            });
+
 
             heart.setOnClickListener(new View.OnClickListener(){
                 @Override

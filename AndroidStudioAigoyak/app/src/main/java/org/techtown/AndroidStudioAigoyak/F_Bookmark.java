@@ -79,7 +79,7 @@ public class F_Bookmark extends AppCompatActivity {
                 int _id = outCursor.getInt(0);
                 String name = outCursor.getString(1);
                 String corp = outCursor.getString(2);
-                items.add(new Search(_id, name, corp));
+                items.add(new Search(_id, name, corp,"0"));
             }
             outCursor.close();
 

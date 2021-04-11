@@ -37,6 +37,12 @@ public class E_MedicineInfoMain extends Fragment {
         vp.setAdapter(new PagerAdapter(getChildFragmentManager()));
         vp.setCurrentItem(0);
 
+        Bundle bundle = getArguments();
+        String code = bundle.getString("code");
+
+        bundle.putString("code",code);
+        fragment1.setArguments(bundle);// E_MedicineInfoDetail();로 품번 전달
+
         TextView button1, button2;
 
         button1 = (TextView) fv.findViewById(R.id.상세정보);

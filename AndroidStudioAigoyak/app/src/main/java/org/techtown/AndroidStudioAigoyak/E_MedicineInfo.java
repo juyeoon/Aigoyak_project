@@ -1,5 +1,6 @@
 package org.techtown.AndroidStudioAigoyak;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -22,6 +23,15 @@ public class E_MedicineInfo  extends AppCompatActivity {
 
         fragment = new E_MedicineInfoMain();
         getSupportFragmentManager().beginTransaction().replace(R.id.sub_layout, fragment).commitAllowingStateLoss();
+
+        Intent intent =getIntent();
+        String code = intent.getStringExtra("code");
+
+        Bundle bundle = new Bundle();
+        bundle.putString("code", code);// E_MedicineInfoMain으로 전송
+
+        fragment.setArguments(bundle);
+
 
 
 

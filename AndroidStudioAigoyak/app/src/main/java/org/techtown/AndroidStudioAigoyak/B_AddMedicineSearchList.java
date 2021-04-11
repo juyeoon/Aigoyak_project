@@ -124,7 +124,7 @@ public class B_AddMedicineSearchList extends AppCompatActivity {
                                 tagName = xpp.getName();
                                 if(tagName.equals("item")){
                                     String[] splitd = buffer.toString().split("\\n");
-                                    items.add(new Search(id, splitd[1], splitd[0]));
+                                    items.add(new Search(id, splitd[1], splitd[0],"0"));
 
                                     runOnUiThread(new Runnable(){
                                         @Override

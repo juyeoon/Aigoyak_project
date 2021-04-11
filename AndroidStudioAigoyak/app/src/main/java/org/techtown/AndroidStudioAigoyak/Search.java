@@ -6,11 +6,13 @@ public class Search {
     int _id;
     String name;
     String corp;
+    String code;
 
-    public Search(int _id, String name, String corp) {
+    public Search(int _id, String name, String corp, String code) {
         this._id = _id;
         this.name = name;
         this.corp = corp;
+        this.code = code;
     }
 
     public int get_id(){
@@ -32,6 +34,13 @@ public class Search {
     }
     public void setCorp(String corp){
         this.corp = corp;
+    }
+
+    public String getCode() {
+        return code;
+    }
+    public void setCode(String corp){
+        this.code = code;
     }
 
 }
