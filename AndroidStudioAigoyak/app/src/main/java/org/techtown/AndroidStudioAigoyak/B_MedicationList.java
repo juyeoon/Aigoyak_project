@@ -95,13 +95,13 @@ public class B_MedicationList extends RecyclerView.Adapter<B_MedicationList.View
 
         if(state == 0){//선택이 안 된 상태
             viewHolder.completeButton.setSelected(false);
-            viewHolder.completeButton.setText("미\n완\n료");
+            viewHolder.completeButton.setText("미\n복\n용");
             viewHolder.completeButton.setTextColor(color_gray);
         }
         else if(state == 1){//선택된 상태
             viewHolder.completeButton.setSelected(true);
             viewHolder.completeButton.setTextColor(color_white);
-            viewHolder.completeButton.setText("완\n료");
+            viewHolder.completeButton.setText("복\n용\n함");
         }
 
         viewHolder.completeButton.setOnClickListener(new View.OnClickListener(){
@@ -110,14 +110,14 @@ public class B_MedicationList extends RecyclerView.Adapter<B_MedicationList.View
                 if(viewHolder.completeButton.isSelected()){//선택된 상태에서 선택 안 된 상태로 바꿈
                     updateNote(0, id);
                     viewHolder.completeButton.setSelected(false);
-                    viewHolder.completeButton.setText("미\n완\n료");
+                    viewHolder.completeButton.setText("미\n복\n용");
                     viewHolder.completeButton.setTextColor(color_gray);
 
                 }
                 else{//선택 안 된 상태에서 선택된 상태로 바꿈
                     updateNote(1, id);
                     viewHolder.completeButton.setSelected(true);
-                    viewHolder.completeButton.setText("완\n료");
+                    viewHolder.completeButton.setText("복\n용\n함");
                     viewHolder.completeButton.setTextColor(color_white);
                 }
             }
