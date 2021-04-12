@@ -45,14 +45,19 @@ public class B_AddSearchAdapter extends RecyclerView.Adapter<B_AddSearchAdapter.
 
         String productName = items.get(position).getName();
         String productCode = items.get(position).getCode();
+        String productCorp = items.get(position).getCorp();
+
         viewHolder.select_button.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
                 Intent intent = new Intent(context,B_AddMedicine.class).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 intent.putExtra("productName", productName);//의약품명 B_AddMedicine로 보냄.
                 intent.putExtra("productCode", productCode);//품번 B_AddMedicine로 보냄.
+                intent.putExtra("productCorp", productCorp);//품번 B_AddMedicine로 보냄.
+
                 System.out.println("B_AddSearchAdapter - productName: " + productName);
                 System.out.println("B_AddSearchAdapter - productCode: " + productCode);
+                System.out.println("B_AddSearchAdapter - productCode: " + productCorp);
 
                 context.startActivity(intent);
             }

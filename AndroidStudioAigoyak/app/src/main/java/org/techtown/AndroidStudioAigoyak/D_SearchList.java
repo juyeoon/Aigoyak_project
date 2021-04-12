@@ -68,7 +68,6 @@ public class D_SearchList extends AppCompatActivity {
                 //요청 URL
                 String queryUrl="http://apis.data.go.kr/1471000/DrbEasyDrugInfoService/getDrbEasyDrugList"
                         +"?serviceKey="+ key2
-                        //+"&itemSeq="+location; //품목기준코드로 확인할 때 쓰는 코드
                         +"&itemName=" + location;
 
                 //파싱 코드

@@ -72,7 +72,7 @@ public class B_AddMedicine extends AppCompatActivity {
 
         String get_name = (String)getIntent().getSerializableExtra("productName");//B_AddSearchAdapter에서 의약품명 들고옴
         String get_code = (String)getIntent().getSerializableExtra("productCode");//B_AddSearchAdapter에서 품번 들고옴
-        String get_corp = (String)getIntent().getSerializableExtra("productCorp");
+        String get_corp = (String)getIntent().getSerializableExtra("productCorp");//B_AddSearchAdapter에서 회사명 들고옴
         System.out.println("get_name = " + get_name);
         System.out.println("get_code = " + get_code);
         medicine_name = (TextView) findViewById(R.id.의약품선택);
