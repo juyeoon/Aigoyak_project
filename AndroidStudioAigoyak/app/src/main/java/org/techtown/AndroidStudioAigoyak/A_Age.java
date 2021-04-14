@@ -14,7 +14,7 @@ public class A_Age extends AppCompatActivity {
     private static final String TAG = "A_Age";
     Context context;
 
-    public static String age = "0";
+    public static String age = "-1";
 
 
     @Override
@@ -46,7 +46,7 @@ public class A_Age extends AppCompatActivity {
 
     //나이 db에 저장
     private void saveNote(){
-        String sql = "UPDATE "+NoteDatabase.TABLE_USER+ " SET FEATURE = '" +age+"'";
+        String sql = "insert into " +NoteDatabase.TABLE_USER + "(FEATURE) values ('"+age+"')";
 
         Log.d(TAG, "sql : " + sql);
         NoteDatabase database = NoteDatabase.getInstance(context);
@@ -58,4 +58,5 @@ public class A_Age extends AppCompatActivity {
     public void onBackPressed() {
         //super.onBackPressed();
     }
+
 }

@@ -97,13 +97,12 @@ public class F_BookmarkAdapter extends RecyclerView.Adapter<F_BookmarkAdapter.Vi
                 }
                 else{
                     viewHolder.heart.setSelected(true);
-                    saveNote(items.get(position).getCode(), items.get(position).getName(),items.get(position).getCorp());
+                    if(!(searchCode(code).equals(code))) {
+                        saveNote(items.get(position).getCode(), items.get(position).getName(),items.get(position).getCorp());
+                    }
                 }
             }
         });
-
-
-
     }
 
     @Override
@@ -168,6 +167,26 @@ public class F_BookmarkAdapter extends RecyclerView.Adapter<F_BookmarkAdapter.Vi
         Log.d(TAG, "sql : " + sql);
         NoteDatabase database = NoteDatabase.getInstance(context);
         database.execSQL(sql);
+    }
+
+    //즐겨찾기에 저장이 되어있는지 확인
+    private String searchCode(String code){
+        String sql = "select code from " +NoteDatabase.TABLE_BOOKMARK + " where " + "code = '" + code + "'";
+        Log.d(TAG, "sql: "+ sql);
+        NoteDatabase database = NoteDatabase.getInstance(context);
+        database.execSQL(sql);
+
+        String ncode="";
+        if (database != null){
+            Cursor outCursor = database.rawQuery(sql);
+            outCursor.moveToNext();
+            if( outCursor.getCount() == 1 ) {
+                ncode = ncode + outCursor.getString(0);
+            }
+            System.out.println("F_BookmarkAdapter(ncode): "+ncode);
+            outCursor.close();
+        }
+        return ncode;
     }
 }
 

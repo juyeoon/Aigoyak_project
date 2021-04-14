@@ -22,8 +22,9 @@ public class SplashScreen extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         //  setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE); 화면 가로 고정
         setContentView(R.layout.activity_splashscreen);
+
         openDatabase();//데이터베이스 열기.
-        saveNote();
+
         linearLayout=(LinearLayout)findViewById(R.id.lin_lay);
         anim = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.alpha);
         anim.setAnimationListener(new Animation.AnimationListener() {
@@ -35,22 +36,16 @@ public class SplashScreen extends AppCompatActivity {
 
                 String sql = "select FEATURE from " + NoteDatabase.TABLE_USER;
 
-                String text;
                 Log.d(TAG, "sql : " + sql);
                 NoteDatabase database = NoteDatabase.getInstance(context);
                 Cursor cursor = database.rawQuery(sql);
                 int recordCount = cursor.getCount();
                 cursor.moveToNext();
-                text = cursor.getString(0);
 
-
-                System.out.println("text = " + text);
-
-                if(text.equals("0")) {
+                if(recordCount == 0 ) {
                     startActivity(new Intent(org.techtown.AndroidStudioAigoyak.SplashScreen.this, A_Age.class));
                 }
                 else{
-                    deleteNote();
                     startActivity(new Intent(org.techtown.AndroidStudioAigoyak.SplashScreen.this, MainActivity.class));
                 }
             }
@@ -85,21 +80,5 @@ public class SplashScreen extends AppCompatActivity {
             noteDatabase = null;
         }
     }
-    private void saveNote(){
 
-        String sql = "insert into " +NoteDatabase.TABLE_USER + "(FEATURE) values (" + "'0')";
-
-
-        Log.d(TAG, "sql : " + sql);
-        NoteDatabase database = NoteDatabase.getInstance(context);
-        database.execSQL(sql);
-    }
-
-    private void deleteNote(){
-        String sql = "delete from "+NoteDatabase.TABLE_USER+ " where feature ='0'";
-
-        Log.d(TAG, "sql : " + sql);
-        NoteDatabase database = NoteDatabase.getInstance(context);
-        database.execSQL(sql);
-    }
 }

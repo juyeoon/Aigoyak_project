@@ -102,31 +102,20 @@ public class D_SearchAdapter extends RecyclerView.Adapter<D_SearchAdapter.ViewHo
                 code = items.get(position).getCode();
                 name = items.get(position).getName();
                 corp = items.get(position).getCorp();
+
                 if(viewHolder.heart.isSelected()){
                     viewHolder.heart.setSelected(false);
                     deleteNote(code);
                 }
                 else{
                     viewHolder.heart.setSelected(true);
-                    saveNote(code, name, corp);
+                    if(!(searchCode(code).equals(code))) {
+                        saveNote(code, name, corp);
+                    }
                 }
             }
         });
-
-
-
-
-
     }
-
-    //삭제하는건데 이거 연구해야할 것 같음.
-    /*
-    private void removeItemView(int position) {
-        items.remove(position);
-        notifyItemRemoved(position);
-        notifyItemRangeChanged(position, items.size()); // 지워진 만큼 다시 채워넣기.
-    }
-     */
 
     @Override
     public int getItemCount(){
@@ -207,5 +196,27 @@ public class D_SearchAdapter extends RecyclerView.Adapter<D_SearchAdapter.ViewHo
         Log.d(TAG, "sql : " + sql);
         NoteDatabase database = NoteDatabase.getInstance(context);
         database.execSQL(sql);
+    }
+
+    //즐겨찾기에 저장이 되어있는지 확인
+    private String searchCode(String code){
+        String sql = "select code from " +NoteDatabase.TABLE_BOOKMARK + " where " + "code = '" + code + "'";
+        Log.d(TAG, "sql: "+ sql);
+        NoteDatabase database = NoteDatabase.getInstance(context);
+        database.execSQL(sql);
+
+        String ncode="";
+        if (database != null){
+            Cursor outCursor = database.rawQuery(sql);
+            outCursor.moveToNext();
+
+            if( outCursor.getCount() == 1 ) {
+                ncode = ncode + outCursor.getString(0);
+            }
+            outCursor.close();
+        }
+
+
+        return ncode;
     }
 }

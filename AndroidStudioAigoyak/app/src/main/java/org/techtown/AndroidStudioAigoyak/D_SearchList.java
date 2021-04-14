@@ -28,7 +28,7 @@ public class D_SearchList extends AppCompatActivity {
     ArrayList<Search> items = new ArrayList<Search>();
     RecyclerView recyclerView;
     D_SearchAdapter adapter;
-
+    int page = 0;
     //API 추가
     String key2 = "COqqRqdIM6Kkz9qfzXGH5geAKxrfy90RL6AhqU4%2BaUT19SMd4Oy0YM7lpTZP8%2BY%2FgegeDNplMu%2FA%2B8HdJfGhKQ%3D%3D";
 
@@ -64,88 +64,96 @@ public class D_SearchList extends AppCompatActivity {
                 items.clear();
 
                 String location = URLEncoder.encode(search_word);//한글의 경우 인식이 안되기에 utf-8 방식으로 encoding..
+                for (int i = 0; i < 37; i++) {
+                    page++;
+                    //요청 URL
+                    String queryUrl = "http://apis.data.go.kr/1471000/DrbEasyDrugInfoService/getDrbEasyDrugList"
+                            + "?serviceKey=" + key2
+                            + "&itemName=" + location
+                            + "&numOfRows=" + 100
+                            + "&pageNo=" + page;
 
-                //요청 URL
-                String queryUrl="http://apis.data.go.kr/1471000/DrbEasyDrugInfoService/getDrbEasyDrugList"
-                        +"?serviceKey="+ key2
-                        +"&itemName=" + location;
+                    //파싱 코드
+                    try {
+                        //URL객체생성
+                        URL url = new URL(queryUrl);
 
-                //파싱 코드
-                try {
-                    //URL객체생성
-                    URL url= new URL(queryUrl);
+                        //Stream 열기                                     //is는 바이트 스트림이라 문자열로 받기위해 isr이 필요하고 isr을 pullparser에게 줘야하는데
+                        InputStream is = url.openStream(); //바이트스트림
+                        //문자스트림으로 변환
+                        InputStreamReader isr = new InputStreamReader(is);
 
-                    //Stream 열기                                     //is는 바이트 스트림이라 문자열로 받기위해 isr이 필요하고 isr을 pullparser에게 줘야하는데
-                    InputStream is= url.openStream(); //바이트스트림
-                    //문자스트림으로 변환
-                    InputStreamReader isr=new InputStreamReader(is);
+                        //읽어들인 XML문서를 분석(parse)해주는 객체 생성    //pullparser를 만들려면 Factory가 필요해서 팩토리 만들고 pullparser를 만들었다. 결론, 그리고 pullparser에게 isr연결
+                        XmlPullParserFactory factory = XmlPullParserFactory.newInstance();
+                        XmlPullParser xpp = factory.newPullParser();
+                        xpp.setInput(isr);
 
-                    //읽어들인 XML문서를 분석(parse)해주는 객체 생성    //pullparser를 만들려면 Factory가 필요해서 팩토리 만들고 pullparser를 만들었다. 결론, 그리고 pullparser에게 isr연결
-                    XmlPullParserFactory factory= XmlPullParserFactory.newInstance();
-                    XmlPullParser xpp=factory.newPullParser();
-                    xpp.setInput(isr);
+                        //xpp를 이용해서 xml문서를 분석
 
-                    //xpp를 이용해서 xml문서를 분석
+                        //xpp.next();   //XmlPullParser는 시작부터 문서의 시작점에 있으므로 next해주면 START_DOCUMENT를 못만난다.
+                        int eventType = xpp.getEventType();
 
-                    //xpp.next();   //XmlPullParser는 시작부터 문서의 시작점에 있으므로 next해주면 START_DOCUMENT를 못만난다.
-                    int eventType= xpp.getEventType();
+                        String tagName;
+                        StringBuffer buffer = null;
 
-                    String tagName;
-                    StringBuffer buffer=null;
-
-                    while(eventType!=XmlPullParser.END_DOCUMENT){
-
-
-                        switch (eventType){
-                            case XmlPullParser.START_DOCUMENT:
-                                break;
-
-                            case XmlPullParser.START_TAG:
-                                tagName=xpp.getName();
-                                if(tagName.equals("item")){
-                                    buffer=new StringBuffer();
-
-                                }else if(tagName.equals("entpName")){//회사명
-                                    xpp.next();
-                                    buffer.append(xpp.getText()+"\n");
+                        while (eventType != XmlPullParser.END_DOCUMENT) {
 
 
-                                }else if(tagName.equals("itemName")){//제품명
-                                    xpp.next();
-                                    buffer.append(xpp.getText()+"\n");
-                                }
-                                else if(tagName.equals("itemSeq")){//품목기준코드
-                                    xpp.next();
-                                    buffer.append(xpp.getText()+"\n");
-                                    System.out.println("--------------------------tagName: " + xpp.getText());
-                                }
-                                break;
+                            switch (eventType) {
+                                case XmlPullParser.START_DOCUMENT:
+                                    break;
 
-                            case XmlPullParser.TEXT:
-                                break;
+                                case XmlPullParser.START_TAG:
+                                    tagName = xpp.getName();
+                                    if (tagName.equals("item")) {
+                                        buffer = new StringBuffer();
 
-                            case XmlPullParser.END_TAG:
-                                tagName = xpp.getName();
-                                if(tagName.equals("item")){
-                                    String[] splitd = buffer.toString().split("\\n");
-                                    items.add(new Search(id, splitd[1], splitd[0], splitd[2]));
-                                    System.out.println("name: "+ splitd[1] + ", 품번: " +splitd[2] );
-                                    runOnUiThread(new Runnable(){
-                                        @Override
-                                        public void run(){
-                                            adapter.setItems(items);
-                                            adapter.notifyDataSetChanged();
-                                            count.setText("검색결과 " + adapter.getItemCount() + "건");
-                                        }
-                                    });
-                                    id++;//idex
-                                }
-                                break;
-                        }
-                        eventType=xpp.next();
-                    }//while
+                                    } else if (tagName.equals("entpName")) {//회사명
+                                        xpp.next();
+                                        buffer.append(xpp.getText() + "\n");
+
+
+                                    } else if (tagName.equals("itemName")) {//제품명
+                                        xpp.next();
+                                        buffer.append(xpp.getText() + "\n");
+                                    } else if (tagName.equals("itemSeq")) {//품목기준코드
+                                        xpp.next();
+                                        buffer.append(xpp.getText() + "\n");
+                                        System.out.println("--------------------------tagName: " + xpp.getText());
+                                    }
+                                    break;
+
+                                case XmlPullParser.TEXT:
+                                    break;
+
+                                case XmlPullParser.END_TAG:
+                                    tagName = xpp.getName();
+                                    if (tagName.equals("item")) {
+                                        String[] splitd = buffer.toString().split("\\n");
+                                        items.add(new Search(id, splitd[1], splitd[0], splitd[2]));
+                                        System.out.println("name: " + splitd[1] + ", 품번: " + splitd[2]);
+                                        runOnUiThread(new Runnable() {
+                                            @Override
+                                            public void run() {
+                                                adapter.setItems(items);
+                                                adapter.notifyDataSetChanged();
+                                                count.setText("검색결과 " + adapter.getItemCount() + "건");
+                                            }
+                                        });
+                                        id++;//idex
+                                    }
+                                    break;
+                            }
+                            eventType = xpp.next();
+                        }//while
+                    } catch (MalformedURLException e) {
+                        e.printStackTrace();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    } catch (XmlPullParserException e) {
+                        e.printStackTrace();
+                    }
                 }
-                catch (MalformedURLException e) { e.printStackTrace();} catch (IOException e) {e.printStackTrace();} catch (XmlPullParserException e) {e.printStackTrace();}
             }
         }.start();
 

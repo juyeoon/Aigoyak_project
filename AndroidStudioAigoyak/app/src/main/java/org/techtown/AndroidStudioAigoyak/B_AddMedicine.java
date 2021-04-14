@@ -45,7 +45,8 @@ public class B_AddMedicine extends AppCompatActivity {
     int d2 = cal.get(Calendar.DAY_OF_MONTH);//일
     int h = cal.get(Calendar.HOUR_OF_DAY);//시
     int mi = cal.get(Calendar.MINUTE);//분
-
+    int now_clock = h*100+mi;
+    int now_date = y*10000 + m*100 + d;
     int date = y*10000 + m*100 + d;
     int date2 = y2*10000 + m2*100 + d2;
     int a=0;
@@ -259,8 +260,15 @@ public class B_AddMedicine extends AppCompatActivity {
 
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(datetime);
-
-        alarmManager.set(AlarmManager.RTC, calendar.getTimeInMillis(), pendingIntent);
+        if(now_date <= date) {
+            if (now_date == date && now_clock > (h*100+mi)) {//지금 시각보다 전의 시각 선택 시 저장x
+                System.out.println("알람 안 울림");
+            }
+            else {
+                alarmManager.set(AlarmManager.RTC, calendar.getTimeInMillis(), pendingIntent);
+                System.out.println("알람 설정됨");
+            }
+        }
     }
 
 
@@ -316,7 +324,9 @@ public class B_AddMedicine extends AppCompatActivity {
             }
         },cal.get(Calendar.YEAR), cal.get(Calendar.MONTH), cal.get(Calendar.DAY_OF_MONTH));
 
-        datePickerDialog.show();
+
+            datePickerDialog.show();
+
     }
 
 
