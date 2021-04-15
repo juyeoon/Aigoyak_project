@@ -39,12 +39,9 @@ public class E_MedicineInfoMain extends Fragment {
 
         Bundle bundle = getArguments();
         String code = bundle.getString("code");
-        String text = bundle.getString("text");
-
-        bundle.putString("text",text);
         bundle.putString("code",code);
-        fragment1.setArguments(bundle);// E_MedicineInfoDetail();로 품번 전달
-        fragment2.setArguments(bundle);// E_MedicineDur로 json으로 들고온 text 전달
+        fragment1.setArguments(bundle);// E_MedicineInfoDetail로 품번 전달
+        fragment2.setArguments(bundle);// E_MedicineDur로 품번 전달
         TextView button1, button2;
 
         button1 = (TextView) fv.findViewById(R.id.상세정보);
@@ -57,10 +54,6 @@ public class E_MedicineInfoMain extends Fragment {
 
         button1.setSelected(true);
 
-
-
-
-        //
         vp.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {}
@@ -81,7 +74,7 @@ public class E_MedicineInfoMain extends Fragment {
             @Override
             public void onPageScrollStateChanged(int state) {}
         });
-        //
+
         return fv;
     }
 

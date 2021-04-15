@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -33,15 +34,17 @@ public class MainActivity extends Activity {
 
     ArrayList<HashMap<String, String>> personList;
 
-    ListView list;
+    String txt;
+    TextView textView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        list = (ListView) findViewById(R.id.listView);
+        textView = findViewById(R.id.textView);
+
         personList = new ArrayList<HashMap<String, String>>();
-        getData("http://192.168.200.124/PHP_connection.php");
+        getData("http://59.28.119.108:80/PHP_connection.php");
 
     }
 
@@ -78,6 +81,7 @@ public class MainActivity extends Activity {
             @Override
             protected void onPostExecute(String result) {
                 myJSON = result;
+                txt ="";
                 try {
                     JSONObject jsonObj = new JSONObject(myJSON);
                     peoples = jsonObj.getJSONArray(TAG_RESULTS);
@@ -91,12 +95,8 @@ public class MainActivity extends Activity {
                         System.out.println("스트링 내용 확인"+id+name+address);
 
                         HashMap<String, String> persons = new HashMap<String, String>();
+                        txt = txt + "@" + id + "@" + name + "@" + address + "\n";
 
-                        persons.put(TAG_ID, id);
-                        persons.put(TAG_NAME, name);
-                        persons.put(TAG_ADD, address);
-
-                        personList.add(persons);
                     }
 
                     ListAdapter adapter = new SimpleAdapter(
@@ -104,9 +104,7 @@ public class MainActivity extends Activity {
                             new String[]{TAG_ID, TAG_NAME, TAG_ADD},
                             new int[]{R.id.id, R.id.name, R.id.address}
                     );
-
-                    list.setAdapter(adapter);
-
+                    textView.setText(txt);
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
