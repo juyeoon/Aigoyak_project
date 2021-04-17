@@ -39,7 +39,7 @@ public class MainActivity extends Activity {
 
         //imView = (ImageView) findViewById(R.id.imageView1);
 
-        task.execute("http://172.30.1.21/appdata1.php");
+        task.execute("http://59.28.119.108:80/appdata1.php");
 
 
 
@@ -142,5 +142,7 @@ public class MainActivity extends Activity {
 
 
 }
+
+
 
 
