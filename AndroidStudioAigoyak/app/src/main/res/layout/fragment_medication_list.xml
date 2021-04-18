@@ -72,7 +72,7 @@
             android:layout_gravity="center_vertical"
             android:padding="5dp"
             android:visibility="visible"
-            app:srcCompat="@drawable/warning_sign_red">
+            app:srcCompat="@drawable/info_yellow">
 
         </ImageView>
 

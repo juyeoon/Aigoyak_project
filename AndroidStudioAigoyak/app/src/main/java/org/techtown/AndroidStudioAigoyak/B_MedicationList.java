@@ -28,6 +28,38 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.content.Context;
+import android.widget.Button;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.LinearLayoutManager;
+
+import android.content.Intent;
+import android.database.Cursor;
+
+import android.widget.CalendarView;
+
+import java.util.ArrayList;
+import java.util.Calendar;
+
+
+import org.xmlpull.v1.XmlPullParser;
+import org.xmlpull.v1.XmlPullParserException;
+import org.xmlpull.v1.XmlPullParserFactory;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.MalformedURLException;
+import java.net.URL;
 
 import static org.techtown.AndroidStudioAigoyak.B_AddMedicine.alarmManager;
 import static org.techtown.AndroidStudioAigoyak.B_AddMedicine.pendingIntent;
@@ -35,6 +67,11 @@ import static org.techtown.AndroidStudioAigoyak.B_AddMedicine.pendingIntent;
 public class B_MedicationList extends RecyclerView.Adapter<B_MedicationList.ViewHolder>{//일단 완료
     private static final String TAG = "NoteAdapter";
     ArrayList<Note> items = new ArrayList<Note>();//아이템이 들어갈 배열
+
+
+
+
+
     private int position;
     Context context;
     OnNoteItemClickListener listener;
@@ -66,12 +103,14 @@ public class B_MedicationList extends RecyclerView.Adapter<B_MedicationList.View
         LayoutInflater inflater = LayoutInflater.from(viewGroup.getContext());
         View itemView = inflater.inflate(R.layout.fragment_medication_list, viewGroup, false);
 
+        //
+
         return new ViewHolder(itemView);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int position){
-        int i= 0;
+
         int color_white = ContextCompat.getColor(context.getApplicationContext(), R.color.white);
         int color_gray = ContextCompat.getColor(context.getApplicationContext(), R.color.gray);
         viewHolder.setItem(items.get(position));
@@ -130,13 +169,7 @@ public class B_MedicationList extends RecyclerView.Adapter<B_MedicationList.View
         });
 
 
-
-
-
-
-
-
-
+//
         int id = items.get(position).get_id();
         String sql = "select date2 from " + NoteDatabase.TABLE_NOTE + " where " + "_id = " + id;
         Log.d(TAG, "sql : " + sql);
@@ -175,6 +208,20 @@ public class B_MedicationList extends RecyclerView.Adapter<B_MedicationList.View
                 }
             }
         });
+
+        viewHolder.warning.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+                code = items.get(position).getCode();
+
+                Intent intent  = new Intent(context, B_Warning.class).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                intent.putExtra("code", code);//품목기준코드 B_Warning으로 보냄.
+
+                context.startActivity(intent);
+            }
+        });
+
+
     }
 
     @Override
@@ -221,7 +268,7 @@ public class B_MedicationList extends RecyclerView.Adapter<B_MedicationList.View
 
         }
         public void setItem(Note item) {
-            warning.setVisibility(View.INVISIBLE); //warning 조건 걸어서 보이게 하기 (아직 안 함)----------------------------------------------------
+            warning.setVisibility(View.VISIBLE); //warning 조건 걸어서 보이게 하기 (아직 안 함)----------------------------------------------------
             name.setText(item.getName());
             clock.setText(item.getClock());
 

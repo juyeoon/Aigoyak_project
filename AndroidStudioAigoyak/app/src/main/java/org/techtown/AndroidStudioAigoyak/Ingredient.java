@@ -5,6 +5,7 @@ public class Ingredient {
     String code;
     String ingr;
     String add;
+    String add_warn;
     String url;
 
 
@@ -33,6 +34,14 @@ public class Ingredient {
     public void setAdd(String add){
         this.add = add;
     }
+
+    public String getAddWarn(){
+        return add_warn;
+    }
+    public void setAddWarn(String add_warn){
+        this.add_warn = add_warn;
+    }
+
 
     public String getUrl(){ return url; }
     public void setUrl(String url){ this.url = url; }

@@ -20,7 +20,7 @@ public class E_MedicineDur extends Fragment {
     String text;
     public List<Dur2> dur2List;
     public List<Dur3> dur3List;
-    public List<Dur4> dur4List;
+    public List<Dur5> dur5List;
     public List<Ingredient> ingrList;
 
     @Nullable
@@ -37,17 +37,22 @@ public class E_MedicineDur extends Fragment {
         return viewGroup;
     }
     private void initLoadDB(String code) {
+        String with, age, preg, old, volume, term;
 
         DataAdapter dataAdapter = new DataAdapter(getContext());
         dataAdapter.createDatabase();
         dataAdapter.open();
 
         // db에 있는 값들을 model을 적용해서 넣는다.
-        dur4List = dataAdapter.getTableData2("1");
-        dur3List = dataAdapter.getTableData1("1");//db에서 가져온 데이터 list에 저장.
+        dur5List = dataAdapter.getTableData2(code);
 
-        dur2List = dataAdapter.getTableData3("1");
-        text = allText(dur3List.get(0).getContent(), dur4List.get(0).getContent(), dur2List.get(0).getContent(), dur2List.get(1).getContent(), dur2List.get(2).getContent(), dur2List.get(3).getContent());
+        dur2List = dataAdapter.getTableData3(code);
+
+        dur3List = dataAdapter.getTableData1(code);//db에서 가져온 데이터 list에 저장.
+
+
+
+        text = allText(dur3List.get(0).getContent(), dur5List.get(0).getContent(), dur2List.get(0).getContent(), dur2List.get(1).getContent(), dur2List.get(2).getContent(), dur2List.get(3).getContent());
         textView.setText(text);
 
         // db 닫기

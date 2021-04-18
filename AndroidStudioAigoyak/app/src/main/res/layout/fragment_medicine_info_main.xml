@@ -23,6 +23,18 @@
             android:textSize="20dp" />
 
         <TextView
+            android:id="@+id/성분"
+            android:layout_width="0dip"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:background="@drawable/tab_bg_selector2"
+            android:fontFamily="@font/kukde_alt"
+            android:gravity="center"
+            android:text="성분정보"
+            android:textColor="@drawable/tab_color_selector"
+            android:textSize="20dp" />
+
+        <TextView
             android:id="@+id/DUR"
             android:layout_width="0dip"
             android:layout_height="50dp"

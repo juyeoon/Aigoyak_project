@@ -18,7 +18,9 @@ public class E_MedicineInfoMain extends Fragment {
     ViewPager vp;
     LinearLayout linear;
     private E_MedicineInfoDetail fragment1;
-    private E_MedicineDur fragment2;
+    private E_MedicineIngr fragment2;// 만드는중
+    private E_MedicineDur fragment3;
+
 
     public E_MedicineInfoMain() {    }
 
@@ -32,7 +34,8 @@ public class E_MedicineInfoMain extends Fragment {
         vp = fv.findViewById(R.id.vp);
         linear = fv.findViewById(R.id.button);
         fragment1= new E_MedicineInfoDetail();
-        fragment2 = new E_MedicineDur();
+        fragment2 = new E_MedicineIngr();
+        fragment3 = new E_MedicineDur();
 
         vp.setAdapter(new PagerAdapter(getChildFragmentManager()));
         vp.setCurrentItem(0);
@@ -41,16 +44,20 @@ public class E_MedicineInfoMain extends Fragment {
         String code = bundle.getString("code");
         bundle.putString("code",code);
         fragment1.setArguments(bundle);// E_MedicineInfoDetail로 품번 전달
-        fragment2.setArguments(bundle);// E_MedicineDur로 품번 전달
-        TextView button1, button2;
+        fragment2.setArguments(bundle);// E_MedicineIngr로 품번 전달 예정
+        fragment3.setArguments(bundle);// E_MedicineDur로 품번 전달
+        TextView button1, button2, button3;
 
         button1 = (TextView) fv.findViewById(R.id.상세정보);
-        button2 = (TextView) fv.findViewById(R.id.DUR);
+        button2 = (TextView) fv.findViewById(R.id.성분);
+        button3 = (TextView) fv.findViewById(R.id.DUR);
 
         button1.setOnClickListener(movePageListener);
         button1.setTag(0);
         button2.setOnClickListener(movePageListener);
         button2.setTag(1);
+        button3.setOnClickListener(movePageListener);
+        button3.setTag(2);
 
         button1.setSelected(true);
 
@@ -61,10 +68,11 @@ public class E_MedicineInfoMain extends Fragment {
             @Override
             public void onPageSelected(int position) {
                 int i = 0;
-                while (i < 2) {
+                while (i < 3) {
                     if (position == i) {
                         linear.findViewWithTag(i).setSelected(true);
-                    } else {
+                    }
+                    else {
                         linear.findViewWithTag(i).setSelected(false);
                     }
                     i++;
@@ -114,12 +122,15 @@ public class E_MedicineInfoMain extends Fragment {
             if (position == 0) {
                 return fragment1;
             }
-            else{
+            else if(position == 1){
                 return fragment2;
+            }
+            else{
+                return fragment3;
             }
         }
         public int getCount() {
-            return 2;
+            return 3;
         }
     }
 
@@ -128,7 +139,7 @@ public class E_MedicineInfoMain extends Fragment {
         public void onClick(View v) {
             int tag = (int) v.getTag();
             int i = 0;
-            while (i < 2) {
+            while (i < 3) {
                 if (tag == i) {
                     linear.findViewWithTag(i).setSelected(true);
                 } else {

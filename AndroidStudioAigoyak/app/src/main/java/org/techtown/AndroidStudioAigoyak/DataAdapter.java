@@ -83,7 +83,7 @@ public class DataAdapter
             Dur3 dur3 =null;//sql 사용
             //TABLE_WITH
             Cursor cursor1 = mDb.rawQuery(sql, null);
-            if (cursor1!=null)
+            if (cursor1.getCount()!=0)
             {
                 while( cursor1.moveToNext() ) {
                     System.out.println("몇 번 도는지1");
@@ -95,6 +95,15 @@ public class DataAdapter
                     // 리스트에 넣기
                     resultList.add(dur3);
                 }
+            }
+            else{
+                dur3 = new Dur3();
+                // code, code2, content
+                dur3.setCode("(없음)");
+                dur3.setCode2("(없음)");
+                dur3.setContent("(없음)");
+                // 리스트에 넣기
+                resultList.add(dur3);
             }
             return resultList;
         }
@@ -117,22 +126,35 @@ public class DataAdapter
             // 모델 넣을 리스트 생성
             List resultList = new ArrayList();//최종 돌려줄 list
 
-            Dur4 dur4 =null;//sql2 사용
+            Dur5 dur5 =null;//sql2 사용
             //TABLE_WITH
             Cursor cursor2 = mDb.rawQuery(sql2, null);
-            if (cursor2!=null)
+            if (cursor2.getCount()!=0)
             {
+                System.out.println("유후555555~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~`");
                 while( cursor2.moveToNext() ) {
                     System.out.println("몇 번 도는지1");
-                    dur4 = new Dur4();
+                    dur5 = new Dur5();
                     // code, limit_nm, limit, content
-                    dur4.setCode(cursor2.getString(0));
-                    dur4.setLimit_nm(cursor2.getString(1));
-                    dur4.setLimit(cursor2.getString(2));
-                    dur4.setContent(cursor2.getString(3));
+                    dur5.setCode(cursor2.getString(0));
+                    dur5.setLimit_nm(cursor2.getString(1));
+                    dur5.setUnit(cursor2.getString(2));
+                    dur5.setStandard(cursor2.getString(3));
+                    dur5.setContent(cursor2.getString(4));
                     // 리스트에 넣기
-                    resultList.add(dur4);
+                    resultList.add(dur5);
                 }
+            }
+            else{
+                dur5 = new Dur5();
+                // code, limit_nm, limit, content
+                dur5.setCode("(없음)");
+                dur5.setLimit_nm("(없음)");
+                dur5.setUnit("(없음)");
+                dur5.setStandard("(없음)");
+                dur5.setContent("(없음)");
+                // 리스트에 넣기
+                resultList.add(dur5);
             }
             return resultList;
         }
@@ -161,7 +183,7 @@ public class DataAdapter
 
             //TABLE_PREG
             Cursor cursor3 = mDb.rawQuery(sql3, null);
-            if (cursor3!=null)
+            if (cursor3.getCount()!=0)
             {
                 while( cursor3.moveToNext() ) {
                     System.out.println("몇 번 도는지1");
@@ -173,10 +195,18 @@ public class DataAdapter
                     resultList.add(dur2);
                 }
             }
+            else{
+                dur2 = new Dur2();
+                // code, content
+                dur2.setCode("(없음)");
+                dur2.setContent("(없음)");
+                // 리스트에 넣기
+                resultList.add(dur2);
+            }
             dur2 =null;
             //TABLE_OLD
             Cursor cursor4 = mDb.rawQuery(sql4, null);
-            if (cursor4!=null)
+            if (cursor4.getCount()!=0)
             {
                 while( cursor4.moveToNext() ) {
                     System.out.println("몇 번 도는지1");
@@ -188,10 +218,18 @@ public class DataAdapter
                     resultList.add(dur2);
                 }
             }
+            else{
+                dur2 = new Dur2();
+                // code, content
+                dur2.setCode("(없음)");
+                dur2.setContent("(없음)");
+                // 리스트에 넣기
+                resultList.add(dur2);
+            }
             dur2 =null;
             //TABLE_AMOUNT
             Cursor cursor5 = mDb.rawQuery(sql5, null);
-            if (cursor5!=null)
+            if (cursor5.getCount()!=0)
             {
                 while( cursor5.moveToNext() ) {
                     System.out.println("몇 번 도는지1");
@@ -203,10 +241,18 @@ public class DataAdapter
                     resultList.add(dur2);
                 }
             }
+            else{
+                dur2 = new Dur2();
+                // code, content
+                dur2.setCode("(없음)");
+                dur2.setContent("(없음)");
+                // 리스트에 넣기
+                resultList.add(dur2);
+            }
             dur2 =null;
             //TABLE_PERIOD
             Cursor cursor6 = mDb.rawQuery(sql6, null);
-            if (cursor6!=null)
+            if (cursor6.getCount()!=0)
             {
                 while( cursor6.moveToNext() ) {
                     System.out.println("몇 번 도는지1");
@@ -218,6 +264,15 @@ public class DataAdapter
                     resultList.add(dur2);
                 }
             }
+            else{
+                dur2 = new Dur2();
+                // code, content
+                dur2.setCode("(없음)");
+                dur2.setContent("(없음)");
+                // 리스트에 넣기
+                resultList.add(dur2);
+            }
+
             return resultList;
         }
         catch (SQLException mSQLException)
@@ -240,7 +295,7 @@ public class DataAdapter
             Ingredient ingredient =null;
             //TABLE_INGR
             Cursor cursor7 = mDb.rawQuery(sql7, null);
-            if (cursor7!=null)
+            if (cursor7.getCount()!=0)
             {
                 while( cursor7.moveToNext() ) {
                     System.out.println("몇 번 도는지1");
@@ -249,12 +304,26 @@ public class DataAdapter
                     ingredient.setCode(cursor7.getString(0));
                     ingredient.setIngr(cursor7.getString(1));
                     ingredient.setAdd(cursor7.getString(2));
-                    ingredient.setUrl(cursor7.getString(3));
+                    ingredient.setAddWarn(cursor7.getString(3));
+                    ingredient.setUrl(cursor7.getString(4));
 
 
                     // 리스트에 넣기
                     resultList.add(ingredient);
                 }
+            }
+            else{
+                ingredient = new Ingredient();
+                // code, ingr, add, url
+                ingredient.setCode("(없음)");
+                ingredient.setIngr("(없음)");
+                ingredient.setAdd("(없음)");
+                ingredient.setAddWarn("(없음)");
+                ingredient.setUrl("(없음)");
+
+
+                // 리스트에 넣기
+                resultList.add(ingredient);
             }
             return resultList;
         }
@@ -263,5 +332,17 @@ public class DataAdapter
             Log.e(TAG, "getTestData >>"+ mSQLException.toString());
             throw mSQLException;
         }
+    }
+
+    public Cursor rawQuery(String SQL) {
+
+        Cursor c1 = null;
+        try {
+            c1 = mDb.rawQuery(SQL, null);
+        } catch(Exception ex) {
+            Log.e(TAG, "Exception in executeQuery", ex);
+        }
+
+        return c1;
     }
 }

@@ -1,6 +1,7 @@
 package org.techtown.AndroidStudioAigoyak;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,19 +16,29 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.content.Intent;
 import android.database.Cursor;
-import android.util.Log;
+
 import android.widget.CalendarView;
 
 import java.util.ArrayList;
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
 
-import static android.content.Context.MODE_PRIVATE;
+
+import org.xmlpull.v1.XmlPullParser;
+import org.xmlpull.v1.XmlPullParserException;
+import org.xmlpull.v1.XmlPullParserFactory;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.MalformedURLException;
+import java.net.URL;
 
 
 public class B_Management extends Fragment{
     private static final String TAG= "Fragment1";
+
+
+
     MainActivity activity;
     RecyclerView recyclerView;
     B_MedicationList adapter;
@@ -69,19 +80,18 @@ public class B_Management extends Fragment{
             }
         });
 
-
         calendarView = (CalendarView) rootView.findViewById(R.id.calendarView);
-            calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
-                @Override
-                public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
-                    y = year;
-                    m = month + 1;
-                    d = dayOfMonth;
-                    select_date = y * 10000 + m * 100 + d;
-                    System.out.println(select_date + "," + now_date);
-                    loadNoteListData();
-                }
-            });
+        calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
+            @Override
+            public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
+                y = year;
+                m = month + 1;
+                d = dayOfMonth;
+                select_date = y * 10000 + m * 100 + d;
+                System.out.println(select_date + "," + now_date);
+                loadNoteListData();
+            }
+        });
 
         initUI(rootView);
         loadNoteListData();

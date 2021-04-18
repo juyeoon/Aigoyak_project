@@ -1,14 +1,15 @@
 package org.techtown.AndroidStudioAigoyak;
 
-public class Dur4 {
+public class Dur5 {
 
     String code;
     String limit_nm;
-    String limit;
+    String unit;
+    String standard;
     String content;
 
 
-    public Dur4(){
+    public Dur5(){
 
     }
 
@@ -27,11 +28,18 @@ public class Dur4 {
         this.limit_nm = limit_nm;
     }
 
-    public String getLimit(){
-        return limit;
+    public String getUnit(){
+        return unit;
     }
-    public void setLimit(String limit){
-        this.limit = limit;
+    public void setUnit(String unit){
+        this.unit = unit;
+    }
+
+    public String getStandard(){
+        return standard;
+    }
+    public void setStandard(String standard){
+        this.standard = standard;
     }
 
     public String getContent(){ return content; }
