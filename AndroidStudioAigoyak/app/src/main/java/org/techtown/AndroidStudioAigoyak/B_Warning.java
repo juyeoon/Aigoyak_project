@@ -28,7 +28,7 @@ public class B_Warning extends AppCompatActivity {
     private static final String TAG = "B_Warning";
     Context context;
 
-    //
+
     //추가 코드(특이사항이 하나인 경우)
     ArrayList<String> keyword = new ArrayList<String>(); //특이사항 데이터 저장하는곳
     String caution; //데이터 저장
@@ -70,30 +70,17 @@ public class B_Warning extends AppCompatActivity {
             if(i!=0){ keyword.add(user_cursor.getString(0)); }
 
         }
-        //확인용 코드//사용할 땐 데이터베이스에 있는 거 넣기//없을땐 넣기 전에 null 걸러야함 // 나중에 지우기
-        /*
-        keyword.add("과민증 환자");
-        keyword.add("이 약에");
-        keyword.add("마십시오.");
-        keyword.add("용법과 용량을");
-        keyword.add("확인용 문자열");
-        keyword.add("임산부");
-        keyword.add("고혈압");
-         */
-
-        System.out.println("코드^^^^^^^^^^^"+code);
 
         dur_text.setText(initLoadDB(code));
         new Thread(){
             @Override
             public void run() {
-                //API2
+
                 String address = "http://apis.data.go.kr/1471000/DrbEasyDrugInfoService/getDrbEasyDrugList"
                         + "?serviceKey=" + apiKey
                         + "&itemSeq=" + code;
 
                 try {
-                    //API2 관련
                     URL url = new URL(address);
                     InputStream is = url.openStream();
                     InputStreamReader isr = new InputStreamReader(is);
@@ -103,7 +90,7 @@ public class B_Warning extends AppCompatActivity {
                     int eventType= xpp.getEventType();
                     String tagName;
                     result_text = "▼ 특이사항 관련\n";
-                    //API2 parsing
+
                     while(eventType!=XmlPullParser.END_DOCUMENT){
                         switch (eventType){
                             case XmlPullParser.START_DOCUMENT:
@@ -124,7 +111,7 @@ public class B_Warning extends AppCompatActivity {
 
                                     }
                                     else{
-                                        caution ="(없음)";  //이거는 있어야할지 없어도 될지 잘 모르겠음
+                                        caution ="(없음)";
                                     };
                                 }
                                 break;
@@ -142,11 +129,9 @@ public class B_Warning extends AppCompatActivity {
 
                                         }
                                         else{
-                                            System.out.println("없음"+keyword.get(i));//해당 없을 때 일어나는 일을 여기 쓰면 됨
+                                            //해당 없을 때 일어나는 일을 여기 쓰면 됨
                                         }
                                     }
-
-                                    //리스트뷰 갱신
                                     runOnUiThread(new Runnable() {
                                         @Override
                                         public void run() {
@@ -154,8 +139,6 @@ public class B_Warning extends AppCompatActivity {
                                         }
                                     });
                                 }
-
-                                System.out.println("여기까진 잘됨");
                                 break;
                         }
                         eventType=xpp.next();
@@ -166,10 +149,10 @@ public class B_Warning extends AppCompatActivity {
                 } catch (XmlPullParserException e) {e.printStackTrace();}
             }// run() ..
         }.start();
-        //
 
 
-        System.out.println("2222222222222여기까진 잘됨");
+
+
 
 
     }
@@ -260,18 +243,56 @@ public class B_Warning extends AppCompatActivity {
             text = text +"▼ 용량 주의\n"+cursor4.getString(0) + "\n\n";//멘트 추가
         }
 
-        /*
-        //병용------이건 아직 안됨. 코드2개 불러와야해서 ㅜㅜ
-        String sql5 = "select CONTENT from " + DataAdapter.TABLE_WITH + " where code_a= " + code + "AND code_b= " + code;
-        Log.d(TAG, "sql5 : " + sql5);
-        Cursor cursor5 = database.rawQuery(sql5);
-        if (cursor5!=null)
-        {
-            cursor5.moveToNext();
-            result_text = result_text + "▼ 병용 금기\n"+cursor5.getString(0) + "\n\n";//멘트 추가
+        //병용금기
+        String code_a_date = "0";
+        String code_b_date[] = new String[50];
+        String code_b[] = new String[50];
+        String code_b_name[] = new String[50];
+        String manage_sql = "select name, code, date from " + NoteDatabase.TABLE_NOTE;
+        NoteDatabase database = NoteDatabase.getInstance(getApplicationContext());
+
+        int recordCount = -1;
+        int index = 0;//code_b의 index
+        if(database!=null){
+            Cursor manageCursor = database.rawQuery(manage_sql);
+            recordCount = manageCursor.getCount();
+
+            for(int i=0; i<recordCount; i++){
+                manageCursor.moveToNext();
+
+                if(code.equals(manageCursor.getString(1))){
+                    System.out.println("여기 들어감");
+
+                    code_a_date = manageCursor.getString(2);
+                }
+                else{
+                    code_b_date[index] = manageCursor.getString(2);
+                    code_b[index] = manageCursor.getString(1);
+                    code_b_name[index] = manageCursor.getString(0);
+                    index++;
+                }
+            }
         }
 
-         */
+        System.out.println("index값 ->" + index);
+        System.out.println("code_a_date값 ->" + code_a_date );
+        System.out.println("code_b_date값 ->" + code_b_date[0]);
+        for(int i=0; i<index; i++) {
+
+            if(code_a_date.equals(code_b_date[i])) {//같은 날짜에 복용할 때
+                System.out.println("code_a_date-> " +code_a_date);
+                System.out.println("code_b_date-> " +code_b_date[i]);
+                System.out.println("여기 잘 들어옴.");
+                String sql5 = "select CONTENT from " + DataAdapter.TABLE_WITH + " where code_a= " + code + " AND code_b= " + code_b[i];
+                Log.d(TAG, "sql5 : " + sql5);
+                Cursor cursor5 = dataAdapter.rawQuery(sql5);
+                if (cursor5.getCount()!=0) {
+                    cursor5.moveToNext();
+                    text = text + "▼ 병용 금기\n" + code_b_name[i] + "와 함께 복용하면 안 됩니다.\n ->" +
+                            cursor5.getString(0) +"\n\n";//멘트 추가
+                }
+            }
+        }
 
 
         // db 닫기

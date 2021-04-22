@@ -68,10 +68,6 @@ public class B_MedicationList extends RecyclerView.Adapter<B_MedicationList.View
     private static final String TAG = "NoteAdapter";
     ArrayList<Note> items = new ArrayList<Note>();//아이템이 들어갈 배열
 
-
-
-
-
     private int position;
     Context context;
     OnNoteItemClickListener listener;
@@ -102,8 +98,6 @@ public class B_MedicationList extends RecyclerView.Adapter<B_MedicationList.View
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int viewType){
         LayoutInflater inflater = LayoutInflater.from(viewGroup.getContext());
         View itemView = inflater.inflate(R.layout.fragment_medication_list, viewGroup, false);
-
-        //
 
         return new ViewHolder(itemView);
     }
@@ -168,8 +162,6 @@ public class B_MedicationList extends RecyclerView.Adapter<B_MedicationList.View
             }
         });
 
-
-//
         int id = items.get(position).get_id();
         String sql = "select date2 from " + NoteDatabase.TABLE_NOTE + " where " + "_id = " + id;
         Log.d(TAG, "sql : " + sql);
@@ -235,13 +227,13 @@ public class B_MedicationList extends RecyclerView.Adapter<B_MedicationList.View
 
     public Note getItem(int position){
         return items.get(position);
-    } //x
+    }
 
     public void setItems(ArrayList<Note> items){
         this.items = items;
     }
 
-    public void setOnItemClickListener(OnNoteItemClickListener listener){//x
+    public void setOnItemClickListener(OnNoteItemClickListener listener){
         this.listener = listener;
     }
 
@@ -268,7 +260,7 @@ public class B_MedicationList extends RecyclerView.Adapter<B_MedicationList.View
 
         }
         public void setItem(Note item) {
-            warning.setVisibility(View.VISIBLE); //warning 조건 걸어서 보이게 하기 (아직 안 함)----------------------------------------------------
+            warning.setVisibility(View.VISIBLE);
             name.setText(item.getName());
             clock.setText(item.getClock());
 

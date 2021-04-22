@@ -14,7 +14,7 @@ public class A_Age extends AppCompatActivity {
     private static final String TAG = "A_Age";
     Context context;
 
-    public static String age = "-1";
+    String age = "";
 
 
     @Override

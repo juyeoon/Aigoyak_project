@@ -127,8 +127,6 @@ public class C_MedicineSearch extends Fragment {
         }
     }
 
-
-
     View.OnClickListener movePageListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {

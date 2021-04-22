@@ -64,22 +64,7 @@
         app:layout_constraintHorizontal_bias="0.87"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.389" />
-
-    <Button
-        android:id="@+id/MAO"
-        android:layout_width="70dp"
-        android:layout_height="41dp"
-        android:background="@drawable/ok_button_selector"
-        android:fontFamily="@font/kukde_alt"
-        android:text="MAO"
-        android:textSize="15sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.164"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.389" />
+        app:layout_constraintVertical_bias="0.439" />
 
     <Button
         android:id="@+id/혈액응고"
@@ -94,7 +79,7 @@
         app:layout_constraintHorizontal_bias="0.164"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.678" />
+        app:layout_constraintVertical_bias="0.727" />
 
     <Button
         android:id="@+id/유당분해효소결핍증"
@@ -103,13 +88,13 @@
         android:background="@drawable/ok_button_selector"
         android:fontFamily="@font/kukde_alt"
         android:text="유당분해효소 결핍증"
-        android:textSize="15sp"
+        android:textSize="13sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.164"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.604" />
+        app:layout_constraintVertical_bias="0.653" />
 
     <Button
         android:id="@+id/과민증"
@@ -124,7 +109,7 @@
         app:layout_constraintHorizontal_bias="0.401"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.389" />
+        app:layout_constraintVertical_bias="0.439" />
 
     <Button
         android:id="@+id/두드러기"
@@ -139,7 +124,7 @@
         app:layout_constraintHorizontal_bias="0.401"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.457" />
+        app:layout_constraintVertical_bias="0.505" />
 
     <Button
         android:id="@+id/배뇨"
@@ -154,7 +139,7 @@
         app:layout_constraintHorizontal_bias="0.633"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.457" />
+        app:layout_constraintVertical_bias="0.505" />
 
     <Button
         android:id="@+id/부정맥"
@@ -169,7 +154,7 @@
         app:layout_constraintHorizontal_bias="0.87"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.457" />
+        app:layout_constraintVertical_bias="0.505" />
 
     <Button
         android:id="@+id/소화성궤양"
@@ -184,7 +169,7 @@
         app:layout_constraintHorizontal_bias="0.164"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.527" />
+        app:layout_constraintVertical_bias="0.576" />
 
     <Button
         android:id="@+id/신장"
@@ -199,7 +184,7 @@
         app:layout_constraintHorizontal_bias="0.401"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.527" />
+        app:layout_constraintVertical_bias="0.576" />
 
     <Button
         android:id="@+id/심장"
@@ -214,7 +199,7 @@
         app:layout_constraintHorizontal_bias="0.63"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.527" />
+        app:layout_constraintVertical_bias="0.576" />
 
     <Button
         android:id="@+id/알레르기"
@@ -229,7 +214,7 @@
         app:layout_constraintHorizontal_bias="0.87"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.527" />
+        app:layout_constraintVertical_bias="0.576" />
 
     <Button
         android:id="@+id/위장"
@@ -244,22 +229,7 @@
         app:layout_constraintHorizontal_bias="0.401"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.604" />
-
-    <Button
-        android:id="@+id/추가등록"
-        android:layout_width="70dp"
-        android:layout_height="41dp"
-        android:background="@drawable/ok_button_selector"
-        android:fontFamily="@font/kukde_alt"
-        android:text="추가등록"
-        android:textSize="15sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.87"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.678" />
+        app:layout_constraintVertical_bias="0.653" />
 
     <Button
         android:id="@+id/혈압"
@@ -274,7 +244,7 @@
         app:layout_constraintHorizontal_bias="0.63"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.678" />
+        app:layout_constraintVertical_bias="0.727" />
 
     <Button
         android:id="@+id/임부"
@@ -289,7 +259,7 @@
         app:layout_constraintHorizontal_bias="0.633"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.604" />
+        app:layout_constraintVertical_bias="0.653" />
 
     <Button
         android:id="@+id/천식"
@@ -304,7 +274,7 @@
         app:layout_constraintHorizontal_bias="0.87"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.604" />
+        app:layout_constraintVertical_bias="0.653" />
 
     <Button
         android:id="@+id/피부감염증"
@@ -319,7 +289,7 @@
         app:layout_constraintHorizontal_bias="0.401"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.678" />
+        app:layout_constraintVertical_bias="0.727" />
 
     <Button
         android:id="@+id/피부염"
@@ -334,7 +304,7 @@
         app:layout_constraintHorizontal_bias="0.63"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.389" />
+        app:layout_constraintVertical_bias="0.439" />
 
     <Button
         android:id="@+id/당뇨"
@@ -349,70 +319,21 @@
         app:layout_constraintHorizontal_bias="0.164"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.457" />
+        app:layout_constraintVertical_bias="0.505" />
 
-    <EditText
-        android:id="@+id/keyword"
-        android:layout_width="225dp"
-        android:layout_height="28dp"
-        android:layout_marginTop="24dp"
-        android:layout_weight="1"
-        android:background="@drawable/editbox_change_white"
-        android:ems="10"
+    <Button
+        android:id="@+id/MAO"
+        android:layout_width="70dp"
+        android:layout_height="41dp"
+        android:background="@drawable/ok_button_selector"
         android:fontFamily="@font/kukde_alt"
-        android:hint="당뇨"
-        android:padding="4dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.241"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/키워드" />
-
-    <TextView
-        android:id="@+id/키워드"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/kukde_alt"
-        android:text="#새로운 키워드를 등록하세요!"
-        android:textColor="@color/gray_soft"
-        android:textSize="15dp"
+        android:text="MAO"
+        android:textSize="15sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.193"
+        app:layout_constraintHorizontal_bias="0.164"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.755" />
-
-    <Button
-        android:id="@+id/delete"
-        android:layout_width="94dp"
-        android:layout_height="32dp"
-        android:layout_marginTop="4dp"
-        android:background="@drawable/ok_button"
-        android:fontFamily="@font/kukde_bdb"
-        android:shadowRadius="5"
-        android:text="삭제하기"
-        android:textColor="#FFFFFF"
-
-        android:textSize="15sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.902"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/add" />
-
-    <Button
-        android:id="@+id/add"
-        android:layout_width="94dp"
-        android:layout_height="32dp"
-        android:layout_marginBottom="152dp"
-        android:background="@drawable/ok_button"
-        android:fontFamily="@font/kukde_bdb"
-        android:shadowRadius="5"
-        android:text="추가하기"
-        android:textColor="#FFFFFF"
-        android:textSize="15sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.902"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintVertical_bias="0.439" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

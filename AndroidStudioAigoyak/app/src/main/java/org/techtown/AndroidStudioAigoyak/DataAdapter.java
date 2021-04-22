@@ -285,11 +285,9 @@ public class DataAdapter
     {
         try
         {
-            // Table 이름 -> antpool_bitcoin 불러오기
             System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@code = " + code);
             String sql7 = "SELECT * FROM " + TABLE_INGR + " WHERE code = '" + code + "'";
 
-            // 모델 넣을 리스트 생성
             List resultList = new ArrayList();//최종 돌려줄 list
 
             Ingredient ingredient =null;
@@ -300,12 +298,13 @@ public class DataAdapter
                 while( cursor7.moveToNext() ) {
                     System.out.println("몇 번 도는지1");
                     ingredient = new Ingredient();
-                    // code, ingr, add, url
+                    // code, name, corp, ingr, add, addwarn
                     ingredient.setCode(cursor7.getString(0));
-                    ingredient.setIngr(cursor7.getString(1));
-                    ingredient.setAdd(cursor7.getString(2));
-                    ingredient.setAddWarn(cursor7.getString(3));
-                    ingredient.setUrl(cursor7.getString(4));
+                    ingredient.setName(cursor7.getString(1));
+                    ingredient.setCorp(cursor7.getString(2));
+                    ingredient.setIngr(cursor7.getString(3));
+                    ingredient.setAdd(cursor7.getString(4));
+                    ingredient.setAddWarn(cursor7.getString(5));
 
 
                     // 리스트에 넣기
@@ -316,11 +315,11 @@ public class DataAdapter
                 ingredient = new Ingredient();
                 // code, ingr, add, url
                 ingredient.setCode("(없음)");
+                ingredient.setName("(없음)");
+                ingredient.setCorp("(없음)");
                 ingredient.setIngr("(없음)");
                 ingredient.setAdd("(없음)");
                 ingredient.setAddWarn("(없음)");
-                ingredient.setUrl("(없음)");
-
 
                 // 리스트에 넣기
                 resultList.add(ingredient);
@@ -333,7 +332,37 @@ public class DataAdapter
             throw mSQLException;
         }
     }
+    public ArrayList ingrSearch(String text)//나중에 바꿔야 함.
+    {
+        try
+        {
+            System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@text = " + text);
+            String sql7 = "SELECT * FROM " + TABLE_INGR;
 
+            ArrayList<Search> resultList = new ArrayList<Search>();//최종 돌려줄 list
+
+            //TABLE_INGR
+            Cursor cursor7 = mDb.rawQuery(sql7, null);
+            if (cursor7.getCount()!=0)
+            {
+                int i=0;
+                while( cursor7.moveToNext() ) {
+
+                    if(cursor7.getString(3).contains(text)){//검색 결과가 ingr에 포함될 때
+                        resultList.add(new Search(i, cursor7.getString(1), cursor7.getString(2), cursor7.getString(0)));//id, name, corp, code
+                        i++;
+                    }
+                }
+            }
+
+            return resultList;
+        }
+        catch (SQLException mSQLException)
+        {
+            Log.e(TAG, "getTestData >>"+ mSQLException.toString());
+            throw mSQLException;
+        }
+    }
     public Cursor rawQuery(String SQL) {
 
         Cursor c1 = null;

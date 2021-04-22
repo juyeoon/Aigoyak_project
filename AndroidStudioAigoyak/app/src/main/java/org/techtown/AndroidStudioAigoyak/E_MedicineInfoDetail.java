@@ -29,13 +29,8 @@ import java.util.ArrayList;
 public class E_MedicineInfoDetail extends Fragment {
     ViewGroup viewGroup;
 
-    //데이터 받아 온 것 여기 저장
-    //String sampleName = "타이레놀8시간이알서방정"; //사용할지 안 할지 모르겠음
-    //String sampleCode = "199603003"; //예시 데이터
-
-    //************************************************ apiKey 넣어야함 8888888888888888888888888888888888888888888888888888
     String apiKey="COqqRqdIM6Kkz9qfzXGH5geAKxrfy90RL6AhqU4%2BaUT19SMd4Oy0YM7lpTZP8%2BY%2FgegeDNplMu%2FA%2B8HdJfGhKQ%3D%3D";
-    String imageURL; //이미지 URL 저장
+    String imageURL;
 
     TextView text;
     String sampleCode;
@@ -58,18 +53,15 @@ public class E_MedicineInfoDetail extends Fragment {
                 //API2
                 String address = "http://apis.data.go.kr/1471000/DrbEasyDrugInfoService/getDrbEasyDrugList"
                         + "?serviceKey=" + apiKey
-                        //+ "&itemName=" + sampleName //사용하게 되면 넣기
                         + "&itemSeq=" + sampleCode;
 
                 //API3
                 String address2 = "http://apis.data.go.kr/1470000/MdcinGrnIdntfcInfoService/getMdcinGrnIdntfcInfoList"
                         + "?ServiceKey=" + apiKey
-                        //+ "&item_name=" + sampleName  //사용하게 되면 넣기
                         + "&item_seq=" + sampleCode;
 
-
                 try {
-                    //API2 관련
+                    //API2
                     URL url = new URL(address);
                     InputStream is = url.openStream();
                     InputStreamReader isr = new InputStreamReader(is);
@@ -79,7 +71,7 @@ public class E_MedicineInfoDetail extends Fragment {
                     int eventType= xpp.getEventType();
                     String tagName;
 
-                    //API3 관련
+                    //API3
                     URL url2 = new URL(address2);
                     InputStream is2 = url2.openStream();
                     InputStreamReader isr2 = new InputStreamReader(is2);
@@ -89,11 +81,8 @@ public class E_MedicineInfoDetail extends Fragment {
                     int eventType2= xpp2.getEventType();
                     String tagName2;
 
-                    //buffer는 하나만 사용 -> 글이 이어져야하기 때문
+
                     StringBuffer buffer=null;
-
-
-
 
                         //API2 parsing
                         while(eventType!=XmlPullParser.END_DOCUMENT){
@@ -108,8 +97,7 @@ public class E_MedicineInfoDetail extends Fragment {
                                     if(tagName.equals("item")){
                                         buffer=new StringBuffer();
                                     }
-////////////////////////////****순서대로 나오는 것이 아님. xml문서의 태그 순서와 같음///////////////////////////////
-                                    //이미지(null 존재)
+                                    //이미지
                                     else if(tagName.equals("itemImage")){
                                         xpp.next();
                                         imageURL=xpp.getText();
@@ -118,7 +106,7 @@ public class E_MedicineInfoDetail extends Fragment {
                                     else if(tagName.equals("entpName")){
                                         buffer.append("▼ 회사명");
                                         xpp.next();
-                                        buffer.append("\n"+xpp.getText()+"\n\n");  //아래 두줄을 한줄로 줄일 수 있다.
+                                        buffer.append("\n"+xpp.getText()+"\n\n");
                                     }
                                     //제품명
                                     else if(tagName.equals("itemName")){
@@ -131,7 +119,7 @@ public class E_MedicineInfoDetail extends Fragment {
                                         xpp.next();
                                         String str = xpp.getText();
                                         if(str != null){
-                                            String strc = str.replaceAll("<p>", ""); //p태그가 나오는 것을 막기 위한 코드
+                                            String strc = str.replaceAll("<p>", "");
                                             strc = strc.replaceAll("</p>", "");
                                             buffer.append("▼ 효과 및 효능");
                                             buffer.append("\n"+strc+"\n\n");
@@ -214,11 +202,13 @@ public class E_MedicineInfoDetail extends Fragment {
 
                                 case XmlPullParser.END_TAG:
                                     tagName = xpp.getName();
+                                    /*
                                     if(tagName.equals("item")){
-////////////////////////////////////확인용(성분 넣을 곳 확보하는 코드)/////////////////////////////////////////
                                         buffer.append("▼ 주성분");
                                         buffer.append("\n(아직 NULL)\n\n");
                                     }
+
+                                     */
                                     break;
                             }
                             eventType=xpp.next();
@@ -296,7 +286,7 @@ public class E_MedicineInfoDetail extends Fragment {
                                     }
                                     else if(tagName2.equals("COLOR_CLASS2")){
                                         xpp2.next();
-                                        //null -> 없음
+                                        //null
                                         String str = xpp2.getText();
                                         if(str!=null){
                                             buffer.append("(뒤)"+str+"\n\n");
@@ -321,7 +311,7 @@ public class E_MedicineInfoDetail extends Fragment {
                                     }
                                     else if(tagName2.equals("LENG_SHORT")){
                                         xpp2.next();
-                                        //null -> 없음
+                                        //null
                                         String str = xpp2.getText();
                                         if(str!=null){
                                             buffer.append("(단축)"+str+"\n");
@@ -332,7 +322,7 @@ public class E_MedicineInfoDetail extends Fragment {
                                     }
                                     else if(tagName2.equals("THICK")){
                                         xpp2.next();
-                                        //null -> 없음
+                                        //null
                                         String str = xpp2.getText();
                                         if(str!=null){
                                             buffer.append("(두께)"+str+"\n\n");
@@ -357,7 +347,7 @@ public class E_MedicineInfoDetail extends Fragment {
                                     }
                                     else if(tagName2.equals("LINE_BACK")){
                                         xpp2.next();
-                                        //null -> 없음
+                                        //null
                                         String str = xpp2.getText();
                                         if(str!=null){
                                             buffer.append("(뒤)"+str+"\n\n");
@@ -373,7 +363,7 @@ public class E_MedicineInfoDetail extends Fragment {
 
                                 case XmlPullParser.END_TAG:
                                     tagName2 = xpp2.getName();
-                                    if(tagName2.equals("items")){//**꼭 items여야함 //3이 없어도 2가 나와야하기 때문
+                                    if(tagName2.equals("items")){
 
                                         text.setText(buffer.toString());
 
@@ -381,17 +371,12 @@ public class E_MedicineInfoDetail extends Fragment {
                                     break;
                             }
                             eventType2=xpp2.next();
-                        }//while ..
-
-
-
+                        }
                 } catch (MalformedURLException e) { e.printStackTrace();
                 } catch (IOException e) {e.printStackTrace();
                 } catch (XmlPullParserException e) {e.printStackTrace();}
             }// run() ..
         }.start();
-
-
         return viewGroup;
     }
 }

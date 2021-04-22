@@ -100,9 +100,6 @@ public class B_AddSearchAdapter extends RecyclerView.Adapter<B_AddSearchAdapter.
             corp = itemView.findViewById(R.id.corp);
             select_button = itemView.findViewById(R.id.select_button);
 
-
-
-
         }
 
         public void setItem(Search item) {

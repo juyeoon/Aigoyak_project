@@ -21,7 +21,7 @@ package org.techtown.AndroidStudioAigoyak;
         import java.net.URLEncoder;
         import java.util.ArrayList;
 
-////////////////////////////////////////////////이거 고치는 중
+
 
 public class B_AddMedicineSearchList extends AppCompatActivity {
     private static final String TAG = "B_AddMedicineSearchList";
@@ -55,7 +55,6 @@ public class B_AddMedicineSearchList extends AppCompatActivity {
                 onBackPressed();
             }
         });
-
 
         new Thread(){
             @Override
@@ -124,7 +123,6 @@ public class B_AddMedicineSearchList extends AppCompatActivity {
                                     } else if (tagName.equals("itemSeq")) {//품목기준코드
                                         xpp.next();
                                         buffer.append(xpp.getText() + "\n");
-                                        //System.out.println("--------------------------tagName: " + xpp.getText());
                                     }
                                     break;
 

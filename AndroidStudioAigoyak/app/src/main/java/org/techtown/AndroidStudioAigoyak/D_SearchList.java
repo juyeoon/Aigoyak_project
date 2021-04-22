@@ -119,7 +119,6 @@ public class D_SearchList extends AppCompatActivity {
                                     } else if (tagName.equals("itemSeq")) {//품목기준코드
                                         xpp.next();
                                         buffer.append(xpp.getText() + "\n");
-                                        System.out.println("--------------------------tagName: " + xpp.getText());
                                     }
                                     break;
 
@@ -131,7 +130,6 @@ public class D_SearchList extends AppCompatActivity {
                                     if (tagName.equals("item")) {
                                         String[] splitd = buffer.toString().split("\\n");
                                         items.add(new Search(id, splitd[1], splitd[0], splitd[2]));
-                                        System.out.println("name: " + splitd[1] + ", 품번: " + splitd[2]);
                                         runOnUiThread(new Runnable() {
                                             @Override
                                             public void run() {

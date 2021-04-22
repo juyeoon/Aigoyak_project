@@ -59,7 +59,7 @@ public class NoteDatabase {
         Cursor c1 = null;
         try {
             c1 = db.rawQuery(SQL, null);
-            println("cursor count : " + c1.getCount());
+            System.out.println("cursor count : " + c1.getCount());
         } catch(Exception ex) {
             Log.e(TAG, "Exception in executeQuery", ex);
         }
@@ -118,7 +118,7 @@ public class NoteDatabase {
                     + "  NAME TEXT DEFAULT '',"
                     + "  CORP TEXT DEFAULT '');";
 
-            String CREATE_SQL_USER = "create table " + TABLE_USER + "(" //10개 만듦
+            String CREATE_SQL_USER = "create table " + TABLE_USER + "("
                     + " _id INTEGER  NOT NULL PRIMARY KEY AUTOINCREMENT, "
                     + "  FEATURE TEXT DEFAULT '');";
 

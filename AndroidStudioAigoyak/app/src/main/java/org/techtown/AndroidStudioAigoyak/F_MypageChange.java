@@ -38,412 +38,136 @@ public class F_MypageChange extends AppCompatActivity {
 
             System.out.println(text);
         }
-
         Button button1 = (Button) findViewById(R.id.MAO);
+        Button button2 = (Button) findViewById(R.id.과민증);
+        Button button3 = (Button) findViewById(R.id.피부염);
+        Button button4 = (Button) findViewById(R.id.녹내장);
+        Button button5 = (Button) findViewById(R.id.당뇨);
+        Button button6 = (Button) findViewById(R.id.두드러기);
+        Button button7 = (Button) findViewById(R.id.배뇨);
+        Button button8 = (Button) findViewById(R.id.부정맥);
+        Button button9 = (Button) findViewById(R.id.소화성궤양);
+        Button button10 = (Button) findViewById(R.id.신장);
+        Button button11 = (Button) findViewById(R.id.심장);
+        Button button12 = (Button) findViewById(R.id.알레르기);
+        Button button13 = (Button) findViewById(R.id.유당분해효소결핍증);
+        Button button14 = (Button) findViewById(R.id.위장);
+        Button button15 = (Button) findViewById(R.id.임부);
+        Button button16 = (Button) findViewById(R.id.천식);
+        Button button17 = (Button) findViewById(R.id.혈액응고);
+        Button button18 = (Button) findViewById(R.id.피부감염증);
+        Button button19 = (Button) findViewById(R.id.혈압);
+        Button button20 = (Button) findViewById(R.id.추가등록);
+
         String text1 = button1.getText().toString();
+        String text2 = button2.getText().toString();
+        String text3 = button3.getText().toString();
+        String text4 = button4.getText().toString();
+        String text5 = button5.getText().toString();
+        String text6 = button6.getText().toString();
+        String text7 = button7.getText().toString();
+        String text8 = button8.getText().toString();
+        String text9 = button9.getText().toString();
+        String text10 = button10.getText().toString();
+        String text11 = button11.getText().toString();
+        String text12 = button12.getText().toString();
+        String text13 = button13.getText().toString();
+        String text14 = button14.getText().toString();
+        String text15 = button15.getText().toString();
+        String text16 = button16.getText().toString();
+        String text17 = button17.getText().toString();
+        String text18 = button18.getText().toString();
+        String text19 = button19.getText().toString();
+        String text20 = button20.getText().toString();
+
         for(int i=0; i< recordCount; i++){
             if(text1.equals(text[i])){
                 button1.setSelected(true);
             }
-        }
-        button1.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v){
-                if(button1.isSelected()){
-                    button1.setSelected(false);
-                    deleteNote(text1);
-                }
-                else{
-                    button1.setSelected(true);
-                    changeNote(text1);
-                }
-            }
-        });
-
-        Button button2 = (Button) findViewById(R.id.과민증);
-        String text2 = button2.getText().toString();
-        for(int i=0; i< recordCount; i++){
-            if(text2.equals(text[i])){
+            else if(text2.equals(text[i])){
                 button2.setSelected(true);
             }
-        }
-        button2.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v){
-                if(button2.isSelected()){
-                    button2.setSelected(false);
-                    deleteNote(text2);
-                }
-                else{
-                    button2.setSelected(true);
-                    changeNote(text2);
-                }
-            }
-        });
-
-        Button button3 = (Button) findViewById(R.id.피부염);
-        String text3 = button3.getText().toString();
-        for(int i=0; i< recordCount; i++){
-            if(text3.equals(text[i])){
+            else if(text3.equals(text[i])){
                 button3.setSelected(true);
             }
-        }
-        button3.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v){
-                if(button3.isSelected()){
-                    button3.setSelected(false);
-                    deleteNote(text3);
-                }
-                else{
-                    button3.setSelected(true);
-                    changeNote(text3);
-                }
-            }
-        });
-
-        Button button4 = (Button) findViewById(R.id.녹내장);
-        String text4 = button4.getText().toString();
-        for(int i=0; i< recordCount; i++){
-            if(text4.equals(text[i])){
+            else if(text4.equals(text[i])){
                 button4.setSelected(true);
             }
-        }
-        button4.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v){
-                if(button4.isSelected()){
-                    button4.setSelected(false);
-                    deleteNote(text4);
-                }
-                else{
-                    button4.setSelected(true);
-                    changeNote(text4);
-                }
-            }
-        });
-        Button button5 = (Button) findViewById(R.id.당뇨);
-        String text5 = button5.getText().toString();
-        for(int i=0; i< recordCount; i++){
-            if(text5.equals(text[i])){
+            else if(text5.equals(text[i])){
                 button5.setSelected(true);
             }
-        }
-        button5.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v){
-                if(button5.isSelected()){
-                    button5.setSelected(false);
-                    deleteNote(text5);
-                }
-                else{
-                    button5.setSelected(true);
-                    changeNote(text5);
-                }
-            }
-        });
-
-        Button button6 = (Button) findViewById(R.id.두드러기);
-        String text6 = button6.getText().toString();
-        for(int i=0; i< recordCount; i++){
-            if(text6.equals(text[i])){
+            else if(text6.equals(text[i])){
                 button6.setSelected(true);
             }
-        }
-        button6.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v){
-                if(button6.isSelected()){
-                    button6.setSelected(false);
-                    deleteNote(text6);
-                }
-                else{
-                    button6.setSelected(true);
-                    changeNote(text6);
-                }
-            }
-        });
-
-        Button button7 = (Button) findViewById(R.id.배뇨);
-        String text7 = button7.getText().toString();
-        for(int i=0; i< recordCount; i++){
-            if(text7.equals(text[i])){
+            else if(text7.equals(text[i])){
                 button7.setSelected(true);
             }
-        }
-        button7.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v){
-                if(button7.isSelected()){
-                    button7.setSelected(false);
-                    deleteNote(text7);
-                }
-                else{
-                    button7.setSelected(true);
-                    changeNote(text7);
-                }
-            }
-        });
-
-        Button button8 = (Button) findViewById(R.id.부정맥);
-        String text8 = button8.getText().toString();
-        for(int i=0; i< recordCount; i++){
-            if(text8.equals(text[i])){
+            else if(text8.equals(text[i])){
                 button8.setSelected(true);
             }
-        }
-        button8.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v){
-                if(button8.isSelected()){
-                    button8.setSelected(false);
-                    deleteNote(text8);
-                }
-                else{
-                    button8.setSelected(true);
-                    changeNote(text8);
-                }
-            }
-        });
-
-        Button button9 = (Button) findViewById(R.id.소화성궤양);
-        String text9 = button9.getText().toString();
-        for(int i=0; i< recordCount; i++){
-            if(text9.equals(text[i])){
+            else if(text9.equals(text[i])){
                 button9.setSelected(true);
             }
-        }
-        button9.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v){
-                if(button9.isSelected()){
-                    button9.setSelected(false);
-                    deleteNote(text9);
-                }
-                else{
-                    button9.setSelected(true);
-                    changeNote(text9);
-                }
-            }
-        });
-
-        Button button10 = (Button) findViewById(R.id.신장);
-        String text10 = button10.getText().toString();
-        for(int i=0; i< recordCount; i++){
-            if(text10.equals(text[i])){
+            else if(text10.equals(text[i])){
                 button10.setSelected(true);
             }
-        }
-        button10.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v){
-                if(button10.isSelected()){
-                    button10.setSelected(false);
-                    deleteNote(text10);
-                }
-                else{
-                    button10.setSelected(true);
-                    changeNote(text10);
-                }
-            }
-        });
-
-        Button button11 = (Button) findViewById(R.id.심장);
-        String text11 = button11.getText().toString();
-        for(int i=0; i< recordCount; i++){
-            if(text11.equals(text[i])){
+            else if(text11.equals(text[i])){
                 button11.setSelected(true);
             }
-        }
-        button11.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v){
-                if(button11.isSelected()){
-                    button11.setSelected(false);
-                    deleteNote(text11);
-                }
-                else{
-                    button11.setSelected(true);
-                    changeNote(text11);
-                }
-            }
-        });
-
-        Button button12 = (Button) findViewById(R.id.알레르기);
-        String text12 = button12.getText().toString();
-        for(int i=0; i< recordCount; i++){
-            if(text12.equals(text[i])){
+            else if(text12.equals(text[i])){
                 button12.setSelected(true);
             }
-        }
-        button12.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v){
-                if(button12.isSelected()){
-                    button12.setSelected(false);
-                    deleteNote(text12);
-                }
-                else{
-                    button12.setSelected(true);
-                    changeNote(text12);
-                }
-            }
-        });
-
-        Button button13 = (Button) findViewById(R.id.유당분해효소결핍증);
-        String text13 = button13.getText().toString();
-        for(int i=0; i< recordCount; i++){
-            if(text13.equals(text[i])){
+            else if(text13.equals(text[i])){
                 button13.setSelected(true);
             }
-        }
-        button13.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v){
-                if(button13.isSelected()){
-                    button13.setSelected(false);
-                    deleteNote(text13);
-                }
-                else{
-                    button13.setSelected(true);
-                    changeNote(text13);
-                }
-            }
-        });
-
-        Button button14 = (Button) findViewById(R.id.위장);
-        String text14 = button14.getText().toString();
-        for(int i=0; i< recordCount; i++){
-            if(text14.equals(text[i])){
+            else if(text14.equals(text[i])){
                 button14.setSelected(true);
             }
-        }
-        button14.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v){
-                if(button14.isSelected()){
-                    button14.setSelected(false);
-                    deleteNote(text14);
-                }
-                else{
-                    button14.setSelected(true);
-                    changeNote(text14);
-                }
-            }
-        });
-
-        Button button15 = (Button) findViewById(R.id.임부);
-        String text15 = button15.getText().toString();
-        for(int i=0; i< recordCount; i++){
-            if(text15.equals(text[i])){
+            else if(text15.equals(text[i])){
                 button15.setSelected(true);
             }
-        }
-        button15.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v){
-                if(button15.isSelected()){
-                    button15.setSelected(false);
-                    deleteNote(text15);
-                }
-                else{
-                    button15.setSelected(true);
-                    changeNote(text15);
-                }
-            }
-        });
-
-        Button button16 = (Button) findViewById(R.id.천식);
-        String text16 = button16.getText().toString();
-        for(int i=0; i< recordCount; i++){
-            if(text16.equals(text[i])){
+            else if(text16.equals(text[i])){
                 button16.setSelected(true);
             }
-        }
-        button16.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v){
-                if(button16.isSelected()){
-                    button16.setSelected(false);
-                    deleteNote(text16);
-                }
-                else{
-                    button16.setSelected(true);
-                    changeNote(text16);
-                }
-            }
-        });
-
-        Button button17 = (Button) findViewById(R.id.혈액응고);
-        String text17 = button17.getText().toString();
-        for(int i=0; i< recordCount; i++){
-            if(text17.equals(text[i])){
+            else if(text17.equals(text[i])){
                 button17.setSelected(true);
             }
-        }
-        button17.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v){
-                if(button17.isSelected()){
-                    button17.setSelected(false);
-                    deleteNote(text17);
-                }
-                else{
-                    button17.setSelected(true);
-                    changeNote(text17);
-                }
-            }
-        });
-
-        Button button18 = (Button) findViewById(R.id.피부감염증);
-        String text18 = button18.getText().toString();
-        for(int i=0; i< recordCount; i++){
-            if(text18.equals(text[i])){
+            else if(text18.equals(text[i])){
                 button18.setSelected(true);
             }
-        }
-        button18.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v){
-                if(button18.isSelected()){
-                    button18.setSelected(false);
-                    deleteNote(text18);
-                }
-                else{
-                    button18.setSelected(true);
-                    changeNote(text18);
-                }
-            }
-        });
-
-        Button button19 = (Button) findViewById(R.id.혈압);
-        String text19 = button19.getText().toString();
-        for(int i=0; i< recordCount; i++){
-            if(text19.equals(text[i])){
+            else if(text19.equals(text[i])){
                 button19.setSelected(true);
             }
-        }
-        button19.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v){
-                if(button19.isSelected()){
-                    button19.setSelected(false);
-                    deleteNote(text19);
+            else{//추가 등록에 대한 text가 저장되어 있을 때
+                if(i != 0) {
+                    System.out.println("i값: " + i);
+                    button20.setText(text[i]);//그 텍스트 저장
+                    button20.setSelected(true);
                 }
-                else{
-                    button19.setSelected(true);
-                    changeNote(text19);
-                }
-            }
-        });
+            }//그래서 만약 추가 키워드 추가하고 디비 저장 안 하면 나갔다 오면 저장 안 되어 있을거임
 
-        Button button20 = (Button) findViewById(R.id.추가등록);
-        String text20 = button20.getText().toString();
-        for(int i=0; i< recordCount; i++){
-            if(text20.equals(text[i])){
-                button20.setSelected(true);
-            }
         }
+        buttonAction(button1, text1);
+        buttonAction(button2, text2);
+        buttonAction(button3, text3);
+        buttonAction(button4, text4);
+        buttonAction(button5, text5);
+        buttonAction(button6, text6);
+        buttonAction(button7, text7);
+        buttonAction(button8, text8);
+        buttonAction(button9, text9);
+        buttonAction(button10, text10);
+        buttonAction(button11, text11);
+        buttonAction(button12, text12);
+        buttonAction(button13, text13);
+        buttonAction(button14, text14);
+        buttonAction(button15, text15);
+        buttonAction(button16, text16);
+        buttonAction(button17, text17);
+        buttonAction(button18, text18);
+        buttonAction(button19, text19);
+
+
         button20.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
@@ -521,7 +245,6 @@ public class F_MypageChange extends AppCompatActivity {
     //나이 db에 저장
     private void saveNote(String age, String text){
         String sql = "UPDATE "+NoteDatabase.TABLE_USER+ " SET FEATURE = '" + age +"' where feature = '"+text+"'";
-        A_Age.age = age;
         Log.d(TAG, "sql : " + sql);
         NoteDatabase database = NoteDatabase.getInstance(context);
         database.execSQL(sql);
@@ -546,5 +269,21 @@ public class F_MypageChange extends AppCompatActivity {
         Log.d(TAG, "sql : " + sql);
         NoteDatabase database = NoteDatabase.getInstance(context);
         database.execSQL(sql);
+    }
+    //버튼액션
+    public void buttonAction(Button button, String text){
+
+        button.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                if (button.isSelected()) {
+                    button.setSelected(false);
+                    deleteNote(text);
+                } else {
+                    button.setSelected(true);
+                    changeNote(text);
+                }
+            }
+        });
     }
 }

@@ -27,6 +27,7 @@
         <activity android:name="org.techtown.AndroidStudioAigoyak.B_AddMedicine"/>
         <activity android:name="org.techtown.AndroidStudioAigoyak.B_Warning"/>
         <activity android:name="org.techtown.AndroidStudioAigoyak.D_SearchList"/>
+        <activity android:name="org.techtown.AndroidStudioAigoyak.D_SearchListComponentName"/>
         <activity android:name="org.techtown.AndroidStudioAigoyak.E_MedicineInfo"/>
         <activity android:name="org.techtown.AndroidStudioAigoyak.F_MypageDetail"/>
         <activity android:name="org.techtown.AndroidStudioAigoyak.F_MypageChange"/>

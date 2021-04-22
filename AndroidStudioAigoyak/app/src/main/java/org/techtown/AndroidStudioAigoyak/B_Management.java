@@ -37,8 +37,6 @@ import java.net.URL;
 public class B_Management extends Fragment{
     private static final String TAG= "Fragment1";
 
-
-
     MainActivity activity;
     RecyclerView recyclerView;
     B_MedicationList adapter;
@@ -51,8 +49,6 @@ public class B_Management extends Fragment{
     int d = cal.get(Calendar.DAY_OF_MONTH);
     int now_date =  y*10000 + m*100 + d;
     int select_date = now_date;
-
-
 
     @Override
     public void onAttach(@NonNull Context context) {
@@ -96,7 +92,6 @@ public class B_Management extends Fragment{
         initUI(rootView);
         loadNoteListData();
 
-
         return rootView;
 
     }
@@ -115,9 +110,11 @@ public class B_Management extends Fragment{
 
     }
 
+
     //db연결해서 데이터를 리스트에 저장
     public int loadNoteListData(){
-        String sql = "select _id, CODE, NAME, CORP, CLOCK, DATE, ALARM, DATE2 from " + NoteDatabase.TABLE_NOTE + " where DATE = " + select_date + " order by _id desc";
+        String sql = "select _id, CODE, NAME, CORP, CLOCK, DATE, ALARM, DATE2 from " + NoteDatabase.TABLE_NOTE +
+                    " where DATE = " + select_date + " order by _id desc";
         System.out.println(sql);
         int recordCount=-1;
         NoteDatabase database = NoteDatabase.getInstance(context);

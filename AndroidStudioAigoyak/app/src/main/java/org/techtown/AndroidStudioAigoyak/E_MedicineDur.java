@@ -21,7 +21,6 @@ public class E_MedicineDur extends Fragment {
     public List<Dur2> dur2List;
     public List<Dur3> dur3List;
     public List<Dur5> dur5List;
-    public List<Ingredient> ingrList;
 
     @Nullable
     @Override
@@ -37,8 +36,6 @@ public class E_MedicineDur extends Fragment {
         return viewGroup;
     }
     private void initLoadDB(String code) {
-        String with, age, preg, old, volume, term;
-
         DataAdapter dataAdapter = new DataAdapter(getContext());
         dataAdapter.createDatabase();
         dataAdapter.open();
@@ -68,9 +65,6 @@ public class E_MedicineDur extends Fragment {
                 "▼ 노인금기\n" + old + "\n\n" +
                 "▼ 용량금기\n" + volume + "\n\n" +
                 "▼ 투여기간금기\n" + term + "\n\n";
-
-
-
         return resultText;
     }
 

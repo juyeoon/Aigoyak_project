@@ -139,7 +139,6 @@ public class F_BookmarkAdapter extends RecyclerView.Adapter<F_BookmarkAdapter.Vi
         }
 
         public void setItem(Search item) {//내가 적은 텍스트를 불러와 저장하는 것
-            //heart.setVisibility(View.VISIBLE); //heart 조건 걸어서 보이게 하기
             name.setText(item.getName());
             corp.setText(item.getCorp());
         }
@@ -151,7 +150,7 @@ public class F_BookmarkAdapter extends RecyclerView.Adapter<F_BookmarkAdapter.Vi
     //db에 데이터 저장
     private void saveNote(String code, String name, String corp){
 
-        String sql = "insert into " +NoteDatabase.TABLE_BOOKMARK +//이거 바꾸다 말았음 이건 했는데 나중에 다른거 고치기
+        String sql = "insert into " +NoteDatabase.TABLE_BOOKMARK +
                 "(CODE, NAME, CORP) values (" +
                 "'"+ code + "', " +
                 "'"+ name + "', " +

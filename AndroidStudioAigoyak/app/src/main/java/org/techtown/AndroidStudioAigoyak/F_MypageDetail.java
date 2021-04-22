@@ -55,8 +55,6 @@ public class F_MypageDetail extends AppCompatActivity {
         TextView number = (TextView) findViewById(R.id.숫자);
 
         String sql = "select FEATURE from " + NoteDatabase.TABLE_USER;
-
-
         String text= "";
         Log.d(TAG, "sql : " + sql);
         NoteDatabase database = NoteDatabase.getInstance(context);

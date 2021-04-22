@@ -106,9 +106,8 @@ public class B_AddMedicine extends AppCompatActivity {
         date_start_button = (Button) findViewById((R.id.date_start_button));
         date_start_button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                a = 1;//start_button save
+                a = 1;
                 showDate(a);
-
 
             }
         });
@@ -117,7 +116,7 @@ public class B_AddMedicine extends AppCompatActivity {
         date_end_button = (Button) findViewById((R.id.date_end_button));
         date_end_button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                a = 2;//end_button save
+                a = 2;
                 showDate(a);
             }
         });
@@ -163,7 +162,7 @@ public class B_AddMedicine extends AppCompatActivity {
                 else{
                     System.out.println("time 바뀌어서 적용됐는지 확인- 전: " +time);
 
-                    setAlarm(); // 알람 적용하는 코드----------------------------------------------------------------------------------------
+                    setAlarm();
                     System.out.println("time 바뀌어서 적용됐는지 확인- 후: " +time);
                         int ny =y; //now year
                         int nm =m; //now month
@@ -217,11 +216,6 @@ public class B_AddMedicine extends AppCompatActivity {
 
             }
         });
-
-
-
-
-
     }
 
     //알람 설정
@@ -230,7 +224,6 @@ public class B_AddMedicine extends AppCompatActivity {
         Intent receiverIntent = new Intent(this, Alarm.class);
         receiverIntent.putExtra("channel_id","channel_id");
         receiverIntent.putExtra("id", time);
-
         pendingIntent = PendingIntent.getBroadcast(this, time, receiverIntent, PendingIntent.FLAG_NO_CREATE);
 
         while(true) {
@@ -238,13 +231,9 @@ public class B_AddMedicine extends AppCompatActivity {
                 time++;
                 pendingIntent = PendingIntent.getBroadcast(this, time, receiverIntent, PendingIntent.FLAG_NO_CREATE);
 
-                System.out.println("바뀐 time->" + time);
             } else {//time에 설정된 알람이 없는 경우
-                System.out.println("처음으로 알람 설정이 되었습니다.");
                 pendingIntent = PendingIntent.getBroadcast(this, time, receiverIntent, PendingIntent.FLAG_UPDATE_CURRENT);
-
                 break;
-
             }
         }
         String from = ""+y+"-"+m+"-"+d+" "+h+":"+mi+":00";
@@ -260,17 +249,14 @@ public class B_AddMedicine extends AppCompatActivity {
 
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(datetime);
-        if(now_date <= date) {
+        if(now_date <= date) {//알람x
             if (now_date == date && now_clock > (h*100+mi)) {//지금 시각보다 전의 시각 선택 시 저장x
-                System.out.println("알람 안 울림");
             }
-            else {
+            else {//알람 설정됨
                 alarmManager.set(AlarmManager.RTC, calendar.getTimeInMillis(), pendingIntent);
-                System.out.println("알람 설정됨");
             }
         }
     }
-
 
     //데이터 저장
     private void saveNote(String code, String corp, int ndate, int alarm){
@@ -287,17 +273,9 @@ public class B_AddMedicine extends AppCompatActivity {
                 alarm + ", " +
                 0 + ")";
 
-        /* 실험으로 해봄 된다 ^^^^^^^^^^
-        String sql2 = "insert into " +NoteDatabase.TABLE_BOOKMARK +//이거 바꾸다 말았음 이건 했는데 나중에 다른거 고치기
-                "(NAME, CORP) values (" +
-                "'"+ name + "', " +
-                "'"+ "안녕" + "')";
-    */
-
         Log.d(TAG, "sql : " + sql);
         NoteDatabase database = NoteDatabase.getInstance(context);
         database.execSQL(sql);
-        //database.execSQL(sql2);
 
     }
 
@@ -324,23 +302,19 @@ public class B_AddMedicine extends AppCompatActivity {
             }
         },cal.get(Calendar.YEAR), cal.get(Calendar.MONTH), cal.get(Calendar.DAY_OF_MONTH));
 
-
-            datePickerDialog.show();
+        datePickerDialog.show();
 
     }
 
-
     void showTime() {
-        TimePickerDialog timePickerDialog = new TimePickerDialog(this, android.R.style.Theme_Holo_Light_Dialog, new TimePickerDialog.OnTimeSetListener() {//테마 하나 임의로 지정해서 사용중.
+        TimePickerDialog timePickerDialog = new TimePickerDialog(this, android.R.style.Theme_Holo_Light_Dialog, new TimePickerDialog.OnTimeSetListener() {
             @Override
             public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
                 h = hourOfDay;
                 mi = minute;
                 clock_button.setText(String.valueOf(h + "시 " + mi + "분"));
             }
-
         }, h, mi, true);
-
 
         timePickerDialog.show();
     }

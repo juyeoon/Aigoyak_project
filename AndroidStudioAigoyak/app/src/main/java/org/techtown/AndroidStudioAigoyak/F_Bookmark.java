@@ -58,12 +58,9 @@ public class F_Bookmark extends AppCompatActivity {
     }
 
 
-    //이거는 db연결해서 데이터를 리스트에 저장시키는거
+    //db연결해서 데이터를 리스트에 저장시키는거
     public int loadNoteListData(){
-        //String medicine_name = "아스피린";
-        //String sql = "select _id, NAME, CORP from " + NoteDatabase.TABLE_MEDICINE; //bookmark테이블에 저장된 이름 불러오기
-
-        String sql = "select _id, CODE, NAME, CORP from " + NoteDatabase.TABLE_BOOKMARK; //임의로 설정함. 나중에 바꾸기
+        String sql = "select _id, CODE, NAME, CORP from " + NoteDatabase.TABLE_BOOKMARK;
         System.out.println(sql);
         int recordCount=-1;
         NoteDatabase database = NoteDatabase.getInstance(context);
@@ -72,9 +69,6 @@ public class F_Bookmark extends AppCompatActivity {
             Cursor outCursor = database.rawQuery(sql);
             recordCount = outCursor.getCount();
 
-
-
-            //하나하나 추가
             for(int i=0; i<recordCount; i++){
                 outCursor.moveToNext();
 

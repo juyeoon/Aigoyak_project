@@ -17,25 +17,20 @@ import androidx.core.app.NotificationCompat;
 
 public class Alarm extends BroadcastReceiver{
 
-    public Alarm(){
+    public Alarm(){    }
 
-    }
     NotificationManager manager;
     NotificationCompat.Builder builder;
-
-
     int id;
+
     @Override
     public void onReceive(Context context, Intent intent) {
         id = intent.getIntExtra("id",0);
         String CHANNEL_ID = intent.getStringExtra("channel_id");
         String CHANNEL_NAME = intent.getStringExtra("channel_id");
         builder = null;
-
-
-        AlarmManager am = (AlarmManager)context.getSystemService(Context.ALARM_SERVICE);
-
         manager = (NotificationManager)context.getSystemService(Context.NOTIFICATION_SERVICE);
+
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
             manager.createNotificationChannel(
                     new NotificationChannel(CHANNEL_ID, CHANNEL_NAME, NotificationManager.IMPORTANCE_DEFAULT)
@@ -44,11 +39,9 @@ public class Alarm extends BroadcastReceiver{
         } else {
             builder = new NotificationCompat.Builder(context);
         }
-        System.out.println("잘될걸" + id);
-        //알림창 클릭 시 activity 화면 부름
+
         Intent intent2 = new Intent(context, MainActivity.class);
         PendingIntent pendingIntent = PendingIntent.getActivity(context,id,intent2, PendingIntent.FLAG_UPDATE_CURRENT);
-
 
         builder.setSmallIcon(R.drawable.logo);
         //알림창 제목
@@ -66,3 +59,8 @@ public class Alarm extends BroadcastReceiver{
         manager.notify(id,notification);//id를 계속 다르게 주면 됨 알림 여러개 가능.
     }
 }
+
+
+
+
+

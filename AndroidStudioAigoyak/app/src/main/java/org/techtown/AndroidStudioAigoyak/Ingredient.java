@@ -3,15 +3,14 @@ package org.techtown.AndroidStudioAigoyak;
 public class Ingredient {
 
     String code;
+    String name;
+    String corp;
     String ingr;
     String add;
     String add_warn;
-    String url;
 
 
-    public Ingredient(){
-
-    }
+    public Ingredient(){    }
 
     public String getCode(){
         return code;
@@ -20,6 +19,17 @@ public class Ingredient {
         this.code = code;
     }
 
+    public String getName(){
+        return name;
+    }
+    public void setName(String name){ this.name = name; }
+
+    public String getCorp(){
+        return corp;
+    }
+    public void setCorp(String corp){
+        this.corp = corp;
+    }
 
     public String getIngr(){
         return ingr;
@@ -41,9 +51,4 @@ public class Ingredient {
     public void setAddWarn(String add_warn){
         this.add_warn = add_warn;
     }
-
-
-    public String getUrl(){ return url; }
-    public void setUrl(String url){ this.url = url; }
-
 }
