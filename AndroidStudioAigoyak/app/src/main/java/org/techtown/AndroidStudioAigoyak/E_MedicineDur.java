@@ -27,7 +27,7 @@ public class E_MedicineDur extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         viewGroup = (ViewGroup) inflater.inflate(R.layout.fragment_medicine_dur, container, false);
         textView = viewGroup.findViewById(R.id.textView);
-        Bundle bundle =getArguments();
+        Bundle bundle = getArguments();
         code = bundle.getString("code");//E_MedicineInfo -> E_MedicineInfoMain에서 code 들고옴
         //textView.setText(text);
         text ="";
@@ -59,12 +59,12 @@ public class E_MedicineDur extends Fragment {
     public String allText(String with, String age, String preg, String old, String volume, String term){
         String resultText="";
 
-        resultText = "▼ 병용금기\n" + with + "\n\n" +
-                "▼ 연령금기\n" + age + "\n\n" +
-                "▼ 임부금기\n" + preg + "\n\n" +
-                "▼ 노인금기\n" + old + "\n\n" +
-                "▼ 용량금기\n" + volume + "\n\n" +
-                "▼ 투여기간금기\n" + term + "\n\n";
+        resultText = "▼ 병용 금기\n" + with + "\n\n" +
+                "▼ 연령 금기\n" + age + "\n\n" +
+                "▼ 임부 금기\n" + preg + "\n\n" +
+                "▼ 노인 주의\n" + old + "\n\n" +
+                "▼ 용량 금기\n" + volume + "\n\n" +
+                "▼ 투여 기간 금기\n" + term + "\n\n";
         return resultText;
     }
 

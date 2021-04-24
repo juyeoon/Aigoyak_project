@@ -43,14 +43,6 @@ public class  C_ComponentNameSearch extends Fragment {
 
 
 
-
-
-
-
-
-
-
-
         return fv;
     }
 

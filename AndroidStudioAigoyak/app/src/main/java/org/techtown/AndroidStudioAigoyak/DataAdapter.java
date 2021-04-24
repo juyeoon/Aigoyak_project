@@ -88,10 +88,12 @@ public class DataAdapter
                 while( cursor1.moveToNext() ) {
                     System.out.println("몇 번 도는지1");
                     dur3 = new Dur3();
-                    // code, code2, content
+                    // code, code2, code2_name, content
                     dur3.setCode(cursor1.getString(0));
                     dur3.setCode2(cursor1.getString(1));
                     dur3.setContent(cursor1.getString(2));
+                    dur3.setContent(cursor1.getString(3));
+
                     // 리스트에 넣기
                     resultList.add(dur3);
                 }
@@ -101,6 +103,7 @@ public class DataAdapter
                 // code, code2, content
                 dur3.setCode("(없음)");
                 dur3.setCode2("(없음)");
+                dur3.setCodeName("(없음)");
                 dur3.setContent("(없음)");
                 // 리스트에 넣기
                 resultList.add(dur3);
@@ -120,7 +123,7 @@ public class DataAdapter
         {
             // Table 이름 -> antpool_bitcoin 불러오기
             System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@code = " + code);
-            String sql2 = "SELECT * FROM " + TABLE_AGE + " WHERE code = '" + code+"'";
+            String sql2 = "SELECT * FROM " + TABLE_AGE + " WHERE code = '" + code + "'";
 
 
             // 모델 넣을 리스트 생성

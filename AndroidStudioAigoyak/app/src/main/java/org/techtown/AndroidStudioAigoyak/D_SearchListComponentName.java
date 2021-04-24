@@ -69,8 +69,7 @@ public class D_SearchListComponentName extends AppCompatActivity {
         dataAdapter.open();
 
         // db에 있는 값들을 model을 적용해서 넣는다.
-        //items = dataAdapter.ingrSearch(search_word);//이거써야함.
-        items = dataAdapter.ingrSearch("건강");//-------------------------------------------------------나중에 바꾸기
+        items = dataAdapter.ingrSearch(search_word);//이거써야함.
 
         adapter.setItems(items);
         adapter.notifyDataSetChanged();

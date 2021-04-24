@@ -4,6 +4,7 @@ public class Dur3 {
 
     String code;
     String code2;
+    String code_name;
     String content;
 
 
@@ -24,6 +25,13 @@ public class Dur3 {
     }
     public void setCode2(String code2){
         this.code2 = code2;
+    }
+
+    public String getCodeName(){
+        return code_name;
+    }
+    public void setCodeName(String code_name){
+        this.code_name = code_name;
     }
 
     public String getContent(){ return content; }

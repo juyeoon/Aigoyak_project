@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "91899459844",
+    "project_id": "androidstudioaigoyak",
+    "storage_bucket": "androidstudioaigoyak.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:91899459844:android:68c3ca199fa2ac10a7b851",
+        "android_client_info": {
+          "package_name": "org.techtown.please"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "91899459844-33c9mt659bf5vv0d0reo6oderf9ot3lb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDoTkFu6HdgVl60aG0oQ1JIrwI0l_mAisw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "91899459844-33c9mt659bf5vv0d0reo6oderf9ot3lb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

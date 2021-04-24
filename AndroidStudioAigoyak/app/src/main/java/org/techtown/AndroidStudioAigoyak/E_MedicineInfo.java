@@ -3,23 +3,32 @@ package org.techtown.AndroidStudioAigoyak;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
-
+import android.widget.ImageView;
+import java.io.InputStream;
 import androidx.appcompat.app.AppCompatActivity;
+import com.bumptech.glide.Glide;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.BufferedInputStream;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
-
+import java.net.URLConnection;
 
 
 public class E_MedicineInfo  extends AppCompatActivity {
@@ -33,12 +42,39 @@ public class E_MedicineInfo  extends AppCompatActivity {
         setContentView(R.layout.medicine_info);
         ImageButton button_back = (ImageButton) findViewById(R.id.back_button);
         ImageButton button_heart = (ImageButton) findViewById(R.id.heart_button);
+        ImageView imageview = (ImageView) findViewById(R.id.imageView);
         Intent intent = getIntent();
 
         getSupportFragmentManager().beginTransaction().replace(R.id.sub_layout, fragment).commitAllowingStateLoss();
         String code = intent.getStringExtra("code");
         String name = intent.getStringExtra("name");
         String corp= intent.getStringExtra("corp");
+
+
+        //storage에서 사진 들고오기
+        Uri imgUri;
+        String image_name = "medisine/" + code + ".png"; //나중에 이 형식으로 사용
+
+        FirebaseStorage firebaseStorage = FirebaseStorage.getInstance("gs://androidstudioaigoyak.appspot.com");
+        StorageReference rootRef = firebaseStorage.getReference();
+
+        StorageReference imgRef = rootRef.child(image_name);
+
+        if(imgRef!=null){
+            System.out.println("null은 아님");
+            imgRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>(){
+                @Override
+                public void onSuccess(Uri uri){
+                    System.out.println("성공도함");
+
+                    Glide.with(E_MedicineInfo.this).load(uri).into(imageview);
+                }
+            });
+        }
+
+
+
+        //
 
         Bundle bundle = new Bundle();
         bundle.putString("code", code);// E_MedicineInfoMain으로 전송
@@ -64,7 +100,6 @@ public class E_MedicineInfo  extends AppCompatActivity {
             }
             outCursor.close();
         }
-
 
         //뒤로가기 버튼 누름
         button_back.setOnClickListener(new View.OnClickListener(){
@@ -134,4 +169,6 @@ public class E_MedicineInfo  extends AppCompatActivity {
         }
         return ncode;
     }
+
+
 }

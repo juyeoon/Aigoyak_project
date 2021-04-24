@@ -36,7 +36,7 @@ public class B_Warning extends AppCompatActivity {
     String result_text;
     String code;
     String age;
-    //
+
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -248,9 +248,16 @@ public class B_Warning extends AppCompatActivity {
         String code_b_date[] = new String[50];
         String code_b[] = new String[50];
         String code_b_name[] = new String[50];
-        String manage_sql = "select name, code, date from " + NoteDatabase.TABLE_NOTE;
         NoteDatabase database = NoteDatabase.getInstance(getApplicationContext());
 
+        String manage_sql_a = "select date from " + NoteDatabase.TABLE_NOTE + " where code = '" + code + "'";
+        if(database !=null) {
+            Cursor aCursor = database.rawQuery(manage_sql_a);
+            aCursor.moveToNext();
+            code_a_date = aCursor.getString(0);
+        }
+
+        String manage_sql = "select name, code, date from " + NoteDatabase.TABLE_NOTE + " where date = '" + code_a_date + "'";
         int recordCount = -1;
         int index = 0;//code_b의 index
         if(database!=null){
@@ -259,18 +266,11 @@ public class B_Warning extends AppCompatActivity {
 
             for(int i=0; i<recordCount; i++){
                 manageCursor.moveToNext();
+                code_b_name[index] = manageCursor.getString(0);
+                code_b[index] = manageCursor.getString(1);
+                code_b_date[index] = manageCursor.getString(2);
 
-                if(code.equals(manageCursor.getString(1))){
-                    System.out.println("여기 들어감");
-
-                    code_a_date = manageCursor.getString(2);
-                }
-                else{
-                    code_b_date[index] = manageCursor.getString(2);
-                    code_b[index] = manageCursor.getString(1);
-                    code_b_name[index] = manageCursor.getString(0);
-                    index++;
-                }
+                index++;
             }
         }
 
@@ -278,22 +278,21 @@ public class B_Warning extends AppCompatActivity {
         System.out.println("code_a_date값 ->" + code_a_date );
         System.out.println("code_b_date값 ->" + code_b_date[0]);
         for(int i=0; i<index; i++) {
+            System.out.println("code_a_date-> " +code_a_date);
+            System.out.println("code_b_date-> " +code_b_date[i]);
+            System.out.println("여기 잘 들어옴.");
+            String sql5 = "select CONTENT from " + DataAdapter.TABLE_WITH + " where code_a= " + code + " AND code_b= " + code_b[i];
+            Log.d(TAG, "sql5 : " + sql5);
+            Cursor cursor5 = dataAdapter.rawQuery(sql5);
 
-            if(code_a_date.equals(code_b_date[i])) {//같은 날짜에 복용할 때
-                System.out.println("code_a_date-> " +code_a_date);
-                System.out.println("code_b_date-> " +code_b_date[i]);
-                System.out.println("여기 잘 들어옴.");
-                String sql5 = "select CONTENT from " + DataAdapter.TABLE_WITH + " where code_a= " + code + " AND code_b= " + code_b[i];
-                Log.d(TAG, "sql5 : " + sql5);
-                Cursor cursor5 = dataAdapter.rawQuery(sql5);
-                if (cursor5.getCount()!=0) {
-                    cursor5.moveToNext();
-                    text = text + "▼ 병용 금기\n" + code_b_name[i] + "와 함께 복용하면 안 됩니다.\n ->" +
-                            cursor5.getString(0) +"\n\n";//멘트 추가
+            if (cursor5.getCount()!=0) {
+                cursor5.moveToNext();
+                text = text + "▼ 병용 금기\n" +
+                        code_b_name[i] + "와 함께 복용하면 안 됩니다.\n ->" +
+                        cursor5.getString(0) +"\n\n";//멘트 추가
                 }
-            }
-        }
 
+        }
 
         // db 닫기
         dataAdapter.close();
