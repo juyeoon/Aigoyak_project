@@ -172,7 +172,7 @@ public class B_Warning extends AppCompatActivity {
             if (cursor6.getCount()!=0)
             {
                 cursor6.moveToNext();
-                text = text +"▼ 노인 주의\n"+cursor6.getString(0) + "\n\n";//멘트 추가
+                text = text +"▼ 노인 주의\n" + "65세 이상의 고령자는 이 약을 사용 시 주의해야 합니다.\n\n";//멘트 추가
             }
 
         }
@@ -191,37 +191,42 @@ public class B_Warning extends AppCompatActivity {
             if(standard.equals("이상")) {//범위가 '이상'일때
                 if (unit.equals("세")) {//단위가 '세'이면
                     if (Integer.parseInt(age) >= Integer.parseInt(limit_nm)) {
-                        text = text + "▼ 나이 주의\n"+cursor.getString(3) + "\n\n";//멘트 추가
+                        text = text + "▼ 나이 주의\n"+
+                                cursor.getString(0)+
+                                cursor.getString(1)+ " " +
+                                cursor.getString(2) +
+                                "은(는) 이 약을 사용 시 주의해야 합니다.\n\n";//멘트 추가
                     }
                 } else {//단위가 '개월'이면
                     if (Integer.parseInt(age) >= Integer.parseInt(limit_nm) / 12) {
-                        text = text + "▼ 나이 주의\n"+cursor.getString(3) + "\n\n";//멘트 추가
+                        text = text + "▼ 나이 주의\n"+
+                                cursor.getString(0)+
+                                cursor.getString(1)+ " " +
+                                cursor.getString(2) +
+                                "은(는) 이 약을 사용 시 주의해야 합니다.\n\n";//멘트 추가
                     }
                 }
             }
             else{//범위가 '이하'일때
                 if (unit.equals("세")) {//단위가 '세'이면
                     if (Integer.parseInt(age) <= Integer.parseInt(limit_nm)) {
-                        text = text + "▼ 나이 주의\n"+cursor.getString(3) + "\n\n";//멘트 추가
+                        text = text + "▼ 나이 주의\n"+
+                                cursor.getString(0)+
+                                cursor.getString(1)+ " " +
+                                cursor.getString(2) +
+                                "은(는) 이 약을 사용 시 주의해야 합니다.\n\n";//멘트 추가
                     }
                 } else {//단위가 '개월'이면
                     if (Integer.parseInt(age) <= Integer.parseInt(limit_nm) / 12) {
-                        text = text + "▼ 나이 주의\n"+cursor.getString(3) + "\n\n";//멘트 추가
+                        text = text + "▼ 나이 주의\n"+
+                                cursor.getString(0)+
+                                cursor.getString(1)+ " " +
+                                cursor.getString(2) +
+                                "은(는) 이 약을 사용 시 주의해야 합니다.\n\n";//멘트 추가
                     }
                 }
             }
         }
-        /*
-        //임부--------하나 더 추가
-        String sql2 = "select CONTENT from " + DataAdapter.TABLE_PREG + " where code= " + code ;
-        Log.d(TAG, "sql2 : " + sql2);
-        Cursor cursor2 = dataAdapter.rawQuery(sql2);
-        if (cursor2!=null)
-        {
-            cursor2.moveToNext();
-            result_text = result_text +cursor2.getString(0) + "\n\n";
-        }
-        */
 
         //투여기간
         String sql3 = "select CONTENT from " + DataAdapter.TABLE_PERIOD + " where code= '" + code +"'";
@@ -230,7 +235,8 @@ public class B_Warning extends AppCompatActivity {
         if (cursor3.getCount()!=0)
         {
             cursor3.moveToNext();
-            text = text +"▼ 투여기간 주의\n"+cursor3.getString(0) + "\n\n";//멘트 추가
+            text = text +"▼ 투여기간 주의\n"+
+                    "이 약의 최대 투여 기간은 " + cursor3.getString(0) + "일입니다.\n\n";//멘트 추가
         }
 
         //용량
@@ -240,7 +246,8 @@ public class B_Warning extends AppCompatActivity {
         if (cursor4.getCount()!=0)
         {
             cursor4.moveToNext();
-            text = text +"▼ 용량 주의\n"+cursor4.getString(0) + "\n\n";//멘트 추가
+            text = text +"▼ 용량 주의\n"+
+                    "이 약의 1일 최대 용량은 " + cursor4.getString(0) + "입니다.\n\n";//멘트 추가
         }
 
         //병용금기
@@ -285,13 +292,14 @@ public class B_Warning extends AppCompatActivity {
             Log.d(TAG, "sql5 : " + sql5);
             Cursor cursor5 = dataAdapter.rawQuery(sql5);
 
+            if (i == 0) {
+                text = text + "▼ 병용 금기\n";
+            }
+
             if (cursor5.getCount()!=0) {
                 cursor5.moveToNext();
-                text = text + "▼ 병용 금기\n" +
-                        code_b_name[i] + "와 함께 복용하면 안 됩니다.\n ->" +
-                        cursor5.getString(0) +"\n\n";//멘트 추가
-                }
-
+                text = text + "이 약은 " + code_b_name[i] + "와 함께 사용할 수 없습니다.\n ->";
+            }
         }
 
         // db 닫기

@@ -7,36 +7,449 @@
     android:background="@color/white"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-
-    <ImageView
-        android:layout_width="20dp"
-        android:layout_height="20dp"
-        app:layout_constraintBottom_toBottomOf="@+id/search_box"
-        app:layout_constraintEnd_toEndOf="@+id/search_box"
-        app:layout_constraintHorizontal_bias="0.942"
-        app:layout_constraintStart_toStartOf="@+id/search_box"
-        app:layout_constraintTop_toTopOf="@+id/search_box"
-        app:layout_constraintVertical_bias="0.472"
-        app:srcCompat="@drawable/upload_lg" />
+    <Button
+        android:id="@+id/form1"
+        android:layout_width="70dp"
+        android:layout_height="41dp"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/ok_button_selector"
+        android:fontFamily="@font/kukde_alt"
+        android:text="전체"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.246"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/search_box"
-        android:layout_width="283dp"
-        android:layout_height="56dp"
-        android:layout_weight="1"
-        android:background="@drawable/editbox_change"
-        android:ems="10"
+        android:id="@+id/form4"
+        android:layout_width="70dp"
+        android:layout_height="41dp"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/ok_button_selector"
         android:fontFamily="@font/kukde_alt"
-        android:gravity="center_vertical"
-        android:padding="10dp"
-        android:text="약모양 검색"
-        android:textColor="@color/gray_soft"
-        android:textSize="18dp"
+        android:text="연질캡슐"
+        android:textSize="15sp"
+        app:layout_constraintStart_toEndOf="@+id/form3"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/kukde_alt"
+        android:text="제형"
+        android:textSize="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.093"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/form2"
+        android:layout_width="70dp"
+        android:layout_height="41dp"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/ok_button_selector"
+        android:fontFamily="@font/kukde_alt"
+        android:text="정제"
+        android:textSize="15sp"
+        app:layout_constraintStart_toEndOf="@+id/form1"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/form3"
+        android:layout_width="70dp"
+        android:layout_height="41dp"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/ok_button_selector"
+        android:fontFamily="@font/kukde_alt"
+        android:text="경질캡슐"
+        android:textSize="15sp"
+        app:layout_constraintStart_toEndOf="@+id/form2"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <Button
+        android:id="@+id/shape1"
+        android:layout_width="70dp"
+        android:layout_height="82dp"
+        android:layout_marginStart="84dp"
+        android:layout_marginLeft="84dp"
+        android:layout_marginTop="72dp"
+        android:background="@drawable/ok_button_selector"
+        android:fontFamily="@font/kukde_alt"
+        android:text="전체"
+        android:textSize="15sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/shape4"
+        android:layout_width="70dp"
+        android:layout_height="41dp"
+        android:layout_marginTop="72dp"
+        android:background="@drawable/ok_button_selector"
+        android:fontFamily="@font/kukde_alt"
+        android:text="타원형"
+        app:layout_constraintStart_toEndOf="@+id/shape3"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/shape2"
+
+        android:layout_width="70dp"
+        android:layout_height="41dp"
+        android:layout_marginTop="72dp"
+        android:background="@drawable/ok_button_selector"
+        android:fontFamily="@font/kukde_alt"
+        android:text="원형"
+        android:textSize="15sp"
+        app:layout_constraintStart_toEndOf="@+id/shape1"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="72dp"
+        android:fontFamily="@font/kukde_alt"
+        android:text="모양"
+        android:textSize="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.093"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/shape3"
+        android:layout_width="70dp"
+        android:layout_height="41dp"
+        android:layout_marginTop="72dp"
+        android:background="@drawable/ok_button_selector"
+        android:fontFamily="@font/kukde_alt"
+        android:text="장방형"
+        app:layout_constraintStart_toEndOf="@+id/shape2"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/shape5"
+        android:layout_width="70dp"
+        android:layout_height="41dp"
+        android:background="@drawable/ok_button_selector"
+        android:fontFamily="@font/kukde_alt"
+        android:text="사각형"
+        android:textSize="15sp"
+        app:layout_constraintStart_toEndOf="@+id/shape1"
+        app:layout_constraintTop_toBottomOf="@+id/shape2" />
+
+    <Button
+        android:id="@+id/shape6"
+        android:layout_width="70dp"
+        android:layout_height="41dp"
+        android:background="@drawable/ok_button_selector"
+        android:fontFamily="@font/kukde_alt"
+        android:text="육각형"
+        android:textSize="15sp"
+        app:layout_constraintStart_toEndOf="@+id/shape5"
+        app:layout_constraintTop_toBottomOf="@+id/shape3" />
+
+    <Button
+        android:id="@+id/shape7"
+        android:layout_width="70dp"
+        android:layout_height="41dp"
+        android:background="@drawable/ok_button_selector"
+        android:fontFamily="@font/kukde_alt"
+        android:text="기타"
+        android:textSize="15sp"
+        app:layout_constraintStart_toEndOf="@+id/shape6"
+        app:layout_constraintTop_toBottomOf="@+id/shape4" />
+
+    <Button
+        android:id="@+id/color1"
+        android:layout_width="70dp"
+        android:layout_height="164dp"
+        android:layout_marginStart="84dp"
+        android:layout_marginLeft="84dp"
+        android:layout_marginTop="172dp"
+        android:background="@drawable/ok_button_selector"
+        android:fontFamily="@font/kukde_alt"
+        android:text="전체"
+        android:textSize="15sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/color4"
+        android:layout_width="70dp"
+        android:layout_height="41dp"
+        android:layout_marginTop="172dp"
+        android:background="@drawable/ok_button_selector"
+        android:fontFamily="@font/kukde_alt"
+        android:text="주황"
+        android:textSize="15sp"
+        app:layout_constraintStart_toEndOf="@+id/color3"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="172dp"
+        android:fontFamily="@font/kukde_alt"
+        android:text="색상"
+        android:textSize="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.093"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/color2"
+        android:layout_width="70dp"
+        android:layout_height="41dp"
+        android:layout_marginTop="172dp"
+        android:background="@drawable/ok_button_selector"
+        android:fontFamily="@font/kukde_alt"
+        android:text="하양"
+        android:textSize="15sp"
+        app:layout_constraintStart_toEndOf="@+id/color1"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <Button
+        android:id="@+id/color3"
+        android:layout_width="70dp"
+        android:layout_height="41dp"
+        android:layout_marginTop="172dp"
+        android:background="@drawable/ok_button_selector"
+        android:fontFamily="@font/kukde_alt"
+        android:text="노랑"
+        android:textSize="15sp"
+        app:layout_constraintStart_toEndOf="@+id/color2"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/color5"
+        android:layout_width="70dp"
+        android:layout_height="41dp"
+        android:background="@drawable/ok_button_selector"
+        android:fontFamily="@font/kukde_alt"
+        android:text="분홍"
+        android:textSize="15sp"
+        app:layout_constraintStart_toEndOf="@+id/color1"
+        app:layout_constraintTop_toBottomOf="@+id/color2" />
+
+    <Button
+        android:id="@+id/color6"
+        android:layout_width="70dp"
+        android:layout_height="41dp"
+        android:background="@drawable/ok_button_selector"
+        android:fontFamily="@font/kukde_alt"
+        android:text="빨강"
+        android:textSize="15sp"
+        app:layout_constraintStart_toEndOf="@+id/color5"
+        app:layout_constraintTop_toBottomOf="@+id/color2" />
+
+    <Button
+        android:id="@+id/color7"
+        android:layout_width="70dp"
+        android:layout_height="41dp"
+        android:background="@drawable/ok_button_selector"
+        android:fontFamily="@font/kukde_alt"
+        android:text="갈색"
+        android:textSize="15sp"
+        app:layout_constraintStart_toEndOf="@+id/color6"
+        app:layout_constraintTop_toBottomOf="@+id/color4" />
+
+    <Button
+        android:id="@+id/color8"
+        android:layout_width="70dp"
+        android:layout_height="41dp"
+        android:background="@drawable/ok_button_selector"
+        android:fontFamily="@font/kukde_alt"
+        android:text="연두"
+        android:textSize="15sp"
+        app:layout_constraintStart_toEndOf="@+id/color1"
+        app:layout_constraintTop_toBottomOf="@+id/color5" />
+
+    <Button
+        android:id="@+id/color9"
+        android:layout_width="70dp"
+        android:layout_height="41dp"
+        android:background="@drawable/ok_button_selector"
+        android:fontFamily="@font/kukde_alt"
+        android:text="초록"
+        android:textSize="15sp"
+        app:layout_constraintStart_toEndOf="@+id/color8"
+        app:layout_constraintTop_toBottomOf="@+id/color6" />
+
+    <Button
+        android:id="@+id/color10"
+        android:layout_width="70dp"
+        android:layout_height="41dp"
+        android:background="@drawable/ok_button_selector"
+        android:fontFamily="@font/kukde_alt"
+        android:text="청록"
+        android:textSize="15sp"
+        app:layout_constraintStart_toEndOf="@+id/color9"
+        app:layout_constraintTop_toBottomOf="@+id/color7" />
+
+    <Button
+        android:id="@+id/color11"
+        android:layout_width="70dp"
+        android:layout_height="41dp"
+        android:background="@drawable/ok_button_selector"
+        android:fontFamily="@font/kukde_alt"
+        android:text="파랑"
+        android:textSize="15sp"
+        app:layout_constraintStart_toEndOf="@+id/color1"
+        app:layout_constraintTop_toBottomOf="@+id/color8" />
+
+    <Button
+        android:id="@+id/color12"
+        android:layout_width="70dp"
+        android:layout_height="41dp"
+        android:background="@drawable/ok_button_selector"
+        android:fontFamily="@font/kukde_alt"
+        android:text="남색"
+        android:textSize="15sp"
+        app:layout_constraintStart_toEndOf="@+id/color11"
+        app:layout_constraintTop_toBottomOf="@+id/color9" />
+
+    <Button
+        android:id="@+id/color13"
+        android:layout_width="70dp"
+        android:layout_height="41dp"
+        android:background="@drawable/ok_button_selector"
+        android:fontFamily="@font/kukde_alt"
+        android:text="자주"
+        android:textSize="15sp"
+        app:layout_constraintStart_toEndOf="@+id/color12"
+        app:layout_constraintTop_toBottomOf="@+id/color10" />
+
+    <Button
+        android:id="@+id/color14"
+        android:layout_width="70dp"
+        android:layout_height="41dp"
+        android:background="@drawable/ok_button_selector"
+        android:fontFamily="@font/kukde_alt"
+        android:text="보라"
+        android:textSize="15sp"
+        app:layout_constraintStart_toEndOf="@+id/color1"
+        app:layout_constraintTop_toBottomOf="@+id/color11" />
+
+    <Button
+        android:id="@+id/color15"
+        android:layout_width="70dp"
+        android:layout_height="41dp"
+        android:background="@drawable/ok_button_selector"
+        android:fontFamily="@font/kukde_alt"
+        android:text="회색"
+        android:textSize="15sp"
+        app:layout_constraintStart_toEndOf="@+id/color14"
+        app:layout_constraintTop_toBottomOf="@+id/color12" />
+
+    <Button
+        android:id="@+id/color16"
+        android:layout_width="70dp"
+        android:layout_height="41dp"
+        android:background="@drawable/ok_button_selector"
+        android:fontFamily="@font/kukde_alt"
+        android:text="검정"
+        android:textSize="15sp"
+        app:layout_constraintStart_toEndOf="@+id/color15"
+        app:layout_constraintTop_toBottomOf="@+id/color13" />
+
+    <Button
+        android:id="@+id/color17"
+        android:layout_width="70dp"
+        android:layout_height="41dp"
+        android:layout_marginStart="84dp"
+        android:layout_marginLeft="84dp"
+        android:background="@drawable/ok_button_selector"
+        android:fontFamily="@font/kukde_alt"
+        android:text="투명"
+        android:textSize="15sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/color1" />
+
+    <Button
+        android:id="@+id/line1"
+        android:layout_width="70dp"
+        android:layout_height="41dp"
+        android:layout_marginStart="84dp"
+        android:layout_marginLeft="84dp"
+        android:layout_marginTop="388dp"
+        android:background="@drawable/ok_button_selector"
+        android:fontFamily="@font/kukde_alt"
+        android:text="전체"
+        android:textSize="15sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/line4"
+        android:layout_width="70dp"
+        android:layout_height="41dp"
+        android:layout_marginTop="388dp"
+        android:background="@drawable/ok_button_selector"
+        android:fontFamily="@font/kukde_alt"
+        android:text="(-)형"
+        android:textSize="15sp"
+        app:layout_constraintStart_toEndOf="@+id/line3"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="388dp"
+        android:fontFamily="@font/kukde_alt"
+        android:text="분할선"
+        android:textSize="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.045"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/line2"
+        android:layout_width="70dp"
+        android:layout_height="41dp"
+        android:layout_marginTop="388dp"
+        android:background="@drawable/ok_button_selector"
+        android:fontFamily="@font/kukde_alt"
+        android:text="없음"
+        android:textSize="15sp"
+        app:layout_constraintStart_toEndOf="@+id/line1"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/line3"
+        android:layout_width="70dp"
+        android:layout_height="41dp"
+        android:layout_marginTop="388dp"
+        android:background="@drawable/ok_button_selector"
+        android:fontFamily="@font/kukde_alt"
+        android:text="(+)형"
+        android:textSize="15sp"
+        app:layout_constraintStart_toEndOf="@+id/line2"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/button_finish"
+        android:layout_width="89dp"
+        android:layout_height="29dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/ok_button"
+        android:fontFamily="@font/kukde_bdb"
+        android:shadowRadius="5"
+        android:text="확인"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.038" />
-
+        app:layout_constraintHorizontal_bias="0.478"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

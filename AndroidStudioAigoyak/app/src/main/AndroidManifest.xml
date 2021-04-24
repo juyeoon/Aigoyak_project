@@ -36,6 +36,13 @@
         <activity android:name="org.techtown.AndroidStudioAigoyak.F_Bookmark"/>
         <activity android:name="org.techtown.AndroidStudioAigoyak.SubMedicineSearch"/>
         <activity android:name="org.techtown.AndroidStudioAigoyak.B_AddMedicineSearchList"/>
+        <activity android:name="org.techtown.AndroidStudioAigoyak.D_SearchListShape"/>
+
+
+
+
+
+
 
         <receiver android:name="Alarm"></receiver>
 
