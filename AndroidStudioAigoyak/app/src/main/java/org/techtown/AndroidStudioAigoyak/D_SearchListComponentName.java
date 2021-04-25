@@ -67,7 +67,7 @@ public class D_SearchListComponentName extends AppCompatActivity {
         DataAdapter dataAdapter = new DataAdapter(getApplicationContext());
         dataAdapter.createDatabase();
         dataAdapter.open();
-
+        System.out.println("search_word : " + search_word);
         // db에 있는 값들을 model을 적용해서 넣는다.
         items = dataAdapter.ingrSearch(search_word);//이거써야함.
 

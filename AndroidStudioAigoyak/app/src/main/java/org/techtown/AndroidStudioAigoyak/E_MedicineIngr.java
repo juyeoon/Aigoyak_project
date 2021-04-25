@@ -47,11 +47,16 @@ public class E_MedicineIngr extends Fragment{
 
     public String allText(String name, String ingr, String ingre_add, String add_warning){
         String resultText="";
-
+        /*// 나중에 바꾸기-----------------------------------------------------------------------
         resultText = "▼ 제품명\n" + name + "\n\n" +
                 "▼ 주성분\n" + ingr + "\n\n" +
                 "▼ 첨가물\n" + ingre_add + "\n\n" +
                 "▼ 첨가물 주의\n" + add_warning + "\n\n";
+
+         */
+        resultText = "▼ 제품명\n" + name + "\n\n" +
+                "▼ 주성분\n" + ingr + "\n\n" +
+                "▼ 첨가물\n" + ingre_add + "\n\n";
         return resultText;
     }
 

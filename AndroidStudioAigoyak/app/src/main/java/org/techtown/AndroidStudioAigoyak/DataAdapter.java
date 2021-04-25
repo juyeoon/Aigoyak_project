@@ -347,10 +347,12 @@ public class DataAdapter
                 int i=0;
                 while( cursor7.moveToNext() ) {
 
-                    if(cursor7.getString(3).contains(text)){//검색 결과가 ingr에 포함될 때
-                        resultList.add(new Search(i, cursor7.getString(1), cursor7.getString(2), cursor7.getString(0)));//id, name, corp, code
-                        i++;
-                    }
+                    if(cursor7.getString(3) !=null){
+                         if(cursor7.getString(3).contains(text)){//검색 결과가 ingr에 포함될 때
+                            resultList.add(new Search(i, cursor7.getString(1), cursor7.getString(2), cursor7.getString(0)));//id, name, corp, code
+                            i++;
+                      }
+                   }
                 }
             }
             cursor7.close();
