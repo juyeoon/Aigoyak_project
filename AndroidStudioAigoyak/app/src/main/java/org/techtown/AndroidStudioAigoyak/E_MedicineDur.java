@@ -48,24 +48,55 @@ public class E_MedicineDur extends Fragment {
         dur3List = dataAdapter.getTableData1(code);//db에서 가져온 데이터 list에 저장.
 
 
-
-        text = allText(dur3List.get(0).getContent(), dur5List.get(0).getContent(), dur2List.get(0).getContent(), dur2List.get(1).getContent(), dur2List.get(2).getContent(), dur2List.get(3).getContent());
+        text = allText(dur3List, dur5List, dur2List);
         textView.setText(text);
 
         // db 닫기
         dataAdapter.close();
     }
+//testList.size()
 
-    public String allText(String with, String age, String preg, String old, String volume, String term){
-        String resultText="";
+    public String allText(List<Dur3> dur3, List<Dur5> dur5, List<Dur2> dur2){
+        String resultText = "▼ 병용 금기\n";
 
-        resultText = "▼ 병용 금기\n" + with + "\n\n" +
-                "▼ 연령 금기\n" + age + "\n\n" +
-                "▼ 임부 금기\n" + preg + "\n\n" +
-                "▼ 노인 주의\n" + old + "\n\n" +
-                "▼ 용량 금기\n" + volume + "\n\n" +
-                "▼ 투여 기간 금기\n" + term + "\n\n";
+        for(int i=0; i<dur3.size(); i++){
+            if(dur3.get(i).getCodeName().equals("(없음)")) {
+                resultText = resultText + "(없음)\n\n";
+            }
+            else {
+                resultText = resultText + "⊙" + dur3.get(i).getCodeName() +
+                        "\n ☞ " + dur3.get(i).getContent() + "\n\n";
+            }
+        }
+        if(dur5.get(0).getLimit_nm().equals("(없음)")) {
+            resultText = resultText + "▼ 연령 금기\n(없음)\n\n";
+        }
+        else{
+            resultText = resultText + "▼ 연령 금기\n" +
+                    dur5.get(0).getLimit_nm() + dur5.get(0).getUnit() + " " + dur5.get(0).getStandard() + " " + dur5.get(0).getContent() + "\n\n";
+
+        }
+        resultText = resultText + "▼ 임부 금기\n" +
+                dur2.get(0).getContent() + "\n\n";
+
+        resultText = resultText + "▼ 노인 주의\n" +
+                dur2.get(1).getContent() + "\n\n";
+
+        if(dur2.get(2).getContent().equals("(없음)")) {
+            resultText = resultText + "▼ 용량주의\n(없음)\n\n";
+        }
+        else {
+            resultText = resultText + "▼ 용량 주의\n" +
+                    "1일 최대 용량: " + dur2.get(2).getContent() + "\n\n";
+        }
+
+        if(dur2.get(3).getContent().equals("(없음)")) {
+            resultText = resultText + "▼ 투여 기간 주의\n(없음)\n\n";
+        }
+        else {
+            resultText = resultText + "▼ 투여 기간 주의\n" +
+                    "최대 투여 기간: " + dur2.get(3).getContent() + "일\n\n";
+        }
         return resultText;
     }
-
 }

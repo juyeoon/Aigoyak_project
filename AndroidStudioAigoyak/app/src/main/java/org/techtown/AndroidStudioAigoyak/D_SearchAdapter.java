@@ -64,7 +64,6 @@ public class D_SearchAdapter extends RecyclerView.Adapter<D_SearchAdapter.ViewHo
             for(int i=0; i<recordCount; i++){
                 outCursor.moveToNext();
                 String ncode = outCursor.getString(0);
-                System.out.println("D_SearchAdapter(nname): "+ncode + "i값: " +i + " code: " + code);
                 if(code.equals(ncode)){//Bookmark에 저장되어 있으면 버튼 선택된 상태
                     viewHolder.heart.setSelected(true);
                     break;
@@ -89,8 +88,7 @@ public class D_SearchAdapter extends RecyclerView.Adapter<D_SearchAdapter.ViewHo
                     intent.putExtra("code", code);//품목기준코드 E_MedicineInfo -> E_MedicineInfoDetail로 보냄.
                     intent.putExtra("name", name);//의약품명
                     intent.putExtra("corp", corp);//회사명
-                    System.out.println("position: " + position);
-                    System.out.println("code: " + code);
+
                     context.startActivity(intent);
                 }
             }

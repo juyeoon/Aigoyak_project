@@ -74,8 +74,7 @@ public class B_AddMedicine extends AppCompatActivity {
         String get_name = (String)getIntent().getSerializableExtra("productName");//B_AddSearchAdapter에서 의약품명 들고옴
         String get_code = (String)getIntent().getSerializableExtra("productCode");//B_AddSearchAdapter에서 품번 들고옴
         String get_corp = (String)getIntent().getSerializableExtra("productCorp");//B_AddSearchAdapter에서 회사명 들고옴
-        System.out.println("get_name = " + get_name);
-        System.out.println("get_code = " + get_code);
+
         medicine_name = (TextView) findViewById(R.id.의약품선택);
         medicine_name.setText(get_name);//가져온 의약품 이름 적용
 
@@ -160,14 +159,11 @@ public class B_AddMedicine extends AppCompatActivity {
 
                 }
                 else{
-                    System.out.println("time 바뀌어서 적용됐는지 확인- 전: " +time);
-
                     setAlarm();
-                    System.out.println("time 바뀌어서 적용됐는지 확인- 후: " +time);
-                        int ny =y; //now year
-                        int nm =m; //now month
-                        int nd =d; //now day
-                        int ndate; //now date
+                    int ny =y; //now year
+                    int nm =m; //now month
+                    int nd =d; //now day
+                    int ndate; //now date
 
                     if(m-m2 !=0) {//종료 달이 시작달과 다를 때
                         //시작하는 달의 시작 일자부터 31일까지 저장.
@@ -220,7 +216,6 @@ public class B_AddMedicine extends AppCompatActivity {
 
     //알람 설정
     public void setAlarm(){
-        System.out.println("알람 번호: " + time);
         Intent receiverIntent = new Intent(this, Alarm.class);
         receiverIntent.putExtra("channel_id","channel_id");
         receiverIntent.putExtra("id", time);
@@ -237,7 +232,6 @@ public class B_AddMedicine extends AppCompatActivity {
             }
         }
         String from = ""+y+"-"+m+"-"+d+" "+h+":"+mi+":00";
-        System.out.println(from);
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         Date datetime =null;
         try{

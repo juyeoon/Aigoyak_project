@@ -9,6 +9,12 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import androidx.fragment.app.Fragment;
 
 public class C_ShapeSearch extends Fragment {
@@ -96,12 +102,13 @@ public class C_ShapeSearch extends Fragment {
         ok_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), D_SearchListShape.class);//-------------------이거 바꾸기
+                Intent intent = new Intent(getActivity(), D_SearchListShape.class);
                 //default가 전체
                 intent.putExtra("form", select[0]);
                 intent.putExtra("shape", select[1]);
                 intent.putExtra("color", select[2]);
-                intent.putExtra("line", select[3]);//검색어 D_SearchListShape.class로 보냄.-------------------이거 바꾸기
+                intent.putExtra("line", select[3]);//검색어 D_SearchListShape.class로 보냄
+
                 startActivity(intent);
             }
         });
@@ -187,6 +194,7 @@ public class C_ShapeSearch extends Fragment {
             }
         });
     }
+
 
 
 }

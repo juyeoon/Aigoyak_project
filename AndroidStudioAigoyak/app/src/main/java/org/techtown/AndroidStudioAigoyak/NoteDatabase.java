@@ -59,7 +59,6 @@ public class NoteDatabase {
         Cursor c1 = null;
         try {
             c1 = db.rawQuery(SQL, null);
-            System.out.println("cursor count : " + c1.getCount());
         } catch(Exception ex) {
             Log.e(TAG, "Exception in executeQuery", ex);
         }

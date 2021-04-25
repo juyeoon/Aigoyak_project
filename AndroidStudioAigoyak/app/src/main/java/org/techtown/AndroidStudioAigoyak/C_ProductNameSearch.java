@@ -1,5 +1,6 @@
 package org.techtown.AndroidStudioAigoyak;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -43,15 +44,19 @@ public class C_ProductNameSearch extends Fragment {
         ImageView btn_search = (ImageView)fv.findViewById(R.id.search_button);//검색 버튼
         EditText edit = (EditText)fv.findViewById(R.id.search_box);//검색어
 
-
         btn_search.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String search_word = edit.getText().toString();//검색어 얻어오기
+                if(search_word.equals("")) {
+                    Toast.makeText(getContext(),"검색어를 입력해주세요", Toast.LENGTH_LONG).show();
 
-                Intent intent = new Intent(getActivity(), D_SearchList.class);
-                intent.putExtra("search", search_word);//검색어 D_SearchList로 보냄.
-                startActivity(intent);
+                }
+                else{
+                    Intent intent = new Intent(getActivity(), D_SearchList.class);
+                    intent.putExtra("search", search_word);//검색어 D_SearchList로 보냄.
+                    startActivity(intent);
+                }
             }
         });
         return fv;

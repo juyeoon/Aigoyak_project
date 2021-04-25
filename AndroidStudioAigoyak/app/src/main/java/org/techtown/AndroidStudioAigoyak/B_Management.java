@@ -84,7 +84,6 @@ public class B_Management extends Fragment{
                 m = month + 1;
                 d = dayOfMonth;
                 select_date = y * 10000 + m * 100 + d;
-                System.out.println(select_date + "," + now_date);
                 loadNoteListData();
             }
         });

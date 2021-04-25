@@ -55,10 +55,6 @@ public class B_AddSearchAdapter extends RecyclerView.Adapter<B_AddSearchAdapter.
                 intent.putExtra("productCode", productCode);//품번 B_AddMedicine로 보냄.
                 intent.putExtra("productCorp", productCorp);//품번 B_AddMedicine로 보냄.
 
-                System.out.println("B_AddSearchAdapter - productName: " + productName);
-                System.out.println("B_AddSearchAdapter - productCode: " + productCode);
-                System.out.println("B_AddSearchAdapter - productCode: " + productCorp);
-
                 context.startActivity(intent);
             }
         });

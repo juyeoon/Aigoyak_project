@@ -15,71 +15,38 @@ public class A_Uniqueness extends AppCompatActivity {
     private static final String TAG = "A_uniqueness";
     Context context;
 
+    Button button[] = new Button[19];
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.uniqueness);
 
-        Button button1 = (Button) findViewById(R.id.MAO);
-        Button button2 = (Button) findViewById(R.id.과민증);
-        Button button3 = (Button) findViewById(R.id.피부염);
-        Button button4 = (Button) findViewById(R.id.녹내장);
-        Button button5 = (Button) findViewById(R.id.당뇨);
-        Button button6 = (Button) findViewById(R.id.두드러기);
-        Button button7 = (Button) findViewById(R.id.배뇨);
-        Button button8 = (Button) findViewById(R.id.부정맥);
-        Button button9 = (Button) findViewById(R.id.소화성궤양);
-        Button button10 = (Button) findViewById(R.id.신장);
-        Button button11 = (Button) findViewById(R.id.심장);
-        Button button12 = (Button) findViewById(R.id.알레르기);
-        Button button13 = (Button) findViewById(R.id.유당분해효소결핍증);
-        Button button14 = (Button) findViewById(R.id.위장);
-        Button button15 = (Button) findViewById(R.id.임부);
-        Button button16 = (Button) findViewById(R.id.천식);
-        Button button17 = (Button) findViewById(R.id.혈액응고);
-        Button button18 = (Button) findViewById(R.id.피부감염증);
-        Button button19 = (Button) findViewById(R.id.혈압);
+        button[0] = (Button) findViewById(R.id.MAO);
+        button[1] = (Button) findViewById(R.id.과민증);
+        button[2] = (Button) findViewById(R.id.피부염);
+        button[3] = (Button) findViewById(R.id.녹내장);
+        button[4] = (Button) findViewById(R.id.당뇨);
+        button[5] = (Button) findViewById(R.id.두드러기);
+        button[6] = (Button) findViewById(R.id.배뇨);
+        button[7] = (Button) findViewById(R.id.부정맥);
+        button[8] = (Button) findViewById(R.id.소화성궤양);
+        button[9] = (Button) findViewById(R.id.신장);
+        button[10] = (Button) findViewById(R.id.심장);
+        button[11] = (Button) findViewById(R.id.알레르기);
+        button[12] = (Button) findViewById(R.id.유당분해효소결핍증);
+        button[13] = (Button) findViewById(R.id.위장);
+        button[14] = (Button) findViewById(R.id.임부);
+        button[15] = (Button) findViewById(R.id.천식);
+        button[16] = (Button) findViewById(R.id.혈액응고);
+        button[17] = (Button) findViewById(R.id.피부감염증);
+        button[18] = (Button) findViewById(R.id.혈압);
 
-        String text1 = button1.getText().toString();
-        String text2 = button2.getText().toString();
-        String text3 = button3.getText().toString();
-        String text4 = button4.getText().toString();
-        String text5 = button5.getText().toString();
-        String text6 = button6.getText().toString();
-        String text7 = button7.getText().toString();
-        String text8 = button8.getText().toString();
-        String text9 = button9.getText().toString();
-        String text10 = button10.getText().toString();
-        String text11 = button11.getText().toString();
-        String text12 = button12.getText().toString();
-        String text13 = button13.getText().toString();
-        String text14 = button14.getText().toString();
-        String text15 = button15.getText().toString();
-        String text16 = button16.getText().toString();
-        String text17 = button17.getText().toString();
-        String text18 = button18.getText().toString();
-        String text19 = button19.getText().toString();
 
-        buttonAction(button1, text1);
-        buttonAction(button2, text2);
-        buttonAction(button3, text3);
-        buttonAction(button4, text4);
-        buttonAction(button5, text5);
-        buttonAction(button6, text6);
-        buttonAction(button7, text7);
-        buttonAction(button8, text8);
-        buttonAction(button9, text9);
-        buttonAction(button10, text10);
-        buttonAction(button11, text11);
-        buttonAction(button12, text12);
-        buttonAction(button13, text13);
-        buttonAction(button14, text14);
-        buttonAction(button15, text15);
-        buttonAction(button16, text16);
-        buttonAction(button17, text17);
-        buttonAction(button18, text18);
-        buttonAction(button19, text19);
+        for(int i=0; i<19;i++) {
+            buttonAction(button[i], button[i].getText().toString());
+        }
 
+        //설정 완료
         ImageButton button_finish = (ImageButton) findViewById(R.id.button_finish);
         button_finish.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -87,7 +54,6 @@ public class A_Uniqueness extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "환영합니다!", Toast.LENGTH_LONG).show();
                 Intent intent = new Intent(A_Uniqueness.this, MainActivity.class);
                 startActivity(intent);
-
             }
         });
 

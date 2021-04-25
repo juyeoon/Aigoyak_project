@@ -56,7 +56,6 @@ public class F_BookmarkAdapter extends RecyclerView.Adapter<F_BookmarkAdapter.Vi
             for(int i=0; i<recordCount; i++){
                 outCursor.moveToNext();
                 String ncode = outCursor.getString(0);
-                System.out.println("F_BookmarkAdapter(ncode): "+ncode);
 
                 if(code.equals(ncode)){//Bookmark에 저장되어 있으면 버튼 선택된 상태
                     viewHolder.heart.setSelected(true);
@@ -80,8 +79,6 @@ public class F_BookmarkAdapter extends RecyclerView.Adapter<F_BookmarkAdapter.Vi
                     intent.putExtra("code", code);//품목기준코드 E_MedicineInfo -> E_MedicineInfoDetail로 보냄.
                     intent.putExtra("name", name);//의약품명
                     intent.putExtra("corp", corp);//회사명
-                    System.out.println("position: " + position);
-                    System.out.println("code: " + code);
 
                     context.startActivity(intent);
                 }
@@ -182,7 +179,6 @@ public class F_BookmarkAdapter extends RecyclerView.Adapter<F_BookmarkAdapter.Vi
             if( outCursor.getCount() == 1 ) {
                 ncode = ncode + outCursor.getString(0);
             }
-            System.out.println("F_BookmarkAdapter(ncode): "+ncode);
             outCursor.close();
         }
         return ncode;

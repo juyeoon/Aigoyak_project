@@ -7,6 +7,7 @@ package org.techtown.AndroidStudioAigoyak;
         import android.view.ViewGroup;
         import android.widget.EditText;
         import android.widget.ImageView;
+        import android.widget.Toast;
 
         import androidx.fragment.app.Fragment;
 
@@ -34,18 +35,19 @@ public class  C_ComponentNameSearch extends Fragment {
             @Override
             public void onClick(View v) {
                 String search_word = edit.getText().toString();//검색어 얻어오기
+                if(search_word.equals("")) {
+                    Toast.makeText(getContext(),"검색어를 입력해주세요", Toast.LENGTH_LONG).show();
 
-                Intent intent = new Intent(getActivity(), D_SearchListComponentName.class);
-                intent.putExtra("search", search_word);//검색어 D_SearchListComponentName로 보냄.
-                startActivity(intent);
+                }else {
+                    Intent intent = new Intent(getActivity(), D_SearchListComponentName.class);
+                    intent.putExtra("search", search_word);//검색어 D_SearchListComponentName로 보냄.
+                    startActivity(intent);
+                }
             }
         });
 
-
-
         return fv;
     }
-
 }
 
 

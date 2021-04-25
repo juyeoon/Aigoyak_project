@@ -61,12 +61,10 @@ public class E_MedicineInfo  extends AppCompatActivity {
         StorageReference imgRef = rootRef.child(image_name);
 
         if(imgRef!=null){
-            System.out.println("null은 아님");
+
             imgRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>(){
                 @Override
                 public void onSuccess(Uri uri){
-                    System.out.println("성공도함");
-
                     Glide.with(E_MedicineInfo.this).load(uri).into(imageview);
                 }
             });
@@ -92,7 +90,6 @@ public class E_MedicineInfo  extends AppCompatActivity {
             for(int i=0; i<recordCount; i++){
                 outCursor.moveToNext();
                 String ncode = outCursor.getString(0);
-                System.out.println("F_BookmarkAdapter(ncode): "+ncode);
 
                 if(code.equals(ncode)){//Bookmark에 저장되어 있으면 버튼 선택된 상태
                     button_heart.setSelected(true);
@@ -164,7 +161,6 @@ public class E_MedicineInfo  extends AppCompatActivity {
             if( outCursor.getCount() == 1 ) {
                 ncode = ncode + outCursor.getString(0);
             }
-            System.out.println("F_BookmarkAdapter(ncode): "+ncode);
             outCursor.close();
         }
         return ncode;

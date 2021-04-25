@@ -74,7 +74,6 @@ public class DataAdapter
         try
         {
             // Table 이름 -> antpool_bitcoin 불러오기
-            System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@code = " + code);
             String sql ="SELECT * FROM " + TABLE_WITH + " WHERE code_a = '" + code + "'";
 
             // 모델 넣을 리스트 생성
@@ -86,17 +85,17 @@ public class DataAdapter
             if (cursor1.getCount()!=0)
             {
                 while( cursor1.moveToNext() ) {
-                    System.out.println("몇 번 도는지1");
                     dur3 = new Dur3();
                     // code, code2, code2_name, content
                     dur3.setCode(cursor1.getString(0));
                     dur3.setCode2(cursor1.getString(1));
-                    dur3.setContent(cursor1.getString(2));
+                    dur3.setCodeName(cursor1.getString(2));
                     dur3.setContent(cursor1.getString(3));
 
                     // 리스트에 넣기
                     resultList.add(dur3);
                 }
+
             }
             else{
                 dur3 = new Dur3();
@@ -108,6 +107,7 @@ public class DataAdapter
                 // 리스트에 넣기
                 resultList.add(dur3);
             }
+            cursor1.close();
             return resultList;
         }
         catch (SQLException mSQLException)
@@ -122,7 +122,6 @@ public class DataAdapter
         try
         {
             // Table 이름 -> antpool_bitcoin 불러오기
-            System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@code = " + code);
             String sql2 = "SELECT * FROM " + TABLE_AGE + " WHERE code = '" + code + "'";
 
 
@@ -130,13 +129,11 @@ public class DataAdapter
             List resultList = new ArrayList();//최종 돌려줄 list
 
             Dur5 dur5 =null;//sql2 사용
-            //TABLE_WITH
+            //TABLE_AGE
             Cursor cursor2 = mDb.rawQuery(sql2, null);
             if (cursor2.getCount()!=0)
             {
-                System.out.println("유후555555~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~`");
                 while( cursor2.moveToNext() ) {
-                    System.out.println("몇 번 도는지1");
                     dur5 = new Dur5();
                     // code, limit_nm, limit, content
                     dur5.setCode(cursor2.getString(0));
@@ -159,6 +156,7 @@ public class DataAdapter
                 // 리스트에 넣기
                 resultList.add(dur5);
             }
+            cursor2.close();
             return resultList;
         }
         catch (SQLException mSQLException)
@@ -172,8 +170,6 @@ public class DataAdapter
         try
         {
             // Table 이름 -> antpool_bitcoin 불러오기
-            System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@code = " + code);
-
             String sql3 = "SELECT * FROM " + TABLE_PREG + " WHERE code = '" + code +"'";
             String sql4 = "SELECT * FROM " + TABLE_OLD + " WHERE code = '" + code +"'";
             String sql5 = "SELECT * FROM " + TABLE_AMOUNT + " WHERE code = '" + code+"'";
@@ -189,7 +185,6 @@ public class DataAdapter
             if (cursor3.getCount()!=0)
             {
                 while( cursor3.moveToNext() ) {
-                    System.out.println("몇 번 도는지1");
                     dur2 = new Dur2();
                     // code, content
                     dur2.setCode(cursor3.getString(0));
@@ -206,13 +201,14 @@ public class DataAdapter
                 // 리스트에 넣기
                 resultList.add(dur2);
             }
+            cursor3.close();
             dur2 =null;
             //TABLE_OLD
             Cursor cursor4 = mDb.rawQuery(sql4, null);
             if (cursor4.getCount()!=0)
             {
                 while( cursor4.moveToNext() ) {
-                    System.out.println("몇 번 도는지1");
+
                     dur2 = new Dur2();
                     // code, content
                     dur2.setCode(cursor4.getString(0));
@@ -229,13 +225,14 @@ public class DataAdapter
                 // 리스트에 넣기
                 resultList.add(dur2);
             }
+            cursor4.close();
             dur2 =null;
             //TABLE_AMOUNT
             Cursor cursor5 = mDb.rawQuery(sql5, null);
             if (cursor5.getCount()!=0)
             {
                 while( cursor5.moveToNext() ) {
-                    System.out.println("몇 번 도는지1");
+
                     dur2 = new Dur2();
                     // code, content
                     dur2.setCode(cursor5.getString(0));
@@ -252,13 +249,13 @@ public class DataAdapter
                 // 리스트에 넣기
                 resultList.add(dur2);
             }
+            cursor5.close();
             dur2 =null;
             //TABLE_PERIOD
             Cursor cursor6 = mDb.rawQuery(sql6, null);
             if (cursor6.getCount()!=0)
             {
                 while( cursor6.moveToNext() ) {
-                    System.out.println("몇 번 도는지1");
                     dur2 = new Dur2();
                     // code, content
                     dur2.setCode(cursor6.getString(0));
@@ -275,7 +272,7 @@ public class DataAdapter
                 // 리스트에 넣기
                 resultList.add(dur2);
             }
-
+            cursor6.close();
             return resultList;
         }
         catch (SQLException mSQLException)
@@ -288,7 +285,6 @@ public class DataAdapter
     {
         try
         {
-            System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@code = " + code);
             String sql7 = "SELECT * FROM " + TABLE_INGR + " WHERE code = '" + code + "'";
 
             List resultList = new ArrayList();//최종 돌려줄 list
@@ -299,7 +295,6 @@ public class DataAdapter
             if (cursor7.getCount()!=0)
             {
                 while( cursor7.moveToNext() ) {
-                    System.out.println("몇 번 도는지1");
                     ingredient = new Ingredient();
                     // code, name, corp, ingr, add, addwarn
                     ingredient.setCode(cursor7.getString(0));
@@ -326,7 +321,9 @@ public class DataAdapter
 
                 // 리스트에 넣기
                 resultList.add(ingredient);
+
             }
+            cursor7.close();
             return resultList;
         }
         catch (SQLException mSQLException)
@@ -339,7 +336,6 @@ public class DataAdapter
     {
         try
         {
-            System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@text = " + text);
             String sql7 = "SELECT * FROM " + TABLE_INGR;
 
             ArrayList<Search> resultList = new ArrayList<Search>();//최종 돌려줄 list
@@ -357,7 +353,7 @@ public class DataAdapter
                     }
                 }
             }
-
+            cursor7.close();
             return resultList;
         }
         catch (SQLException mSQLException)

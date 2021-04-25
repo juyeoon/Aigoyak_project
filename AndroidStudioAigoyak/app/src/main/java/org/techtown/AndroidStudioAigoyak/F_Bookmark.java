@@ -61,7 +61,6 @@ public class F_Bookmark extends AppCompatActivity {
     //db연결해서 데이터를 리스트에 저장시키는거
     public int loadNoteListData(){
         String sql = "select _id, CODE, NAME, CORP from " + NoteDatabase.TABLE_BOOKMARK;
-        System.out.println(sql);
         int recordCount=-1;
         NoteDatabase database = NoteDatabase.getInstance(context);
 

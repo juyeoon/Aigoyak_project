@@ -133,7 +133,6 @@ public class B_MedicationList extends RecyclerView.Adapter<B_MedicationList.View
                 pendingIntent = PendingIntent.getBroadcast(context.getApplicationContext(), alarmNumber, receiverIntent, PendingIntent.FLAG_UPDATE_CURRENT);
                 alarmManager.cancel(pendingIntent);
                 pendingIntent.cancel();
-                System.out.println("B_MedicationList-alarmNumber: " + alarmNumber);
                 Toast.makeText(context,"삭제완료", Toast.LENGTH_LONG).show(); //안됨..
             }
         });
@@ -146,7 +145,6 @@ public class B_MedicationList extends RecyclerView.Adapter<B_MedicationList.View
             @Override
             public void onClick(View v){
                 String position_clock = items.get(position).getClock();
-                System.out.println(position_clock);
                 code = items.get(position).getCode();
                 name = items.get(position).getName();
                 corp = items.get(position).getCorp();
@@ -155,8 +153,6 @@ public class B_MedicationList extends RecyclerView.Adapter<B_MedicationList.View
                     intent.putExtra("code", code);//품목기준코드 E_MedicineInfo -> E_MedicineInfoDetail로 보냄.
                     intent.putExtra("name", name);//의약품명
                     intent.putExtra("corp", corp);//회사명
-                    System.out.println("B_MedicationList: position: " + position);
-                    System.out.println("B_MedicationList: code: " + code);
                     context.startActivity(intent);
                 }
             }

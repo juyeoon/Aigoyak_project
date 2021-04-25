@@ -281,22 +281,16 @@ public class B_Warning extends AppCompatActivity {
             }
         }
 
-        System.out.println("index값 ->" + index);
-        System.out.println("code_a_date값 ->" + code_a_date );
-        System.out.println("code_b_date값 ->" + code_b_date[0]);
         for(int i=0; i<index; i++) {
-            System.out.println("code_a_date-> " +code_a_date);
-            System.out.println("code_b_date-> " +code_b_date[i]);
-            System.out.println("여기 잘 들어옴.");
+
             String sql5 = "select CONTENT from " + DataAdapter.TABLE_WITH + " where code_a= " + code + " AND code_b= " + code_b[i];
             Log.d(TAG, "sql5 : " + sql5);
             Cursor cursor5 = dataAdapter.rawQuery(sql5);
 
-            if (i == 0) {
-                text = text + "▼ 병용 금기\n";
-            }
-
             if (cursor5.getCount()!=0) {
+                if (i == 0) {
+                    text = text + "▼ 병용 금기\n";
+                }
                 cursor5.moveToNext();
                 text = text + "이 약은 " + code_b_name[i] + "와 함께 사용할 수 없습니다.\n ->";
             }

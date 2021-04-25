@@ -70,7 +70,6 @@ public class B_AddMedicineSearchList extends AppCompatActivity {
                 for (int i = 0; i<37; i++) {
                     //파싱 코드
                     page++;
-                    System.out.println("page 값: "+page);
                     queryUrl = "http://apis.data.go.kr/1471000/DrbEasyDrugInfoService/getDrbEasyDrugList"
                             + "?serviceKey=" + key2
                             + "&itemName=" + location

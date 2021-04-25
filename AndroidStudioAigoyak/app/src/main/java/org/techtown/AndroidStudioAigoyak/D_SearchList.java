@@ -67,17 +67,19 @@ public class D_SearchList extends AppCompatActivity {
                 for (int i = 0; i < 37; i++) {
                     page++;
                     //요청 URL
+
                     String queryUrl = "http://apis.data.go.kr/1471000/DrbEasyDrugInfoService/getDrbEasyDrugList"
                             + "?serviceKey=" + key2
                             + "&itemName=" + location
                             + "&numOfRows=" + 100
                             + "&pageNo=" + page;
 
+
                     //파싱 코드
                     try {
                         //URL객체생성
                         URL url = new URL(queryUrl);
-
+                        if(url == null){break;}
                         //Stream 열기                                     //is는 바이트 스트림이라 문자열로 받기위해 isr이 필요하고 isr을 pullparser에게 줘야하는데
                         InputStream is = url.openStream(); //바이트스트림
                         //문자스트림으로 변환

@@ -49,14 +49,12 @@ public class D_SearchListShape extends AppCompatActivity {
 
         initUI();
 //
-        String path = "discrimination/";
-
-        for(int i=1; i<3637; i++) {
-            path = "discrimination/"+i;
-            System.out.println("path" + path);
+        String path = "discrimination";
+            path = "discrimination";
             databaseReference = firebaseDatabase.getReference(path);
-            addImageEventListener(databaseReference);//코드를 가져옴.
-        }
+            addImageEventListener(databaseReference, form, shape, color, line);//코드를 가져옴.
+
+
 
         count = (TextView)findViewById((R.id.count));
 
@@ -91,40 +89,46 @@ public class D_SearchListShape extends AppCompatActivity {
     }
 */
 
-    private void addImageEventListener(DatabaseReference mPostReference) {//조건에 맞는 코드 알아내기
+    private void addImageEventListener(DatabaseReference mPostReference, String form, String shape, String color, String line) {//조건에 맞는 코드 알아내기
 
         mPostReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                // Get Post object and use the values to update the UI
-                Image image = dataSnapshot.getValue(Image.class);
-                System.out.println("code: " + image.code);
-                System.out.println("shape: " + image.shape);
-                System.out.println("colorF: " + image.colorF);
-                System.out.println("colorB: " + image.colorB);
-                System.out.println("lineF: " + image.lineF);
-                System.out.println("lineB: " + image.lineB);
-                System.out.println("form: " + image.form);
-                // ..
-                code = Integer.toString(image.code);
-                System.out.println("code------>" + code);
-
                 DataAdapter dataAdapter = new DataAdapter(getApplicationContext());
                 dataAdapter.createDatabase();
                 dataAdapter.open();
-                if(code.equals("197000040")) {//조건 새로 달아줘야함.-----------------------------
-                    ingrList = dataAdapter.getTableData4(code);
-                    items.add(new Search(i, ingrList.get(0).getName(), ingrList.get(0).getCorp(), ingrList.get(0).getCode()));
-                    adapter.setItems(items);
-                    adapter.notifyDataSetChanged();
-                    i++;
+
+                Image image = new Image();
+                Image select = new Image();
+                int number = 0;
+                for(DataSnapshot snapshot : dataSnapshot.getChildren()){
+                    select = snapshot.getValue(Image.class);
+
+                    if((select.getForm().contains(form) || form.equals("전체"))
+                    && (select.getShape().contains(shape)|| shape.equals("전체"))
+                    && (select.getLine().contains(line) || line.equals("전체"))
+                    && (select.getColor().contains(color) || color.equals("전체") )){
+
+                        image= select;
+                        code = Integer.toString(image.getCode());
+                        ingrList = dataAdapter.getTableData4(code);
+                        items.add(new Search(i, ingrList.get(0).getName(), ingrList.get(0).getCorp(), ingrList.get(0).getCode()));
+                        adapter.setItems(items);
+                        adapter.notifyDataSetChanged();
+                    };
                 }
+                /*
+                for(DataSnapshot snapshot : dataSnapshot.getChildren()){
+                image.add(snapshot.getValue(Image.class));
+                }
+                */
+                //System.out.println(image.get(0).getCode());
+
+//
+
                 count.setText("검색결과 " + adapter.getItemCount() + "건");
-
-
-
+             //
             }
-
             @Override
             public void onCancelled(DatabaseError databaseError) {
                 System.out.println("The read failed: " + databaseError.getCode());
