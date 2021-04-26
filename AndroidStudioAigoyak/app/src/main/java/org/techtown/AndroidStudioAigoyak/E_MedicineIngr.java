@@ -45,18 +45,30 @@ public class E_MedicineIngr extends Fragment{
         dataAdapter.close();
     }
 
-    public String allText(String name, String ingr, String ingre_add, String add_warning){
+    public String allText(String name, String ingr, String ingr_add, String add_warning){
         String resultText="";
-        /*// 나중에 바꾸기-----------------------------------------------------------------------
+
+        if(name == null){
+            name = "(없음)";
+        }
+        if(ingr == null){
+            ingr = "(없음)";
+        }
+        if(ingr_add == null){
+            ingr_add ="(없음)";
+        }
+        if(add_warning == null){
+            add_warning ="(없음)";
+        }
+
+
         resultText = "▼ 제품명\n" + name + "\n\n" +
                 "▼ 주성분\n" + ingr + "\n\n" +
-                "▼ 첨가물\n" + ingre_add + "\n\n" +
+                "▼ 첨가물\n" + ingr_add + "\n\n" +
                 "▼ 첨가물 주의\n" + add_warning + "\n\n";
 
-         */
-        resultText = "▼ 제품명\n" + name + "\n\n" +
-                "▼ 주성분\n" + ingr + "\n\n" +
-                "▼ 첨가물\n" + ingre_add + "\n\n";
+
+
         return resultText;
     }
 

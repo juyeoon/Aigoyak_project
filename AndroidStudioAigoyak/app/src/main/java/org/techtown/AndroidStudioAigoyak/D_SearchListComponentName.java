@@ -76,6 +76,7 @@ public class D_SearchListComponentName extends AppCompatActivity {
 
         // db 닫기
         dataAdapter.close();
-        return "검색결과 " + adapter.getItemCount() + "건";
+
+        return "'" +search_word+ "'" + " 검색결과 " + adapter.getItemCount() + "건";
     }
 }

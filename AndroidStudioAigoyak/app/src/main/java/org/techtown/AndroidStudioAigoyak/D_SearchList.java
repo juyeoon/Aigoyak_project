@@ -62,7 +62,7 @@ public class D_SearchList extends AppCompatActivity {
                 //API 추가
                 int id = 0;
                 items.clear();
-
+                count.setText("'" +search_word+ "'" + " 검색결과 0건");
                 String location = URLEncoder.encode(search_word);//한글의 경우 인식이 안되기에 utf-8 방식으로 encoding..
                 for (int i = 0; i < 37; i++) {
                     page++;
@@ -137,7 +137,7 @@ public class D_SearchList extends AppCompatActivity {
                                             public void run() {
                                                 adapter.setItems(items);
                                                 adapter.notifyDataSetChanged();
-                                                count.setText("검색결과 " + adapter.getItemCount() + "건");
+                                                count.setText("'" +search_word+ "'" + " 검색결과 " + adapter.getItemCount() + "건");
                                             }
                                         });
                                         id++;//idex
