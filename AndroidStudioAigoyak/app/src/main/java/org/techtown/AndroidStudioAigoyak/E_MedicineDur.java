@@ -83,7 +83,7 @@ public class E_MedicineDur extends Fragment {
                 dur2.get(1).getContent() + "\n\n";
 
         if(dur2.get(2).getContent().equals("(없음)")) {
-            resultText = resultText + "▼ 용량주의\n(없음)\n\n";
+            resultText = resultText + "▼ 용량 주의\n(없음)\n\n";
         }
         else {
             resultText = resultText + "▼ 용량 주의\n" +

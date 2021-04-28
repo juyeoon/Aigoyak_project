@@ -110,34 +110,50 @@
         app:layout_constraintStart_toEndOf="@+id/숫자"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.265" />
+
     <TextView
         android:id="@+id/특이사항"
-        android:text="특이사항"
-        android:layout_width="214dp"
-        android:layout_height="451dp"
-        android:layout_marginTop="280dp"
+        android:layout_width="wrap_content"
+        android:layout_height="430dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginLeft="28dp"
         android:fontFamily="@font/kukde_alt"
+        android:text="특이사항"
         android:textColor="@color/gray_soft"
         android:textSize="35dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.113"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-    <TextView
-        android:id="@+id/feature"
-        android:layout_width="214dp"
-        android:layout_height="451dp"
-        android:layout_marginTop="280dp"
-        android:fontFamily="@font/kukde_bdb"
-        android:text="없음"
-        android:textColor="@color/gray"
-        android:textSize="35dp"
+    <ScrollView
+        android:id="@+id/scroll"
+        android:layout_width="238dp"
+        android:layout_height="454dp"
+        android:padding="23dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
 
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <LinearLayout
+            android:id="@+id/linear"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/feature"
+                android:layout_width="214dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/kukde_bdb"
+                android:text="없음"
+                android:textColor="@color/gray"
+                android:textSize="35dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </LinearLayout>
+
+    </ScrollView>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

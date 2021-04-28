@@ -77,7 +77,7 @@
         android:layout_height="82dp"
         android:layout_marginStart="84dp"
         android:layout_marginLeft="84dp"
-        android:layout_marginTop="72dp"
+        android:layout_marginTop="64dp"
         android:background="@drawable/ok_button_selector"
         android:fontFamily="@font/kukde_alt"
         android:text="전체"
@@ -86,22 +86,11 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/shape4"
-        android:layout_width="70dp"
-        android:layout_height="41dp"
-        android:layout_marginTop="72dp"
-        android:background="@drawable/ok_button_selector"
-        android:fontFamily="@font/kukde_alt"
-        android:text="타원형"
-        app:layout_constraintStart_toEndOf="@+id/shape3"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
         android:id="@+id/shape2"
 
         android:layout_width="70dp"
         android:layout_height="41dp"
-        android:layout_marginTop="72dp"
+        android:layout_marginTop="64dp"
         android:background="@drawable/ok_button_selector"
         android:fontFamily="@font/kukde_alt"
         android:text="원형"
@@ -113,7 +102,7 @@
         android:id="@+id/textView5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="72dp"
+        android:layout_marginTop="64dp"
         android:fontFamily="@font/kukde_alt"
         android:text="모양"
         android:textSize="20dp"
@@ -126,11 +115,22 @@
         android:id="@+id/shape3"
         android:layout_width="70dp"
         android:layout_height="41dp"
-        android:layout_marginTop="72dp"
+        android:layout_marginTop="64dp"
         android:background="@drawable/ok_button_selector"
         android:fontFamily="@font/kukde_alt"
         android:text="장방형"
         app:layout_constraintStart_toEndOf="@+id/shape2"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/shape4"
+        android:layout_width="70dp"
+        android:layout_height="41dp"
+        android:layout_marginTop="64dp"
+        android:background="@drawable/ok_button_selector"
+        android:fontFamily="@font/kukde_alt"
+        android:text="타원형"
+        app:layout_constraintStart_toEndOf="@+id/shape3"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
@@ -172,7 +172,7 @@
         android:layout_height="164dp"
         android:layout_marginStart="84dp"
         android:layout_marginLeft="84dp"
-        android:layout_marginTop="172dp"
+        android:layout_marginTop="156dp"
         android:background="@drawable/ok_button_selector"
         android:fontFamily="@font/kukde_alt"
         android:text="전체"
@@ -180,22 +180,10 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/color4"
-        android:layout_width="70dp"
-        android:layout_height="41dp"
-        android:layout_marginTop="172dp"
-        android:background="@drawable/ok_button_selector"
-        android:fontFamily="@font/kukde_alt"
-        android:text="주황"
-        android:textSize="15sp"
-        app:layout_constraintStart_toEndOf="@+id/color3"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="172dp"
+        android:layout_marginTop="156dp"
         android:fontFamily="@font/kukde_alt"
         android:text="색상"
         android:textSize="20dp"
@@ -208,7 +196,7 @@
         android:id="@+id/color2"
         android:layout_width="70dp"
         android:layout_height="41dp"
-        android:layout_marginTop="172dp"
+        android:layout_marginTop="156dp"
         android:background="@drawable/ok_button_selector"
         android:fontFamily="@font/kukde_alt"
         android:text="하양"
@@ -216,18 +204,30 @@
         app:layout_constraintStart_toEndOf="@+id/color1"
         app:layout_constraintTop_toTopOf="parent" />
 
-
     <Button
         android:id="@+id/color3"
         android:layout_width="70dp"
         android:layout_height="41dp"
-        android:layout_marginTop="172dp"
+        android:layout_marginTop="156dp"
         android:background="@drawable/ok_button_selector"
         android:fontFamily="@font/kukde_alt"
         android:text="노랑"
         android:textSize="15sp"
         app:layout_constraintStart_toEndOf="@+id/color2"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/color4"
+        android:layout_width="70dp"
+        android:layout_height="41dp"
+        android:layout_marginTop="156dp"
+        android:background="@drawable/ok_button_selector"
+        android:fontFamily="@font/kukde_alt"
+        android:text="주황"
+        android:textSize="15sp"
+        app:layout_constraintStart_toEndOf="@+id/color3"
+        app:layout_constraintTop_toTopOf="parent" />
+
 
     <Button
         android:id="@+id/color5"
@@ -380,7 +380,7 @@
         android:layout_height="41dp"
         android:layout_marginStart="84dp"
         android:layout_marginLeft="84dp"
-        android:layout_marginTop="388dp"
+        android:layout_marginTop="372dp"
         android:background="@drawable/ok_button_selector"
         android:fontFamily="@font/kukde_alt"
         android:text="전체"
@@ -389,34 +389,10 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/line4"
-        android:layout_width="70dp"
-        android:layout_height="41dp"
-        android:layout_marginTop="388dp"
-        android:background="@drawable/ok_button_selector"
-        android:fontFamily="@font/kukde_alt"
-        android:text="(-)형"
-        android:textSize="15sp"
-        app:layout_constraintStart_toEndOf="@+id/line3"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="388dp"
-        android:fontFamily="@font/kukde_alt"
-        android:text="분할선"
-        android:textSize="20dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.045"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
         android:id="@+id/line2"
         android:layout_width="70dp"
         android:layout_height="41dp"
-        android:layout_marginTop="388dp"
+        android:layout_marginTop="372dp"
         android:background="@drawable/ok_button_selector"
         android:fontFamily="@font/kukde_alt"
         android:text="없음"
@@ -428,12 +404,36 @@
         android:id="@+id/line3"
         android:layout_width="70dp"
         android:layout_height="41dp"
-        android:layout_marginTop="388dp"
+        android:layout_marginTop="372dp"
         android:background="@drawable/ok_button_selector"
         android:fontFamily="@font/kukde_alt"
         android:text="(+)형"
         android:textSize="15sp"
         app:layout_constraintStart_toEndOf="@+id/line2"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/line4"
+        android:layout_width="70dp"
+        android:layout_height="41dp"
+        android:layout_marginTop="372dp"
+        android:background="@drawable/ok_button_selector"
+        android:fontFamily="@font/kukde_alt"
+        android:text="(-)형"
+        android:textSize="15sp"
+        app:layout_constraintStart_toEndOf="@+id/line3"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="372dp"
+        android:fontFamily="@font/kukde_alt"
+        android:text="분할선"
+        android:textSize="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.045"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button

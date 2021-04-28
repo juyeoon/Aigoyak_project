@@ -47,7 +47,7 @@
     <FrameLayout
         android:id="@+id/sub_layout"
         android:layout_width="match_parent"
-        android:layout_height="487dp"
+        android:layout_height="475dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"

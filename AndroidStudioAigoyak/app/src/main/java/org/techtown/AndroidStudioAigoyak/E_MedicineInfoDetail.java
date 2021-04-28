@@ -1,6 +1,8 @@
 package org.techtown.AndroidStudioAigoyak;
 
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -34,7 +36,7 @@ public class E_MedicineInfoDetail extends Fragment {
 
     TextView text;
     String sampleCode;
-
+    String result;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -169,7 +171,7 @@ public class E_MedicineInfoDetail extends Fragment {
                                         if(str != null){
                                             String strc = str.replaceAll("<p>", "");
                                             strc = strc.replaceAll("</p>", "");
-                                            buffer.append("▼ 사용하는 동안 주의해야할 사항");
+                                            buffer.append("▼ 사용하는 동안 주의해야 할 사항");
                                             buffer.append("\n"+strc+"\n\n");
                                         }
                                     }
@@ -364,10 +366,18 @@ public class E_MedicineInfoDetail extends Fragment {
                                 case XmlPullParser.END_TAG:
                                     tagName2 = xpp2.getName();
                                     if(tagName2.equals("items")){
+                                        result = buffer.toString();
+                                        System.out.println("result:" + result);
 
-                                        text.setText(buffer.toString());
+                                        getActivity().runOnUiThread(new Runnable() {
+                                            @Override
+                                            public void run() {
+                                                text.setText(result);
+                                            }
+                                        });
 
-                                    }
+                                        }
+
                                     break;
                             }
                             eventType2=xpp2.next();
@@ -379,6 +389,7 @@ public class E_MedicineInfoDetail extends Fragment {
         }.start();
         return viewGroup;
     }
+
 }
 
 

@@ -72,7 +72,7 @@ public class E_MedicineInfo  extends AppCompatActivity {
 
 
 
-        //
+
 
         Bundle bundle = new Bundle();
         bundle.putString("code", code);// E_MedicineInfoMain으로 전송
