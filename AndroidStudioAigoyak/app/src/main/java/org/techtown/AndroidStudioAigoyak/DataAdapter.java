@@ -188,7 +188,13 @@ public class DataAdapter
                     dur2 = new Dur2();
                     // code, content
                     dur2.setCode(cursor3.getString(0));
-                    dur2.setContent(cursor3.getString(1));
+                    if(cursor3.getString(1).equals("-")){
+                        dur2.setContent("임부 복용이 금기되는 의약품입니다.");
+
+                    }
+                    else {
+                        dur2.setContent(cursor3.getString(1));
+                    }
                     // 리스트에 넣기
                     resultList.add(dur2);
                 }

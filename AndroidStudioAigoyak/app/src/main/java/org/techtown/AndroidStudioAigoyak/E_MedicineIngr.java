@@ -37,7 +37,6 @@ public class E_MedicineIngr extends Fragment{
 
         // db에 있는 값들을 model을 적용해서 넣는다.
         ingrList = dataAdapter.getTableData4(code);
-
         text = allText(ingrList.get(0).getName(),ingrList.get(0).getIngr(),ingrList.get(0).getAdd(),ingrList.get(0).getAddWarn());
         textView.setText(text);
 

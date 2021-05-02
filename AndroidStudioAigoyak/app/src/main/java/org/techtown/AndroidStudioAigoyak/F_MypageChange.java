@@ -168,8 +168,10 @@ public class F_MypageChange extends AppCompatActivity {
             public void onClick(View v){
                 if(!age.getText().toString().equals("")){
                     saveNote(age.getText().toString(), text[0]);
+
                     Intent intent = new Intent(F_MypageChange.this, F_MypageDetail.class);
                     startActivity(intent);
+
                 }
                 else{
                     Toast.makeText(getApplicationContext(),"나이를 입력하세요!", Toast.LENGTH_LONG).show();

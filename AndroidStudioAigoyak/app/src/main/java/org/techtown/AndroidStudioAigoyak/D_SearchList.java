@@ -117,7 +117,10 @@ public class D_SearchList extends AppCompatActivity {
 
                                     } else if (tagName.equals("itemName")) {//제품명
                                         xpp.next();
-                                        buffer.append(xpp.getText() + "\n");
+                                        String str = xpp.getText();
+                                        str = str.replaceAll("\\s", "");
+                                        buffer.append(str+"\n");
+
                                     } else if (tagName.equals("itemSeq")) {//품목기준코드
                                         xpp.next();
                                         buffer.append(xpp.getText() + "\n");

@@ -38,7 +38,9 @@ public class F_MypageDetail extends AppCompatActivity {
         button_back.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                onBackPressed();
+                Intent intent = new Intent(F_MypageDetail.this, MainActivity.class);
+                startActivity(intent);
+                //onBackPressed();
             }
         });
 
