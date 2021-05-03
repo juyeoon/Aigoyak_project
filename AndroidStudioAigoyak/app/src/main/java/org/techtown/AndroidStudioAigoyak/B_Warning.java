@@ -128,8 +128,14 @@ public class B_Warning extends AppCompatActivity {
                                             result_text = result_text + "'" + keyword.get(i)+"'" + "에 대한 주의사항이 있습니다.\n\n";//해당할때 일어나는 일을 여기 쓰면 됨
 
                                         }
+
                                         else{
                                             //해당 없을 때 일어나는 일을 여기 쓰면 됨
+                                        }
+                                    }
+                                    if(Integer.parseInt(age) >= 65) {
+                                        if (caution.contains("노인") || caution.contains("고령자")) {
+                                            result_text = result_text + "'고령자(노인)'에 대한 주의사항이 있습니다.\n\n";
                                         }
                                     }
                                     runOnUiThread(new Runnable() {
@@ -150,13 +156,7 @@ public class B_Warning extends AppCompatActivity {
             }// run() ..
         }.start();
 
-
-
-
-
-
     }
-
 
     private String initLoadDB(String code) {
         String text="";
