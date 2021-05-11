@@ -9,7 +9,9 @@ import android.view.MenuItem;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+
 public class MainActivity extends AppCompatActivity {
+    public static String KEY = "COqqRqdIM6Kkz9qfzXGH5geAKxrfy90RL6AhqU4%2BaUT19SMd4Oy0YM7lpTZP8%2BY%2FgegeDNplMu%2FA%2B8HdJfGhKQ%3D%3D";
     private static final String TAG = "MainActivity";
     private BottomNavigationView bottomNavigationView; // 바텀 네비게이션 뷰
     private B_Management fragment1;

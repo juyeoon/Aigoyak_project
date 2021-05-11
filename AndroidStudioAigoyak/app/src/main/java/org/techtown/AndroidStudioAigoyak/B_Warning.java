@@ -32,7 +32,7 @@ public class B_Warning extends AppCompatActivity {
     //추가 코드(특이사항이 하나인 경우)
     ArrayList<String> keyword = new ArrayList<String>(); //특이사항 데이터 저장하는곳
     String caution; //데이터 저장
-    String apiKey="COqqRqdIM6Kkz9qfzXGH5geAKxrfy90RL6AhqU4%2BaUT19SMd4Oy0YM7lpTZP8%2BY%2FgegeDNplMu%2FA%2B8HdJfGhKQ%3D%3D";
+    String apiKey = MainActivity.KEY;
     String result_text;
     String code;
     String age;

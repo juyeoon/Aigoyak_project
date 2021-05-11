@@ -31,7 +31,7 @@ import java.util.ArrayList;
 public class E_MedicineInfoDetail extends Fragment {
     ViewGroup viewGroup;
 
-    String apiKey="COqqRqdIM6Kkz9qfzXGH5geAKxrfy90RL6AhqU4%2BaUT19SMd4Oy0YM7lpTZP8%2BY%2FgegeDNplMu%2FA%2B8HdJfGhKQ%3D%3D";
+    String apiKey = MainActivity.KEY;
     String imageURL;
 
     TextView text;

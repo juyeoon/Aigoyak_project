@@ -30,7 +30,7 @@ public class D_SearchList extends AppCompatActivity {
     D_SearchAdapter adapter;
     int page = 0;
     //API 추가
-    String key2 = "COqqRqdIM6Kkz9qfzXGH5geAKxrfy90RL6AhqU4%2BaUT19SMd4Oy0YM7lpTZP8%2BY%2FgegeDNplMu%2FA%2B8HdJfGhKQ%3D%3D";
+    String apiKey = MainActivity.KEY;
 
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,7 +69,7 @@ public class D_SearchList extends AppCompatActivity {
                     //요청 URL
 
                     String queryUrl = "http://apis.data.go.kr/1471000/DrbEasyDrugInfoService/getDrbEasyDrugList"
-                            + "?serviceKey=" + key2
+                            + "?serviceKey=" + apiKey
                             + "&itemName=" + location
                             + "&numOfRows=" + 100
                             + "&pageNo=" + page;
