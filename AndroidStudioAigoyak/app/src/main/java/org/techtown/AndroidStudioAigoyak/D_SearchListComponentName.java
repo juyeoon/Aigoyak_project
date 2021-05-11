@@ -1,6 +1,5 @@
 package org.techtown.AndroidStudioAigoyak;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
@@ -10,18 +9,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import org.xmlpull.v1.XmlPullParser;
-import org.xmlpull.v1.XmlPullParserException;
-import org.xmlpull.v1.XmlPullParserFactory;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.net.URLEncoder;
 import java.util.ArrayList;
-import java.util.List;
+
 
 //성분 검색할 때 나올 애들
 public class D_SearchListComponentName extends AppCompatActivity {
@@ -29,7 +24,13 @@ public class D_SearchListComponentName extends AppCompatActivity {
     ArrayList<Search> items = new ArrayList<Search>();
     RecyclerView recyclerView;
     D_SearchAdapter adapter;
-    String count_num;
+    String code = new String();
+    private FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance( );
+    private DatabaseReference databaseReference;
+
+
+    int i=0;
+    TextView count;
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
@@ -38,9 +39,13 @@ public class D_SearchListComponentName extends AppCompatActivity {
         String search_word = (String)getIntent().getSerializableExtra("search");//C_ComponentNameSearch에서 검색어 들고옴
 
         initUI();
-        count_num = initLoadDB(search_word);
-        TextView count = (TextView)findViewById((R.id.count));
-        count.setText(count_num);
+
+        String path = "ingredient";
+        databaseReference = firebaseDatabase.getReference(path);
+        addImageEventListener(databaseReference, search_word);//코드를 가져옴.
+
+        count = (TextView)findViewById((R.id.count));
+
         //뒤로가기 버튼 누름
         ImageButton button_back = (ImageButton) findViewById(R.id.back_button);
         button_back.setOnClickListener(new View.OnClickListener(){
@@ -62,21 +67,35 @@ public class D_SearchListComponentName extends AppCompatActivity {
         adapter = new D_SearchAdapter(this);
         recyclerView.setAdapter(adapter);
     }
+    private void addImageEventListener(DatabaseReference mPostReference, String search_word) {//조건에 맞는 코드 알아내기
 
-    private String initLoadDB(String search_word) {
-        DataAdapter dataAdapter = new DataAdapter(getApplicationContext());
-        dataAdapter.createDatabase();
-        dataAdapter.open();
-        System.out.println("search_word : " + search_word);
-        // db에 있는 값들을 model을 적용해서 넣는다.
-        items = dataAdapter.ingrSearch(search_word);//이거써야함.
+        mPostReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
 
-        adapter.setItems(items);
-        adapter.notifyDataSetChanged();
+                Ingredient ingredient = new Ingredient();
+                Ingredient select = new Ingredient();
 
-        // db 닫기
-        dataAdapter.close();
+                for(DataSnapshot snapshot : dataSnapshot.getChildren()){
+                    select = snapshot.getValue(Ingredient.class);
 
-        return "'" +search_word+ "'" + " 검색결과 " + adapter.getItemCount() + "건";
+                    if((select.getIngr().contains(search_word))){
+                        ingredient= select;
+                        code = Integer.toString(ingredient.getCode());
+                        items.add(new Search(i, ingredient.getName(), ingredient.getCorp(), code));
+                        adapter.setItems(items);
+                        adapter.notifyDataSetChanged();
+                    };
+                }
+                count.setText("검색결과 " + adapter.getItemCount() + "건");
+
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                System.out.println("The read failed: " + databaseError.getCode());
+            }
+        });
     }
+
+
 }

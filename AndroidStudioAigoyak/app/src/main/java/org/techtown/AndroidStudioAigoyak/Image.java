@@ -11,6 +11,8 @@ import java.util.Map;
 public class Image {
 
     public int code;
+    public String name;
+    public String corp;
     public String shape;
     public String color;
     public String line;
@@ -22,8 +24,10 @@ public class Image {
         // Default constructor required for calls to DataSnapshot.getValue(Post.class)
     }
 
-    public Image(int code, String shape, String color,  String line, String form) {
+    public Image(int code, String name, String corp, String shape, String color,  String line, String form) {
         this.code = code;
+        this.name = name;
+        this.corp = corp;
         this.shape = shape;
         this.color = color;
         this.line = line;
@@ -34,6 +38,8 @@ public class Image {
     public Map<String, Object> toMap() {
         HashMap<String, Object> result = new HashMap<>();
         result.put("code", code);
+        result.put("name", name);
+        result.put("corp", corp);
         result.put("shape", shape);
         result.put("color", color);
         result.put("line", line);
@@ -49,6 +55,20 @@ public class Image {
     }
     public void setCode(int code){
         this.code = code;
+    }
+
+    public String getName() {
+        return name;
+    }
+    public void setName(String name){
+        this.name = name;
+    }
+
+    public String getCorp() {
+        return corp;
+    }
+    public void setCorp(String corp){
+        this.corp = corp;
     }
 
     public String getShape() {

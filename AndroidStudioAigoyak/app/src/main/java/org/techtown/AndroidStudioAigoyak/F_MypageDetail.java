@@ -16,11 +16,8 @@ import androidx.appcompat.app.AppCompatActivity;
 public class F_MypageDetail extends AppCompatActivity {
 
     private static final String TAG = "UserAdapter";
-
-    ArrayList<User> items = new ArrayList<User>();
     private int position;
     Context context;
-    OnNoteItemClickListener listener;
 
     public int getPosition(){
         return position;
@@ -40,7 +37,6 @@ public class F_MypageDetail extends AppCompatActivity {
             public void onClick(View v){
                 Intent intent = new Intent(F_MypageDetail.this, MainActivity.class);
                 startActivity(intent);
-                //onBackPressed();
             }
         });
 
@@ -74,7 +70,6 @@ public class F_MypageDetail extends AppCompatActivity {
             else{ text = text + "\n" + cursor.getString(0); }
 
         }
-
         TextView feature = (TextView) findViewById(R.id.feature);
         feature.setText(text);
     }

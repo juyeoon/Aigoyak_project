@@ -367,7 +367,6 @@ public class E_MedicineInfoDetail extends Fragment {
                                     tagName2 = xpp2.getName();
                                     if(tagName2.equals("items")){
                                         result = buffer.toString();
-                                        System.out.println("result:" + result);
 
                                         getActivity().runOnUiThread(new Runnable() {
                                             @Override

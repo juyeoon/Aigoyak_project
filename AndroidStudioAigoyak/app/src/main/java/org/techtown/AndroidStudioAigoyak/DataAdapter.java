@@ -22,7 +22,6 @@ public class DataAdapter
     protected static final String TABLE_OLD = "TABLE_OLD";//노인주의
     protected static final String TABLE_AMOUNT = "TABLE_AMOUNT";//용량주의
     protected static final String TABLE_PERIOD = "TABLE_PERIOD";//투여기간 주의
-    protected static final String TABLE_INGR = "TABLE_INGR";//성분
 
     private final Context mContext;
     private SQLiteDatabase mDb;
@@ -279,89 +278,6 @@ public class DataAdapter
                 resultList.add(dur2);
             }
             cursor6.close();
-            return resultList;
-        }
-        catch (SQLException mSQLException)
-        {
-            Log.e(TAG, "getTestData >>"+ mSQLException.toString());
-            throw mSQLException;
-        }
-    }
-    public List getTableData4(String code)
-    {
-        try
-        {
-            String sql7 = "SELECT * FROM " + TABLE_INGR + " WHERE code = '" + code + "'";
-
-            List resultList = new ArrayList();//최종 돌려줄 list
-
-            Ingredient ingredient =null;
-            //TABLE_INGR
-            Cursor cursor7 = mDb.rawQuery(sql7, null);
-            if (cursor7.getCount()!=0)
-            {
-                while( cursor7.moveToNext() ) {
-                    ingredient = new Ingredient();
-                    // code, name, corp, ingr, add, addwarn
-                    ingredient.setCode(cursor7.getString(0));
-                    ingredient.setName(cursor7.getString(1));
-                    ingredient.setCorp(cursor7.getString(2));
-                    ingredient.setIngr(cursor7.getString(3));
-                    ingredient.setAdd(cursor7.getString(4));
-                    ingredient.setAddWarn(cursor7.getString(5));
-
-
-                    // 리스트에 넣기
-                    resultList.add(ingredient);
-                }
-            }
-            else{
-                ingredient = new Ingredient();
-                // code, ingr, add, url
-                ingredient.setCode("(없음)");
-                ingredient.setName("(없음)");
-                ingredient.setCorp("(없음)");
-                ingredient.setIngr("(없음)");
-                ingredient.setAdd("(없음)");
-                ingredient.setAddWarn("(없음)");
-
-                // 리스트에 넣기
-                resultList.add(ingredient);
-
-            }
-            cursor7.close();
-            return resultList;
-        }
-        catch (SQLException mSQLException)
-        {
-            Log.e(TAG, "getTestData >>"+ mSQLException.toString());
-            throw mSQLException;
-        }
-    }
-    public ArrayList ingrSearch(String text)//나중에 바꿔야 함.
-    {
-        try
-        {
-            String sql7 = "SELECT * FROM " + TABLE_INGR;
-
-            ArrayList<Search> resultList = new ArrayList<Search>();//최종 돌려줄 list
-
-            //TABLE_INGR
-            Cursor cursor7 = mDb.rawQuery(sql7, null);
-            if (cursor7.getCount()!=0)
-            {
-                int i=0;
-                while( cursor7.moveToNext() ) {
-
-                    if(cursor7.getString(3) !=null){
-                         if(cursor7.getString(3).contains(text)){//검색 결과가 ingr에 포함될 때
-                            resultList.add(new Search(i, cursor7.getString(1), cursor7.getString(2), cursor7.getString(0)));//id, name, corp, code
-                            i++;
-                      }
-                   }
-                }
-            }
-            cursor7.close();
             return resultList;
         }
         catch (SQLException mSQLException)

@@ -9,14 +9,21 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import java.util.List;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 
 public class E_MedicineIngr extends Fragment{
     ViewGroup viewGroup;
     TextView textView;
     String code;
     String text;
-    public List<Ingredient> ingrList;
+
+    private FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance( );
+    private DatabaseReference databaseReference;
 
     @Nullable
     @Override
@@ -26,24 +33,42 @@ public class E_MedicineIngr extends Fragment{
         Bundle bundle = getArguments();
         code = bundle.getString("code");//D_SearchAdapter에서 품목기준코드 들고옴
         text = "";
-        initLoadDB(code);//db에서 dur 정보 들고오기.
+        String path = "ingredient";
+        databaseReference = firebaseDatabase.getReference(path);
+        addImageEventListener(databaseReference, code);//코드를 가져옴.
 
         return viewGroup;
     }
-    private void initLoadDB(String code) {
-        DataAdapter dataAdapter = new DataAdapter(getContext());
-        dataAdapter.createDatabase();
-        dataAdapter.open();
 
-        // db에 있는 값들을 model을 적용해서 넣는다.
-        ingrList = dataAdapter.getTableData4(code);
-        text = allText(ingrList.get(0).getName(),ingrList.get(0).getIngr(),ingrList.get(0).getAdd(),ingrList.get(0).getAddWarn());
-        textView.setText(text);
+    private void addImageEventListener(DatabaseReference mPostReference, String code) {//조건에 맞는 코드 알아내기
 
-        // db 닫기
-        dataAdapter.close();
+        mPostReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                DataAdapter dataAdapter = new DataAdapter(getContext());
+                dataAdapter.createDatabase();
+                dataAdapter.open();
+
+                Ingredient ingredient = new Ingredient();
+                Ingredient select = new Ingredient();
+
+                for(DataSnapshot snapshot : dataSnapshot.getChildren()){
+                    select = snapshot.getValue(Ingredient.class);
+                    String select_code = Integer.toString(select.getCode());
+                    if((select_code.equals(code))){
+                        ingredient= select;
+                        text = allText(ingredient.getName(),ingredient.getIngr(),ingredient.getAdd(),ingredient.getAddWarn());
+                        textView.setText(text);
+                        break;
+                    };
+                }
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                System.out.println("The read failed: " + databaseError.getCode());
+            }
+        });
     }
-
     public String allText(String name, String ingr, String ingr_add, String add_warning){
         String resultText="";
 
@@ -60,17 +85,10 @@ public class E_MedicineIngr extends Fragment{
             add_warning ="(없음)";
         }
 
-
         resultText = "▼ 제품명\n" + name + "\n\n" +
                 "▼ 주성분\n" + ingr + "\n\n" +
                 "▼ 첨가물\n" + ingr_add + "\n\n" +
                 "▼ 첨가물 주의\n" + add_warning + "\n\n";
-
-
-
         return resultText;
     }
-
-
-
 }
