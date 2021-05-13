@@ -262,11 +262,11 @@ Firebase Realtime Database에 약 모양에 대한 데이터가 ‘discriminatio
 
 <p align="center"><img src="https://github.com/juyeoon/Aigoyak_project/blob/main/image/capture/1_나이 입력-crop.PNG" width="20%" height="20%">          <img src="https://github.com/juyeoon/Aigoyak_project/blob/main/image/capture/1_특이사항 선택-crop.PNG" width="20%" height="20%"></p>
 
-#### 복약 기록 화면
+#### 복약 관리 화면
 
 <p align="center"><img src="https://github.com/juyeoon/Aigoyak_project/blob/main/image/capture/2_복약관리-crop.PNG" width="20%" height="20%">          <img src="https://github.com/juyeoon/Aigoyak_project/blob/main/image/capture/2_복약추가-crop.PNG" width="20%" height="20%">          <img src="https://github.com/juyeoon/Aigoyak_project/blob/main/image/capture/2_복약관리2-crop.PNG" width="20%" height="20%"></p>
 
-#### 복약 기록 목록에 따른 맞춤형  정보 제공 관련 화면
+#### 복약 기록 리스트에 따른 맞춤형 주의사항 제공 관련 화면
 
 <p align="center"><img src="https://github.com/juyeoon/Aigoyak_project/blob/main/image/capture/2_복약관리3-crop.png" width="20%" height="20%">          <img src="https://github.com/juyeoon/Aigoyak_project/blob/main/image/capture/2_주의사항화면-crop.PNG" width="20%" height="20%"></p>
 
@@ -274,7 +274,7 @@ Firebase Realtime Database에 약 모양에 대한 데이터가 ‘discriminatio
 
 <p align="center"><img src="https://github.com/juyeoon/Aigoyak_project/blob/main/image/capture/5_회원정보-crop.PNG" width="20%" height="20%">          <img src="https://github.com/juyeoon/Aigoyak_project/blob/main/image/capture/5_회원정보수정-crop.PNG" width="20%" height="20%"></p>
 
-#### 알림창
+#### 복약 시각 알림 화면
 
 <p align="center"><img src="https://github.com/juyeoon/Aigoyak_project/blob/main/image/capture/2_복약알림-crop.PNG" width="20%" height="20%"></p>
 
