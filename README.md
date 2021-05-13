@@ -126,7 +126,7 @@ git clone https://github.com/juyeoon/Aigoyak_project
 ~~~javascript
 public static String KEY = "발급받은 키";
 ~~~
- 4. 상단탭에서 디바이스 아이콘을 클릭하여 AVD를 실행한다.  <img src="image/avd 사진.PNG"> 
+ 4. 상단탭에서 디바이스 아이콘을 클릭하여 AVD생성 후  실행한다.  <img src="image/avd 사진.PNG"> 
 
 - **API Key 발급**
 
