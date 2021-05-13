@@ -183,6 +183,28 @@ DUR 데이터는 공공데이터포털에서 다운로드받았으며, 다운로
 
 일반의약품의 정보를 가져와서 화면에 출력하기 위해 두 개의 Open API를 사용하였다. 두 개의 Open API 모두 공공데이터포털에서 활용신청을 하여 사용한 API이다. 제공되는 API의 데이터 포맷은 JSON과 XML 형식이다. 서비스 유형은 REST(GET)로 제공되고 활용한 요청 메시지와 응답 메시지는 다음과 같다. 
 
+<p align="center"><img src="https://github.com/juyeoon/Aigoyak_project/blob/main/image/api표1.PNG" width="60%" height="60%"></p>
+<p align="center"><img src="https://github.com/juyeoon/Aigoyak_project/blob/main/image/api표2.PNG" width="60%" height="60%"></p>
+이 애플리케이션에서는 API를 XML 문서 형식으로 가져와 사용하는 방식을 사용하였다. 사용한 요청 URL의 형식은 다음과 같다. 
+~~~javascript
+String address = "http://apis.data.go.kr/1471000/DrbEasyDrugInfoService/getDrbEasyDrugList"
+        + "?serviceKey=" + apiKey
+        + "&itemSeq=" + sampleCode;
+
+String address2 = "http://apis.data.go.kr/1470000/MdcinGrnIdntfcInfoService/getMdcinGrnIdntfcInfoList"
+        + "?ServiceKey=" + apiKey
+        + "&item_seq=" + sampleCode;
+~~~
+Open API의 요청 URL을 API마다 각각 설정하여 저장한다. 위 코드의 요청 URL은 공공데이터포털에서 데이터 활용 신청을 하여 발급받은 서비스 키와 의약품의 품목 기준코드를 결합한 것으로, 서비스 키와 품목 기준코드에 모두 일치하는 데이터만 결과로 나타나게 된다. [그림 5.7]에서 API 2는 '식품의약품안전처_의약품개요정보(e약은요)' API이며, API 3은 '의약품 낱알식별정보(DB) 서비스' API를 말한다. 
+
+요청 URL을 사용하여 데이터를 요청하게 되면 API에서 응답 메시지를 반환하게 된다. 이를 사용하기 위해 두 API의 응답 메시지에서 필요한 정보에 맞는 태그의 내용만 저장하여 사용하였다. (첨부 소스 코드3, 4 참고)
+
+#### Cloud Storage for Firebase에서 이미지 가져오기
+의약품의 이미지를 사용하기 위해 Firebase에서 제공하는 Cloud Storage를 사용하였다. 의약품의품목 기준코드를 파일 이름으로 하여 Cloud Storage의 ‘medisine’ 디렉토리에 저장되어 있으며, 이미지의 형식은 png 형식이다. 
+의약품의 품목 기준코드에 맞는 이미지를 가져오기 위해 소스 코드에서 변수 ‘image_name’에 이미지 파일의 이름을 포함한 이미지의 경로를 저장하였고, 품목 기준코드와 일치하는 이미지가 존재하면 해당 이미지를 불러온다. (첨부 소스 코드5 참고)
+의약품 이미지는 [그림 5.8]과 같이 저장되어 있다.
+
+
 ---
 
 ## :pill: 구현 결과
