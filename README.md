@@ -141,6 +141,7 @@ public static String KEY = "발급받은 키";
 
 - **일반의약품 데이터**
 
+  - [식품의약품안전처_의약품개요정보(e약은요)](https://www.data.go.kr/data/15075057/openapi.do)
   - [의약품 낱알식별정보(DB) 서비스](https://www.data.go.kr/data/15057639/openapi.do)
 
 - **DUR 데이터**
