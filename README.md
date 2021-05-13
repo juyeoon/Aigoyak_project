@@ -147,23 +147,44 @@ Medication Managing System Based on Open Data
 
 #### 로딩화면
 
+<p align="center"><img src="https://github.com/juyeoon/Aigoyak_project/blob/main/image/capture/0_intro-crop.PNG" width="20%" height="20%"></p>
+
 #### 초기 설정 화면
+
+<p align="center"><img src="https://github.com/juyeoon/Aigoyak_project/blob/main/image/capture/1_나이 입력-crop.PNG" width="20%" height="20%">          <img src="https://github.com/juyeoon/Aigoyak_project/blob/main/image/capture/1_특이사항 선택-crop.PNG" width="20%" height="20%"></p>
 
 #### 복약 기록 화면
 
+<p align="center"><img src="https://github.com/juyeoon/Aigoyak_project/blob/main/image/capture/2_복약관리-crop.PNG" width="20%" height="20%">          <img src="https://github.com/juyeoon/Aigoyak_project/blob/main/image/capture/2_복약추가-crop.PNG" width="20%" height="20%">          <img src="https://github.com/juyeoon/Aigoyak_project/blob/main/image/capture/2_복약관리2-crop.PNG" width="20%" height="20%"></p>
+
 #### 복약 기록 목록에 따른 맞춤형 DUR 정보 제공 관련 화면
+
+<p align="center"><img src="https://github.com/juyeoon/Aigoyak_project/blob/main/image/capture/2_복약관리3-crop.PNG" width="20%" height="20%">          <img src="https://github.com/juyeoon/Aigoyak_project/blob/main/image/capture/2_주의사항화면-crop.PNG" width="20%" height="20%"></p>
 
 #### 회원 정보 화면
 
+<p align="center"><img src="https://github.com/juyeoon/Aigoyak_project/blob/main/image/capture/5_회원정보-crop.PNG" width="20%" height="20%">          <img src="https://github.com/juyeoon/Aigoyak_project/blob/main/image/capture/5_회원정보수정-crop.PNG" width="20%" height="20%"></p>
+
 #### 알림창
+
+<p align="center"><img src="https://github.com/juyeoon/Aigoyak_project/blob/main/image/capture/2_복약알림-crop.PNG" width="20%" height="20%"></p>
 
 #### 일반의약품 검색 화면
 
+<p align="center"><img src="https://github.com/juyeoon/Aigoyak_project/blob/main/image/capture/3_제품명검색-crop.PNG" width="20%" height="20%">          <img src="https://github.com/juyeoon/Aigoyak_project/blob/main/image/capture/3_성분명 검색-crop.PNG" width="20%" height="20%">          <img src="https://github.com/juyeoon/Aigoyak_project/blob/main/image/capture/3_약모양검색-crop.PNG" width="20%" height="20%"></p>
+
 #### 검색 결과 리스트 화면
+
+<p align="center"><img src="https://github.com/juyeoon/Aigoyak_project/blob/main/image/capture/3_검색 리스트-crop.PNG" width="20%" height="20%"></p>
 
 #### 일반의약품 상세 정보 제공 화면
 
+<p align="center"><img src="https://github.com/juyeoon/Aigoyak_project/blob/main/image/capture/4_상세정보1-crop.PNG" width="20%" height="20%">          <img src="https://github.com/juyeoon/Aigoyak_project/blob/main/image/capture/4_상세정보2-crop.PNG" width="20%" height="20%">          <img src="https://github.com/juyeoon/Aigoyak_project/blob/main/image/capture/4_상세정보_3-crop.PNG" width="20%" height="20%"></p>
+
 #### 즐겨찾기 화면
+
+<p align="center"><img src="https://github.com/juyeoon/Aigoyak_project/blob/main/image/capture/3_즐겨찾기-crop.PNG" width="20%" height="20%"></p>
+
 ---
 
 ## :pill: 결론 및 기대효과
