@@ -212,17 +212,31 @@ Firebase Realtime Database에 약 모양에 대한 데이터가 ‘discriminatio
 
 <p align="center"><img src="https://github.com/juyeoon/Aigoyak_project/blob/main/image/capture/3_제품명검색-crop.PNG" width="20%" height="20%">          <img src="https://github.com/juyeoon/Aigoyak_project/blob/main/image/capture/3_성분명 검색-crop.PNG" width="20%" height="20%">          <img src="https://github.com/juyeoon/Aigoyak_project/blob/main/image/capture/3_약모양검색-crop.PNG" width="20%" height="20%"></p>
 
-<p align="center"><img src="https://github.com/juyeoon/Aigoyak_project/blob/main/image/capture/4_상세정보1-crop.PNG" width="20%" height="20%">></p>
+일반의약품의 제품명, 성분명, 약 모양으로 의약품 정보를 검색할 수 있다. 제품명 검색에서는 사용자가 제품명을 입력하여 검색하면 제품명에 검색어가 포함되는 의약품을 리스트로 나타낸다. 성분명 검색에서는 사용자가 입력한 성분명을 포함하는 의약품을 리스트로 나타낸다. 약 모양 검색에서는 사용자가 제형, 모양, 색상, 분할 선의 조건을 선택하고 확인 버튼을 누르면 해당하는 의약품을 리스트에 나타낸다.
+
+<p align="center"><img src="https://github.com/juyeoon/Aigoyak_project/blob/main/image/capture/3_검색 리스트-crop.PNG" width="20%" height="20%">          <img src="https://github.com/juyeoon/Aigoyak_project/blob/main/image/capture/4_상세정보1-crop.PNG" width="20%" height="20%">></p>
+
+검색을 하게 되면, 검색 결과 리스트가 나타나게 되며, 검색 결과 리스트에서 하나의 의약품을 선택하면 해당 의약품의 상세정보가 나타나게 된다. 상세 정보 페이지는 의약품의 이미지와 상세정보 탭, 성분 정보 탭, DUR 정보 탭으로 이루어져 있다. 
+상세정보 탭에서는 의약품의 기본 정보인 회사명, 제품명, 효과 및 효능, 사용법, 사용 전 반드시 알아야 할 사항, 사용상 주의사항, 사용하는 동안 주의해야 할 사항, 부작용, 보관법을 확인할 수 있다. 또한, 상세정보 탭에서 의약품 구분, 의약품 분류, 색상 및 형태, 제형, 모양, 색깔, 크기, 분할선 정보도 확인할 수 있다. 성분 정보 탭에서는 의약품의 제품명, 주성분, 첨가제, 첨가제 주의 관련 성분을 확인할 수 있다. DUR 정보 탭에서는 의약품의 DUR 정보인 병용금기, 연령 금기, 임부 금기, 노인 주의, 용량 주의, 투여 기간 주의를 확인할 수 있다.
 
 #### 복약 기록
 
 <p align="center"><img src="https://github.com/juyeoon/Aigoyak_project/blob/main/image/capture/2_복약추가-crop.PNG" width="20%" height="20%">          <img src="https://github.com/juyeoon/Aigoyak_project/blob/main/image/capture/2_복약관리2-crop.PNG" width="20%" height="20%"></p>
 
+달력을 활용하여 복약 기록을 할 수 있는 기능이다. 복약 관리 페이지에서 ‘+’ 버튼으로 복약 추가 페이지로 이동할 수 있다. 복약 추가 페이지에서 제품명, 복약 시작 및 종료 날짜, 복용 시각을 설정하면 복약 기록 리스트에 추가되며 복약 관리 페이지에서 확인할 수 있다. 달력에서 날짜를 선택하게 되면 해당 날짜에 복용해야 하는 의약품 항목들을 볼 수 있다. 
+복약 기록 리스트의 각각의 항목은 ‘미복용 및 복용’ 버튼을 사용하여 복용 여부를 저장할 수 있으며, 휴지통 버튼을 누르게 되면 복약 기록 리스트에서 삭제할 수 있다.
+
 #### 복용 의약품에 따른 맞춤형 DUR 정보 제공
+
+복용하는 의약품을 복약 기록 리스트에 추가하면 사전에 설정한 사용자의 건강 상태(특이사항)에 대한 주의사항과 해당 의약품에 대한 병용 금기, 부작용 등에 대한 주의를 주는 기능이다.
 
 <p align="center"><img src="https://github.com/juyeoon/Aigoyak_project/blob/main/image/capture/1_나이 입력-crop.PNG" width="20%" height="20%">          <img src="https://github.com/juyeoon/Aigoyak_project/blob/main/image/capture/1_특이사항 선택-crop.PNG" width="20%" height="20%"></p>
 
+애플리케이션을 설치하고 처음 실행하게 되면 사용자의 나이와 특이사항을 설정할 수 있다. 이를 기반으로 사용자 맞춤형 복용 시 주의사항을 알려준다. 설정한 사용자의 정보는 ‘회원 정보’ 메뉴에서 확인 및 수정할 수 있다. 
+
 <p align="center"><img src="https://github.com/juyeoon/Aigoyak_project/blob/main/image/capture/2_주의사항화면-crop.PNG" width="20%" height="20%"></p>
+
+복약 기록 리스트에 추가된 항목의 노란색 ⓘ 버튼을 누르게 되면 사용자 맞춤형 주의사항을 볼 수 있다. ‘특이사항 관련’ 항목에는 사용자가 설정한 특이사항과 관련이 있다. 의약품의 주의사항에 특이사항이 포함되어 있는 경우 해당 특이사항과 관련하여 주의 사항이 있음을 알려준다. 또한, 사용자의 나이가 65세 이상으로 설정된 경우 의약품의 주의사항에 ‘고령자’ 및 ‘노인’이 포함되면 특이사항 관련 항목에서 알려준다. ‘DUR 관련’ 항목에는 의약품에 대해 DUR 정보가 존재하면 내용을 띄워주며, 연령금기의 경우 사용자의 나이가 의약품의 연령금기에 해당하는 경우에만 나타낸다. 
 
 #### 복약 시각 알림
 
