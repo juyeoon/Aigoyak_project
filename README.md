@@ -141,7 +141,39 @@ Medication Managing System Based on Open Data
 ---
 
 ## :pill: 구성요소별 구현 기능
+
+#### 애플리케이션 구성도 
 <p align="center"><img src="https://github.com/juyeoon/Aigoyak_project/blob/main/image/App Diagram.PNG" width="70%" height="70%"></p>
+
+> 애플리케이션의 기능은 크게 복약 관리 기능, 검색 기능, 사용자 정보 관리 기능으로 나뉜다. MainActivity에 Management, Medicine Search, Mypage가 Fragment로 들어있으며, 각각이 세부적인 기능이 추가되어있다. Management에는 달력을 활용한 복약 기록, 맞춤형 DUR 정보 제공 기능이 있다. Medicine Search에는 제품명 검색(Product Name Search), 성분명 검색(Component Name Search), 약 모양 검색(Shape Search)이 있으며, 검색을 통한 의약품 상세정보 조회가 가능하다. Mypage에는 사용자 정보 조회 및 수정, 즐겨찾기 기능이 있다. 
+
+#### 데이터베이스(SQLite)생성 및 연결하기
+
+Android Studio와 SQLite를 연결하여, 사용자의 정보를 저장하는 데이터베이스와 DUR 데이터를 저장하는 데이터베이스를 만들었다. 
+사용자의 정보를 저장하는 데이터베이스(note.db)는 복약 관리에서 사용자가 추가한 항목을 저장하는 테이블(TABLE_NOTE), 사용자가 즐겨찾기에 추가한 항목을 저장하는 테이블(TABLE_BOOKMARK), 사용자의 특이사항을 저장하는 테이블(TABLE_USER)로 구성되어 있다. note.db에 테이블을 만들 때는 SQL문을 사용하여 생성하였다.
+~~~javascript
+String CREATE_SQL_NOTE = "create table " + TABLE_NOTE + "("
+         + "  _id INTEGER  NOT NULL PRIMARY KEY AUTOINCREMENT, "
+         + "  CODE TEXT DEFAULT '', "
+         + "  NAME TEXT DEFAULT '', "
+         + "  CORP TEXT DEFAULT '', "
+         + "  CLOCK TEXT DEFAULT '', "
+         + "  DATE INTEGER , "
+         + "  ALARM INTEGER , "
+         + "  DATE2 INTEGER);";
+String CREATE_SQL_BOOKMARK = "create table " + TABLE_BOOKMARK + "("
+         + " _id INTEGER  NOT NULL PRIMARY KEY AUTOINCREMENT, "
+         + "  CODE TEXT DEFAULT '',"
+         + "  NAME TEXT DEFAULT '',"
+         + "  CORP TEXT DEFAULT '');";
+
+String CREATE_SQL_USER = "create table " + TABLE_USER + "("
+         + " _id INTEGER  NOT NULL PRIMARY KEY AUTOINCREMENT, "
+         + "  FEATURE TEXT DEFAULT '');";
+~~~
+
+DUR 데이터를 저장하는 데이터베이스(dur.db)는 DUR 데이터의 형식이 CSV이므로 ‘DB Browser(SQLite)’ 프로그램을 이용하여 CSV 파일을 import 하는 방법으로 SQLite 데이터베이스 파일을 생성하고, 이 파일을 애플리케이션과 연결하는 방식으로 구현하였다. 
+DUR 데이터는 공공데이터포털에서 다운로드받았으며, 다운로드받은 데이터를 애플리케이션에서 사용하기 쉽도록 가공하는 작업을 거쳐 사용하였다. DUR 데이터는 DUR의 종류에 따라 테이블이 분리된 형식으로, 특정연령금기(TABLE_AGE), 용량주의(TABLE_AMOUNT), 노인주의(TABLE_OLD), 투여기간주의(TABLE_PERIOD), 임부금기(TABLE_PREG), 병용금기(TABLE_WITH) 데이터를 각각 저장하는 6개의 테이블로 구성되어 있다.
 
 ---
 
@@ -161,7 +193,7 @@ Medication Managing System Based on Open Data
 
 #### 복약 기록 목록에 따른 맞춤형 DUR 정보 제공 관련 화면
 
-<p align="center"><img src="https://github.com/juyeoon/Aigoyak_project/blob/main/image/capture/2_복약관리3-crop.PNG" width="20%" height="20%">          <img src="https://github.com/juyeoon/Aigoyak_project/blob/main/image/capture/2_주의사항화면-crop.PNG" width="20%" height="20%"></p>
+<p align="center"><img src="https://github.com/juyeoon/Aigoyak_project/blob/main/image/capture/2_복약관리3-crop.png" width="20%" height="20%">          <img src="https://github.com/juyeoon/Aigoyak_project/blob/main/image/capture/2_주의사항화면-crop.PNG" width="20%" height="20%"></p>
 
 #### 회원 정보 화면
 
