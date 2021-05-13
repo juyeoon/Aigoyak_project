@@ -176,6 +176,7 @@ DUR 데이터를 저장하는 데이터베이스(dur.db)는 데이터의 형식�
 
 <p align="center"><img src="https://github.com/juyeoon/Aigoyak_project/blob/main/image/dbbrowser.JPG" width="100%" height="100%"></p>
 애플리케이션에서는 이렇게 내부에서 만든 note.db와 외부에서 만든 dur.db, 총 2개의 데이터베이스를 사용한다.
+
 #### Open API 데이터 가져오기
 
 일반의약품의 정보를 가져와서 화면에 출력하기 위해 두 개의 Open API를 사용하였다. 두 개의 Open API 모두 공공데이터포털에서 활용신청을 하여 사용한 API이다. 제공되는 API의 데이터 포맷은 JSON과 XML 형식이다. 서비스 유형은 REST(GET)로 제공되고 활용한 요청 메시지와 응답 메시지는 다음과 같다. 
