@@ -139,12 +139,31 @@ Medication Managing System Based on Open Data
 ---
 
 ## :pill: 구성요소별 구현 기능
-<p align="center"><img src="https://github.com/juyeoon/Aigoyak_project/blob/main/image/AppDiagram.png" width="70%" height="70%"></p>
+<p align="center"><img src="https://github.com/juyeoon/Aigoyak_project/blob/main/image/App Diagram.PNG" width="70%" height="70%"></p>
 
 ---
 
 ## :pill: 구현 결과
 
+#### 로딩화면
+
+#### 초기 설정 화면
+
+#### 복약 기록 화면
+
+#### 복약 기록 목록에 따른 맞춤형 DUR 정보 제공 관련 화면
+
+#### 회원 정보 화면
+
+#### 알림창
+
+#### 일반의약품 검색 화면
+
+#### 검색 결과 리스트 화면
+
+#### 일반의약품 상세 정보 제공 화면
+
+#### 즐겨찾기 화면
 ---
 
 ## :pill: 결론 및 기대효과
