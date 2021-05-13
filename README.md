@@ -186,6 +186,7 @@ DUR 데이터는 공공데이터포털에서 다운로드받았으며, 다운로
 <p align="center"><img src="https://github.com/juyeoon/Aigoyak_project/blob/main/image/api표1.PNG" width="60%" height="60%"></p>
 <p align="center"><img src="https://github.com/juyeoon/Aigoyak_project/blob/main/image/api표2.PNG" width="60%" height="60%"></p>
 이 애플리케이션에서는 API를 XML 문서 형식으로 가져와 사용하는 방식을 사용하였다. 사용한 요청 URL의 형식은 다음과 같다. 
+
 ~~~javascript
 String address = "http://apis.data.go.kr/1471000/DrbEasyDrugInfoService/getDrbEasyDrugList"
         + "?serviceKey=" + apiKey
@@ -195,6 +196,7 @@ String address2 = "http://apis.data.go.kr/1470000/MdcinGrnIdntfcInfoService/getM
         + "?ServiceKey=" + apiKey
         + "&item_seq=" + sampleCode;
 ~~~
+
 Open API의 요청 URL을 API마다 각각 설정하여 저장한다. 위 코드의 요청 URL은 공공데이터포털에서 데이터 활용 신청을 하여 발급받은 서비스 키와 의약품의 품목 기준코드를 결합한 것으로, 서비스 키와 품목 기준코드에 모두 일치하는 데이터만 결과로 나타나게 된다. [그림 5.7]에서 API 2는 '식품의약품안전처_의약품개요정보(e약은요)' API이며, API 3은 '의약품 낱알식별정보(DB) 서비스' API를 말한다. 
 
 요청 URL을 사용하여 데이터를 요청하게 되면 API에서 응답 메시지를 반환하게 된다. 이를 사용하기 위해 두 API의 응답 메시지에서 필요한 정보에 맞는 태그의 내용만 저장하여 사용하였다. (첨부 소스 코드3, 4 참고)
@@ -203,6 +205,15 @@ Open API의 요청 URL을 API마다 각각 설정하여 저장한다. 위 코드
 의약품의 이미지를 사용하기 위해 Firebase에서 제공하는 Cloud Storage를 사용하였다. 의약품의품목 기준코드를 파일 이름으로 하여 Cloud Storage의 ‘medisine’ 디렉토리에 저장되어 있으며, 이미지의 형식은 png 형식이다. 
 의약품의 품목 기준코드에 맞는 이미지를 가져오기 위해 소스 코드에서 변수 ‘image_name’에 이미지 파일의 이름을 포함한 이미지의 경로를 저장하였고, 품목 기준코드와 일치하는 이미지가 존재하면 해당 이미지를 불러온다. (첨부 소스 코드5 참고)
 의약품 이미지는 [그림 5.8]과 같이 저장되어 있다.
+<p align="center"><img src="https://github.com/juyeoon/Aigoyak_project/blob/main/image/Cloud Storage.PNG" width="80%" height="80%"></p>
+
+#### Firebase Realtime Database에서 데이터 가져오기
+<p align="center"><img src="https://github.com/juyeoon/Aigoyak_project/blob/main/image/realtimeDBshape.JPG" width="80%" height="80%"></p>
+<p align="center"><img src="https://github.com/juyeoon/Aigoyak_project/blob/main/image/realtimeDBingr.JPG" width="80%" height="80%"></p>
+
+Firebase Realtime Database에 약 모양에 대한 데이터가 [그림 5.9]와 같이 ‘discrimination’ 디렉토리에 저장되어 있으며, 의약품 성분에 대한 데이터가 [그림 5.10]과 같이 ‘ingredient’ 디렉토리에 저장되어 있다. 
+약 모양에 대한 데이터는 의약품의 품목 기준코드(code), 제품명(name), 제조 회사명(corp), 색상(color), 제형(form), 분할선(line), 모양(shape)의 정보가 저장되어 있다. DataSnapshot 객체를 통해 데이터베이스로부터 데이터를 가져와 약 모양 검색 기능에서 사용자가 선택한 색상, 종류, 분할선, 모양에 대한 조건에 모두 부합하는 의약품을 찾고, ArrayList에 품목 기준코드, 제품명, 제조 회사명을 저장한다. ArrayList에 저장된 정보를 List 형태로 띄워준다. (첨부 소스 코드6 참고)
+의약품 성분 데이터는 품목 기준코드(code), 제품명(name), 제조 회사명(corp), 성분(ingr), 첨가제(add), 첨가제 주의 관련 성분(add_warn)이 저장되어 있다. 이 또한 DataSnapshot 객체를 통해 데이터를 가져오고, 성분 검색 기능과 성분 상세 정보에서 사용된다. 성분 검색 기능에서는 사용자가 검색한 단어가 성분 데이터에 포함되어 있으면 해당 의약품의 품목 기준 코드, 제품명, 회사명을 가져오는 방식으로 설계되어 있으며, 성분 상세정보를 띄워줄 때는 해당 의약품의 품목 기준코드와 데이터베이스의 code가 일치하는 데이터를 가져온다.
 
 
 ---
