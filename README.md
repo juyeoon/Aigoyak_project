@@ -39,7 +39,15 @@ Medication Managing System Based on Open Data
 
 👉 [개발 목표](#pill-개발-목표)
 
+👉 [시스템 설계](#pill-시스템-설계)
+
 👉 [제공 기능](#pill-제공-기능)
+
+👉 [구성요소별 구현 기능](#pill-구성요소별-구현-기능) $
+
+👉 [구현 결과](#pill-구현-결과) $
+
+👉 [결론 및 기대효과](#pill-결론-및-기대효과) $
 
 👉 [애플리케이션 사용법](#pill-애플리케이션-사용법)
 
@@ -61,10 +69,9 @@ Medication Managing System Based on Open Data
 
 </br>
 
-- DUR이란?
+####  DUR이란?
 
-  - DUR(Drug Utilization Review, 의약품 적정사용)은 병용 시 또는 어린이, 노인, 임부에게 투여 시 주의해야하는 의약품에 대한 정보
-
+> DUR(Drug Utilization Review, 의약품 적정사용)은 병용 시 또는 어린이, 노인, 임부에게 투여 시 주의해야하는 의약품에 대한 정보
 
 
 ---
@@ -93,6 +100,21 @@ Medication Managing System Based on Open Data
 
 ---
 
+## :pill: 시스템 설계
+
+- Android Studio, SQLite, Firebase를 연결하여 데이터를 받아온다.
+
+
+- 공공데이터포털에서 제공하는 Open API를 사용한다.
+
+
+- SQLite 데이터베이스에는 DUR 데이터, 사용자 정보를 저장한다.
+
+
+- Firebase의 Realtime Database에 약 모양 검색을 위한 데이터와 일반의약품의 성분과 관련된 데이터가 저장되어 있으며, Cloud Storage에는 일반의약품의 이미지 파일이 저장되어 있다.
+
+---
+
 ## :pill: 제공 기능
 
 - **의약품 상세 정보 검색**
@@ -111,8 +133,20 @@ Medication Managing System Based on Open Data
 
 - **의약품 즐겨찾기**
   - 자주 찾는 의약품 정보에 대해 즐겨찾기 추가할 수 있는 기능이다. 즐겨찾기를 설정해 놓으면 즐겨찾기 메뉴에서 즐겨찾기로 추가한 의약품의 상세 정보를 볼 수 있다.
+
 ---
 
+## :pill: 구성요소별 구현 기능
+
+---
+
+## :pill: 구현 결과
+
+---
+
+## :pill: 결론 및 기대효과
+
+---
 ## :pill: 애플리케이션 사용법
 
 - **안드로이드 스튜디오에서의 사용법**
