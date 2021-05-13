@@ -129,7 +129,7 @@ Medication Managing System Based on Open Data
 - **복약 기록**
   - 달력을 활용하여 복약 기록을 할 수 있는 기능이다. 제품명, 복약 시작 날짜, 종료 날짜, 복용 시각을 설정하면 복약 기록 리스트에 추가되며, 달력에서 날짜 선택을 하게 되면 해당 날짜에 복용해야 하는 의약품 항목들을 볼 수 있다.
 
-- **복용 의약품에 따른 맞춤형 DUR 정보 제공**
+- **복용 의약품에 따른 맞춤형 주의사항 정보 제공**
   - 복용하는 의약품을 복약 기록 기능에 추가해 놓으면 해당 의약품에 대한 병용 금기, 부작용 등에 대한 주의를 주고, 사전에 설정한 특이사항과 관련이 있는 위험 의약품에 대해 주의를 주는 기능이다.
 
 - **복약 시각 알림**
@@ -226,7 +226,7 @@ Firebase Realtime Database에 약 모양에 대한 데이터가 ‘discriminatio
 달력을 활용하여 복약 기록을 할 수 있는 기능이다. 복약 관리 페이지에서 ‘+’ 버튼으로 복약 추가 페이지로 이동할 수 있다. 복약 추가 페이지에서 제품명, 복약 시작 및 종료 날짜, 복용 시각을 설정하면 복약 기록 리스트에 추가되며 복약 관리 페이지에서 확인할 수 있다. 달력에서 날짜를 선택하게 되면 해당 날짜에 복용해야 하는 의약품 항목들을 볼 수 있다. 
 복약 기록 리스트의 각각의 항목은 ‘미복용 및 복용’ 버튼을 사용하여 복용 여부를 저장할 수 있으며, 휴지통 버튼을 누르게 되면 복약 기록 리스트에서 삭제할 수 있다.
 
-#### 복용 의약품에 따른 맞춤형 DUR 정보 제공
+#### 복용 의약품에 따른 맞춤형 주의사항 정보 제공
 
 복용하는 의약품을 복약 기록 리스트에 추가하면 사전에 설정한 사용자의 건강 상태(특이사항)에 대한 주의사항과 해당 의약품에 대한 병용 금기, 부작용 등에 대한 주의를 주는 기능이다.
 
@@ -242,9 +242,13 @@ Firebase Realtime Database에 약 모양에 대한 데이터가 ‘discriminatio
 
 <p align="center"><img src="https://github.com/juyeoon/Aigoyak_project/blob/main/image/capture/2_복약알림-crop.PNG" width="20%" height="20%"></p>
 
+복약 기록 리스트에 저장된 항목들의 복약 시각에 대한 알림 기능이다. 복약 기록 리스트에 추가하면 복용 시각에 알람이 자동 생성되며, 복약 시각임을 알리는 알림이 울리게 된다. 알림은 복약 기록 리스트에 추가된 항목마다 알람이 생성되므로 항목이 여러 개인 경우 알림이 여러 개 설정된다. 복약 기록 리스트에 항목을 추가할 때 복약 시작 날짜와 복약 종료 날짜를 다르게 설정할 경우 해당 기간 동안 설정된 복약 시간에 알림이 울리게 된다. 복약 기록에서 항목을 삭제하게 되면 알림도 같이 삭제된다.
+
 #### 의약품 즐겨찾기
 
 <p align="center"><img src="https://github.com/juyeoon/Aigoyak_project/blob/main/image/capture/3_즐겨찾기-crop.PNG" width="20%" height="20%"></p>
+
+자주 찾는 의약품 정보에 대해 즐겨찾기 추가할 수 있는 기능이다. 즐겨찾기 추가는 의약품 검색리스트나 의약품 상세정보의 하트 아이콘으로 할 수 있다. 추가한 즐겨찾기 항목은 즐겨찾기 메뉴에서 확인할 수 있다. 즐겨찾기 리스트에서 항목을 선택하게 되면 상세정보를 볼 수 있다. 즐겨찾기 리스트에서도 즐겨찾기 설정, 해제가 가능하다.
 
 ---
 
@@ -262,7 +266,7 @@ Firebase Realtime Database에 약 모양에 대한 데이터가 ‘discriminatio
 
 <p align="center"><img src="https://github.com/juyeoon/Aigoyak_project/blob/main/image/capture/2_복약관리-crop.PNG" width="20%" height="20%">          <img src="https://github.com/juyeoon/Aigoyak_project/blob/main/image/capture/2_복약추가-crop.PNG" width="20%" height="20%">          <img src="https://github.com/juyeoon/Aigoyak_project/blob/main/image/capture/2_복약관리2-crop.PNG" width="20%" height="20%"></p>
 
-#### 복약 기록 목록에 따른 맞춤형 DUR 정보 제공 관련 화면
+#### 복약 기록 목록에 따른 맞춤형  정보 제공 관련 화면
 
 <p align="center"><img src="https://github.com/juyeoon/Aigoyak_project/blob/main/image/capture/2_복약관리3-crop.png" width="20%" height="20%">          <img src="https://github.com/juyeoon/Aigoyak_project/blob/main/image/capture/2_주의사항화면-crop.PNG" width="20%" height="20%"></p>
 
