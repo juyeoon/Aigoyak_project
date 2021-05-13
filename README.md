@@ -59,7 +59,7 @@ Medication Managing System Based on Open Data
 
 ## :pill: 서비스 개요
 
-<img src="https://github.com/juyeoon/Aigoyak_project/blob/main/image/logo_up.png" width="130%" height="130%">
+<p align="center"><img src="https://github.com/juyeoon/Aigoyak_project/blob/main/image/logo_up.png" width="130%" height="130%"></p>
 
 - 공공데이터를 활용한 의약품 기본 정보, DUR 정보 제공
 
@@ -102,6 +102,8 @@ Medication Managing System Based on Open Data
 
 ## :pill: 시스템 설계
 
+<p align="center"><img src="https://github.com/juyeoon/Aigoyak_project/blob/main/image/시스템설계.png" width="70%" height="70%"></p>
+
 - Android Studio, SQLite, Firebase를 연결하여 데이터를 받아온다.
 
 
@@ -137,6 +139,7 @@ Medication Managing System Based on Open Data
 ---
 
 ## :pill: 구성요소별 구현 기능
+<p align="center"><img src="https://github.com/juyeoon/Aigoyak_project/blob/main/image/AppDiagram.png" width="70%" height="70%"></p>
 
 ---
 
