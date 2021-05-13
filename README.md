@@ -117,19 +117,24 @@ Medication Managing System Based on Open Data
 
 - **안드로이드 스튜디오에서의 사용법**
 
-  - 안드로이드 스튜디오를 실행한다.
-  - 상단탭에서 디바이스 아이콘을 클릭하여 AVD를 실행한다.  <img src="image/avd 사진.PNG"> 
-  - 다운로드 받은 apk파일을 virtual Device화면에 드래그하여 설치한다.
+ 1. Aigoyak_project의 소스코드를 내려받는다.
+~~~
+git clone https://github.com/juyeoon/Aigoyak_project
+~~~
+ 2. 안드로이드 스튜디오를 실행한다.
+ 3. MainActivity.java 파일의 14열 String KEY 값에 발급받은 API KEY를 작성한다.
+~~~javascript
+public static String KEY = "발급받은 키";
+~~~
+ 4. 상단탭에서 디바이스 아이콘을 클릭하여 AVD를 실행한다.  <img src="image/avd 사진.PNG"> 
 
-- **스마트폰에서의 사용법**
+- **API Key 발급**
 
-  - 안드로이드용 스마트폰에 다운로드 받은 apk파일을 옮긴다.
-  - 스마트폰에서 apk파일을 설치한다.
+  - API Key 발급 목록
+    - [식품의약품안전처_의약품개요정보(e약은요)](https://www.data.go.kr/data/15075057/openapi.do)
+    - [의약품 낱알식별정보(DB) 서비스](https://www.data.go.kr/data/15057639/openapi.do)
 
-- **apk파일**
-
-  - (추가 예정)
-
+  - 두 개의 API Key가 동일할 것이다.
 ---
 
 ## :pill: 사용한 공공데이터
