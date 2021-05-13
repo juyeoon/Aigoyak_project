@@ -129,7 +129,7 @@ public static String KEY = "발급받은 키";
  4. 상단탭에서 디바이스 아이콘을 클릭하여 AVD생성 후  실행한다.  <img src="image/avd 사진.PNG"> 
 
 - **API Key 발급**
-  -공공데이터 API Key 받는 방법: [URL](https://jeong-pro.tistory.com/143)
+  - 공공데이터 API Key 받는 방법: [URL](https://jeong-pro.tistory.com/143)
   - API Key 발급 목록
     - [식품의약품안전처_의약품개요정보(e약은요)](https://www.data.go.kr/data/15075057/openapi.do)
     - [의약품 낱알식별정보(DB) 서비스](https://www.data.go.kr/data/15057639/openapi.do)
