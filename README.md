@@ -208,6 +208,30 @@ Open API의 요청 URL을 API마다 각각 설정하여 저장한다. 요청 URL
 Firebase Realtime Database에 약 모양에 대한 데이터가 ‘discrimination’ 디렉토리에 저장되어 있으며, 의약품 성분에 대한 데이터가 ‘ingredient’ 디렉토리에 저장되어 있다. 약 모양에 대한 데이터는 의약품의 품목 기준코드(code), 제품명(name), 제조 회사명(corp), 색상(color), 제형(form), 분할선(line), 모양(shape)의 정보가 저장되어 있다. 의약품 성분 데이터는 품목 기준코드(code), 제품명(name), 제조 회사명(corp), 성분(ingr), 첨가제(add), 첨가제 주의 관련 성분(add_warn)이 저장되어 있다.
 
 
+#### 일반의약품 상세 정보 검색
+
+<p align="center"><img src="https://github.com/juyeoon/Aigoyak_project/blob/main/image/capture/3_제품명검색-crop.PNG" width="20%" height="20%">          <img src="https://github.com/juyeoon/Aigoyak_project/blob/main/image/capture/3_성분명 검색-crop.PNG" width="20%" height="20%">          <img src="https://github.com/juyeoon/Aigoyak_project/blob/main/image/capture/3_약모양검색-crop.PNG" width="20%" height="20%"></p>
+
+<p align="center"><img src="https://github.com/juyeoon/Aigoyak_project/blob/main/image/capture/4_상세정보1-crop.PNG" width="20%" height="20%">></p>
+
+#### 복약 기록
+
+<p align="center"><img src="https://github.com/juyeoon/Aigoyak_project/blob/main/image/capture/2_복약추가-crop.PNG" width="20%" height="20%">          <img src="https://github.com/juyeoon/Aigoyak_project/blob/main/image/capture/2_복약관리2-crop.PNG" width="20%" height="20%"></p>
+
+#### 복용 의약품에 따른 맞춤형 DUR 정보 제공
+
+<p align="center"><img src="https://github.com/juyeoon/Aigoyak_project/blob/main/image/capture/1_나이 입력-crop.PNG" width="20%" height="20%">          <img src="https://github.com/juyeoon/Aigoyak_project/blob/main/image/capture/1_특이사항 선택-crop.PNG" width="20%" height="20%"></p>
+
+<p align="center"><img src="https://github.com/juyeoon/Aigoyak_project/blob/main/image/capture/2_주의사항화면-crop.PNG" width="20%" height="20%"></p>
+
+#### 복약 시각 알림
+
+<p align="center"><img src="https://github.com/juyeoon/Aigoyak_project/blob/main/image/capture/2_복약알림-crop.PNG" width="20%" height="20%"></p>
+
+#### 의약품 즐겨찾기
+
+<p align="center"><img src="https://github.com/juyeoon/Aigoyak_project/blob/main/image/capture/3_즐겨찾기-crop.PNG" width="20%" height="20%"></p>
+
 ---
 
 ## :pill: 구현 결과
