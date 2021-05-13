@@ -175,6 +175,14 @@ String CREATE_SQL_USER = "create table " + TABLE_USER + "("
 DUR 데이터를 저장하는 데이터베이스(dur.db)는 DUR 데이터의 형식이 CSV이므로 ‘DB Browser(SQLite)’ 프로그램을 이용하여 CSV 파일을 import 하는 방법으로 SQLite 데이터베이스 파일을 생성하고, 이 파일을 애플리케이션과 연결하는 방식으로 구현하였다. 
 DUR 데이터는 공공데이터포털에서 다운로드받았으며, 다운로드받은 데이터를 애플리케이션에서 사용하기 쉽도록 가공하는 작업을 거쳐 사용하였다. DUR 데이터는 DUR의 종류에 따라 테이블이 분리된 형식으로, 특정연령금기(TABLE_AGE), 용량주의(TABLE_AMOUNT), 노인주의(TABLE_OLD), 투여기간주의(TABLE_PERIOD), 임부금기(TABLE_PREG), 병용금기(TABLE_WITH) 데이터를 각각 저장하는 6개의 테이블로 구성되어 있다.
 
+<p align="center"><img src="https://github.com/juyeoon/Aigoyak_project/blob/main/image/dbbrowser.JPG" width="100%" height="100%"></p>
+이렇게 만든 데이터베이스 파일(dur.db)을 애플리케이션에서 사용하기 위해 애플리케이션의 데이터베이스를 저장하는 디렉토리의 경로를 알아 와서 'DB_PATH'에 지정하고, assets 폴더에 넣은 dur.db에 저장된 데이터를 FileOutputStream을 통하여 가져온 다음 알아 온 경로에 저장하는 방법을 사용하였다. (첨부 소스 코드 1, 2 참고)  
+이 방식으로 Android Studio의 내부와 외부에서 만든 SQLite 데이터베이스를 사용하였다. 
+
+#### Open API 데이터 가져오기
+
+일반의약품의 정보를 가져와서 화면에 출력하기 위해 두 개의 Open API를 사용하였다. 두 개의 Open API 모두 공공데이터포털에서 활용신청을 하여 사용한 API이다. 제공되는 API의 데이터 포맷은 JSON과 XML 형식이다. 서비스 유형은 REST(GET)로 제공되고 활용한 요청 메시지와 응답 메시지는 다음과 같다. 
+
 ---
 
 ## :pill: 구현 결과
