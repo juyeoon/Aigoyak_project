@@ -122,7 +122,7 @@ Medication Managing System Based on Open Data
 git clone https://github.com/juyeoon/Aigoyak_project
 ~~~
  2. 안드로이드 스튜디오를 실행한다.
- 3. MainActivity.java 파일의 14열 String KEY 값에 발급받은 API KEY를 작성한다.
+ 3. MainActivity.java 파일의 14행 String KEY 값에 발급받은 API KEY를 작성한다.
 ~~~javascript
 public static String KEY = "발급받은 키";
 ~~~
