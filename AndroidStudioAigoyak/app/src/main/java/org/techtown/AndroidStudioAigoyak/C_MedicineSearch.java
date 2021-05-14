@@ -16,7 +16,6 @@ import android.widget.TextView;
 
 
 public class C_MedicineSearch extends Fragment {
-
     ViewPager vp;
     LinearLayout linear;
     private C_ProductNameSearch fragment1;
@@ -46,8 +45,6 @@ public class C_MedicineSearch extends Fragment {
         button1 = (TextView) fv.findViewById(R.id.제품명);
         button2 = (TextView) fv.findViewById(R.id.성분명);
         button3 = (TextView) fv.findViewById(R.id.약모양);
-        MainActivity activity = null;
-
 
         button1.setOnClickListener(movePageListener);
         button1.setTag(0);

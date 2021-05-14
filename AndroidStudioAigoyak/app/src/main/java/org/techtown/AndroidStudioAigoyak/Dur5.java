@@ -1,17 +1,13 @@
 package org.techtown.AndroidStudioAigoyak;
 
 public class Dur5 {
-
     String code;
     String limit_nm;
     String unit;
     String standard;
     String content;
 
-
-    public Dur5(){
-
-    }
+    public Dur5(){    }
 
     public String getCode(){
         return code;
@@ -19,7 +15,6 @@ public class Dur5 {
     public void setCode(String code){
         this.code = code;
     }
-
 
     public String getLimit_nm(){
         return limit_nm;

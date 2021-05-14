@@ -3,7 +3,6 @@ package org.techtown.AndroidStudioAigoyak;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.content.Context;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import android.widget.ImageButton;
@@ -21,8 +20,6 @@ import java.net.URL;
 import java.net.URLEncoder;
 import java.util.ArrayList;
 
-
-
 public class D_SearchList extends AppCompatActivity {
     private static final String TAG = "SearchList";
     ArrayList<Search> items = new ArrayList<Search>();
@@ -37,13 +34,10 @@ public class D_SearchList extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.search_list);
-
         String search_word = (String)getIntent().getSerializableExtra("search");//C_ProduchNameSearch에서 검색어 들고옴
-
-        initUI();
-
         TextView count = (TextView)findViewById((R.id.count));
 
+        initUI();
 
         //뒤로가기 버튼 누름
         ImageButton button_back = (ImageButton) findViewById(R.id.back_button);

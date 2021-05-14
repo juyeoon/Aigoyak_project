@@ -45,13 +45,6 @@ public class NoteDatabase {
         database = null;
     }
 
-    /**
-     * execute raw query using the input SQL
-     * close the cursor after fetching any result
-     *
-     * @param SQL
-     * @return
-     */
 
     public Cursor rawQuery(String SQL) {
         println("\nexecuteQuery called.\n");
@@ -88,7 +81,7 @@ public class NoteDatabase {
 
         public void onCreate(SQLiteDatabase db) {
             println("creating database [" + DATABASE_NAME + "].");
-            // drop existing table
+
             String DROP_SQL_NOTE = "drop table if exists " + TABLE_NOTE;
             String DROP_SQL_BOOKMARK =  "drop table if exists " + TABLE_BOOKMARK;
             String DROP_SQL_USER = "drop table if exists " + TABLE_USER;
@@ -101,7 +94,7 @@ public class NoteDatabase {
                 Log.e(TAG, "Exception in DROP_SQL", ex);
             }
 
-            // create table
+
             String CREATE_SQL_NOTE = "create table " + TABLE_NOTE + "("
                     + "  _id INTEGER  NOT NULL PRIMARY KEY AUTOINCREMENT, "
                     + "  CODE TEXT DEFAULT '', "
@@ -130,7 +123,7 @@ public class NoteDatabase {
                 Log.e(TAG, "Exception in CREATE_SQL", ex);
             }
 
-            // create index
+
             String CREATE_INDEX_SQL_NOTE = "create index " + TABLE_NOTE + "_IDX ON " + TABLE_NOTE + "("
                     + "_id"
                     + ")";

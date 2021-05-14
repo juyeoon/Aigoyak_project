@@ -1,39 +1,26 @@
 package org.techtown.AndroidStudioAigoyak;
 
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-
-
-
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
 import org.xmlpull.v1.XmlPullParserFactory;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.net.URLEncoder;
-import java.util.ArrayList;
 
 public class E_MedicineInfoDetail extends Fragment {
     ViewGroup viewGroup;
-
     String apiKey = MainActivity.KEY;
     String imageURL;
-
     TextView text;
     String sampleCode;
     String result;
@@ -82,7 +69,6 @@ public class E_MedicineInfoDetail extends Fragment {
                     xpp2.setInput(isr2);
                     int eventType2= xpp2.getEventType();
                     String tagName2;
-
 
                     StringBuffer buffer=null;
 
@@ -204,13 +190,7 @@ public class E_MedicineInfoDetail extends Fragment {
 
                                 case XmlPullParser.END_TAG:
                                     tagName = xpp.getName();
-                                    /*
-                                    if(tagName.equals("item")){
-                                        buffer.append("▼ 주성분");
-                                        buffer.append("\n(아직 NULL)\n\n");
-                                    }
 
-                                     */
                                     break;
                             }
                             eventType=xpp.next();
@@ -375,8 +355,7 @@ public class E_MedicineInfoDetail extends Fragment {
                                             }
                                         });
 
-                                        }
-
+                                    }
                                     break;
                             }
                             eventType2=xpp2.next();

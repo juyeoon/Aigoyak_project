@@ -1,14 +1,10 @@
 package org.techtown.AndroidStudioAigoyak;
 
 public class Dur2 {
-
     String code;
     String content;
 
-
-    public Dur2(){
-
-    }
+    public Dur2(){    }
 
     public String getCode(){
         return code;

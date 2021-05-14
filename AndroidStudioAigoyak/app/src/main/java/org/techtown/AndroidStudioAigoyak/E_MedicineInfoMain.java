@@ -78,11 +78,9 @@ public class E_MedicineInfoMain extends Fragment {
                     i++;
                 }
             }
-
             @Override
             public void onPageScrollStateChanged(int state) {}
         });
-
         return fv;
     }
 
@@ -150,6 +148,4 @@ public class E_MedicineInfoMain extends Fragment {
             vp.setCurrentItem(tag);
         }
     };
-
-
 }

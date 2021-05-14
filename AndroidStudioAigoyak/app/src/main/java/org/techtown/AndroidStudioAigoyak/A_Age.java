@@ -13,9 +13,7 @@ import android.widget.Toast;
 public class A_Age extends AppCompatActivity {
     private static final String TAG = "A_Age";
     Context context;
-
     String age = "";
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

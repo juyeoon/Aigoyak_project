@@ -21,7 +21,7 @@ public class Image {
     public Map<String, Boolean> stars = new HashMap<>();
 
     public Image() {
-        // Default constructor required for calls to DataSnapshot.getValue(Post.class)
+
     }
 
     public Image(int code, String name, String corp, String shape, String color,  String line, String form) {

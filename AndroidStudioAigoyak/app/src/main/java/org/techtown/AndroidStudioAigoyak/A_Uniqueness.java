@@ -1,15 +1,14 @@
 package org.techtown.AndroidStudioAigoyak;
 
-        import android.content.Context;
-        import android.os.Bundle;
-        import androidx.appcompat.app.AppCompatActivity;
-        import android.content.Intent;
-        import android.util.Log;
-        import android.view.View;
-        import android.widget.EditText;
-        import android.widget.ImageButton;
-        import android.widget.Button;
-        import android.widget.Toast;
+import android.content.Context;
+import android.os.Bundle;
+import androidx.appcompat.app.AppCompatActivity;
+import android.content.Intent;
+import android.util.Log;
+import android.view.View;
+import android.widget.ImageButton;
+import android.widget.Button;
+import android.widget.Toast;
 
 public class A_Uniqueness extends AppCompatActivity {
     private static final String TAG = "A_uniqueness";
@@ -63,11 +62,9 @@ public class A_Uniqueness extends AppCompatActivity {
         String feature = name;
 
         String sql = "insert into " +NoteDatabase.TABLE_USER + "(FEATURE) values (" + "'"+ feature + "')";
-
         Log.d(TAG, "sql : " + sql);
         NoteDatabase database = NoteDatabase.getInstance(context);
         database.execSQL(sql);
-
     }
 
     private void deleteNote(String name){//db에서 삭제
@@ -81,7 +78,6 @@ public class A_Uniqueness extends AppCompatActivity {
 
     //버튼액션
     public void buttonAction(Button button, String text){
-
         button.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){

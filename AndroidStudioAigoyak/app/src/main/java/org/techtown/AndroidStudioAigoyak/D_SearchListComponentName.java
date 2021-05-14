@@ -35,7 +35,6 @@ public class D_SearchListComponentName extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.search_list);
-
         String search_word = (String)getIntent().getSerializableExtra("search");//C_ComponentNameSearch에서 검색어 들고옴
 
         initUI();

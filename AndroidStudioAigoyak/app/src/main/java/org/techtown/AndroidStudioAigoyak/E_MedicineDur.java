@@ -13,7 +13,6 @@ import androidx.fragment.app.Fragment;
 import java.util.List;
 
 public class E_MedicineDur extends Fragment {
-
     ViewGroup viewGroup;
     TextView textView;
     String code;
@@ -47,14 +46,11 @@ public class E_MedicineDur extends Fragment {
 
         dur3List = dataAdapter.getTableData1(code);//db에서 가져온 데이터 list에 저장.
 
-
         text = allText(dur3List, dur5List, dur2List);
         textView.setText(text);
-
         // db 닫기
         dataAdapter.close();
     }
-//testList.size()
 
     public String allText(List<Dur3> dur3, List<Dur5> dur5, List<Dur2> dur2){
         String resultText = "▼ 병용 금기\n";

@@ -13,7 +13,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 
 public class DataBaseHelper extends SQLiteOpenHelper {
-    private static String TAG = "DataBaseHelper"; //Logcat에 출력할 태그이름
+    private static String TAG = "DataBaseHelper";
 
 
     private static String DB_PATH = "";

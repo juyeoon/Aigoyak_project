@@ -2,28 +2,22 @@ package org.techtown.AndroidStudioAigoyak;
 
 import android.content.Context;
 import android.content.Intent;
-import android.database.Cursor;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
-//////////////////////////////////////////이거 고치는 중
 public class B_AddSearchAdapter extends RecyclerView.Adapter<B_AddSearchAdapter.ViewHolder> {//일단 완료
     private static final String TAG = "B_AddSearchAdapter";
 
     ArrayList<Search> items = new ArrayList<Search>();
     OnNoteItemClickListener listener;
     Context context;
-
 
     public B_AddSearchAdapter(Context context){
         this.context = context;
@@ -72,13 +66,13 @@ public class B_AddSearchAdapter extends RecyclerView.Adapter<B_AddSearchAdapter.
 
     public Search getItem(int position){
         return items.get(position);
-    } //x
+    }
 
     public void setItems(ArrayList<Search> items){
         this.items = items;
     }
 
-    public void setOnItemClickListener(OnNoteItemClickListener listener){//x
+    public void setOnItemClickListener(OnNoteItemClickListener listener){
         this.listener = listener;
     }
 
@@ -88,14 +82,12 @@ public class B_AddSearchAdapter extends RecyclerView.Adapter<B_AddSearchAdapter.
         TextView corp;
         Button select_button;
 
-
         public ViewHolder(@NonNull View itemView){
             super(itemView);
             layout = itemView.findViewById(R.id.layout1);
             name = itemView.findViewById(R.id.name);
             corp = itemView.findViewById(R.id.corp);
             select_button = itemView.findViewById(R.id.select_button);
-
         }
 
         public void setItem(Search item) {

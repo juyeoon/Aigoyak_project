@@ -6,15 +6,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageView;
-
-import com.google.firebase.database.ChildEventListener;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 import androidx.fragment.app.Fragment;
 
 public class C_ShapeSearch extends Fragment {
@@ -194,13 +185,4 @@ public class C_ShapeSearch extends Fragment {
             }
         });
     }
-
-
-
 }
-
-
-
-
-
-

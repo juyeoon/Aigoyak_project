@@ -1,15 +1,14 @@
 package org.techtown.AndroidStudioAigoyak;
 
-        import android.content.Intent;
-        import android.os.Bundle;
-        import android.view.LayoutInflater;
-        import android.view.View;
-        import android.view.ViewGroup;
-        import android.widget.EditText;
-        import android.widget.ImageView;
-        import android.widget.Toast;
-
-        import androidx.fragment.app.Fragment;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.Toast;
+import androidx.fragment.app.Fragment;
 
 public class  C_ComponentNameSearch extends Fragment {
     public  C_ComponentNameSearch() {
@@ -45,14 +44,6 @@ public class  C_ComponentNameSearch extends Fragment {
                 }
             }
         });
-
         return fv;
     }
 }
-
-
-
-
-
-
-

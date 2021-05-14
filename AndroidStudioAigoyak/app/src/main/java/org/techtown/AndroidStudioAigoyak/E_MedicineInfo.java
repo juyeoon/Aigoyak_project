@@ -3,32 +3,17 @@ package org.techtown.AndroidStudioAigoyak;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.net.Uri;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import java.io.InputStream;
 import androidx.appcompat.app.AppCompatActivity;
 import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.io.BufferedInputStream;
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.net.URLConnection;
 
 
 public class E_MedicineInfo  extends AppCompatActivity {
@@ -69,10 +54,6 @@ public class E_MedicineInfo  extends AppCompatActivity {
                 }
             });
         }
-
-
-
-
 
         Bundle bundle = new Bundle();
         bundle.putString("code", code);// E_MedicineInfoMain으로 전송

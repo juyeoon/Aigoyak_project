@@ -100,14 +100,12 @@ public class B_AddMedicine extends AppCompatActivity {
         });
 
 
-
         //복약 시작 날짜 정하는 버튼
         date_start_button = (Button) findViewById((R.id.date_start_button));
         date_start_button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 a = 1;
                 showDate(a);
-
             }
         });
 
@@ -183,9 +181,7 @@ public class B_AddMedicine extends AppCompatActivity {
                                 saveNote(get_code, get_corp, ndate, time);
                                 nd++;
                             }
-
                             nm++; //자신의 달보다 낮은 달의 날짜 31일까지 다 채움.
-
                         }
 
                         nm = m2;//끝나는 달
@@ -203,13 +199,10 @@ public class B_AddMedicine extends AppCompatActivity {
                             nd++;
                         }
                     }
-
                     Intent intent = new Intent(B_AddMedicine.this, MainActivity.class);
                     startActivity(intent);
                     Toast.makeText(getApplicationContext(),"등록완료", Toast.LENGTH_LONG).show();
-
                 }
-
             }
         });
     }
@@ -295,9 +288,7 @@ public class B_AddMedicine extends AppCompatActivity {
 
             }
         },cal.get(Calendar.YEAR), cal.get(Calendar.MONTH), cal.get(Calendar.DAY_OF_MONTH));
-
         datePickerDialog.show();
-
     }
 
     void showTime() {
@@ -309,7 +300,6 @@ public class B_AddMedicine extends AppCompatActivity {
                 clock_button.setText(String.valueOf(h + "시 " + mi + "분"));
             }
         }, h, mi, true);
-
         timePickerDialog.show();
     }
 }

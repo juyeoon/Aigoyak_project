@@ -3,18 +3,13 @@ package org.techtown.AndroidStudioAigoyak;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
-import android.os.Bundle;
-import android.provider.ContactsContract;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -50,8 +45,6 @@ public class D_SearchAdapter extends RecyclerView.Adapter<D_SearchAdapter.ViewHo
         viewHolder.setItem(items.get(position));
         viewHolder.setLayout();
         code = items.get(position).getCode();
-
-
         NoteDatabase database = NoteDatabase.getInstance(context);
         String sql = "select code from " + NoteDatabase.TABLE_BOOKMARK;
         Log.d(TAG, "sql : " + sql);
@@ -126,13 +119,13 @@ public class D_SearchAdapter extends RecyclerView.Adapter<D_SearchAdapter.ViewHo
 
     public Search getItem(int position){
         return items.get(position);
-    } //x
+    }
 
     public void setItems(ArrayList<Search> items){
         this.items = items;
     }
 
-    public void setOnItemClickListener(OnNoteItemClickListener listener){//x
+    public void setOnItemClickListener(OnNoteItemClickListener listener){
         this.listener = listener;
     }
 
@@ -149,20 +142,6 @@ public class D_SearchAdapter extends RecyclerView.Adapter<D_SearchAdapter.ViewHo
             name = itemView.findViewById(R.id.name);
             corp = itemView.findViewById(R.id.corp);
             heart = itemView.findViewById(R.id.heart_button);
-
-
-
-            //// 되나 몰것네
-            /*
-            itemView.setOnLongClickListener(new View.OnLongClickListener() {
-                @Override
-                public boolean onLongClick(View view) {
-                    removeItemView(getAdapterPosition());
-                    return false;
-                }
-            });
-            ////
-            */
 
         }
 
@@ -213,8 +192,6 @@ public class D_SearchAdapter extends RecyclerView.Adapter<D_SearchAdapter.ViewHo
             }
             outCursor.close();
         }
-
-
         return ncode;
     }
 }

@@ -1,7 +1,5 @@
 package org.techtown.AndroidStudioAigoyak;
 
-import java.io.Serializable;
-
 public class Search {
     int _id;
     String name;

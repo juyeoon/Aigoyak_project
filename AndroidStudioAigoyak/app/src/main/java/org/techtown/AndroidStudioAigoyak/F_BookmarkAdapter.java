@@ -130,9 +130,6 @@ public class F_BookmarkAdapter extends RecyclerView.Adapter<F_BookmarkAdapter.Vi
             name = itemView.findViewById(R.id.name);
             corp = itemView.findViewById(R.id.corp);
             heart = itemView.findViewById(R.id.heart_button);
-
-
-
         }
 
         public void setItem(Search item) {//내가 적은 텍스트를 불러와 저장하는 것

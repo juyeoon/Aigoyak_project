@@ -24,7 +24,6 @@ public class F_MypageChange extends AppCompatActivity {
         setContentView(R.layout.mypage_change);
         EditText age = (EditText) findViewById(R.id.age);
 
-
         String sql = "select FEATURE from " + NoteDatabase.TABLE_USER;//이거 바꾸다 말았음 이건 했는데 나중에 다른거 고치기
 
         Log.d(TAG, "sql : " + sql);

@@ -28,7 +28,6 @@ public class B_Warning extends AppCompatActivity {
     private static final String TAG = "B_Warning";
     Context context;
 
-
     //추가 코드(특이사항이 하나인 경우)
     ArrayList<String> keyword = new ArrayList<String>(); //특이사항 데이터 저장하는곳
     String caution; //데이터 저장
@@ -75,7 +74,6 @@ public class B_Warning extends AppCompatActivity {
         new Thread(){
             @Override
             public void run() {
-
                 String address = "http://apis.data.go.kr/1471000/DrbEasyDrugInfoService/getDrbEasyDrugList"
                         + "?serviceKey=" + apiKey
                         + "&itemSeq=" + code;
@@ -127,10 +125,6 @@ public class B_Warning extends AppCompatActivity {
                                         if(caution.contains(keyword.get(i))){
                                             result_text = result_text + "'" + keyword.get(i)+"'" + "에 대한 주의사항이 있습니다.\n\n";//해당할때 일어나는 일을 여기 쓰면 됨
 
-                                        }
-
-                                        else{
-                                            //해당 없을 때 일어나는 일을 여기 쓰면 됨
                                         }
                                     }
                                     if(Integer.parseInt(age) >= 65) {
@@ -295,10 +289,8 @@ public class B_Warning extends AppCompatActivity {
                 text = text + "이 약은 " + code_b_name[i] + "와 함께 사용할 수 없습니다.\n ->";
             }
         }
-
         // db 닫기
         dataAdapter.close();
-
         return text;
     }
 }

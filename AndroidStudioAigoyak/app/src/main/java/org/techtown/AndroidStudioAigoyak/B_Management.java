@@ -61,7 +61,6 @@ public class B_Management extends Fragment{
         activity = null;
     }
 
-
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -92,7 +91,6 @@ public class B_Management extends Fragment{
         loadNoteListData();
 
         return rootView;
-
     }
 
     private void initUI(ViewGroup rootView){
@@ -114,7 +112,6 @@ public class B_Management extends Fragment{
     public int loadNoteListData(){
         String sql = "select _id, CODE, NAME, CORP, CLOCK, DATE, ALARM, DATE2 from " + NoteDatabase.TABLE_NOTE +
                     " where DATE = " + select_date + " order by _id desc";
-        System.out.println(sql);
         int recordCount=-1;
         NoteDatabase database = NoteDatabase.getInstance(context);
 
@@ -148,8 +145,4 @@ public class B_Management extends Fragment{
         }
         return recordCount;
     }
-
-
-
-
 }

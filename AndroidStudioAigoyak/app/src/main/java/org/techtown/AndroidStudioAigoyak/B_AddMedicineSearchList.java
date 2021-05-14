@@ -1,26 +1,25 @@
 package org.techtown.AndroidStudioAigoyak;
 
-        import androidx.appcompat.app.AppCompatActivity;
-        import android.os.Bundle;
-        import android.view.View;
-        import android.content.Context;
-        import androidx.recyclerview.widget.RecyclerView;
-        import androidx.recyclerview.widget.LinearLayoutManager;
-        import android.widget.ImageButton;
-        import android.widget.TextView;
+import androidx.appcompat.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.View;
+import android.content.Context;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import android.widget.ImageButton;
+import android.widget.TextView;
 
-        import org.xmlpull.v1.XmlPullParser;
-        import org.xmlpull.v1.XmlPullParserException;
-        import org.xmlpull.v1.XmlPullParserFactory;
+import org.xmlpull.v1.XmlPullParser;
+import org.xmlpull.v1.XmlPullParserException;
+import org.xmlpull.v1.XmlPullParserFactory;
 
-        import java.io.IOException;
-        import java.io.InputStream;
-        import java.io.InputStreamReader;
-        import java.net.MalformedURLException;
-        import java.net.URL;
-        import java.net.URLEncoder;
-        import java.util.ArrayList;
-
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLEncoder;
+import java.util.ArrayList;
 
 
 public class B_AddMedicineSearchList extends AppCompatActivity {
@@ -32,24 +31,19 @@ public class B_AddMedicineSearchList extends AppCompatActivity {
     int page = 0;
     //API 추가
     String apiKey = MainActivity.KEY;
-    XmlPullParser xpp;
-
 
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.search_list);
         String search_word = (String)getIntent().getSerializableExtra("search");//B_AddMedicine에서 검색어 들고옴
-
-        initUI();
-
         TextView count = (TextView)findViewById((R.id.count));
 
+        initUI();
 
         //뒤로가기 버튼 누름
         ImageButton button_back = (ImageButton) findViewById(R.id.back_button);
         button_back.setOnClickListener(new View.OnClickListener(){
-
             @Override
             public void onClick(View v){
                 onBackPressed();
@@ -110,12 +104,9 @@ public class B_AddMedicineSearchList extends AppCompatActivity {
                                     tagName = xpp.getName();
                                     if (tagName.equals("item")) {
                                         buffer = new StringBuffer();
-
                                     } else if (tagName.equals("entpName")) {//회사명
                                         xpp.next();
                                         buffer.append(xpp.getText() + "\n");
-
-
                                     } else if (tagName.equals("itemName")) {//제품명
                                         xpp.next();
                                         buffer.append(xpp.getText() + "\n");
@@ -141,8 +132,7 @@ public class B_AddMedicineSearchList extends AppCompatActivity {
                                                 count.setText("검색결과 " + adapter.getItemCount() + "건");
                                             }
                                         });
-                                        id++;//idex
-
+                                        id++;//index
                                     }
                                     break;
                             }

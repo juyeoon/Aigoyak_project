@@ -126,7 +126,6 @@ public class B_MedicationList extends RecyclerView.Adapter<B_MedicationList.View
                 NoteDatabase database = NoteDatabase.getInstance(context);
                 database.execSQL(sql);
 
-
                 //알람 삭제
                 Intent receiverIntent = new Intent(context, Alarm.class);
                 alarmManager = (AlarmManager)context.getApplicationContext().getSystemService(Context.ALARM_SERVICE);
@@ -144,7 +143,6 @@ public class B_MedicationList extends RecyclerView.Adapter<B_MedicationList.View
         viewHolder.itemView.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                String position_clock = items.get(position).getClock();
                 code = items.get(position).getCode();
                 name = items.get(position).getName();
                 corp = items.get(position).getCorp();

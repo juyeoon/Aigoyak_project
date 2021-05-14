@@ -6,9 +6,6 @@ import android.util.Log;
 
 public class AppConstants {
 
-
-    public static String FOLDER_PHOTO;
-
     public static String DATABASE_NAME = "note.db";
 
 
