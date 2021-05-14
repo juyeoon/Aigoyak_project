@@ -86,7 +86,7 @@ public class D_SearchListComponentName extends AppCompatActivity {
                         adapter.notifyDataSetChanged();
                     };
                 }
-                count.setText("검색결과 " + adapter.getItemCount() + "건");
+                count.setText("'" +search_word+ "'" + " 검색결과 " + adapter.getItemCount() + "건");
 
             }
             @Override
