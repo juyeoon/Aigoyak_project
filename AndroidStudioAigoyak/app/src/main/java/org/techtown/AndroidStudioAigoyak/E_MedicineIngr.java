@@ -57,6 +57,13 @@ public class E_MedicineIngr extends Fragment{
                     String select_code = Integer.toString(select.getCode());
                     if((select_code.equals(code))){
                         ingredient= select;
+
+                        System.out.println("getCode값: "+ ingredient.getCode());
+                        System.out.println("getName값: "+ ingredient.getName());
+                        System.out.println("getCorp값: "+ ingredient.getCorp());
+                        System.out.println("getIngr값: "+ ingredient.getIngr());
+                        System.out.println("getAdd값: "+ ingredient.getAdd());
+                        System.out.println("getAddWarn값: "+ ingredient.getAddWarn());
                         text = allText(ingredient.getName(),ingredient.getIngr(),ingredient.getAdd(),ingredient.getAddWarn());
                         textView.setText(text);
                         break;
@@ -72,23 +79,34 @@ public class E_MedicineIngr extends Fragment{
     public String allText(String name, String ingr, String ingr_add, String add_warning){
         String resultText="";
 
-        if(name == null){
+        if(name.equals("")){
             name = "(없음)";
         }
-        if(ingr == null){
+        else{
+            resultText = resultText + "▼ 제품명\n" + name + "\n\n";
+        }
+        if(ingr.equals("")){
             ingr = "(없음)";
         }
-        if(ingr_add == null){
+        else{
+            resultText = resultText + "▼ 주성분\n" + ingr + "\n\n";
+        }
+        if(ingr_add.equals("")){
             ingr_add ="(없음)";
         }
-        if(add_warning == null){
-            add_warning ="(없음)";
+
+        else{
+            resultText = resultText + "▼ 첨가제\n" + ingr_add + "\n\n";
+
         }
 
-        resultText = "▼ 제품명\n" + name + "\n\n" +
-                "▼ 주성분\n" + ingr + "\n\n" +
-                "▼ 첨가물\n" + ingr_add + "\n\n" +
-                "▼ 첨가물 주의\n" + add_warning + "\n\n";
+        if(add_warning.equals("")){
+            add_warning ="(없음)";
+        }
+        else{
+            resultText = resultText + "▼ 첨가제 주의 성분\n" + add_warning + "\n\n";
+        }
+
         return resultText;
     }
 }

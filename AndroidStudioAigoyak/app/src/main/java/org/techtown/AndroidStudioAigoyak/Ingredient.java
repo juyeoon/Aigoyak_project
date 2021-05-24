@@ -36,7 +36,7 @@ public class Ingredient {
         result.put("corp", corp);
         result.put("ingr", ingr);
         result.put("add", add);
-        result.put("add_warn", add_warn);
+        result.put("addWarn", add_warn);
         result.put("starCount", starCount);
         result.put("stars", stars);
 
