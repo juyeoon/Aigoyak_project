@@ -24,8 +24,8 @@ Medication Managing System Based on Open Data
 🍀 **개발 환경**
 
 - OS: Microsoft Windows 10
-- Tools: Android Studio, MySQL DB, SQLite
-- Language: Java, XML, SQL, PHP
+- Tools: Android Studio, Firebase, SQLite
+- Language: Java, XML, SQL,
 - Test Device: Android 11.0 / G011A (Google Pixel 2), Android 11.0 / SM-G973N (Galaxy S10)
 
 
