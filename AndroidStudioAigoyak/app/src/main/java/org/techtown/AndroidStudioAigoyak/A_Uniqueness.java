@@ -10,7 +10,8 @@ import android.widget.ImageButton;
 import android.widget.Button;
 import android.widget.Toast;
 
-public class A_Uniqueness extends AppCompatActivity {
+public class
+A_Uniqueness extends AppCompatActivity {
     private static final String TAG = "A_uniqueness";
     Context context;
 

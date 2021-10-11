@@ -63,8 +63,7 @@ public class E_MedicineIngr extends Fragment{
                         System.out.println("getCorp값: "+ ingredient.getCorp());
                         System.out.println("getIngr값: "+ ingredient.getIngr());
                         System.out.println("getAdd값: "+ ingredient.getAdd());
-                        System.out.println("getAddWarn값: "+ ingredient.getAddWarn());
-                        text = allText(ingredient.getName(),ingredient.getIngr(),ingredient.getAdd(),ingredient.getAddWarn());
+                        text = allText(ingredient.getName(),ingredient.getIngr(),ingredient.getAdd());
                         textView.setText(text);
                         break;
                     };
@@ -76,7 +75,7 @@ public class E_MedicineIngr extends Fragment{
             }
         });
     }
-    public String allText(String name, String ingr, String ingr_add, String add_warning){
+    public String allText(String name, String ingr, String ingr_add){
         String resultText="";
 
         if(name.equals("")){
@@ -97,14 +96,6 @@ public class E_MedicineIngr extends Fragment{
 
         else{
             resultText = resultText + "▼ 첨가제\n" + ingr_add + "\n\n";
-
-        }
-
-        if(add_warning.equals("")){
-            add_warning ="(없음)";
-        }
-        else{
-            resultText = resultText + "▼ 첨가제 주의 성분\n" + add_warning + "\n\n";
         }
 
         return resultText;

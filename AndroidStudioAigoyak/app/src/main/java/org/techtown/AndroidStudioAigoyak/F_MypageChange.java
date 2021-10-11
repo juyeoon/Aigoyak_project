@@ -15,16 +15,16 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class F_MypageChange extends AppCompatActivity {
-    private static final String TAG = "F_MypageChange";
-    Context context;
-    Button button[] = new Button[19];
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+        private static final String TAG = "F_MypageChange";
+        Context context;
+        Button button[] = new Button[19];
+        protected void onCreate(Bundle savedInstanceState) {
+            super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.mypage_change);
-        EditText age = (EditText) findViewById(R.id.age);
+            setContentView(R.layout.mypage_change);
+            EditText age = (EditText) findViewById(R.id.age);
 
-        String sql = "select FEATURE from " + NoteDatabase.TABLE_USER;//이거 바꾸다 말았음 이건 했는데 나중에 다른거 고치기
+            String sql = "select FEATURE from " + NoteDatabase.TABLE_USER;//이거 바꾸다 말았음 이건 했는데 나중에 다른거 고치기
 
         Log.d(TAG, "sql : " + sql);
         NoteDatabase database = NoteDatabase.getInstance(context);
